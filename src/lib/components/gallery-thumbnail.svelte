@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { GalleryImage } from '$lib/utils/gallery-parser.js';
+	import type { GalleryImage } from '$lib/types/gallery';
 	import { base } from '$app/paths';
 
 	interface Props {
@@ -12,25 +12,21 @@
 </script>
 
 <button
-	class="group relative overflow-hidden rounded-lg border-2 border-transparent transition-colors hover:border-blue-500 focus:border-blue-500 focus:outline-none"
+	class="group relative overflow-hidden border-2 border-transparent transition-colors hover:border-blue-500 focus:border-blue-500 focus:outline-none"
 	{onclick}
 	aria-label="View {image.description}"
 >
 	<picture>
-		<source srcset="{base}/{galleryPath}/{image.thumbnail.webp}" type="image/webp" />
+		<source srcset="{base}/generated/{galleryPath}/{image.thumbnail.webp}" type="image/webp" />
 		<img
-			src="{base}/{galleryPath}/{image.thumbnail.fallback}"
+			src="{base}/generated/{galleryPath}/{image.thumbnail.fallback}"
 			alt={image.description}
-			class="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
+			class="h-full w-full object-cover"
 			width={image.thumbnail.width}
 			height={image.thumbnail.height}
 			loading="lazy"
 		/>
 	</picture>
-
-	<div
-		class="bg-opacity-0 group-hover:bg-opacity-20 absolute inset-0 bg-black transition-opacity duration-200"
-	></div>
 
 	<div
 		class="absolute right-0 bottom-0 left-0 bg-gradient-to-t from-black to-transparent p-2 opacity-0 transition-opacity duration-200 group-hover:opacity-100"

@@ -1,13 +1,7 @@
 import sharp from 'sharp';
 import { existsSync, mkdirSync } from 'fs';
 import path from 'path';
-
-export interface OptimizedImage {
-	webp: string;
-	fallback: string;
-	width: number;
-	height: number;
-}
+import type { OptimizedImage } from '$lib/types/gallery';
 
 export async function optimizeImage(
 	sourcePath: string,

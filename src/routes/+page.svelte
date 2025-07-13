@@ -1,6 +1,10 @@
 <script lang="ts">
 	import logoImg from '$lib/assets/images/marion.jpg';
-	import { base } from '$app/paths';
+	// import { base } from '$app/paths';
+	import type { PageData } from './$types';
+	import Gallery from '$lib/components/gallery.svelte';
+
+	let { data }: { data: PageData } = $props();
 </script>
 
 <section class="about-section">
@@ -43,21 +47,23 @@
 			<h2>Le P'tit Cap'</h2>
 		</div>
 
+		<Gallery data={data.galleryData} />
+
 		<div class="mt-8 mb-8 grid grid-cols-3 gap-1">
 			<div class="col-span-2 h-full">
-				<img src="{base}/images/salon/1.jpg" alt="Large photo" class="h-full w-full object-cover" />
+				<!-- <img src="{base}/images/salon/1.jpg" alt="Large photo" class="h-full w-full object-cover" /> -->
 			</div>
 
 			<div class="grid h-full grid-rows-2 gap-1">
 				<div class="h-full">
-					<img src="{base}/images/salon/3.jpg" alt="Top photo" class="h-full w-full object-cover" />
+					<!-- <img src="{base}/images/salon/3.jpg" alt="Top photo" class="h-full w-full object-cover" /> -->
 				</div>
 				<div class="h-full">
-					<img
+					<!-- <img
 						src="{base}/images/salon/4.jpg"
 						alt="Bottom photo"
 						class="h-full w-full object-cover"
-					/>
+					/> -->
 				</div>
 			</div>
 		</div>

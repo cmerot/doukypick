@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { GalleryData } from '$lib/utils/gallery-parser.js';
+	import type { GalleryData } from '$lib/types/gallery';
 	import GalleryThumbnail from './gallery-thumbnail.svelte';
 	import GalleryImage from './gallery-image.svelte';
 

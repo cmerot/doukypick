@@ -6,12 +6,12 @@
 </script>
 
 <svelte:head>
-	<title>Gallery</title>
-	<meta name="description" content="Photo gallery" />
+	<title>Tatouages</title>
+	<meta name="description" content="Photos de tatouages" />
 </svelte:head>
 
 <div class="container mx-auto px-4 py-8">
-	<h1 class="mb-8 text-center text-3xl font-bold">Photo Gallery</h1>
+	<h1 class="mb-8 text-center text-3xl font-bold">Tatouages réalisés</h1>
 
 	<Gallery data={data.galleryData} />
 </div>

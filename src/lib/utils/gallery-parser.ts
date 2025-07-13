@@ -1,18 +1,7 @@
 import { readFileSync, existsSync } from 'fs';
 import path from 'path';
-import { optimizeImage, type OptimizedImage } from './image-optimizer.js';
-
-export interface GalleryImage {
-	filename: string;
-	description: string;
-	thumbnail: OptimizedImage;
-	large: OptimizedImage;
-}
-
-export interface GalleryData {
-	path: string;
-	images: GalleryImage[];
-}
+import { optimizeImage } from './image-optimizer.js';
+import type { GalleryData, GalleryImage } from '$lib/types/gallery.js';
 
 export async function parseGallery(
 	galleryPath: string,
@@ -21,7 +10,7 @@ export async function parseGallery(
 ): Promise<GalleryData> {
 	const assetsPath = path.join(process.cwd(), 'src/lib/assets', galleryPath);
 	const indexPath = path.join(assetsPath, 'index.txt');
-	const outputDir = path.join(process.cwd(), 'static', galleryPath);
+	const outputDir = path.join(process.cwd(), 'static/generated', galleryPath);
 
 	if (!existsSync(indexPath)) {
 		throw new Error(`Gallery index not found: ${indexPath}`);

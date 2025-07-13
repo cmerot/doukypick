@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { GalleryImage } from '$lib/utils/gallery-parser.js';
+	import type { GalleryImage } from '$lib/types/gallery';
 	import { base } from '$app/paths';
 
 	interface Props {
@@ -14,9 +14,9 @@
 <div class="flex h-full w-full items-center justify-center">
 	<div class="relative max-h-full max-w-full">
 		<picture>
-			<source srcset="{base}/{galleryPath}/{image.large.webp}" type="image/webp" />
+			<source srcset="{base}/generated/{galleryPath}/{image.large.webp}" type="image/webp" />
 			<img
-				src="{base}/{galleryPath}/{image.large.fallback}"
+				src="{base}/generated/{galleryPath}/{image.large.fallback}"
 				alt={image.description}
 				class="max-h-full max-w-full object-contain"
 				width={image.large.width}
