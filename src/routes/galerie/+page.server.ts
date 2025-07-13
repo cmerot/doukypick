@@ -2,6 +2,7 @@ import type { PageServerLoad } from './$types.js';
 import type { GalleryImage } from '$lib/types/gallery.js';
 import { readdir, stat } from 'fs/promises';
 import { join, basename, extname } from 'path';
+import { base } from '$app/paths';
 
 export const load: PageServerLoad = async () => {
 	try {
@@ -23,7 +24,7 @@ export const load: PageServerLoad = async () => {
 					// Image principale optimisée
 					src: `/images/salon/${file}`,
 					// Thumbnail WebP
-					thumbnail: `/images/salon/thumbs/${fileName}.webp`,
+					thumbnail: `${base}/images/salon/thumbs/${fileName}.webp`,
 					name: fileName,
 					path: file,
 					size: stats.size

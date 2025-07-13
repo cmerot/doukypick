@@ -1,5 +1,6 @@
 <script lang="ts">
 	import logoImg from '$lib/assets/images/marion.jpg';
+	import { base } from '$app/paths';
 </script>
 
 <section class="about-section">
@@ -44,15 +45,19 @@
 
 		<div class="mt-8 mb-8 grid grid-cols-3 gap-1">
 			<div class="col-span-2 h-full">
-				<img src="images/salon/1.jpg" alt="Large photo" class="h-full w-full object-cover" />
+				<img src="{base}/images/salon/1.jpg" alt="Large photo" class="h-full w-full object-cover" />
 			</div>
 
 			<div class="grid h-full grid-rows-2 gap-1">
 				<div class="h-full">
-					<img src="images/salon/3.jpg" alt="Top photo" class="h-full w-full object-cover" />
+					<img src="{base}/images/salon/3.jpg" alt="Top photo" class="h-full w-full object-cover" />
 				</div>
 				<div class="h-full">
-					<img src="images/salon/4.jpg" alt="Bottom photo" class="h-full w-full object-cover" />
+					<img
+						src="{base}/images/salon/4.jpg"
+						alt="Bottom photo"
+						class="h-full w-full object-cover"
+					/>
 				</div>
 			</div>
 		</div>

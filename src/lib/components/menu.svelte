@@ -1,5 +1,6 @@
 <script>
 	import { slide } from 'svelte/transition';
+	import { base } from '$app/paths';
 
 	let isMenuOpen = false;
 
@@ -14,12 +15,12 @@
 	{#if isMenuOpen}
 		<div class="menu-dropdown" transition:slide={{ duration: 300 }}>
 			<ul>
-				<li><a href="/">Accueil</a></li>
-				<li><a href="/boutique">Boutique</a></li>
-				<li><a href="/evenements">Événements</a></li>
-				<li><a href="/galerie">Galerie</a></li>
-				<li><a href="/soins">Soins</a></li>
-				<li><a href="/contact">Contact</a></li>
+				<li><a href="{base}/">Accueil</a></li>
+				<li><a href="{base}/boutique">Boutique</a></li>
+				<li><a href="{base}/evenements">Événements</a></li>
+				<li><a href="{base}/galerie">Galerie</a></li>
+				<li><a href="{base}/soins">Soins</a></li>
+				<li><a href="{base}/contact">Contact</a></li>
 			</ul>
 		</div>
 	{/if}
