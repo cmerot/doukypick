@@ -45,12 +45,6 @@
 								doukypick@gmail.com
 							</a>
 						</p>
-						<p>
-							<span class="font-medium">Téléphone :</span><br />
-							<a href="tel:+33123456789" class="text-blue-600 hover:text-blue-800">
-								+33 6 22 39 22 71
-							</a>
-						</p>
 					</div>
 				</div>
 
