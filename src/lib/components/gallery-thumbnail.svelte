@@ -14,7 +14,7 @@
 <button
 	class="group relative overflow-hidden border-2 border-transparent transition-colors hover:border-blue-500 focus:border-blue-500 focus:outline-none"
 	{onclick}
-	aria-label="View {image.description}"
+	aria-label="Voir {image.description}"
 >
 	<picture>
 		<source srcset="{base}/generated/{galleryPath}/{image.thumbnail.webp}" type="image/webp" />

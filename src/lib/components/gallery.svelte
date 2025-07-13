@@ -53,7 +53,7 @@
 
 <div class="gallery">
 	<!-- Thumbnail Grid -->
-	<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+	<div class="grid grid-cols-4">
 		{#each data.images as image, index}
 			<GalleryThumbnail {image} galleryPath={data.path} onclick={() => openCarousel(index)} />
 		{/each}
@@ -63,7 +63,6 @@
 	{#if isCarouselOpen}
 		<div
 			class="bg-opacity-90 fixed inset-0 z-50 flex items-center justify-center bg-black"
-			onclick={closeCarousel}
 			role="dialog"
 			aria-label="Image carousel"
 		>
@@ -102,10 +101,7 @@
 			{/if}
 
 			<!-- Image container -->
-			<div
-				class="flex h-full w-full items-center justify-center p-8"
-				onclick={(e) => e.stopPropagation()}
-			>
+			<div class="flex h-full w-full items-center justify-center p-8">
 				<GalleryImage image={data.images[currentIndex]} galleryPath={data.path} isActive={true} />
 			</div>
 

@@ -1,12 +1,14 @@
 import tailwindcss from '@tailwindcss/vite';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
+import { imagetools } from 'vite-imagetools';
+
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
 	plugins: [
 		tailwindcss(),
-		sveltekit(),
+		imagetools(),
 		// createThumbnailsPlugin(),
 		ViteImageOptimizer({
 			// Optimiser les images dans /static
@@ -27,7 +29,8 @@ export default defineConfig({
 
 			// Log des statistiques
 			logStats: true
-		})
+		}),
+		sveltekit()
 	],
 	test: {
 		projects: [

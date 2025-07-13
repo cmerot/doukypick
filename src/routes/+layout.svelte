@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../app.css';
-	import backgroundImg from '$lib/assets/images/background.jpg';
-	import logoImg from '$lib/assets/images/logo.png';
+	import backgroundImg from '$lib/assets/images/background.jpg?w=672&format=webp';
+	import logoImg from '$lib/assets/images/logo.png?w=672&format=webp';
 	import Menu from '$lib/components/menu.svelte';
 	import { base } from '$app/paths';
 
@@ -17,7 +17,7 @@
 			<a href="{base}/"><img src={logoImg} alt="Logo" /></a>
 		</div>
 		<Menu />
-		<div>
+		<div class="mr-2 ml-2">
 			{@render children()}
 		</div>
 	</div>

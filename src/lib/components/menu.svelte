@@ -13,7 +13,7 @@
 	}
 </script>
 
-<div class="w-full text-center">
+<div class="mb-8 w-full text-center">
 	<button
 		class="cursor-pointer border-0 bg-transparent px-3 py-2 text-lg text-gray-700 transition-colors duration-200 hover:text-blue-600"
 		on:click={toggleMenu}
@@ -23,7 +23,7 @@
 
 	{#if isMenuOpen}
 		<div
-			class="mt-1 w-full overflow-hidden rounded border border-gray-300 bg-white shadow-lg"
+			class="mt-1 mb-4 w-full overflow-hidden rounded border border-gray-300 bg-white shadow-lg"
 			transition:slide={{ duration: 300 }}
 		>
 			<ul class="m-0 list-none p-0 text-center">

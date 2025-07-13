@@ -1,5 +1,6 @@
-<article class="prose">
-	<h1>Soins</h1>
+<article class="prose max-w-none">
+	<h1 class="mb-8 text-center text-3xl font-bold">Soins</h1>
+
 	<h2>En sortant du salon tu es protégé.e. soit par&nbsp;:</h2>
 	<ul>
 		<li>
