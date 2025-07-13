@@ -7,79 +7,81 @@
 	function toggleMenu() {
 		isMenuOpen = !isMenuOpen;
 	}
+
+	function closeMenu() {
+		isMenuOpen = false;
+	}
 </script>
 
-<div class="menu-container">
-	<button class="menu-trigger" on:click={toggleMenu}> Menu </button>
+<div class="w-full text-center">
+	<button
+		class="cursor-pointer border-0 bg-transparent px-3 py-2 text-lg text-gray-700 transition-colors duration-200 hover:text-blue-600"
+		on:click={toggleMenu}
+	>
+		Menu
+	</button>
 
 	{#if isMenuOpen}
-		<div class="menu-dropdown" transition:slide={{ duration: 300 }}>
-			<ul>
-				<li><a href="{base}/">Accueil</a></li>
-				<li><a href="{base}/boutique">Boutique</a></li>
-				<li><a href="{base}/evenements">Événements</a></li>
-				<li><a href="{base}/galerie">Galerie</a></li>
-				<li><a href="{base}/soins">Soins</a></li>
-				<li><a href="{base}/contact">Contact</a></li>
+		<div
+			class="mt-1 w-full overflow-hidden rounded border border-gray-300 bg-white shadow-lg"
+			transition:slide={{ duration: 300 }}
+		>
+			<ul class="m-0 list-none p-0 text-center">
+				<li class="border-b border-gray-200">
+					<a
+						href="{base}/"
+						class="block px-4 py-3 text-gray-700 no-underline transition-colors duration-200 hover:bg-gray-100"
+						on:click={closeMenu}
+					>
+						Accueil
+					</a>
+				</li>
+				<li class="border-b border-gray-200">
+					<a
+						href="{base}/boutique"
+						class="block px-4 py-3 text-gray-700 no-underline transition-colors duration-200 hover:bg-gray-100"
+						on:click={closeMenu}
+					>
+						Boutique
+					</a>
+				</li>
+				<li class="border-b border-gray-200">
+					<a
+						href="{base}/evenements"
+						class="block px-4 py-3 text-gray-700 no-underline transition-colors duration-200 hover:bg-gray-100"
+						on:click={closeMenu}
+					>
+						Événements
+					</a>
+				</li>
+				<li class="border-b border-gray-200">
+					<a
+						href="{base}/galerie"
+						class="block px-4 py-3 text-gray-700 no-underline transition-colors duration-200 hover:bg-gray-100"
+						on:click={closeMenu}
+					>
+						Galerie
+					</a>
+				</li>
+				<li class="border-b border-gray-200">
+					<a
+						href="{base}/soins"
+						class="block px-4 py-3 text-gray-700 no-underline transition-colors duration-200 hover:bg-gray-100"
+						on:click={closeMenu}
+					>
+						Soins
+					</a>
+				</li>
+				<li>
+					<a
+						href="{base}/contact"
+						class="block px-4 py-3 text-gray-700 no-underline transition-colors duration-200 hover:bg-gray-100"
+						on:click={closeMenu}
+					>
+						Contact
+					</a>
+				</li>
 			</ul>
 		</div>
 	{/if}
 </div>
-
-<style>
-	.menu-container {
-		width: 100%;
-		text-align: center;
-	}
-
-	.menu-trigger {
-		background: none;
-		border: none;
-		font-size: 1.1rem;
-		cursor: pointer;
-		padding: 8px 12px;
-		color: #333;
-		transition: color 0.2s ease;
-	}
-
-	.menu-trigger:hover {
-		color: #007bff;
-	}
-
-	.menu-dropdown {
-		background: white;
-		border: 1px solid #ddd;
-		border-radius: 4px;
-		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-		width: 100%;
-		overflow: hidden;
-		margin-top: 4px;
-	}
-
-	.menu-dropdown ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		text-align: center;
-	}
-
-	.menu-dropdown li {
-		border-bottom: 1px solid #eee;
-	}
-
-	.menu-dropdown li:last-child {
-		border-bottom: none;
-	}
-
-	.menu-dropdown a {
-		display: block;
-		padding: 12px 16px;
-		text-decoration: none;
-		color: #333;
-		transition: background-color 0.2s ease;
-	}
-
-	.menu-dropdown a:hover {
-		background-color: #f5f5f5;
-	}
-</style>
