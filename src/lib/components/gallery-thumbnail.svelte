@@ -1,36 +1,38 @@
 <script lang="ts">
-	import type { GalleryImage } from '$lib/types/gallery';
-	import { base } from '$app/paths';
+	import type { JsonIndexItem } from '$lib/types/gallery';
 
 	interface Props {
-		image: GalleryImage;
-		galleryPath: string;
-		onclick: () => void;
+		item: JsonIndexItem;
+		index: number;
+		updateUrlParam: (key: string, value: string | null) => void;
+		aspectRatio?: string;
 	}
 
-	let { image, galleryPath, onclick }: Props = $props();
+	let { item, index, updateUrlParam, aspectRatio = '3/4' }: Props = $props();
+
+	function handleClick(event: MouseEvent) {
+		// Permettre l'ouverture dans un nouvel onglet avec clic droit ou Ctrl+clic
+		if (event.ctrlKey || event.metaKey || event.button === 1) {
+			return; // Laisser le comportement par défaut
+		}
+
+		event.preventDefault();
+		updateUrlParam('slide', index.toString());
+	}
 </script>
 
-<button
-	class="group relative overflow-hidden border-2 border-transparent transition-colors hover:border-blue-500 focus:border-blue-500 focus:outline-none"
-	{onclick}
-	aria-label="Voir {image.description}"
+<a
+	href={`?slide=${index}`}
+	onclick={handleClick}
+	class="aspect-[{aspectRatio}] overflow-hidden rounded-sm shadow-md transition-shadow duration-300 hover:shadow-lg"
 >
 	<picture>
-		<source srcset="{base}/generated/{galleryPath}/{image.thumbnail.webp}" type="image/webp" />
+		<source srcset={item.thumbnail.path} type="image/webp" />
 		<img
-			src="{base}/generated/{galleryPath}/{image.thumbnail.fallback}"
-			alt={image.description}
-			class="h-full w-full object-cover"
-			width={image.thumbnail.width}
-			height={image.thumbnail.height}
+			src={item.thumbnail.fallback_path}
+			alt={item.description}
 			loading="lazy"
+			class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
 		/>
 	</picture>
-
-	<div
-		class="absolute right-0 bottom-0 left-0 bg-gradient-to-t from-black to-transparent p-2 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-	>
-		<p class="truncate text-xs text-white">{image.description}</p>
-	</div>
-</button>
+</a>

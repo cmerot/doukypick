@@ -1,116 +1,109 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import type { GalleryData } from '$lib/types/gallery';
-	import GalleryThumbnail from './gallery-thumbnail.svelte';
-	import GalleryImage from './gallery-image.svelte';
+	import Overlay from '$lib/components/overlay/overlay.svelte';
+	import GalleryThumbnail from '$lib/components/gallery-thumbnail.svelte';
+	import { page } from '$app/state';
+	import * as Carousel from '$lib/components/ui/carousel/index.js';
+	import type { CarouselAPI } from '$lib/components/ui/carousel/context.js';
+	import Image from '$lib/components/progressive-image.svelte';
 
 	interface Props {
-		data: GalleryData;
+		images: any[];
+		urlPersistence?: boolean;
+		aspectRatio?: string;
 	}
 
-	let { data }: Props = $props();
-	let isCarouselOpen = $state(false);
-	let currentIndex = $state(0);
+	let { images, urlPersistence = false, aspectRatio = '4/3' }: Props = $props();
 
-	function openCarousel(index: number) {
-		currentIndex = index;
-		isCarouselOpen = true;
-	}
+	// État du carousel et de l'overlay
+	let currentSlide = $state<number | undefined>(undefined);
+	let api = $state<CarouselAPI>();
+	let open = $derived(currentSlide !== undefined);
 
-	function closeCarousel() {
-		isCarouselOpen = false;
-	}
+	// Gestion de l'URL et de l'état
+	class URLSlideManager {
+		static syncFromURL() {
+			if (!urlPersistence) return undefined;
+			const slideParam = page.url.searchParams.get('slide');
+			return slideParam ? Number(slideParam) : undefined;
+		}
 
-	function nextImage() {
-		currentIndex = (currentIndex + 1) % data.images.length;
-	}
+		static updateURL(slideIndex: number | null) {
+			if (!urlPersistence) return;
 
-	function prevImage() {
-		currentIndex = (currentIndex - 1 + data.images.length) % data.images.length;
-	}
+			const url = new URL(window.location.href);
 
-	function handleKeydown(event: KeyboardEvent) {
-		if (!isCarouselOpen) return;
+			if (slideIndex === null) {
+				url.searchParams.delete('slide');
+			} else {
+				url.searchParams.set('slide', slideIndex.toString());
+			}
 
-		switch (event.key) {
-			case 'Escape':
-				closeCarousel();
-				break;
-			case 'ArrowRight':
-				nextImage();
-				break;
-			case 'ArrowLeft':
-				prevImage();
-				break;
+			history.pushState(null, '', url.toString());
+		}
+
+		static setSlide(slideIndex: number | null) {
+			currentSlide = slideIndex ?? undefined;
+			this.updateURL(slideIndex);
 		}
 	}
 
-	onMount(() => {
-		document.addEventListener('keydown', handleKeydown);
-		return () => document.removeEventListener('keydown', handleKeydown);
+	// Synchronisation initiale avec l'URL
+	$effect(() => {
+		currentSlide = URLSlideManager.syncFromURL();
 	});
+
+	// Gestion de la fermeture automatique de l'overlay
+	$effect(() => {
+		if (!open && currentSlide !== undefined) {
+			URLSlideManager.setSlide(null);
+		}
+	});
+
+	// Navigation automatique vers la diapositive spécifiée
+	$effect(() => {
+		if (api && currentSlide !== undefined && open) {
+			setTimeout(() => api!.scrollTo(currentSlide!), 100);
+		}
+	});
+
+	// Synchronisation des changements de diapositive avec l'URL
+	$effect(() => {
+		if (!api || !open) return;
+
+		const handleSlideChange = () => {
+			const selectedIndex = api!.selectedScrollSnap();
+			currentSlide = selectedIndex;
+			URLSlideManager.updateURL(selectedIndex);
+		};
+
+		api.on('select', handleSlideChange);
+		return () => api!.off('select', handleSlideChange);
+	});
+
+	// Actions publiques
+	function updateUrlParam(key: string, value: string | null) {
+		if (key === 'slide') {
+			URLSlideManager.setSlide(value ? Number(value) : null);
+		}
+	}
 </script>
 
-<div class="gallery">
-	<!-- Thumbnail Grid -->
-	<div class="grid grid-cols-4">
-		{#each data.images as image, index}
-			<GalleryThumbnail {image} galleryPath={data.path} onclick={() => openCarousel(index)} />
-		{/each}
-	</div>
+<Overlay bind:open>
+	<Carousel.Root setApi={(emblaApi) => (api = emblaApi)} opts={{ startIndex: currentSlide ?? 0 }}>
+		<Carousel.Previous />
+		<Carousel.Next />
+		<Carousel.Content class="bg-transparent">
+			{#each images as item, index}
+				<Carousel.Item class="flex items-center justify-center">
+					<Image image={item} />
+				</Carousel.Item>
+			{/each}
+		</Carousel.Content>
+	</Carousel.Root>
+</Overlay>
 
-	<!-- Carousel Modal -->
-	{#if isCarouselOpen}
-		<div
-			class="bg-opacity-90 fixed inset-0 z-50 flex items-center justify-center bg-black"
-			role="dialog"
-			aria-label="Image carousel"
-		>
-			<!-- Close button -->
-			<button
-				class="absolute top-4 right-4 z-10 text-2xl text-white hover:text-gray-300"
-				onclick={closeCarousel}
-				aria-label="Close carousel"
-			>
-				×
-			</button>
-
-			<!-- Navigation buttons -->
-			{#if data.images.length > 1}
-				<button
-					class="absolute top-1/2 left-4 z-10 -translate-y-1/2 transform text-3xl text-white hover:text-gray-300"
-					onclick={(e) => {
-						e.stopPropagation();
-						prevImage();
-					}}
-					aria-label="Previous image"
-				>
-					‹
-				</button>
-
-				<button
-					class="absolute top-1/2 right-4 z-10 -translate-y-1/2 transform text-3xl text-white hover:text-gray-300"
-					onclick={(e) => {
-						e.stopPropagation();
-						nextImage();
-					}}
-					aria-label="Next image"
-				>
-					›
-				</button>
-			{/if}
-
-			<!-- Image container -->
-			<div class="flex h-full w-full items-center justify-center p-8">
-				<GalleryImage image={data.images[currentIndex]} galleryPath={data.path} isActive={true} />
-			</div>
-
-			<!-- Image counter -->
-			{#if data.images.length > 1}
-				<div class="absolute bottom-4 left-1/2 -translate-x-1/2 transform text-sm text-white">
-					{currentIndex + 1} / {data.images.length}
-				</div>
-			{/if}
-		</div>
-	{/if}
+<div class="grid grid-cols-1 grid-cols-4 gap-1">
+	{#each images as item, index}
+		<GalleryThumbnail {item} {index} {updateUrlParam} {aspectRatio} />
+	{/each}
 </div>

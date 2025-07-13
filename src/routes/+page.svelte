@@ -1,10 +1,12 @@
 <script lang="ts">
 	import logoImg from '$lib/assets/images/marion.jpg?w=200&format=webp';
 	import type { PageData } from './$types';
-	import Gallery from '$lib/components/gallery.svelte';
+	// import Gallery from '$lib/components/gallery.svelte';
 	import GoogleReviews from '$lib/components/google-reviews.svelte';
 	let { data }: { data: PageData } = $props();
-	let { galleryData, reviews, rating, totalReviews } = $derived(data);
+	import Gallery from '$lib/components/gallery.svelte';
+
+	let { reviews, rating, totalReviews } = $derived(data.reviewsData);
 </script>
 
 <section class="container">
@@ -42,8 +44,9 @@
 
 <section>
 	<h2 class="py-16 text-center text-3xl font-bold">Le P'tit Cap'</h2>
+	<Gallery images={data.images} urlPersistence={true} aspectRatio={'4/3'} />
 
-	<Gallery data={galleryData} />
+	<!-- <Gallery data={galleryData} /> -->
 
 	<div class="mt-8 mb-8 grid grid-cols-3 gap-1">
 		<div class="col-span-2 h-full">
@@ -84,17 +87,19 @@
 	</div>
 </section>
 
-<section>
-	<h2 class="py-16 text-center text-3xl font-bold">Les avis Google</h2>
+{#if reviews.length}
+	<section>
+		<h2 class="py-16 text-center text-3xl font-bold">Les avis Google</h2>
 
-	<div class="container mx-auto px-4">
-		<GoogleReviews
-			{reviews}
-			{rating}
-			{totalReviews}
-			showOverallRating={true}
-			maxReviews={3}
-			className="max-w-6xl mx-auto"
-		/>
-	</div>
-</section>
+		<div class="container mx-auto px-4">
+			<GoogleReviews
+				{reviews}
+				{rating}
+				{totalReviews}
+				showOverallRating={true}
+				maxReviews={3}
+				className="max-w-6xl mx-auto"
+			/>
+		</div>
+	</section>
+{/if}

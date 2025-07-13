@@ -1,6 +1,6 @@
 {
   "thumbnailWidth": 200,
-  "largeWidth": 500
+  "largeWidth": 800
 }
 ---
 1.jpg: Beautiful sunset over the mountains with goldenlight

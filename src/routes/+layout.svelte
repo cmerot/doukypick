@@ -17,7 +17,7 @@
 			<a href="{base}/"><img src={logoImg} alt="Logo" /></a>
 		</div>
 		<Menu />
-		<div class="mr-2 ml-2">
+		<div class="my-8 mr-2 ml-2">
 			{@render children()}
 		</div>
 	</div>

@@ -7,7 +7,7 @@
 	// Menu data
 	const menuItems = [
 		{ href: '/', label: 'Accueil' },
-		// { href: '/boutique', label: 'Boutique' },
+		{ href: '/boutique', label: 'Boutique' },
 		// { href: '/evenements', label: 'Événements' }, // Commented out as in original
 		{ href: '/galerie', label: 'Galerie' },
 		{ href: '/soins', label: 'Soins' },
