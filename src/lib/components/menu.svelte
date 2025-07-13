@@ -4,6 +4,16 @@
 
 	let isMenuOpen = false;
 
+	// Menu data
+	const menuItems = [
+		{ href: '/', label: 'Accueil' },
+		// { href: '/boutique', label: 'Boutique' },
+		// { href: '/evenements', label: 'Événements' }, // Commented out as in original
+		{ href: '/galerie', label: 'Galerie' },
+		{ href: '/soins', label: 'Soins' },
+		{ href: '/contact', label: 'Contact' }
+	];
+
 	function toggleMenu() {
 		isMenuOpen = !isMenuOpen;
 	}
@@ -27,60 +37,17 @@
 			transition:slide={{ duration: 300 }}
 		>
 			<ul class="m-0 list-none p-0 text-center">
-				<li class="border-b border-gray-200">
-					<a
-						href="{base}/"
-						class="block px-4 py-3 text-gray-700 no-underline transition-colors duration-200 hover:bg-gray-100"
-						on:click={closeMenu}
-					>
-						Accueil
-					</a>
-				</li>
-				<li class="border-b border-gray-200">
-					<a
-						href="{base}/boutique"
-						class="block px-4 py-3 text-gray-700 no-underline transition-colors duration-200 hover:bg-gray-100"
-						on:click={closeMenu}
-					>
-						Boutique
-					</a>
-				</li>
-				<li class="border-b border-gray-200">
-					<a
-						href="{base}/evenements"
-						class="block px-4 py-3 text-gray-700 no-underline transition-colors duration-200 hover:bg-gray-100"
-						on:click={closeMenu}
-					>
-						Événements
-					</a>
-				</li>
-				<li class="border-b border-gray-200">
-					<a
-						href="{base}/galerie"
-						class="block px-4 py-3 text-gray-700 no-underline transition-colors duration-200 hover:bg-gray-100"
-						on:click={closeMenu}
-					>
-						Galerie
-					</a>
-				</li>
-				<li class="border-b border-gray-200">
-					<a
-						href="{base}/soins"
-						class="block px-4 py-3 text-gray-700 no-underline transition-colors duration-200 hover:bg-gray-100"
-						on:click={closeMenu}
-					>
-						Soins
-					</a>
-				</li>
-				<li>
-					<a
-						href="{base}/contact"
-						class="block px-4 py-3 text-gray-700 no-underline transition-colors duration-200 hover:bg-gray-100"
-						on:click={closeMenu}
-					>
-						Contact
-					</a>
-				</li>
+				{#each menuItems as item, index}
+					<li class={index < menuItems.length - 1 ? 'border-b border-gray-200' : ''}>
+						<a
+							href="{base}{item.href}"
+							class="block px-4 py-3 text-gray-700 no-underline transition-colors duration-200 hover:bg-gray-100"
+							on:click={closeMenu}
+						>
+							{item.label}
+						</a>
+					</li>
+				{/each}
 			</ul>
 		</div>
 	{/if}
