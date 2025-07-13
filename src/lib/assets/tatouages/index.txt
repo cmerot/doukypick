@@ -1,3 +1,8 @@
+{
+  "thumbnailWidth": 100,
+  "largeWidth": 500
+}
+---
 483705000_1467588770624882_6790788702628349040_n.jpg: 483705000_1467588770624882_6790788702628349040_n.jpg
 cabane.jpg: cabane.jpg
 image5~3.jpeg: image5~3.jpeg

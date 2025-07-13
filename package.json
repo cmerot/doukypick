@@ -5,6 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
+		"prebuild": "tsx scripts/prebuild-images.ts",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
@@ -44,6 +45,7 @@
 		"tailwind-merge": "^3.3.1",
 		"tailwind-variants": "^1.0.0",
 		"tailwindcss": "^4.0.0",
+		"tsx": "^4.20.3",
 		"tw-animate-css": "^1.3.5",
 		"typescript": "^5.0.0",
 		"typescript-eslint": "^8.20.0",

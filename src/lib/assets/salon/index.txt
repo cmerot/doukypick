@@ -1,3 +1,8 @@
+{
+  "thumbnailWidth": 200,
+  "largeWidth": 500
+}
+---
 1.jpg: Beautiful sunset over the mountains with golden light
 2.jpg: City skyline at night with illuminated buildings
 3.jpg: Close-up of a flower in bloom during spring

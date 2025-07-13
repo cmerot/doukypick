@@ -1,12 +1,64 @@
 import { readFileSync, existsSync } from 'fs';
 import path from 'path';
-import { optimizeImage } from './image-optimizer.js';
-import type { GalleryData, GalleryImage } from '$lib/types/gallery.js';
+import { optimizeImage } from './image-optimizer';
+import type { GalleryData, GalleryImage } from '$lib/types/gallery';
+
+interface GalleryConfig {
+	thumbnailWidth: number;
+	largeWidth: number;
+	images: Array<{
+		filename: string;
+		description: string;
+	}>;
+}
+
+export function parseIndexFile(indexPath: string): GalleryConfig {
+	const content = readFileSync(indexPath, 'utf-8');
+	const sections = content.split('---');
+
+	if (sections.length < 2) {
+		throw new Error('Index file must have a header section separated by ---');
+	}
+
+	// Parse header (JSON config)
+	const headerContent = sections[0].trim();
+	let config: { thumbnailWidth: number; largeWidth: number };
+
+	try {
+		config = JSON.parse(headerContent);
+	} catch (error) {
+		throw new Error('Invalid JSON in index header');
+	}
+
+	// Parse images section
+	const imagesContent = sections[1].trim();
+	const lines = imagesContent
+		.split('\n')
+		.map((line) => line.trim())
+		.filter((line) => line && !line.startsWith('#'));
+
+	const images = lines
+		.map((line) => {
+			const colonIndex = line.indexOf(':');
+			if (colonIndex === -1) return null;
+
+			const filename = line.substring(0, colonIndex).trim();
+			const description = line.substring(colonIndex + 1).trim();
+			return { filename, description };
+		})
+		.filter(Boolean) as Array<{ filename: string; description: string }>;
+
+	return {
+		thumbnailWidth: config.thumbnailWidth,
+		largeWidth: config.largeWidth,
+		images
+	};
+}
 
 export async function parseGallery(
 	galleryPath: string,
-	thumbnailWidth: number = 100,
-	largeWidth: number = 500
+	thumbnailWidth?: number,
+	largeWidth?: number
 ): Promise<GalleryData> {
 	const assetsPath = path.join(process.cwd(), 'src/lib/assets', galleryPath);
 	const indexPath = path.join(assetsPath, 'index.txt');
@@ -16,21 +68,17 @@ export async function parseGallery(
 		throw new Error(`Gallery index not found: ${indexPath}`);
 	}
 
-	const indexContent = readFileSync(indexPath, 'utf-8');
-	const lines = indexContent
-		.split('\n')
-		.map((line) => line.trim())
-		.filter((line) => line && !line.startsWith('#'));
+	// Parse the index file
+	const config = parseIndexFile(indexPath);
+
+	// Use provided widths or fall back to config file values
+	const finalThumbnailWidth = thumbnailWidth ?? config.thumbnailWidth;
+	const finalLargeWidth = largeWidth ?? config.largeWidth;
 
 	const images: GalleryImage[] = [];
 
-	for (const line of lines) {
-		const colonIndex = line.indexOf(':');
-		if (colonIndex === -1) continue;
-
-		const filename = line.substring(0, colonIndex).trim();
-		const description = line.substring(colonIndex + 1).trim();
-
+	for (const imageConfig of config.images) {
+		const { filename, description } = imageConfig;
 		const sourcePath = path.join(assetsPath, filename);
 
 		if (!existsSync(sourcePath)) {
@@ -44,12 +92,12 @@ export async function parseGallery(
 				sourcePath,
 				outputDir,
 				filename,
-				thumbnailWidth,
+				finalThumbnailWidth,
 				'thumb'
 			);
 
 			// Generate large image
-			const large = await optimizeImage(sourcePath, outputDir, filename, largeWidth, 'large');
+			const large = await optimizeImage(sourcePath, outputDir, filename, finalLargeWidth, 'large');
 
 			images.push({
 				filename,
