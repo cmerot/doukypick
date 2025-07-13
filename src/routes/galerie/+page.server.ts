@@ -1,44 +1,24 @@
-import type { PageServerLoad } from './$types.js';
-import type { GalleryImage } from '$lib/types/gallery.js';
-import { readdir, stat } from 'fs/promises';
-import { join, basename, extname } from 'path';
-import { base } from '$app/paths';
+import { parseGallery, type GalleryData } from '$lib/utils/gallery-parser.js';
+import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = async ({ params }) => {
+	// You can customize these values or get them from params/search params
+	const galleryPath = 'salon'; // Change this to your gallery path
+	const thumbnailWidth = 100;
+	const largeWidth = 500;
+
 	try {
-		const imagesDir = join(process.cwd(), 'static/images/salon');
-		const files = await readdir(imagesDir);
-
-		const imageExtensions = /\.(png|jpg|jpeg|webp)$/i;
-		const imageFiles = files
-			.filter((file) => imageExtensions.test(file))
-			.filter((file) => file !== 'thumbs'); // Exclure le dossier thumbs
-
-		const images: GalleryImage[] = await Promise.all(
-			imageFiles.map(async (file) => {
-				const filePath = join(imagesDir, file);
-				const stats = await stat(filePath);
-				const fileName = basename(file, extname(file));
-
-				return {
-					// Image principale optimisée
-					src: `/images/salon/${file}`,
-					// Thumbnail WebP
-					thumbnail: `${base}/images/salon/thumbs/${fileName}.webp`,
-					name: fileName,
-					path: file,
-					size: stats.size
-				};
-			})
-		);
+		const galleryData = await parseGallery(galleryPath, thumbnailWidth, largeWidth);
 
 		return {
-			images: images.sort((a, b) => a.name.localeCompare(b.name))
+			galleryData
 		};
 	} catch (error) {
-		console.error('Erreur lors du chargement des images:', error);
-		return {
-			images: []
-		};
+		console.error('Error loading gallery:', error);
+		throw error;
 	}
+};
+
+export type PageData = {
+	galleryData: GalleryData;
 };
