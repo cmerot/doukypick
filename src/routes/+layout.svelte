@@ -3,6 +3,8 @@
 	import backgroundImg from '$lib/assets/images/background.jpg';
 	import logoImg from '$lib/assets/images/logo.png';
 	import Menu from '$lib/components/menu.svelte';
+	import { base } from '$app/paths';
+
 	let { children } = $props();
 </script>
 
@@ -12,7 +14,7 @@
 			class="flex items-center justify-center bg-cover bg-no-repeat"
 			style="background-image: linear-gradient(to bottom, rgb(255,255,255,.7) 0,rgb(255,255,255,.7) 200px, white), url('{backgroundImg}');"
 		>
-			<img src={logoImg} alt="Logo" />
+			<a href="{base}/"><img src={logoImg} alt="Logo" /></a>
 		</div>
 		<Menu />
 		<div>
@@ -39,8 +41,8 @@
 						</address>
 						<p>
 							<span class="font-medium">Email :</span><br />
-							<a href="mailto:mariondouchet@outlook.fr" class="text-blue-600 hover:text-blue-800">
-								mariondouchet@outlook.fr
+							<a href="mailto:doukypick@gmail.com" class="text-blue-600 hover:text-blue-800">
+								doukypick@gmail.com
 							</a>
 						</p>
 						<p>
