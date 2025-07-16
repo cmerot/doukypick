@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
 import { fetchGoogleReviews } from '$lib/services/google-places';
-import { loadJsonIndex } from '$lib/utils/gallery-parser';
+import { loadJsonIndex } from '$lib/processors/gallery-parser';
 
 export const prerender = true;
 

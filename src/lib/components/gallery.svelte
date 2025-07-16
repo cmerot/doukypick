@@ -102,7 +102,7 @@
 	</Carousel.Root>
 </Overlay>
 
-<div class="grid grid-cols-1 grid-cols-4 gap-1">
+<div class="grid grid-cols-4 gap-1">
 	{#each images as item, index}
 		<GalleryThumbnail {item} {index} {updateUrlParam} {aspectRatio} />
 	{/each}

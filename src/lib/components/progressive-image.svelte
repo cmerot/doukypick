@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { JsonIndexItem } from '$lib/types/gallery';
+	import { base } from '$app/paths';
 
 	interface Props {
 		image: JsonIndexItem;
@@ -23,9 +24,9 @@
 <div class="relative overflow-hidden bg-black {className}">
 	<!-- Miniature (affichée à la taille finale, reste visible en arrière-plan) -->
 	<picture>
-		<source srcset={thumbnailWebpSrc} type="image/webp" />
+		<source srcset="{base}{thumbnailWebpSrc}" type="image/webp" />
 		<img
-			src={thumbnailFallbackSrc}
+			src="{base}{thumbnailFallbackSrc}"
 			alt=""
 			width={image.large.width}
 			height={image.large.height}
@@ -36,9 +37,9 @@
 
 	<!-- Image principale (apparaît par-dessus la miniature) -->
 	<picture>
-		<source srcset={largeWebpSrc} type="image/webp" />
+		<source srcset="{base}{largeWebpSrc}" type="image/webp" />
 		<img
-			src={largeFallbackSrc}
+			src="{base}{largeFallbackSrc}"
 			alt={image.description}
 			width={image.large.width}
 			height={image.large.height}

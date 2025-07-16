@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { loadJsonIndex } from '$lib/utils/gallery-parser';
+import { loadJsonIndex } from '$lib/processors/gallery-parser';
 
 export const load: PageServerLoad = async ({ params }) => {
 	try {

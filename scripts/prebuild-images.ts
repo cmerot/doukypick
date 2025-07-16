@@ -1,4 +1,4 @@
-import { parseGallery } from '../src/lib/utils/gallery-parser';
+import { parseGallery } from '../src/lib/processors/gallery-parser';
 import { readdirSync, existsSync } from 'fs';
 import path from 'path';
 

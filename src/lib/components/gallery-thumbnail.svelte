@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { JsonIndexItem } from '$lib/types/gallery';
+	import { base } from '$app/paths';
 
 	interface Props {
 		item: JsonIndexItem;
@@ -27,9 +28,9 @@
 	class="aspect-[{aspectRatio}] overflow-hidden rounded-sm shadow-md transition-shadow duration-300 hover:shadow-lg"
 >
 	<picture>
-		<source srcset={item.thumbnail.path} type="image/webp" />
+		<source srcset="{base}{item.thumbnail.path}" type="image/webp" />
 		<img
-			src={item.thumbnail.fallback_path}
+			src="{base}{item.thumbnail.fallback_path}"
 			alt={item.description}
 			loading="lazy"
 			class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
