@@ -72,7 +72,7 @@
 
 {#if open}
 	<div
-		class="fixed inset-0 z-50 flex items-center justify-center bg-black p-4 transition-opacity duration-300"
+		class="fixed inset-0 z-10 flex items-center justify-center bg-black p-4 transition-opacity duration-300"
 		role="dialog"
 		aria-modal="true"
 		aria-label="Fenêtre modale"

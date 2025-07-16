@@ -90,15 +90,15 @@
 
 <Overlay bind:open>
 	<Carousel.Root setApi={(emblaApi) => (api = emblaApi)} opts={{ startIndex: currentSlide ?? 0 }}>
-		<Carousel.Previous />
-		<Carousel.Next />
-		<Carousel.Content class="bg-transparent">
+		<Carousel.Content>
 			{#each images as item, index}
 				<Carousel.Item class="flex items-center justify-center">
 					<Image image={item} />
 				</Carousel.Item>
 			{/each}
 		</Carousel.Content>
+		<Carousel.Previous class="ml-12" />
+		<Carousel.Next class="mr-12" />
 	</Carousel.Root>
 </Overlay>
 
