@@ -1,7 +1,6 @@
 <script lang="ts">
 	import logoImg from '$lib/assets/images/marion.jpg?w=200&format=webp';
 	import type { PageData } from './$types';
-	// import Gallery from '$lib/components/gallery.svelte';
 	import GoogleReviews from '$lib/components/google-reviews.svelte';
 	let { data }: { data: PageData } = $props();
 	import Gallery from '$lib/components/gallery.svelte';
@@ -44,7 +43,7 @@
 
 <section>
 	<h2 class="py-16 text-center text-3xl font-bold">Le P'tit Cap'</h2>
-	<Gallery images={data.images} urlPersistence={true} aspectRatio={'4/3'} />
+	<Gallery images={data.images} aspectRatio={'4/3'} />
 
 	<!-- <Gallery data={galleryData} /> -->
 

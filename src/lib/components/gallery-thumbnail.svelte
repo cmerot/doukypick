@@ -5,27 +5,26 @@
 	interface Props {
 		item: JsonIndexItem;
 		index: number;
-		updateUrlParam: (key: string, value: string | null) => void;
+		onclick?: () => void;
 		aspectRatio?: string;
 	}
 
-	let { item, index, updateUrlParam, aspectRatio = '3/4' }: Props = $props();
-
-	function handleClick(event: MouseEvent) {
+	let { item, index, onclick, aspectRatio = '3/4' }: Props = $props();
+	function handleClick(e: MouseEvent) {
 		// Permettre l'ouverture dans un nouvel onglet avec clic droit ou Ctrl+clic
-		if (event.ctrlKey || event.metaKey || event.button === 1) {
+		if (e.ctrlKey || e.metaKey || e.button === 1) {
 			return; // Laisser le comportement par défaut
 		}
 
-		event.preventDefault();
-		updateUrlParam('slide', index.toString());
+		e.preventDefault();
+		onclick?.();
 	}
 </script>
 
 <a
 	href={`?slide=${index}`}
 	onclick={handleClick}
-	class="aspect-[{aspectRatio}] overflow-hidden rounded-sm shadow-md transition-shadow duration-300 hover:shadow-lg"
+	class="group aspect-[{aspectRatio}] block overflow-hidden rounded-sm shadow-md transition-shadow duration-300 hover:shadow-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
 >
 	<picture>
 		<source srcset="{base}{item.thumbnail.path}" type="image/webp" />
@@ -33,7 +32,7 @@
 			src="{base}{item.thumbnail.fallback_path}"
 			alt={item.description}
 			loading="lazy"
-			class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+			class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105 group-focus:scale-105"
 		/>
 	</picture>
 </a>

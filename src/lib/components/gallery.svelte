@@ -1,109 +1,103 @@
 <script lang="ts">
 	import Overlay from '$lib/components/overlay/overlay.svelte';
 	import GalleryThumbnail from '$lib/components/gallery-thumbnail.svelte';
-	import { page } from '$app/state';
 	import * as Carousel from '$lib/components/ui/carousel/index.js';
 	import type { CarouselAPI } from '$lib/components/ui/carousel/context.js';
 	import Image from '$lib/components/progressive-image.svelte';
+	import { tick } from 'svelte';
 
 	interface Props {
 		images: any[];
-		urlPersistence?: boolean;
+		open?: boolean;
+		currentSlide?: number;
 		aspectRatio?: string;
+		onOpenSlide?: (slideIndex: number) => void;
+		onSlideChange?: (slideIndex: number) => void;
+		onClose?: () => void;
 	}
 
-	let { images, urlPersistence = false, aspectRatio = '4/3' }: Props = $props();
+	let {
+		images,
+		open = $bindable(false),
+		currentSlide = $bindable(0),
+		aspectRatio = '4/3',
+		onOpenSlide,
+		onSlideChange,
+		onClose
+	}: Props = $props();
 
-	// État du carousel et de l'overlay
-	let currentSlide = $state<number | undefined>(undefined);
+	// État du carousel
 	let api = $state<CarouselAPI>();
-	let open = $derived(currentSlide !== undefined);
 
-	// Gestion de l'URL et de l'état
-	class URLSlideManager {
-		static syncFromURL() {
-			if (!urlPersistence) return undefined;
-			const slideParam = page.url.searchParams.get('slide');
-			return slideParam ? Number(slideParam) : undefined;
-		}
-
-		static updateURL(slideIndex: number | null) {
-			if (!urlPersistence) return;
-
-			const url = new URL(window.location.href);
-
-			if (slideIndex === null) {
-				url.searchParams.delete('slide');
-			} else {
-				url.searchParams.set('slide', slideIndex.toString());
-			}
-
-			history.pushState(null, '', url.toString());
-		}
-
-		static setSlide(slideIndex: number | null) {
-			currentSlide = slideIndex ?? undefined;
-			this.updateURL(slideIndex);
-		}
+	// Gestion de l'ouverture de l'overlay
+	function openOverlay(index: number) {
+		currentSlide = index;
+		open = true;
+		onOpenSlide?.(index);
 	}
 
-	// Synchronisation initiale avec l'URL
-	$effect(() => {
-		currentSlide = URLSlideManager.syncFromURL();
-	});
+	// Gestion de la fermeture de l'overlay
+	function closeOverlay() {
+		open = false;
+		onClose?.();
+	}
 
-	// Gestion de la fermeture automatique de l'overlay
-	$effect(() => {
-		if (!open && currentSlide !== undefined) {
-			URLSlideManager.setSlide(null);
-		}
-	});
-
-	// Navigation automatique vers la diapositive spécifiée
-	$effect(() => {
-		if (api && currentSlide !== undefined && open) {
-			setTimeout(() => api!.scrollTo(currentSlide!), 100);
-		}
-	});
-
-	// Synchronisation des changements de diapositive avec l'URL
+	// Synchronisation du carousel avec l'état
 	$effect(() => {
 		if (!api || !open) return;
 
-		const handleSlideChange = () => {
-			const selectedIndex = api!.selectedScrollSnap();
-			currentSlide = selectedIndex;
-			URLSlideManager.updateURL(selectedIndex);
-		};
+		const carouselApi = api;
 
-		api.on('select', handleSlideChange);
-		return () => api!.off('select', handleSlideChange);
+		// Attendre le prochain tick pour que le carousel soit prêt
+		tick().then(() => {
+			if (currentSlide !== carouselApi.selectedScrollSnap()) {
+				carouselApi.scrollTo(currentSlide);
+			}
+		});
 	});
 
-	// Actions publiques
-	function updateUrlParam(key: string, value: string | null) {
-		if (key === 'slide') {
-			URLSlideManager.setSlide(value ? Number(value) : null);
-		}
-	}
+	// Écouter les changements de diapositive du carousel
+	$effect(() => {
+		if (!api || !open) return;
+
+		const carouselApi = api;
+
+		const handleSlideChange = () => {
+			const selectedIndex = carouselApi.selectedScrollSnap();
+			if (selectedIndex !== currentSlide) {
+				currentSlide = selectedIndex;
+				onSlideChange?.(selectedIndex);
+			}
+		};
+
+		carouselApi.on('select', handleSlideChange);
+
+		return () => {
+			carouselApi.off('select', handleSlideChange);
+		};
+	});
 </script>
 
-<Overlay bind:open>
-	<Carousel.Root setApi={(emblaApi) => (api = emblaApi)} opts={{ startIndex: currentSlide ?? 0 }}>
+<Overlay bind:open onclose={closeOverlay}>
+	<Carousel.Root setApi={(emblaApi) => (api = emblaApi)} opts={{ startIndex: currentSlide }}>
 		<Carousel.Content>
 			{#each images as item, index}
 				<Carousel.Item class="flex items-center justify-center">
-					<Image image={item} />
+					<Image image={item} isFocusable={index === currentSlide} />
 				</Carousel.Item>
 			{/each}
 		</Carousel.Content>
-		<Carousel.Previous class="ml-12" />
-		<Carousel.Next class="mr-12" />
+		<Carousel.Previous
+			class="ml-16 hidden focus-visible:ring-4 focus-visible:ring-blue-500/50 focus-visible:outline-none md:flex"
+		/>
+		<Carousel.Next
+			class="mr-16 hidden focus-visible:ring-4 focus-visible:ring-blue-500/50 focus-visible:outline-none md:flex"
+		/>
 	</Carousel.Root>
 </Overlay>
 
 <div class="grid grid-cols-4 gap-1">
 	{#each images as item, index}
-		<GalleryThumbnail {item} {index} {updateUrlParam} {aspectRatio} />
+		<GalleryThumbnail {item} {index} {aspectRatio} onclick={() => openOverlay(index)} />
 	{/each}
 </div>
