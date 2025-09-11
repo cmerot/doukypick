@@ -24,7 +24,7 @@
 <a
 	href={`?slide=${index}`}
 	onclick={handleClick}
-	class="group aspect-[{aspectRatio}] block overflow-hidden rounded-sm shadow-md transition-shadow duration-300 hover:shadow-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+	class="group aspect-[{aspectRatio}] block overflow-hidden shadow-md transition-shadow duration-300 hover:shadow-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
 >
 	<picture>
 		<source srcset="{base}{item.thumbnail.path}" type="image/webp" />

@@ -35,7 +35,7 @@
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								12 avenue du Maréchal Delattre de Tassigny<br />
+								12 avenue du Maréchal de Lattre de Tassigny<br />
 								33130 Bègles, France
 							</a>
 						</address>
