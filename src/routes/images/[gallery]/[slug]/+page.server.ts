@@ -6,7 +6,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { processImage } from '$lib/components/gallery/utils';
 
-const GALLERIES_DIR = 'src/content/galleries';
+const GALLERIES_DIR = path.join(process.cwd(), 'src/content/galleries');
 
 export const load: PageServerLoad = async ({ params }) => {
 	const { gallery: galleryId, slug } = params;
