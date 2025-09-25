@@ -2,8 +2,8 @@
 	"id": "salon",
 	"title": "Salon de tatouage Le P'tit Cap'",
 	"description": "Le salon de tatouage de Doukypick, à Bègles (limitrophe à Bordeaux)",
-	"coverImage": {},
 	"closeUrl": "/salon-le-ptit-cap",
+	"initialIndex": 0,
 	"images": [
 		{
 			"url": "images/1.jpg",

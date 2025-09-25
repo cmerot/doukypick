@@ -2,6 +2,14 @@
 	import PageTitle from '$lib/components/page-title/page-title.svelte';
 </script>
 
+<svelte:head>
+	<title>Soins - Doukypick, tatoueuse et dessinatrice</title>
+	<meta
+		name="description"
+		content="Explication des soins prodigués et à faire suite à un tatouage"
+	/>
+</svelte:head>
+
 <header>
 	<PageTitle>Soins</PageTitle>
 </header>

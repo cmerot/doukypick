@@ -7,6 +7,11 @@
 	import PageTitle from '$lib/components/page-title/page-title.svelte';
 </script>
 
+<svelte:head>
+	<title>À propos - Doukypick, tatoueuse et dessinatrice</title>
+	<meta name="description" content="Présentation de Marion 'Douky', et avis Google" />
+</svelte:head>
+
 <header>
 	<PageTitle>À propos</PageTitle>
 	<PageSubtitle>Doukypick, tatoueuse et dessinatrice</PageSubtitle>

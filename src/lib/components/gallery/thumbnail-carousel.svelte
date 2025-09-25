@@ -7,15 +7,15 @@
 		CarouselPrevious
 	} from '$lib/components/ui/carousel';
 	import { type CarouselAPI } from '$lib/components/ui/carousel/context';
-	import type { ProcessedPhoto } from './types';
+	import type { ImageData } from './types';
 
 	// Props
 	let {
-		photos,
+		images,
 		currentIndex = 0,
 		onSelect
 	}: {
-		photos: ProcessedPhoto[];
+		images: ImageData[];
 		currentIndex: number;
 		onSelect?: (index: number) => void;
 	} = $props();
@@ -36,7 +36,7 @@
 	});
 </script>
 
-{#if photos.length > 1}
+{#if images.length > 1}
 	<Carousel
 		class="mt-1 w-full"
 		setApi={(emblaApi) => (api = emblaApi)}
@@ -48,7 +48,7 @@
 		}}
 	>
 		<CarouselContent class="m-0">
-			{#each photos as photo, index (photo.uuid)}
+			{#each images as image, index (image.uuid)}
 				<CarouselItem class="flex-shrink-0 basis-1/4 p-0">
 					<button
 						type="button"
@@ -63,20 +63,20 @@
 					>
 						<picture>
 							<source
-								srcset={photo.srcsets.avif}
+								srcset={image.srcsets.avif}
 								sizes="(max-width: 550px) 150px, 400px"
 								type="image/avif"
 							/>
 							<source
-								srcset={photo.srcsets.webp}
+								srcset={image.srcsets.webp}
 								sizes="(max-width: 550px) 150px, 400px"
 								type="image/webp"
 							/>
 							<img
-								srcset={photo.srcsets.jpg}
-								src={photo.urls.small}
+								srcset={image.srcsets.jpg}
+								src={image.urls.small}
 								sizes="(max-width: 550px) 150px, 400px"
-								alt={photo.alt}
+								alt={image.alt}
 								class="h-full w-full object-cover"
 								loading={Math.abs(index - currentIndex) <= 1 ? 'eager' : 'lazy'}
 							/>
@@ -86,7 +86,7 @@
 			{/each}
 		</CarouselContent>
 
-		{#if photos.length > 4}
+		{#if images.length > 4}
 			<CarouselPrevious class="hidden md:flex" />
 			<CarouselNext class="hidden md:flex" />
 		{/if}

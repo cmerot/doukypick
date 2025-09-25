@@ -9,8 +9,8 @@
 </script>
 
 <svelte:head>
-	<title>Contact - Doukypick tatoueuse</title>
-	<meta name="description" content="Contactez-nous pour toute question ou demande d'information" />
+	<title>Contact - Doukypick, tatoueuse et dessinatrice</title>
+	<meta name="description" content="Formulaire de demande d'information pour un tatouage" />
 </svelte:head>
 
 <header>

@@ -117,7 +117,7 @@ export const actions: Actions = {
 
 		// Email validation (required)
 		if (!email?.trim()) {
-			errors.email = 'L\'email est obligatoire';
+			errors.email = "L'email est obligatoire";
 		} else {
 			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 			if (!emailRegex.test(email)) {

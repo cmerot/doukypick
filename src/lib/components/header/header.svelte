@@ -31,15 +31,20 @@
 </script>
 
 <header
-	class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+	class="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
 >
-	<nav class="container mx-auto flex h-28 items-center justify-between px-4">
+	<nav
+		class="flex h-20 items-center justify-between px-4 transition-all duration-300 ease-in-out md:h-28"
+	>
 		<!-- Logo -->
-		<div class="flex items-center">
-			<a href="/" class="flex items-center space-x-2" aria-label="Doukypick">
-				<enhanced:img src="./logo.png?w=160" alt="Doukypick" />
-			</a>
-		</div>
+		<a href="/" aria-label="Doukypick">
+			<enhanced:img
+				src="./logo.png?w=160;100"
+				alt="Doukypick"
+				sizes="(max-width:768px) 100px, 160px"
+				class="w-[100px] transition-all duration-300 ease-in-out md:w-[160px]"
+			/>
+		</a>
 
 		<!-- Desktop Navigation -->
 		<div class="hidden items-center space-x-6 md:flex">
@@ -60,13 +65,14 @@
 			<Button
 				variant="ghost"
 				onclick={toggleMobileMenu}
+				size="lg"
 				data-menu-toggle
 				aria-label={mobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
 			>
 				{#if mobileMenuOpen}
-					<X />
+					<X class="size-7" />
 				{:else}
-					<Menu />
+					<Menu class="size-7" />
 				{/if}
 			</Button>
 		</div>

@@ -3,21 +3,21 @@
 	"title": "Portfolio de tatouages",
 	"description": "Galerie des créations artistiques de Doukypick - Tatouages réalisés au salon Le P'tit Cap'",
 	"closeUrl": "/",
-	"coverImage": {},
+	"initialIndex": 4,
 	"images": [
-		{
-			"url": "images/IMG_20240326_155654_135.jpg",
-			"title": "Danse macabre - Squelette et femme",
-			"alt": "Tatouage sur cuisse représentant une danse entre un squelette et une femme",
-			"description": "Tatouage artistique en noir et blanc représentant une scène de danse macabre avec un squelette tenant une femme, style détaillé avec des éléments décoratifs et des feuilles",
-			"order": 1,
-			"visible": true
-		},
 		{
 			"url": "images/IMG_20240405_230428_904.jpg",
 			"title": "Héron en vol - Oiseau majestueux",
 			"alt": "Tatouage d'un héron aux ailes déployées sur l'épaule",
 			"description": "Tatouage élégant d'un héron aux ailes déployées, réalisé avec un trait fin et des détails précis des plumes, style réaliste en noir et blanc",
+			"order": 1,
+			"visible": true
+		},
+		{
+			"url": "images/IMG_20240326_155654_135.jpg",
+			"title": "Danse macabre - Squelette et femme",
+			"alt": "Tatouage sur cuisse représentant une danse entre un squelette et une femme",
+			"description": "Tatouage artistique en noir et blanc représentant une scène de danse macabre avec un squelette tenant une femme, style détaillé avec des éléments décoratifs et des feuilles",
 			"order": 2,
 			"visible": true
 		},

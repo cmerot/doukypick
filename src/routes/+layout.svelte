@@ -3,8 +3,12 @@
 	import '../app.css';
 	import Header from '$lib/components/header/header.svelte';
 	import TailwindIndicator from '$lib/components/tailwind-indicator.svelte';
+	import { onNavigate } from '$app/navigation';
+	import { fade } from 'svelte/transition';
+	import type { LayoutData } from './$types';
+	import type { Snippet } from 'svelte';
 
-	let { children } = $props();
+	let { children, data }: { children: Snippet; data: LayoutData } = $props();
 
 	// Store for mobile menu state
 	let mobileMenuOpen = $state(false);
@@ -26,11 +30,17 @@
 </svelte:head>
 
 <div class="relative flex min-h-screen flex-col">
-	<div class="container mx-auto max-w-3xl">
+	<div class="container mx-auto max-w-4xl">
 		<Header bind:mobileMenuOpen />
-		<main class="flex-1 px-4 py-8">
-			{@render children()}
-		</main>
+		{#key data.pathname}
+			<main
+				class="px-4 py-8 sm:px-4 md:px-12 lg:px-20"
+				in:fade={{ duration: 150, delay: 150 }}
+				out:fade={{ duration: 150 }}
+			>
+				{@render children()}
+			</main>
+		{/key}
 	</div>
 
 	<footer class="mt-auto border-t border-gray-200 bg-gray-100 py-8">

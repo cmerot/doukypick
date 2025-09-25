@@ -197,9 +197,13 @@
 										<div class="mt-1 flex flex-wrap gap-1">
 											{#each submission.project_type.split(',') as type}
 												<Badge variant="secondary" class="text-xs">
-													{type === 'flash' ? 'Flash' :
-													 type === 'custom' ? 'Personnalisé' :
-													 type === 'coverup' ? 'Recouvrement' : type}
+													{type === 'flash'
+														? 'Flash'
+														: type === 'custom'
+															? 'Personnalisé'
+															: type === 'coverup'
+																? 'Recouvrement'
+																: type}
 												</Badge>
 											{/each}
 										</div>
