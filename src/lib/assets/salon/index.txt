@@ -1,9 +1,0 @@
-{
-  "thumbnailWidth": 200,
-  "largeWidth": 800
-}
----
-1.jpg: Beautiful sunset over the mountains with goldenlight
-2.jpg: City skyline at night with illuminated buildings
-3.jpg: Close-up of a flower in bloom during spring
-4.jpg: Forest path in autumn with colorful leaves

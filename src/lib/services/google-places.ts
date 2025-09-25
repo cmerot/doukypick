@@ -1,5 +1,5 @@
 import { GOOGLE_PLACES_API_KEY, GOOGLE_PLACE_ID } from '$env/static/private';
-import type { GooglePlacesResponse, ReviewsData } from '$lib/types/google-reviews';
+import type { GooglePlacesResponse, ReviewsData } from './types';
 
 const GOOGLE_PLACES_API_URL = 'https://places.googleapis.com/v1/places';
 

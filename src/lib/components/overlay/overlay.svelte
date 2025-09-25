@@ -1,23 +1,66 @@
 <script lang="ts">
 	import { fade, scale } from 'svelte/transition';
-	import { cubicOut } from 'svelte/easing';
 	import { browser } from '$app/environment';
 	import OverlayClose from './overlay-close.svelte';
+	import { cubicOut } from 'svelte/easing';
+	import type { Snippet } from 'svelte';
+
+	const FOCUSABLE_SELECTOR =
+		'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+	const TRANSITIONS = {
+		fade: { duration: 200 },
+		scale: { duration: 300, easing: cubicOut }
+	} as const;
 
 	interface Props {
 		open: boolean;
 		onclose?: () => void;
-		children: any;
+		children: Snippet;
+		ariaLabel?: string;
+		closeButtonClass?: string;
 	}
 
-	let { open = $bindable(), onclose, children }: Props = $props();
+	let {
+		open = $bindable(),
+		onclose,
+		children,
+		ariaLabel = 'Modal dialog',
+		closeButtonClass = 'absolute top-8 right-4 z-10'
+	}: Props = $props();
+
 	let contentRef = $state<HTMLDivElement>();
 	let modalRef = $state<HTMLDivElement>();
-	let previouslyFocusedElement: HTMLElement | null = null;
 
 	function close() {
 		open = false;
 		onclose?.();
+	}
+
+	function getFocusableElements(container: HTMLElement): HTMLElement[] {
+		return Array.from(container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR));
+	}
+
+	function trapFocus(event: KeyboardEvent) {
+		if (!modalRef) return;
+
+		const focusableElements = getFocusableElements(modalRef);
+
+		if (focusableElements.length === 0) return;
+
+		const firstElement = focusableElements[0];
+		const lastElement = focusableElements[focusableElements.length - 1];
+
+		if (event.shiftKey) {
+			if (document.activeElement === firstElement) {
+				event.preventDefault();
+				lastElement.focus();
+			}
+		} else {
+			if (document.activeElement === lastElement) {
+				event.preventDefault();
+				firstElement.focus();
+			}
+		}
 	}
 
 	function handleKeydown(event: KeyboardEvent) {
@@ -28,109 +71,50 @@
 		}
 	}
 
-	function trapFocus(event: KeyboardEvent) {
-		if (!modalRef) return;
+	function focusFirstElement() {
+		if (!contentRef || !modalRef) return;
 
-		const focusableSelector =
-			'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-		const focusableElements = modalRef.querySelectorAll<HTMLElement>(focusableSelector);
+		const contentFocusable = getFocusableElements(contentRef);
+		if (contentFocusable.length > 0) {
+			contentFocusable[0].focus();
+			return;
+		}
 
-		if (focusableElements.length === 0) return;
-
-		const firstElement = focusableElements[0];
-		const lastElement = focusableElements[focusableElements.length - 1];
-
-		if (event.shiftKey) {
-			// Shift+Tab: if on first element, go to last
-			if (document.activeElement === firstElement) {
-				event.preventDefault();
-				lastElement.focus();
-			}
-		} else {
-			// Tab: if on last element, go to first
-			if (document.activeElement === lastElement) {
-				event.preventDefault();
-				firstElement.focus();
-			}
+		const allFocusable = getFocusableElements(modalRef);
+		if (allFocusable.length > 0) {
+			allFocusable[0].focus();
 		}
 	}
 
-	function focusFirstFocusableElement() {
-		if (!contentRef) return;
+	let previousFocus: HTMLElement | null = null;
 
-		const focusableSelector =
-			'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+	$effect(() => {
+		if (!browser || !open) return;
 
-		// First, try to find focusable elements in the content area
-		const contentFocusableElements = contentRef.querySelectorAll<HTMLElement>(focusableSelector);
-
-		if (contentFocusableElements.length > 0) {
-			// Focus the first focusable element in the content
-			contentFocusableElements[0].focus();
-		} else {
-			// Fallback: if no focusable content, focus the close button
-			const allFocusableElements = modalRef?.querySelectorAll<HTMLElement>(focusableSelector);
-			if (allFocusableElements && allFocusableElements.length > 0) {
-				allFocusableElements[0].focus();
-			}
+		if (document.activeElement instanceof HTMLElement) {
+			previousFocus = document.activeElement;
 		}
-	}
 
-	function storePreviousFocus() {
-		if (browser && document.activeElement instanceof HTMLElement) {
-			previouslyFocusedElement = document.activeElement;
-		}
-	}
-
-	function restorePreviousFocus() {
-		if (previouslyFocusedElement) {
-			previouslyFocusedElement.focus();
-			previouslyFocusedElement = null;
-		}
-	}
-
-	function lockScroll() {
-		if (!browser) return;
-
-		// Calculer la largeur de la scrollbar
 		const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-
-		// Appliquer le scroll lock et compenser la scrollbar
 		document.body.style.overflow = 'hidden';
 		document.body.style.paddingRight = `${scrollbarWidth}px`;
-	}
 
-	function unlockScroll() {
-		if (!browser) return;
+		document.addEventListener('keydown', handleKeydown);
 
-		// Restaurer le scroll et supprimer la compensation
-		document.body.style.overflow = '';
-		document.body.style.paddingRight = '';
-	}
+		requestAnimationFrame(() => {
+			focusFirstElement();
+		});
 
-	// Ajouter/supprimer l'event listener quand l'overlay s'ouvre/ferme
-	$effect(() => {
-		if (browser && open) {
-			// Store the previously focused element
-			storePreviousFocus();
+		return () => {
+			document.removeEventListener('keydown', handleKeydown);
+			document.body.style.overflow = '';
+			document.body.style.paddingRight = '';
 
-			document.addEventListener('keydown', handleKeydown);
-			lockScroll();
-
-			// Focus sur le premier élément focusable après l'ouverture
-			// Use requestAnimationFrame for better timing
-			requestAnimationFrame(() => {
-				focusFirstFocusableElement();
-			});
-
-			return () => {
-				document.removeEventListener('keydown', handleKeydown);
-				unlockScroll();
-
-				// Restore focus to previously focused element
-				restorePreviousFocus();
-			};
-		}
+			if (previousFocus) {
+				previousFocus.focus();
+				previousFocus = null;
+			}
+		};
 	});
 </script>
 
@@ -138,23 +122,13 @@
 	<div
 		bind:this={modalRef}
 		class="fixed inset-0 z-50 flex items-center justify-center bg-black"
-		transition:fade={{ duration: 200 }}
+		transition:fade={TRANSITIONS.fade}
 		role="dialog"
 		aria-modal="true"
-		aria-label="Galerie d'images"
+		aria-label={ariaLabel}
 	>
-		<!-- Bouton de fermeture -->
-		<OverlayClose
-			class="absolute top-2 right-2 z-10"
-			onclick={close}
-			type="button"
-			aria-label="Fermer la galerie"
-		/>
-		<div
-			bind:this={contentRef}
-			class="relative max-h-full max-w-full"
-			transition:scale={{ duration: 300, easing: cubicOut }}
-		>
+		<OverlayClose class={closeButtonClass} onclose={close} type="button" aria-label="Close modal" />
+		<div bind:this={contentRef} class="relative h-full w-full" transition:scale={TRANSITIONS.scale}>
 			{@render children()}
 		</div>
 	</div>

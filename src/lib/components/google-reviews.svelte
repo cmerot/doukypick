@@ -162,7 +162,7 @@
 		<div class="mt-8 text-center">
 			<a
 				href="https://www.google.com/maps/place/Doukypick/@44.8031958,-0.5479507,17z/data=!4m8!3m7!1s0xd552762fca7328b:0xfc6badabeae95939!8m2!3d44.803192!4d-0.5453758!9m1!1b1!16s%2Fg%2F11s9_dby1d?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D"
-				class="inline-flex items-center rounded-md border border-transparent bg-blue-600 px-6 py-3 text-base font-medium text-white transition-colors duration-200 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
+				class="inline-flex items-center rounded-md border border-transparent bg-black px-6 py-3 text-base font-medium text-white transition-colors duration-200 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
 			>
 				Voir les autres avis
 				<svg class="-mr-1 ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">

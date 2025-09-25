@@ -7,6 +7,7 @@
 	let {
 		ref = $bindable(null),
 		class: className,
+		onclose,
 		...restProps
 	}: WithoutChildren<Props> & {
 		onclose?: () => void;
@@ -21,7 +22,7 @@
 		'size-8 rounded-full focus-visible:ring-4 focus-visible:ring-blue-500/50 focus-visible:outline-none',
 		className
 	)}
-	onclick={onclose}
+	onclick={onclose || (() => {})}
 	bind:ref
 	{...restProps}
 >

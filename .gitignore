@@ -7,7 +7,6 @@ node_modules
 .wrangler
 /.svelte-kit
 /build
-/static/generated
 
 # OS
 .DS_Store
@@ -22,3 +21,6 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Images
+/static/optimized

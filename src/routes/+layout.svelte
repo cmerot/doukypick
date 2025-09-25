@@ -1,25 +1,36 @@
 <script lang="ts">
+	import { dev } from '$app/environment';
 	import '../app.css';
-	import backgroundImg from '$lib/assets/images/background.jpg?w=672&format=webp';
-	import logoImg from '$lib/assets/images/logo.png?w=672&format=webp';
-	import Menu from '$lib/components/menu.svelte';
-	import { base } from '$app/paths';
+	import Header from '$lib/components/header/header.svelte';
+	import TailwindIndicator from '$lib/components/tailwind-indicator.svelte';
 
 	let { children } = $props();
+
+	// Store for mobile menu state
+	let mobileMenuOpen = $state(false);
+
+	// Close mobile menu when clicking outside
+	function handleOutsideClick(event: MouseEvent) {
+		const target = event.target as HTMLElement;
+		if (!target.closest('[data-mobile-menu]') && !target.closest('[data-menu-toggle]')) {
+			mobileMenuOpen = false;
+		}
+	}
 </script>
 
-<div class="flex min-h-screen flex-col justify-center font-serif">
-	<div class="mx-auto max-w-2xl flex-1">
-		<div
-			class="flex items-center justify-center bg-cover bg-no-repeat"
-			style="background-image: linear-gradient(to bottom, rgb(255,255,255,.7) 0,rgb(255,255,255,.7) 200px, white), url('{backgroundImg}');"
-		>
-			<a href="{base}/"><img src={logoImg} alt="Logo" /></a>
-		</div>
-		<Menu />
-		<div class="my-8 mr-2 ml-2">
+<svelte:document on:click={handleOutsideClick} />
+<svelte:head>
+	<meta name="author" content="Doukypick" />
+	<meta name="robots" content="index, follow" />
+	<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+</svelte:head>
+
+<div class="relative flex min-h-screen flex-col">
+	<div class="container mx-auto max-w-3xl">
+		<Header bind:mobileMenuOpen />
+		<main class="flex-1 px-4 py-8">
 			{@render children()}
-		</div>
+		</main>
 	</div>
 
 	<footer class="mt-auto border-t border-gray-200 bg-gray-100 py-8">
@@ -80,10 +91,9 @@
 					</div>
 				</div>
 			</div>
-
-			<div class="mt-6 border-t border-gray-300 pt-6 text-center text-xs text-gray-500">
-				<p>&copy; 2025 Marion Douchet. Tous droits réservés.</p>
-			</div>
 		</div>
 	</footer>
 </div>
+{#if dev}
+	<TailwindIndicator />
+{/if}

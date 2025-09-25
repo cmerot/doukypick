@@ -1,38 +1,12 @@
 import tailwindcss from '@tailwindcss/vite';
-import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
-import { imagetools } from 'vite-imagetools';
-
+import { enhancedImages } from '@sveltejs/enhanced-img';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-	plugins: [
-		tailwindcss(),
-		imagetools(),
-		// createThumbnailsPlugin(),
-		ViteImageOptimizer({
-			// Optimiser les images dans /static
-			includePublic: true,
-
-			// Configuration pour les images principales
-			png: {
-				quality: 85,
-				compressionLevel: 8
-			},
-			jpeg: {
-				quality: 80,
-				progressive: true
-			},
-			webp: {
-				quality: 80
-			},
-
-			// Log des statistiques
-			logStats: true
-		}),
-		sveltekit()
-	],
+	plugins: [enhancedImages(), tailwindcss(), sveltekit()],
 	test: {
+		expect: { requireAssertions: true },
 		projects: [
 			{
 				extends: './vite.config.ts',
