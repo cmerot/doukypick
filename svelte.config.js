@@ -11,7 +11,7 @@ const config = {
 		adapter: adapter({
 			images: {
 				sizes: [150, 400, 600, 900, 1200],
-				formats: ['image/avif', 'image/webp', 'image/jpg'],
+				formats: ['image/avif', 'image/webp'],
 				minimumCacheTTL: 300,
 				domains: ['www.doukypick.fr']
 			}
