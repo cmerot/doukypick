@@ -46,7 +46,7 @@ export const load: PageServerLoad = async ({ params }) => {
 	// Minimal return object
 	return {
 		gallery: {
-			id: gallery.id,
+			name: gallery.name,
 			title: gallery.title,
 			description: gallery.description,
 			closeUrl: gallery.closeUrl

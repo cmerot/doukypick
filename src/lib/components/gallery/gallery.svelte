@@ -24,7 +24,7 @@
 		return gallery.images
 			.filter((img) => img.visible)
 			.sort((a, b) => a.order - b.order)
-			.map((image, index) => processImage(image, gallery.id, index));
+			.map((image, index) => processImage(image, gallery.name, index));
 	});
 
 	// Gallery state

@@ -18,7 +18,7 @@ export interface GalleryImage {
 }
 
 export interface Gallery {
-	id: string;
+	name: string;
 	title: string;
 	description: string;
 	closeUrl: string;
@@ -28,7 +28,7 @@ export interface Gallery {
 
 // Partial gallery for when we only need basic info
 export interface GalleryData {
-	id: string;
+	name: string;
 	title: string;
 	description: string;
 	closeUrl: string;
