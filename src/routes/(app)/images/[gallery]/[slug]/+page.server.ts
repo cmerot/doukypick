@@ -23,10 +23,10 @@ export const load: PageServerLoad = async ({ params }) => {
 
 	// Ultra-optimized single loop
 	for (let i = 0, j = 0; i < gallery.images.length; i++) {
-		const photo = gallery.images[i];
-		if (!photo.visible) continue;
+		const image = gallery.images[i];
+		if (!image.published) continue;
 
-		const processedPhoto = processImage(photo, galleryId, i);
+		const processedPhoto = processImage(image, galleryId, i);
 		images[j] = processedPhoto;
 
 		// Check if this is the current photo during processing
@@ -46,7 +46,7 @@ export const load: PageServerLoad = async ({ params }) => {
 	// Minimal return object
 	return {
 		gallery: {
-			name: gallery.name,
+			slug: gallery.slug,
 			title: gallery.title,
 			description: gallery.description,
 			closeUrl: gallery.closeUrl
@@ -57,7 +57,7 @@ export const load: PageServerLoad = async ({ params }) => {
 		meta: {
 			title: `${currentImage.title} - ${gallery.title}`,
 			description: currentImage.description,
-			ogImage: currentImage.url,
+			ogImage: currentImage.src,
 			ogImageAlt: currentImage.alt
 		}
 	};

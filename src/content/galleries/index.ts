@@ -1,7 +1,9 @@
-import salon from './salon.json';
-import tatouages from './tatouages.json';
+import type { Gallery } from '$lib/components/gallery/types.ts';
+import salonJson from './salon.json';
+import tatouagesJson from './tatouages.json';
 
-export { salon, tatouages };
+export const salon = salonJson satisfies Gallery;
+export const tatouages = tatouagesJson satisfies Gallery;
 
 export const galleries = {
 	salon,

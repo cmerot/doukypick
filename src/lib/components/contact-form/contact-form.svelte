@@ -5,6 +5,7 @@
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { Upload, X, CircleCheck, CircleAlert } from 'lucide-svelte';
 	import { enhance } from '$app/forms';
+	import { optimize } from '$lib/image';
 	// Define ActionData type locally since we can't import from route $types in components
 	type ActionData = {
 		success?: boolean;
@@ -540,8 +541,9 @@
 			</p>
 			<div class="sm:flex sm:items-center sm:space-x-4">
 				<div class="sm:w-64 sm:flex-shrink-0">
-					<enhanced:img
-						src="./placement.png?w=400"
+					<img
+						srcset={optimize('/images/placement.png', [400, 520])}
+						sizes="(max-width:640px) 520px, 400px"
 						alt="Placement de tatoo"
 						class="mb-3 w-full rounded-md sm:mb-0 sm:w-auto"
 					/>

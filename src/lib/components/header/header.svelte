@@ -2,6 +2,7 @@
 	import { Menu, X } from 'lucide-svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { page } from '$app/state';
+	import { optimize } from '$lib/image';
 
 	// Props
 	interface Props {
@@ -38,10 +39,10 @@
 	>
 		<!-- Logo -->
 		<a href="/" aria-label="Doukypick">
-			<enhanced:img
-				src="./logo.png?w=160;100"
-				alt="Doukypick"
+			<img
+				srcset={optimize('/images/logo.png', [160, 100])}
 				sizes="(max-width:768px) 100px, 160px"
+				alt="Doukypick"
 				class="w-[100px] transition-all duration-300 ease-in-out md:w-[160px]"
 			/>
 		</a>

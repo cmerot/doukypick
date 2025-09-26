@@ -18,7 +18,7 @@ export default defineConfig({
 	},
 	media: {
 		tina: {
-			mediaRoot: '',
+			mediaRoot: 'images',
 			publicFolder: 'static'
 		}
 	},
@@ -62,26 +62,42 @@ export default defineConfig({
 				path: 'src/content/galleries',
 				format: 'json',
 				ui: {
-					allowedActions: {
-						create: true,
-						delete: true
+					filename: {
+						readonly: false,
+						slugify: (values) => {
+							return `${values?.title
+								?.toLowerCase()
+								?.replace(/ /g, '-')
+								?.replace(/[^\w-]+/g, '')}`;
+						}
 					}
 				},
 				fields: [
 					{
 						type: 'string',
 						name: 'title',
-						label: 'Titre'
+						label: 'Titre de la galerie',
+						isTitle: true,
+						required: true
 					},
 					{
 						type: 'string',
 						name: 'description',
-						label: 'Description'
+						label: 'Description',
+						ui: {
+							component: 'textarea'
+						}
+					},
+					{
+						type: 'string',
+						name: 'slug',
+						label: 'URL (slug)',
+						required: true
 					},
 					{
 						type: 'number',
 						name: 'initialIndex',
-						label: 'Position initiale'
+						label: 'Image initiale'
 					},
 					{
 						type: 'string',
@@ -89,40 +105,66 @@ export default defineConfig({
 						label: 'URL de redirection'
 					},
 					{
+						type: 'boolean',
+						name: 'published',
+						label: 'Publié',
+						ui: {
+							component: 'toggle'
+						}
+					},
+					{
 						type: 'object',
 						name: 'images',
-						label: 'Images',
+						label: 'Images de la galerie',
 						list: true,
+						ui: {
+							itemProps: (item) => ({
+								label: `${item?.order || '?'} - ${item?.title || item?.alt || 'Image sans titre'}`
+							}),
+							defaultItem: {
+								order: 1,
+								published: true
+							}
+						},
 						fields: [
 							{
-								type: 'string',
-								name: 'url',
-								label: 'Nom du fichier'
+								type: 'image',
+								name: 'src',
+								label: 'Image',
+								required: true
 							},
 							{
 								type: 'string',
 								name: 'title',
-								label: 'Titre'
-							},
-							{
-								type: 'string',
-								name: 'alt',
-								label: 'Alternative'
+								label: "Titre de l'image"
 							},
 							{
 								type: 'string',
 								name: 'description',
-								label: 'Description'
+								label: 'Description',
+								ui: {
+									component: 'textarea'
+								}
+							},
+							{
+								type: 'string',
+								name: 'alt',
+								label: 'Texte alternatif',
+								required: true
 							},
 							{
 								type: 'number',
 								name: 'order',
-								label: "Ordre d'apparition dans le carousel"
+								label: "Ordre d'affichage",
+								required: true
 							},
 							{
 								type: 'boolean',
-								name: 'visible',
-								label: 'Visible'
+								name: 'published',
+								label: 'Visible',
+								ui: {
+									component: 'toggle'
+								}
 							}
 						]
 					}

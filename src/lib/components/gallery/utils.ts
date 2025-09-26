@@ -97,7 +97,7 @@ function generateImageUUID(str: string): string {
  */
 export const processImage = (image: GalleryImage, galleryId: string, index: number) => {
 	// Generate unique identifier from gallery and image path
-	const uuid = generateImageUUID(`${galleryId}/${image.url}`);
+	const uuid = generateImageUUID(image.src);
 	const slug = generateImageSlug(image.title, uuid);
 
 	return {
@@ -113,8 +113,8 @@ export const processImage = (image: GalleryImage, galleryId: string, index: numb
 		href: `/images/${galleryId}/${slug}`,
 
 		// Responsive images
-		srcset: optimize(`/galleries/${galleryId}/${image.url}`),
-		url: optimize(`/galleries/${galleryId}/${image.url}`, [1200])
+		srcset: optimize(image.src),
+		src: optimize(image.src, [1200])
 	} as ImageData;
 };
 

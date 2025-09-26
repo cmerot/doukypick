@@ -5,6 +5,7 @@
 	let { data }: { data: PageData } = $props();
 	let { reviews, rating, totalReviews } = $derived(data.reviewsData);
 	import PageTitle from '$lib/components/page-title/page-title.svelte';
+	import { optimize } from '$lib/image';
 </script>
 
 <svelte:head>
@@ -20,12 +21,11 @@
 	<section>
 		<div class="m-auto prose max-w-full">
 			<p>
-				<enhanced:img
-					src="$lib/assets/marion.jpg?w=200"
-					alt="Marion"
-					class="float-left mt-0 mr-4 mb-2 border-4 border-black"
-					width="200"
-					height="267"
+				<img
+					srcset={optimize('/images/marion.jpg', [160, 224])}
+					sizes="(min-width:640px) 224px, 160px"
+					alt="Marion qui tatoue"
+					class="float-left mt-0 mr-4 mb-2 w-40 border-4 border-black sm:w-56"
 				/>
 				Dessinatrice depuis plus de 20 ans, j'ai longtemps travaillé dans l'univers de l'architecture
 				et l'aménagement d'espace. Je me suis tournée vers l'art du tatouage il y a bientôt 7 ans, et

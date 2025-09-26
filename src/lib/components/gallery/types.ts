@@ -9,40 +9,40 @@ export type ImageFormat = (typeof IMAGE_FORMATS)[number];
 export type ImageSize = (typeof IMAGE_SIZES)[number];
 
 export interface GalleryImage {
-	url: string;
+	src: string;
 	title: string;
-	alt: string;
 	description: string;
+	alt: string;
 	order: number;
-	visible: boolean;
+	published: boolean;
 }
 
 export interface Gallery {
-	name: string;
 	title: string;
 	description: string;
+	slug: string;
 	closeUrl: string;
-	images: GalleryImage[];
 	initialIndex?: number;
+	images: GalleryImage[];
 }
 
 // Partial gallery for when we only need basic info
 export interface GalleryData {
-	name: string;
 	title: string;
+	slug: string;
 	description: string;
 	closeUrl: string;
 }
 
 // Type for processed image with all optimization data
 export interface ImageData {
-	slug: string;
-	uuid: string;
+	src: string;
 	title: string;
 	description: string;
-	href: string;
-	url: string;
 	alt: string;
+	slug: string;
+	uuid: string;
+	href: string;
 	srcset: string;
 	originalIndex: number;
 }

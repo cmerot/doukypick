@@ -22,9 +22,9 @@
 	// Derived data
 	const images = $derived.by((): ImageData[] => {
 		return gallery.images
-			.filter((img) => img.visible)
+			.filter((img) => img.published)
 			.sort((a, b) => a.order - b.order)
-			.map((image, index) => processImage(image, gallery.name, index));
+			.map((image, index) => processImage(image, gallery.slug, index));
 	});
 
 	// Gallery state
