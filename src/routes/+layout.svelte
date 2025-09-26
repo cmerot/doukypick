@@ -3,7 +3,6 @@
 	import '../app.css';
 	import Header from '$lib/components/header/header.svelte';
 	import TailwindIndicator from '$lib/components/tailwind-indicator.svelte';
-	import { onNavigate } from '$app/navigation';
 	import { fade } from 'svelte/transition';
 	import type { LayoutData } from './$types';
 	import type { Snippet } from 'svelte';
@@ -23,18 +22,13 @@
 </script>
 
 <svelte:document on:click={handleOutsideClick} />
-<svelte:head>
-	<meta name="author" content="Doukypick" />
-	<meta name="robots" content="index, follow" />
-	<link rel="dns-prefetch" href="//fonts.googleapis.com" />
-</svelte:head>
 
 <div class="relative flex min-h-screen flex-col">
 	<div class="container mx-auto max-w-4xl">
 		<Header bind:mobileMenuOpen />
 		{#key data.pathname}
 			<main
-				class="px-4 py-8 sm:px-4 md:px-12 lg:px-20"
+				class="px-4 py-8 sm:px-4 md:px-20"
 				in:fade={{ duration: 150, delay: 150 }}
 				out:fade={{ duration: 150 }}
 			>

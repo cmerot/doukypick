@@ -8,7 +8,16 @@ const config = {
 	// for more information about preprocessors
 	preprocess: [vitePreprocess(), mdsvex()],
 	kit: {
-		adapter: adapter(),
+		adapter: adapter(
+			adapter({
+				images: {
+					sizes: [150, 400, 600, 900, 1200],
+					formats: ['image/avif', 'image/webp', 'image/jpg'],
+					minimumCacheTTL: 300,
+					domains: ['www.doukypick.fr']
+				}
+			})
+		),
 		alias: {
 			'$content/*': './src/content/*'
 		}
