@@ -15,7 +15,7 @@ import {
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // Telegram notification function
-async function sendTelegramNotification(submissionData: any) {
+async function sendTelegramNotification(submissionData: any, baseUrl: string) {
 	if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
 		console.log('⚠️ Telegram not configured, skipping notification');
 		return;
@@ -46,7 +46,9 @@ ${submissionData.additionalComments ? `💭 *Commentaires:* ${submissionData.add
 ${submissionData.photo_urls?.length > 0 ? `📸 *Photos:* ${submissionData.photo_urls.length} fichier(s)` : ''}
 
 🆔 *ID:* #${submissionData.submissionId}
-⏰ *Reçu le:* ${new Date().toLocaleString('fr-FR')}`;
+⏰ *Reçu le:* ${new Date().toLocaleString('fr-FR')}
+
+🔗 *Lien direct:* ${baseUrl}/admin/${submissionData.submissionId}`;
 
 		const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
@@ -92,7 +94,7 @@ ${submissionData.photo_urls?.length > 0 ? `📸 *Photos:* ${submissionData.photo
 }
 
 export const actions: Actions = {
-	default: async ({ request }) => {
+	default: async ({ request, url }) => {
 		console.log('🚀 Form submission started');
 		const formData = await request.formData();
 
@@ -330,7 +332,7 @@ export const actions: Actions = {
 				additionalComments,
 				photo_urls: photoUrls,
 				submissionId: data.id
-			});
+			}, url.origin);
 
 			// Here you would typically send an email notification
 			if (!dev) {

@@ -2,17 +2,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
 	import { Badge } from '$lib/components/ui/badge';
-	import {
-		Search,
-		Mail,
-		Phone,
-		Calendar,
-		Image,
-		ChevronLeft,
-		ChevronRight,
-		ExternalLink,
-		Eye
-	} from 'lucide-svelte';
+	import { Search, Mail, Image, ChevronLeft, ChevronRight, Eye } from 'lucide-svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import type { PageData } from './$types';
@@ -127,21 +117,27 @@
 					<table class="w-full">
 						<thead>
 							<tr class="border-b bg-muted/50">
-								<th class="px-4 py-3 text-left text-sm font-medium">ID</th>
-								<th class="px-4 py-3 text-left text-sm font-medium">Nom</th>
+								<th class="px-4 py-3 text-left text-sm font-medium">Actions</th>
+								<th class="px-4 py-3 text-left text-sm font-medium">Prénom</th>
 								<th class="px-4 py-3 text-left text-sm font-medium">Email</th>
 								<th class="px-4 py-3 text-left text-sm font-medium">Téléphone</th>
 								<th class="px-4 py-3 text-left text-sm font-medium">Type</th>
 								<th class="px-4 py-3 text-left text-sm font-medium">Date</th>
 								<th class="px-4 py-3 text-left text-sm font-medium">Photos</th>
-								<th class="px-4 py-3 text-left text-sm font-medium">Actions</th>
 							</tr>
 						</thead>
 						<tbody>
 							{#each data.submissions as submission}
 								<tr class="border-b transition-colors hover:bg-muted/50">
-									<td class="px-4 py-3 text-sm">
-										<Badge variant="outline">#{submission.id}</Badge>
+									<td class="px-4 py-3">
+										<Button
+											variant="outline"
+											size="sm"
+											onclick={() => goto(`/admin/${submission.id}`)}
+										>
+											<Eye class="mr-1 h-3 w-3" />
+											Voir
+										</Button>
 									</td>
 									<td class="px-4 py-3">
 										<div>
@@ -153,10 +149,7 @@
 									</td>
 									<td class="px-4 py-3 text-sm">
 										{#if submission.email}
-											<a
-												href="mailto:{submission.email}"
-												class="text-primary hover:underline"
-											>
+											<a href="mailto:{submission.email}" class="text-primary hover:underline">
 												{submission.email}
 											</a>
 										{:else}
@@ -180,18 +173,20 @@
 														{type === 'flash'
 															? 'Flash'
 															: type === 'custom'
-																? 'Custom'
+																? 'Personnalisé'
 																: type === 'coverup'
-																	? 'Coverup'
+																	? 'Recouvrement'
 																	: type}
 													</Badge>
 												{/each}
 												{#if submission.project_type.split(',').length > 2}
-													<span class="text-xs text-muted-foreground">+{submission.project_type.split(',').length - 2}</span>
+													<span class="text-xs text-muted-foreground"
+														>+{submission.project_type.split(',').length - 2}</span
+													>
 												{/if}
 											</div>
 										{:else}
-											<span class="text-muted-foreground text-sm">-</span>
+											<span class="text-sm text-muted-foreground">-</span>
 										{/if}
 									</td>
 									<td class="px-4 py-3 text-sm text-muted-foreground">
@@ -207,16 +202,6 @@
 											<span class="text-muted-foreground">-</span>
 										{/if}
 									</td>
-									<td class="px-4 py-3">
-										<Button
-											variant="outline"
-											size="sm"
-											onclick={() => goto(`/admin/${submission.id}`)}
-										>
-											<Eye class="mr-1 h-3 w-3" />
-											Voir
-										</Button>
-									</td>
 								</tr>
 							{/each}
 						</tbody>
@@ -230,7 +215,7 @@
 			<div class="mt-8 flex items-center justify-between">
 				<div class="text-sm text-muted-foreground">
 					Page {data.pagination.currentPage} sur {data.pagination.totalPages}
-					({data.pagination.totalCount} total)
+					({data.pagination.totalCount} au total)
 				</div>
 
 				<div class="flex gap-2">

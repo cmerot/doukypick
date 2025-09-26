@@ -7,6 +7,7 @@
 </script>
 
 {@render children()}
+
 {#if dev}
 	<TailwindIndicator />
 {/if}

@@ -1,13 +1,7 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
-	import {
-		Card,
-		CardContent,
-		CardDescription,
-		CardHeader,
-		CardTitle
-	} from '$lib/components/ui/card';
+	import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
 	import {
 		ArrowLeft,
 		Mail,
@@ -18,18 +12,43 @@
 		User,
 		FileText,
 		MessageSquare,
-		CheckCircle,
-		XCircle,
+		CircleCheckBig,
+		CircleX,
 		Euro,
 		Clock,
 		Ruler,
 		MapPin,
-		Tag
+		Tag,
+		Trash2
 	} from 'lucide-svelte';
 	import { goto } from '$app/navigation';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
+
+	let showDeleteConfirm = $state(false);
+	let isDeleting = $state(false);
+
+	async function handleDelete() {
+		isDeleting = true;
+		try {
+			const response = await fetch(`/api/admin/submissions/${data.submission.id}`, {
+				method: 'DELETE'
+			});
+
+			if (response.ok) {
+				goto('/admin');
+			} else {
+				const result = await response.json();
+				alert(`Erreur lors de la suppression: ${result.error || 'Erreur inconnue'}`);
+			}
+		} catch (e) {
+			alert('Erreur réseau lors de la suppression');
+		} finally {
+			isDeleting = false;
+			showDeleteConfirm = false;
+		}
+	}
 
 	function formatDate(dateString: string): string {
 		return new Date(dateString).toLocaleDateString('fr-FR', {
@@ -64,12 +83,21 @@
 	<div class="mx-auto max-w-4xl">
 		<!-- Header -->
 		<div class="mb-8">
-			<Button variant="ghost" onclick={() => goto('/admin')} class="mb-4">
-				<ArrowLeft class="mr-2 h-4 w-4" />
-				Retour à la liste
-			</Button>
+			<div class="mb-4 flex items-center justify-between">
+				<Button variant="ghost" onclick={() => goto('/admin')}>
+					<ArrowLeft class="mr-2 h-4 w-4" />
+					Retour à la liste
+				</Button>
+				<Button
+					variant="destructive"
+					onclick={() => (showDeleteConfirm = true)}
+					disabled={isDeleting}
+				>
+					<Trash2 class="mr-2 h-4 w-4" />
+					Supprimer
+				</Button>
+			</div>
 			<div class="flex items-center gap-4">
-				<Badge variant="outline" class="text-base">#{data.submission.id}</Badge>
 				<h1 class="text-3xl font-bold">{data.submission.first_name}</h1>
 				<Badge variant="secondary">
 					<Calendar class="mr-1 h-3 w-3" />
@@ -84,7 +112,7 @@
 				<CardHeader>
 					<CardTitle class="flex items-center gap-2">
 						<User class="h-5 w-5" />
-						Informations de Contact
+						Informations de contact
 					</CardTitle>
 				</CardHeader>
 				<CardContent class="space-y-4">
@@ -99,10 +127,7 @@
 								<label class="text-sm font-medium text-muted-foreground">Email</label>
 								<div class="flex items-center gap-2">
 									<Mail class="h-4 w-4 text-muted-foreground" />
-									<a
-										href="mailto:{data.submission.email}"
-										class="text-primary hover:underline"
-									>
+									<a href="mailto:{data.submission.email}" class="text-primary hover:underline">
 										{data.submission.email}
 									</a>
 								</div>
@@ -136,10 +161,10 @@
 								<label class="text-sm font-medium text-muted-foreground">Majeur</label>
 								<div class="flex items-center gap-2">
 									{#if data.submission.is_adult === 'yes'}
-										<CheckCircle class="h-4 w-4 text-green-600" />
+										<CircleCheckBig class="h-4 w-4 text-green-600" />
 										<Badge variant="default">Oui</Badge>
 									{:else}
-										<XCircle class="h-4 w-4 text-red-600" />
+										<CircleX class="h-4 w-4 text-red-600" />
 										<Badge variant="destructive">Non</Badge>
 									{/if}
 								</div>
@@ -154,7 +179,7 @@
 				<CardHeader>
 					<CardTitle class="flex items-center gap-2">
 						<Tag class="h-5 w-5" />
-						Détails du Projet
+						Détails du projet
 					</CardTitle>
 				</CardHeader>
 				<CardContent class="space-y-4">
@@ -219,11 +244,11 @@
 			<CardHeader>
 				<CardTitle class="flex items-center gap-2">
 					<FileText class="h-5 w-5" />
-					Description du Projet
+					Description du projet
 				</CardTitle>
 			</CardHeader>
 			<CardContent>
-				<div class="whitespace-pre-wrap rounded-md bg-muted/50 p-4">
+				<div class="rounded-md bg-muted/50 p-4 whitespace-pre-wrap">
 					{data.submission.project_description}
 				</div>
 			</CardContent>
@@ -235,11 +260,11 @@
 				<CardHeader>
 					<CardTitle class="flex items-center gap-2">
 						<MessageSquare class="h-5 w-5" />
-						Commentaires Supplémentaires
+						Commentaires supplémentaires
 					</CardTitle>
 				</CardHeader>
 				<CardContent>
-					<div class="whitespace-pre-wrap rounded-md bg-muted/50 p-4">
+					<div class="rounded-md bg-muted/50 p-4 whitespace-pre-wrap">
 						{data.submission.additional_comments}
 					</div>
 				</CardContent>
@@ -279,6 +304,51 @@
 					</div>
 				</CardContent>
 			</Card>
+		{/if}
+
+		<!-- Delete Confirmation Dialog -->
+		{#if showDeleteConfirm}
+			<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+				<Card class="mx-4 w-full max-w-md">
+					<CardHeader>
+						<CardTitle class="text-destructive">Confirmer la suppression</CardTitle>
+					</CardHeader>
+					<CardContent class="space-y-4">
+						<p class="text-sm text-muted-foreground">
+							Êtes-vous sûr de vouloir supprimer définitivement cette soumission ?
+						</p>
+						<p class="text-sm font-medium">
+							Soumission #{data.submission.id} - {data.submission.first_name}
+						</p>
+						<p class="text-xs text-muted-foreground">
+							Cette action ne peut pas être annulée. Toutes les données et images associées seront
+							supprimées.
+						</p>
+						<div class="flex gap-2 pt-4">
+							<Button
+								variant="outline"
+								onclick={() => (showDeleteConfirm = false)}
+								disabled={isDeleting}
+								class="flex-1"
+							>
+								Annuler
+							</Button>
+							<Button
+								variant="destructive"
+								onclick={handleDelete}
+								disabled={isDeleting}
+								class="flex-1"
+							>
+								{#if isDeleting}
+									Suppression...
+								{:else}
+									Supprimer définitivement
+								{/if}
+							</Button>
+						</div>
+					</CardContent>
+				</Card>
+			</div>
 		{/if}
 	</div>
 </div>
