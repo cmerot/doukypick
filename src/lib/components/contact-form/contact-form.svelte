@@ -89,7 +89,7 @@
 		} else {
 			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 			if (!emailRegex.test(formData.email)) {
-				newErrors.email = 'Veuillez saisir une adresse email valide';
+				newErrors.email = 'Saisis une adresse email valide';
 			}
 		}
 
@@ -109,13 +109,13 @@
 		} else {
 			const phoneRegex = /^(?:(?:\+33|0)[1-9](?:[0-9]{8}))$/;
 			if (!phoneRegex.test(formData.phone.replace(/\s/g, ''))) {
-				newErrors.phone = 'Veuillez saisir un numéro de téléphone valide';
+				newErrors.phone = 'Saisis un numéro de téléphone valide';
 			}
 		}
 
 		// Project type is required
 		if (formData.projectType.length === 0) {
-			newErrors.projectType = 'Veuillez sélectionner au moins un type de projet';
+			newErrors.projectType = 'Choisis au moins un type de projet';
 		}
 
 		// Project description is required
@@ -264,9 +264,9 @@
 >
 	<!-- Age verification -->
 	<div class="space-y-2" id="isAdult">
-		<Label class="text-lg font-medium">Es-tu majeur.e ? *</Label>
+		<Label class="text-lg font-medium">Es-tu majeur·e ? *</Label>
 		<div class="prose prose-sm">
-			<p>Je ne tatoue pas les mineur.e.s même avec l'accord des parents</p>
+			<p>Je ne tatoue pas les mineur·e·s même avec l'accord des parents</p>
 		</div>
 		<div class="space-y-2">
 			<label class="flex items-center space-x-2">
@@ -302,7 +302,7 @@
 		<Label for="firstName" class="text-lg font-medium">Ton prénom *</Label>
 		<div class="prose prose-sm">
 			<p>
-				Celui par lequel tu souhaites être nommé.e, si celui donné à ta naissance ne te
+				Celui par lequel tu souhaites être nommé·e, si celui donné à ta naissance ne te
 				correspond/plaît pas
 			</p>
 		</div>
@@ -431,17 +431,17 @@
 				<li>"Un grille pain cosmique"</li>
 			</ul>
 			<p>
-				Reste simple, en effet tu n'es pas obligé.e de "m'expliquer" ce qui motive tes choix/envies.
-				Ton histoire fait partie de ton intimité et tu n'es pas forcé.e de la partager.
+				Reste simple, en effet tu n'es pas obligé·e de "m'expliquer" ce qui motive tes choix/envies.
+				Ton histoire fait partie de ton intimité et tu n'es pas forcé·e de la partager.
 			</p>
 			<p>
-				Mais si tu es un petit peu perdu.e dans tes idées, n'hésites pas à me le dire, aussi je
+				Mais si tu es un petit peu perdu·e dans tes idées, n'hésite pas à me le dire, aussi je
 				t'aiderai à affiner tes envies, pour créer un motif unique.
 			</p>
 			<p>
 				Je ne fais pas de copie (je suis dessinatrice avant tout et respecte les droits d'auteur.)
-				Je ne reproduit jamais un même motif, (sauf si c'est une demande de tatouage en commun avec
-				l'accord de chacun.e.)
+				Je ne reproduis jamais un même motif, (sauf si c'est une demande de tatouage en commun avec
+				l'accord de chacun·e.)
 			</p>
 		</div>
 		<Textarea
@@ -571,7 +571,7 @@
 					/>
 					<Upload class="mx-auto mb-1.5 h-6 w-6" />
 					<p class="mb-1.5">
-						Glissez vos images ici ou
+						Glisse tes images ici ou
 						<button
 							type="button"
 							onclick={() => fileInput?.click()}

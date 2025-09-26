@@ -48,7 +48,7 @@
 			</p>
 
 			<p>
-				N'hésitez pas à me contacter et/ou venir me rencontrer, pour parler de vos projets, ou
+				N'hésite pas à me contacter et/ou venir me rencontrer, pour parler de tes projets, ou
 				adopter un de mes nombreux dessins disponibles.
 			</p>
 

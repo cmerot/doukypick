@@ -25,12 +25,12 @@
 	<Gallery gallery={salon} initialIndex={salon.initialIndex || 0} />
 	<section class="prose mt-4 min-w-full">
 		<p>
-			Je vous y accueille sur rendez-vous uniquement, du mardi au samedi de 10h30 à 18h, pour
-			discuter et réaliser vos projets tatouages.
+			Je t'y accueille sur rendez-vous uniquement, du mardi au samedi de 10h30 à 18h, pour
+			discuter et réaliser tes projets tatouages.
 		</p>
 
 		<p>
-			N'hésitez pas à me contacter sur les réseaux sociaux ou par e-mail pour une étude
+			N'hésite pas à me contacter sur les réseaux sociaux ou par e-mail pour une étude
 			personnalisée.
 		</p>
 
