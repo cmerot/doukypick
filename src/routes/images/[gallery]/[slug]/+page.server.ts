@@ -57,7 +57,7 @@ export const load: PageServerLoad = async ({ params }) => {
 		meta: {
 			title: `${currentImage.title} - ${gallery.title}`,
 			description: currentImage.description,
-			ogImage: currentImage.urls.large,
+			ogImage: currentImage.url,
 			ogImageAlt: currentImage.alt
 		}
 	};

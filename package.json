@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "npm run resize-images && vite build",
+		"build": "vite build",
 		"resize-images": "node scripts/resize-images.js",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",

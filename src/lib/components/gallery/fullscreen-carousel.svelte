@@ -102,12 +102,9 @@
 						class="cursor-pointer"
 					>
 						<picture>
-							<source srcset={image.srcsets.avif} {sizes} type="image/avif" />
-							<source srcset={image.srcsets.webp} {sizes} type="image/webp" />
 							<img
-								srcset={image.srcsets.jpg}
+								srcset={image.srcset}
 								{sizes}
-								src={image.urls.small}
 								alt={image.alt}
 								class="max-h-dvh max-w-screen object-contain"
 								loading={Math.abs(index - currentIndex) <= 1 ? 'eager' : 'lazy'}
@@ -119,8 +116,8 @@
 		</CarouselContent>
 
 		{#if images.length > 1}
-			<CarouselPrevious class="hidden md:flex" />
-			<CarouselNext class="hidden md:flex" />
+			<CarouselPrevious class="ml-14 hidden md:flex" />
+			<CarouselNext class="absolute top-1/2 right-4 hidden md:flex" />
 		{/if}
 	</Carousel>
 </Overlay>

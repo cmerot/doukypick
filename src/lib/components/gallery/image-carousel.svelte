@@ -59,12 +59,9 @@
 					onclick={(e) => handleClick(e, index)}
 				>
 					<picture>
-						<source srcset={image.srcsets.avif} {sizes} type="image/avif" />
-						<source srcset={image.srcsets.webp} {sizes} type="image/webp" />
 						<img
-							srcset={image.srcsets.jpg}
+							srcset={image.srcset}
 							{sizes}
-							src={image.urls.small}
 							alt={image.alt}
 							loading={Math.abs(index - currentIndex) <= 1 ? 'eager' : 'lazy'}
 						/>

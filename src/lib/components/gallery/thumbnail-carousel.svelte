@@ -62,19 +62,8 @@
 						}}
 					>
 						<picture>
-							<source
-								srcset={image.srcsets.avif}
-								sizes="(max-width: 550px) 150px, 400px"
-								type="image/avif"
-							/>
-							<source
-								srcset={image.srcsets.webp}
-								sizes="(max-width: 550px) 150px, 400px"
-								type="image/webp"
-							/>
 							<img
-								srcset={image.srcsets.jpg}
-								src={image.urls.small}
+								srcset={image.srcset}
 								sizes="(max-width: 550px) 150px, 400px"
 								alt={image.alt}
 								class="h-full w-full object-cover"

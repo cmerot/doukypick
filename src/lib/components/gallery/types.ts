@@ -2,17 +2,11 @@
 
 // Image format constants for better type safety and reusability
 export const IMAGE_FORMATS = ['avif', 'webp', 'jpg'] as const;
-export const IMAGE_SIZES = ['thumb', 'small', 'medium', 'large', 'xlarge'] as const;
+export const IMAGE_SIZES = ['optim', 'thumb', 'small', 'medium', 'large', 'xlarge'] as const;
 
 // Derived types from constants
 export type ImageFormat = (typeof IMAGE_FORMATS)[number];
 export type ImageSize = (typeof IMAGE_SIZES)[number];
-
-// Image URLs by formats
-export type ImageFormatUrls = Record<ImageFormat, string>;
-
-// Image URLs by sizes and formats
-export type ImageSizeUrls = Record<ImageSize, ImageFormatUrls>;
 
 export interface GalleryImage {
 	url: string;
@@ -47,10 +41,9 @@ export interface ImageData {
 	title: string;
 	description: string;
 	href: string;
+	url: string;
 	alt: string;
-	srcsets: ImageFormatUrls;
-	sizes: string;
-	urls: Record<ImageSize, string>;
+	srcset: string;
 	originalIndex: number;
 }
 

@@ -3,27 +3,8 @@
  * Handles image processing, slug generation, and optimized path creation
  */
 
-import type {
-	GalleryImage,
-	ImageFormat,
-	ImageFormatUrls,
-	ImageSizeUrls,
-	ImageSlugParts
-} from './types';
-import { IMAGE_FORMATS, IMAGE_SIZES } from './types';
-
-// ============================================================================
-// SRCSET GENERATION
-// ============================================================================
-
-/**
- * Creates responsive image srcset string for different formats
- * @param paths - Optimized image paths containing size variants
- * @param format - Image format (avif, webp, jpg)
- * @returns Srcset string with width descriptors
- */
-const createSrcSet = (paths: ImageSizeUrls, format: ImageFormat): string =>
-	`${paths.thumb[format]} 150w, ${paths.small[format]} 400w, ${paths.medium[format]} 600w, ${paths.large[format]} 900w, ${paths.xlarge[format]} 1200w`;
+import { optimize } from '$lib/image';
+import type { GalleryImage, ImageSlugParts, ImageData } from './types';
 
 // ============================================================================
 // SLUG UTILITIES
@@ -102,31 +83,6 @@ function generateImageUUID(str: string): string {
 }
 
 // ============================================================================
-// PATH GENERATION
-// ============================================================================
-
-/**
- * Generates complete optimized image path structure for a UUID
- * Creates paths for all size variants and formats
- *
- * @param uuid - Unique identifier for the image
- * @returns Complete optimized paths object
- */
-function generateOptimizedPaths(uuid: string): ImageSizeUrls {
-	// Initialize paths structure using type-safe constants
-	const sizes = {} as ImageSizeUrls;
-
-	// Generate all size/format combinations
-	IMAGE_SIZES.forEach((size) => {
-		sizes[size] = {} as ImageFormatUrls;
-		IMAGE_FORMATS.forEach((format) => {
-			sizes[size][format] = `/optimized/${uuid}-${size}.${format}`;
-		});
-	});
-	return sizes;
-}
-
-// ============================================================================
 // PHOTO PROCESSING
 // ============================================================================
 
@@ -142,7 +98,6 @@ function generateOptimizedPaths(uuid: string): ImageSizeUrls {
 export const processImage = (image: GalleryImage, galleryId: string, index: number) => {
 	// Generate unique identifier from gallery and image path
 	const uuid = generateImageUUID(`${galleryId}/${image.url}`);
-	const paths = generateOptimizedPaths(uuid);
 	const slug = generateImageSlug(image.title, uuid);
 
 	return {
@@ -158,23 +113,9 @@ export const processImage = (image: GalleryImage, galleryId: string, index: numb
 		href: `/images/${galleryId}/${slug}`,
 
 		// Responsive images
-		srcsets: {
-			avif: createSrcSet(paths, 'avif'),
-			webp: createSrcSet(paths, 'webp'),
-			jpg: createSrcSet(paths, 'jpg')
-		},
-		sizes: '(min-width: 400px) 400px; 800px ',
-
-		// Direct URL access for specific sizes
-		urls: {
-			thumb: paths.thumb.jpg,
-			small: paths.small.jpg,
-			medium: paths.medium.jpg,
-			large: paths.large.jpg,
-			xlarge: paths.xlarge.jpg,
-			thumbnail: paths.thumb.jpg
-		}
-	};
+		srcset: optimize(`/galleries/${galleryId}/${image.url}`),
+		url: optimize(`/galleries/${galleryId}/${image.url}`, [1200])
+	} as ImageData;
 };
 
 // ============================================================================
@@ -182,4 +123,4 @@ export const processImage = (image: GalleryImage, galleryId: string, index: numb
 // ============================================================================
 
 // Export commonly used functions
-export { generateImageUUID, generateOptimizedPaths, generateImageSlug };
+export { generateImageUUID, generateImageSlug };
