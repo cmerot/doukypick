@@ -17,7 +17,8 @@ const FORMATS = [
 	{ ext: 'jpg', quality: 80 }
 ];
 
-const SRC_DIR = 'src/content/galleries';
+const SRC_DATA_DIR = 'src/content/galleries';
+const SRC_IMG_DIR = 'static/galleries';
 const OUTPUT_DIR = 'static/optimized';
 
 function generateUUID(imagePath) {
@@ -104,13 +105,13 @@ async function processGallery(galleryPath) {
 	const gallery = JSON.parse(galleryContent);
 
 	const galleryDir = path.dirname(galleryPath);
-	const relativeGalleryDir = path.relative(SRC_DIR, galleryDir);
+	const relativeGalleryDir = path.relative(SRC_DATA_DIR, galleryDir);
 
 	// Process each image
 	for (const image of gallery.images) {
 		if (!image.url) continue;
 
-		const imagePath = path.join(galleryDir, image.url);
+		const imagePath = path.join(SRC_IMG_DIR, relativeGalleryDir, image.url);
 		const relativeImagePath = path.join(relativeGalleryDir, image.url);
 
 		// Generate UUID for this image
@@ -138,7 +139,7 @@ async function main() {
 		await ensureDir(OUTPUT_DIR);
 
 		// Find all gallery.json files
-		const galleryFiles = await glob(`${SRC_DIR}/**/gallery.json`);
+		const galleryFiles = await glob(`${SRC_DATA_DIR}/**/gallery.json`);
 
 		if (galleryFiles.length === 0) {
 			console.log('No gallery.json files found.');
