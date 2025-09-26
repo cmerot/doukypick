@@ -17,10 +17,7 @@ const config = {
 					domains: ['www.doukypick.fr']
 				}
 			})
-		),
-		alias: {
-			'$content/*': './src/content/*'
-		}
+		)
 	},
 	extensions: ['.svelte', '.svx']
 };

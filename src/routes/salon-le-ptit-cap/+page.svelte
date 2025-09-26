@@ -1,8 +1,10 @@
 <script lang="ts">
 	import PageTitle from '$lib/components/page-title/page-title.svelte';
 	import Gallery from '$lib/components/gallery/gallery.svelte';
-	import salonGallery from '$content/galleries/salon/gallery.json';
 	import PageSubtitle from '$lib/components/page-title/page-subtitle.svelte';
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
 </script>
 
 <svelte:head>
@@ -22,7 +24,7 @@
 </header>
 
 <main>
-	<Gallery gallery={salonGallery} initialIndex={salonGallery.initialIndex} />
+	<Gallery gallery={data.gallery} initialIndex={data.gallery.initialIndex || 0} />
 	<section class="prose mt-4 min-w-full">
 		<p>
 			Je vous y accueille sur rendez-vous uniquement, du mardi au samedi de 10h30 à 18h, pour

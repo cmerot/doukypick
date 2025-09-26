@@ -29,6 +29,7 @@ export interface Gallery {
 	description: string;
 	closeUrl: string;
 	images: GalleryImage[];
+	initialIndex?: number;
 }
 
 // Partial gallery for when we only need basic info

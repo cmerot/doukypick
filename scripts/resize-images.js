@@ -17,7 +17,7 @@ const FORMATS = [
 	{ ext: 'jpg', quality: 80 }
 ];
 
-const SRC_DATA_DIR = 'src/content/galleries';
+const SRC_DATA_DIR = 'content/galleries';
 const SRC_IMG_DIR = 'static/galleries';
 const OUTPUT_DIR = 'static/optimized';
 

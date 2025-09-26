@@ -1,8 +1,10 @@
 <script lang="ts">
 	import PageTitle from '$lib/components/page-title/page-title.svelte';
 	import Gallery from '$lib/components/gallery/gallery.svelte';
-	import tatouagesGallery from '$content/galleries/tatouages/gallery.json';
 	import PageSubtitle from '$lib/components/page-title/page-subtitle.svelte';
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
 </script>
 
 <svelte:head>
@@ -20,8 +22,8 @@
 
 <main>
 	<Gallery
-		gallery={tatouagesGallery}
+		gallery={data.gallery}
 		aspectRatio="3/4"
-		initialIndex={tatouagesGallery.initialIndex}
+		initialIndex={data.gallery.initialIndex || 0}
 	/>
 </main>
