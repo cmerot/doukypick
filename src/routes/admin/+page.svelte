@@ -3,13 +3,6 @@
 	import { Input } from '$lib/components/ui/input';
 	import { Badge } from '$lib/components/ui/badge';
 	import {
-		Card,
-		CardContent,
-		CardDescription,
-		CardHeader,
-		CardTitle
-	} from '$lib/components/ui/card';
-	import {
 		Search,
 		Mail,
 		Phone,
@@ -17,7 +10,8 @@
 		Image,
 		ChevronLeft,
 		ChevronRight,
-		ExternalLink
+		ExternalLink,
+		Eye
 	} from 'lucide-svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -116,7 +110,7 @@
 			</div>
 		{/if}
 
-		<!-- Submissions Grid -->
+		<!-- Submissions Table -->
 		{#if data.submissions.length === 0}
 			<div class="py-12 text-center">
 				<Mail class="mx-auto mb-4 h-12 w-12 text-muted-foreground" />
@@ -128,161 +122,106 @@
 				</p>
 			</div>
 		{:else}
-			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-				{#each data.submissions as submission}
-					<Card class="transition-shadow hover:shadow-md">
-						<CardHeader class="pb-3">
-							<div class="flex items-start justify-between">
-								<div class="min-w-0 flex-1">
-									<CardTitle class="truncate text-lg">{submission.first_name}</CardTitle>
-									<CardDescription class="mt-1 flex items-center gap-2">
-										<Calendar class="h-3 w-3" />
+			<div class="rounded-md border bg-white">
+				<div class="overflow-x-auto">
+					<table class="w-full">
+						<thead>
+							<tr class="border-b bg-muted/50">
+								<th class="px-4 py-3 text-left text-sm font-medium">ID</th>
+								<th class="px-4 py-3 text-left text-sm font-medium">Nom</th>
+								<th class="px-4 py-3 text-left text-sm font-medium">Email</th>
+								<th class="px-4 py-3 text-left text-sm font-medium">Téléphone</th>
+								<th class="px-4 py-3 text-left text-sm font-medium">Type</th>
+								<th class="px-4 py-3 text-left text-sm font-medium">Date</th>
+								<th class="px-4 py-3 text-left text-sm font-medium">Photos</th>
+								<th class="px-4 py-3 text-left text-sm font-medium">Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							{#each data.submissions as submission}
+								<tr class="border-b transition-colors hover:bg-muted/50">
+									<td class="px-4 py-3 text-sm">
+										<Badge variant="outline">#{submission.id}</Badge>
+									</td>
+									<td class="px-4 py-3">
+										<div>
+											<div class="font-medium">{submission.first_name}</div>
+											{#if submission.pseudonym}
+												<div class="text-sm text-muted-foreground">@{submission.pseudonym}</div>
+											{/if}
+										</div>
+									</td>
+									<td class="px-4 py-3 text-sm">
+										{#if submission.email}
+											<a
+												href="mailto:{submission.email}"
+												class="text-primary hover:underline"
+											>
+												{submission.email}
+											</a>
+										{:else}
+											<span class="text-muted-foreground">-</span>
+										{/if}
+									</td>
+									<td class="px-4 py-3 text-sm">
+										{#if submission.phone}
+											<a href="tel:{submission.phone}" class="text-primary hover:underline">
+												{submission.phone}
+											</a>
+										{:else}
+											<span class="text-muted-foreground">-</span>
+										{/if}
+									</td>
+									<td class="px-4 py-3">
+										{#if submission.project_type}
+											<div class="flex flex-wrap gap-1">
+												{#each submission.project_type.split(',').slice(0, 2) as type}
+													<Badge variant="secondary" class="text-xs">
+														{type === 'flash'
+															? 'Flash'
+															: type === 'custom'
+																? 'Custom'
+																: type === 'coverup'
+																	? 'Coverup'
+																	: type}
+													</Badge>
+												{/each}
+												{#if submission.project_type.split(',').length > 2}
+													<span class="text-xs text-muted-foreground">+{submission.project_type.split(',').length - 2}</span>
+												{/if}
+											</div>
+										{:else}
+											<span class="text-muted-foreground text-sm">-</span>
+										{/if}
+									</td>
+									<td class="px-4 py-3 text-sm text-muted-foreground">
 										{formatDate(submission.created_at)}
-									</CardDescription>
-								</div>
-								<Badge variant="outline" class="ml-2">
-									#{submission.id}
-								</Badge>
-							</div>
-						</CardHeader>
-
-						<CardContent class="space-y-3">
-							<!-- Contact Info -->
-							<div class="space-y-2">
-								{#if submission.email}
-									<div class="flex items-center gap-2 text-sm">
-										<Mail class="h-3 w-3 text-muted-foreground" />
-										<a
-											href="mailto:{submission.email}"
-											class="truncate text-primary hover:underline"
+									</td>
+									<td class="px-4 py-3 text-sm">
+										{#if submission.photo_urls && submission.photo_urls.length > 0}
+											<div class="flex items-center gap-1">
+												<Image class="h-3 w-3" />
+												<span>{submission.photo_urls.length}</span>
+											</div>
+										{:else}
+											<span class="text-muted-foreground">-</span>
+										{/if}
+									</td>
+									<td class="px-4 py-3">
+										<Button
+											variant="outline"
+											size="sm"
+											onclick={() => goto(`/admin/${submission.id}`)}
 										>
-											{submission.email}
-										</a>
-									</div>
-								{/if}
-
-								{#if submission.phone}
-									<div class="flex items-center gap-2 text-sm">
-										<Phone class="h-3 w-3 text-muted-foreground" />
-										<a href="tel:{submission.phone}" class="text-primary hover:underline">
-											{submission.phone}
-										</a>
-									</div>
-								{/if}
-
-								{#if submission.pseudonym}
-									<div class="flex items-center gap-2 text-sm">
-										<span class="h-3 w-3 text-muted-foreground">@</span>
-										<span class="text-muted-foreground">
-											{submission.pseudonym}
-										</span>
-									</div>
-								{/if}
-							</div>
-
-							<!-- Project Details -->
-							<div class="space-y-2 text-sm">
-								{#if submission.is_adult}
-									<div class="flex items-center gap-2">
-										<span class="font-medium">Majeur:</span>
-										<Badge variant={submission.is_adult === 'yes' ? 'default' : 'destructive'}>
-											{submission.is_adult === 'yes' ? 'Oui' : 'Non'}
-										</Badge>
-									</div>
-								{/if}
-
-								{#if submission.project_type}
-									<div>
-										<span class="font-medium">Type:</span>
-										<div class="mt-1 flex flex-wrap gap-1">
-											{#each submission.project_type.split(',') as type}
-												<Badge variant="secondary" class="text-xs">
-													{type === 'flash'
-														? 'Flash'
-														: type === 'custom'
-															? 'Personnalisé'
-															: type === 'coverup'
-																? 'Recouvrement'
-																: type}
-												</Badge>
-											{/each}
-										</div>
-									</div>
-								{/if}
-
-								{#if submission.size}
-									<div><span class="font-medium">Taille:</span> {submission.size}</div>
-								{/if}
-
-								{#if submission.placement}
-									<div><span class="font-medium">Emplacement:</span> {submission.placement}</div>
-								{/if}
-
-								{#if submission.budget}
-									<div><span class="font-medium">Budget:</span> {submission.budget}</div>
-								{/if}
-
-								{#if submission.timeline}
-									<div><span class="font-medium">Délai:</span> {submission.timeline}</div>
-								{/if}
-							</div>
-
-							<!-- Description -->
-							<div class="text-sm text-muted-foreground">
-								<p class="leading-relaxed">
-									{truncateText(submission.project_description)}
-								</p>
-							</div>
-
-							{#if submission.additional_comments}
-								<div class="rounded bg-muted/50 p-2 text-sm">
-									<span class="font-medium">Commentaires supplémentaires:</span>
-									<p class="mt-1 text-muted-foreground">
-										{truncateText(submission.additional_comments)}
-									</p>
-								</div>
-							{/if}
-
-							<!-- Photos -->
-							{#if submission.photo_urls && submission.photo_urls.length > 0}
-								<div class="flex items-center gap-2">
-									<Image class="h-3 w-3 text-muted-foreground" />
-									<span class="text-xs text-muted-foreground">
-										{submission.photo_urls.length} photo(s) jointe(s)
-									</span>
-								</div>
-
-								<!-- Photo Thumbnails -->
-								<div class="mt-2 flex gap-2">
-									{#each submission.photo_urls.slice(0, 3) as photoUrl}
-										<a
-											href={photoUrl}
-											target="_blank"
-											rel="noopener noreferrer"
-											class="group relative"
-										>
-											<img
-												src={photoUrl}
-												alt="PJ"
-												class="h-12 w-12 rounded border object-cover transition-opacity group-hover:opacity-80"
-											/>
-											<ExternalLink
-												class="absolute inset-0 m-auto h-3 w-3 text-white opacity-0 transition-opacity group-hover:opacity-100"
-											/>
-										</a>
-									{/each}
-									{#if submission.photo_urls.length > 3}
-										<div
-											class="flex h-12 w-12 items-center justify-center rounded border bg-muted text-xs text-muted-foreground"
-										>
-											+{submission.photo_urls.length - 3}
-										</div>
-									{/if}
-								</div>
-							{/if}
-						</CardContent>
-					</Card>
-				{/each}
+											<Eye class="mr-1 h-3 w-3" />
+											Voir
+										</Button>
+									</td>
+								</tr>
+							{/each}
+						</tbody>
+					</table>
+				</div>
 			</div>
 		{/if}
 

@@ -34,7 +34,7 @@
 	}
 </script>
 
-<div class="flex min-h-screen items-center justify-center bg-gray-50">
+<div class="m-8 flex items-center justify-center bg-gray-50 p-8">
 	<div class="w-full max-w-md rounded-lg bg-white p-6 shadow-md">
 		<h2 class="mb-6 text-center text-2xl font-bold">Admin Login</h2>
 
