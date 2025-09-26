@@ -2,16 +2,16 @@
 	import PageTitle from '$lib/components/page-title/page-title.svelte';
 	import Gallery from '$lib/components/gallery/gallery.svelte';
 	import PageSubtitle from '$lib/components/page-title/page-subtitle.svelte';
-	import type { PageData } from './$types';
-
-	let { data }: { data: PageData } = $props();
+	import { tatouages } from '$content/galleries';
 </script>
 
 <svelte:head>
-	<title>Tatouages - Doukypick</title>
+	<title>
+		Tatouages - Doukypick, salon de tatouages Le P'tit Cap' à Bègles, en métropole Bordelaise
+	</title>
 	<meta
 		name="description"
-		content="Tatouages artistiques à Bègles près de Bordeaux. Portfolio, styles variés, hygiène irréprochable. Prenez rendez-vous dans mon salon professionnel."
+		content="Tatouages artistiques à Bègles près de Bordeaux. Portfolio, styles variés, hygiène irréprochable. Prends rendez-vous dans mon salon professionnel."
 	/>
 </svelte:head>
 
@@ -21,9 +21,5 @@
 </header>
 
 <main>
-	<Gallery
-		gallery={data.gallery}
-		aspectRatio="3/4"
-		initialIndex={data.gallery.initialIndex || 0}
-	/>
+	<Gallery gallery={tatouages} aspectRatio="3/4" initialIndex={tatouages.initialIndex || 0} />
 </main>

@@ -2,11 +2,8 @@ import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import type { Gallery, ImageData, GalleryData } from '$lib/components/gallery/types';
 import { parsePhotoSlug } from '$lib/components/gallery/utils';
-import fs from 'fs/promises';
-import path from 'path';
 import { processImage } from '$lib/components/gallery/utils';
-
-const GALLERIES_DIR = 'content/galleries';
+import { galleries } from '$content/galleries';
 
 export const load: PageServerLoad = async ({ params }) => {
 	const { gallery: galleryId, slug } = params;
@@ -14,8 +11,7 @@ export const load: PageServerLoad = async ({ params }) => {
 	// Load gallery with error handling
 	let gallery: Gallery;
 	try {
-		const content = await fs.readFile(path.join(GALLERIES_DIR, galleryId, 'gallery.json'), 'utf-8');
-		gallery = JSON.parse(content);
+		gallery = galleries[galleryId as keyof typeof galleries];
 	} catch {
 		throw error(404, `Gallery "${galleryId}" not found`);
 	}

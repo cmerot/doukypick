@@ -2,9 +2,7 @@
 	import PageTitle from '$lib/components/page-title/page-title.svelte';
 	import Gallery from '$lib/components/gallery/gallery.svelte';
 	import PageSubtitle from '$lib/components/page-title/page-subtitle.svelte';
-	import type { PageData } from './$types';
-
-	let { data }: { data: PageData } = $props();
+	import { salon } from '$content/galleries';
 </script>
 
 <svelte:head>
@@ -24,7 +22,7 @@
 </header>
 
 <main>
-	<Gallery gallery={data.gallery} initialIndex={data.gallery.initialIndex || 0} />
+	<Gallery gallery={salon} initialIndex={salon.initialIndex || 0} />
 	<section class="prose mt-4 min-w-full">
 		<p>
 			Je vous y accueille sur rendez-vous uniquement, du mardi au samedi de 10h30 à 18h, pour

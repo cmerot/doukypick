@@ -15,7 +15,10 @@ const config = {
 				minimumCacheTTL: 300,
 				domains: ['www.doukypick.fr']
 			}
-		})
+		}),
+		alias: {
+			'$content/*': './src/content/*'
+		}
 	},
 	extensions: ['.svelte', '.svx']
 };
