@@ -17,7 +17,7 @@ const config = {
 	kit: {
 		adapter: adapter({
 			images: {
-				sizes: [150, 160, 224, 400, 520, 600, 900, 1200],
+				sizes: [100, 150, 160, 224, 400, 520, 600, 900, 1200],
 				formats: ['image/avif', 'image/webp'],
 				minimumCacheTTL: 300,
 				domains: ['www.doukypick.fr']
