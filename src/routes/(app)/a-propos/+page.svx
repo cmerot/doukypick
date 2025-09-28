@@ -1,0 +1,59 @@
+---
+title: À propos - Doukypick, tatoueuse et dessinatrice
+description: Présentation de Marion 'Douky', et avis Google
+page_title: À propos
+page_subtitle: Doukypick, tatoueuse et dessinatrice
+---
+
+<script lang="ts">
+	import { optimize } from '$lib/image';
+	import GoogleReviews from '$lib/components/google-reviews.svelte';
+	export let data; // svelte 4 syntax, due to mdsvex
+	const {reviews, rating, totalReviews} = data.reviewsData
+</script>
+
+<section class="m-auto prose max-w-full">
+	<img
+		srcset={optimize('/images/marion.jpg', [160, 224])}
+		sizes="(min-width:640px) 224px, 160px"
+		alt="Marion qui tatoue"
+		class="float-left mt-0 mr-4 mb-2 w-40 border-4 border-black sm:w-56"
+	/>
+
+Dessinatrice depuis plus de 20 ans, j'ai longtemps travaillé dans l'univers de l'architecture
+et l'aménagement d'espace. Je me suis tournée vers l'art du tatouage il y a bientôt 7 ans, et
+en ai fait ma principale activité depuis 5 ans.
+
+Du stylo au dermographe, du papier à votre peau, le tatouage lie 2 de mes principales
+passions, le dessin et l'aventure humaine !
+
+Mon goût pour la faune (terrestre comme aquatique), la flore, ainsi que l'architecture,
+s'épanouit au travers de créations originales qu'il me plaît d'adapter sur le corps humain.
+
+Mon style, souvent décrit comme "illustratif", me permet de traiter un grand nombre de sujet
+(allant du classique d'une rose, à la modernité d'une architecture fantasmatique).
+
+N'hésite pas à me contacter et/ou venir me rencontrer, pour parler de tes projets, ou
+adopter un de mes nombreux dessins disponibles.
+
+**Marion dite Douky**
+
+</section>
+
+{#if reviews.length}
+	<hr class="mt-12" />
+	<section>
+		<h2 class="font-logo mt-10 mb-8 text-center text-4xl font-normal">Les avis Google</h2>
+
+		<div class="container mx-auto px-4">
+			<GoogleReviews
+				{reviews}
+				{rating}
+				{totalReviews}
+				showOverallRating={true}
+				maxReviews={3}
+				className="max-w-6xl mx-auto"
+			/>
+		</div>
+	</section>
+{/if}
