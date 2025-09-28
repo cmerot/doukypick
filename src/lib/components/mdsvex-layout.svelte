@@ -21,7 +21,5 @@
 </header>
 
 <main>
-	<article class="prose max-w-full">
-		{@render children()}
-	</article>
+	{@render children()}
 </main>

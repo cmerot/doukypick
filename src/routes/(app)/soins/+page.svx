@@ -4,6 +4,8 @@ page_title: Soins
 description: Explication des soins prodigués et à faire suite à un tatouage
 ---
 
+<article class="prose max-w-full">
+
 ## Le soin dans les premières heures
 
 En sortant du salon tu es protégé.e. soit par :
@@ -58,3 +60,4 @@ une crème antibiotique, et tiens moi informée.
 **Prends bien soin de toi et de ton tatouage !**
 
 À bientôt !
+</article>
