@@ -1,5 +1,7 @@
 import type { Actions } from './$types';
 import { fail } from '@sveltejs/kit';
+
+export const prerender = false;
 import { put } from '@vercel/blob';
 import { createClient } from '@supabase/supabase-js';
 import { dev } from '$app/environment';

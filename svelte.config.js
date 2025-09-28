@@ -23,6 +23,15 @@ const config = {
 				domains: ['www.doukypick.fr']
 			}
 		}),
+		prerender: {
+			handleHttpError: ({ path, message }) => {
+				// Ignore errors for Vercel image optimization URLs during prerendering
+				if (path.startsWith('/_vercel/image')) {
+					return;
+				}
+				throw new Error(message);
+			}
+		},
 		alias: {
 			'$content/*': './src/content/*'
 		}
