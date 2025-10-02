@@ -36,7 +36,7 @@
 	});
 </script>
 
-{#if images.length > 1}
+{#if images.length > 0}
 	<Carousel
 		class="mt-1 w-full"
 		setApi={(emblaApi) => (api = emblaApi)}

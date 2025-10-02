@@ -55,15 +55,16 @@
 				<a
 					href={image.href}
 					class="flex h-full w-full items-center justify-center border-6 border-black bg-black"
-					style="aspect-ratio: {aspectRatio}"
 					onclick={(e) => handleClick(e, index)}
+					style="aspect-ratio: {aspectRatio};"
 				>
-					<picture>
+					<picture class="flex h-full w-full items-center justify-center">
 						<img
 							srcset={image.srcset}
 							{sizes}
 							alt={image.alt}
 							loading={Math.abs(index - currentIndex) <= 1 ? 'eager' : 'lazy'}
+							class="max-h-full max-w-full object-contain"
 						/>
 					</picture>
 				</a>
