@@ -21,6 +21,10 @@
 				generalError = undefined;
 				toast.success(successMessage || 'OK');
 				window.scrollTo({ top: 0, behavior: 'smooth' });
+				// Reset photos when form submission is successful
+				if (resetPhotos) {
+					resetPhotos();
+				}
 			} else if (result.type === 'failure') {
 				generalError = result.data?.generalError || result.data?.photoError;
 				successMessage = undefined;
@@ -34,6 +38,7 @@
 
 	let generalError = $state<string | undefined>(undefined);
 	let successMessage = $state<string | undefined>(undefined);
+	let resetPhotos: (() => void) | undefined = $state();
 </script>
 
 <!-- {#if successMessage}
@@ -318,7 +323,7 @@
 	</Form.Field>
 
 	<!-- Photo Upload -->
-	<PhotoUpload {form} />
+	<PhotoUpload {form} bind:resetPhotos />
 
 	<!-- Timeline -->
 	<Form.Fieldset {form} name="timeline">

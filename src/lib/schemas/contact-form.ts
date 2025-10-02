@@ -28,7 +28,6 @@ export const contactFormSchema = z.object({
 	size: z.string().default(''),
 	placement: z.string().default(''),
 	budget: z.string().default(''),
-	photos: z.array(z.instanceof(File)).default([]),
 	timeline: z.string().default(''),
 	additionalComments: z.string().default('')
 }).refine(

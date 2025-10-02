@@ -7,14 +7,18 @@
 	import type { SuperForm } from 'sveltekit-superforms';
 	import type { ContactFormType } from '$lib/schemas/contact-form';
 
-	let { form }: { form: SuperForm<ContactFormType> } = $props();
-
-	const { form: formData } = form;
+	let { form, resetPhotos = $bindable() }: { form: SuperForm<ContactFormType>; resetPhotos?: () => void } = $props();
 
 	let fileInput = $state<HTMLInputElement | undefined>();
+	let photos = $state<File[]>([]);
 
 	const MAX_FILES = 5;
 	const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+
+	// Expose reset function to parent
+	resetPhotos = () => {
+		photos = [];
+	};
 
 	function handleFileSelect(event: Event) {
 		const target = event.target as HTMLInputElement;
@@ -22,7 +26,7 @@
 
 		if (files) {
 			const newFiles = Array.from(files);
-			const availableSlots = MAX_FILES - $formData.photos.length;
+			const availableSlots = MAX_FILES - photos.length;
 
 			if (newFiles.length > availableSlots) {
 				alert(`Vous ne pouvez ajouter que ${availableSlots} photo(s) supplémentaire(s)`);
@@ -46,7 +50,7 @@
 				return true;
 			});
 
-			$formData.photos = [...$formData.photos, ...validFiles];
+			photos = [...photos, ...validFiles];
 		}
 
 		if (fileInput) {
@@ -55,7 +59,7 @@
 	}
 
 	function removePhoto(index: number) {
-		$formData.photos = $formData.photos.filter((_: File, i: number) => i !== index);
+		photos = photos.filter((_: File, i: number) => i !== index);
 	}
 </script>
 
@@ -84,7 +88,7 @@
 		</Form.Description>
 		<div class="order-2 md:order-1">
 			<!-- Upload Area -->
-			{#if $formData.photos.length < MAX_FILES}
+			{#if photos.length < MAX_FILES}
 				<Label
 					class="block cursor-pointer rounded-md border-2 border-dashed border-muted-foreground/20 p-4 text-center transition-colors hover:border-muted-foreground/40"
 				>
@@ -103,13 +107,13 @@
 						<span class="font-medium text-primary hover:underline"> cliquez pour parcourir </span>
 					</p>
 					<p class="text-muted-foreground">
-						Max {MAX_FILES} fichiers, 10 MB par fichier ({$formData.photos.length}/{MAX_FILES} utilisés)
+						Max {MAX_FILES} fichiers, 10 MB par fichier ({photos.length}/{MAX_FILES} utilisés)
 					</p>
 				</Label>
 			{/if}
 
 			<!-- Hidden inputs for photos (for form submission) -->
-			{#each $formData.photos as photo}
+			{#each photos as photo}
 				<input
 					type="file"
 					name="photos"
@@ -123,9 +127,9 @@
 			{/each}
 
 			<!-- Photo Preview -->
-			{#if $formData.photos.length > 0}
+			{#if photos.length > 0}
 				<div class="grid grid-cols-2 gap-3 md:grid-cols-3">
-					{#each $formData.photos as photo, index}
+					{#each photos as photo, index}
 						<div class="group relative">
 							<img
 								src={URL.createObjectURL(photo)}
