@@ -2,10 +2,9 @@
 	import ContactForm from '$lib/components/contact-form/contact-form.svelte';
 	import PageSubtitle from '$lib/components/page-title/page-subtitle.svelte';
 	import PageTitle from '$lib/components/page-title/page-title.svelte';
-	import type { ActionData } from './$types';
+	import type { PageData } from './$types';
 
-	// Svelte 5 syntax pour les props de page
-	let { form }: { form?: ActionData | null } = $props();
+	let { data } = $props<{ data: PageData }>();
 </script>
 
 <svelte:head>
@@ -28,5 +27,5 @@
 </header>
 
 <main>
-	<ContactForm {form} />
+	<ContactForm data={data.form} />
 </main>

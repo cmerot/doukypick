@@ -1,40 +1,21 @@
 <script lang="ts">
-	interface GoogleReview {
-		authorAttribution: {
-			displayName: string;
-			uri: string;
-			photoUri: string;
-		};
-		rating: number;
-		text: {
-			text: string;
-			languageCode: string;
-		};
-		originalText: {
-			text: string;
-			languageCode: string;
-		};
-		relativePublishTimeDescription: string;
-		publishTime: string;
-	}
+	import type { ReviewsData } from '$lib/types/google-places';
+	import { cn } from '$lib/utils';
+	import { ArrowRight } from 'lucide-svelte';
+	import Button from './ui/button/button.svelte';
 
 	interface Props {
-		reviews: GoogleReview[];
-		rating: number;
-		totalReviews: number;
+		data: ReviewsData;
 		showOverallRating?: boolean;
 		maxReviews?: number;
 		className?: string;
+		title?: string;
 	}
 
-	let {
-		reviews,
-		rating,
-		totalReviews,
-		showOverallRating = true,
-		maxReviews,
-		className = ''
-	}: Props = $props();
+	let { data, showOverallRating = true, maxReviews, className = '', title }: Props = $props();
+
+	// Destructure data
+	const { reviews, rating, totalReviews } = data;
 
 	// Reactive computation for displayed reviews
 	let displayedReviews = $derived(maxReviews ? reviews.slice(0, maxReviews) : reviews);
@@ -70,7 +51,11 @@
 </script>
 
 {#if reviews && reviews.length > 0}
-	<section class="w-full {className} mb-4">
+	<section class={cn('not-prose mb-4 max-w-none', className)}>
+		{#if title}
+			<h2 class="font-logo mt-10 mb-8 text-center text-4xl font-normal">{title}</h2>
+		{/if}
+
 		<div class="mb-8 text-center">
 			{#if showOverallRating}
 				<div
@@ -160,19 +145,13 @@
 		</div>
 
 		<div class="mt-8 text-center">
-			<a
+			<Button
+				size="lg"
 				href="https://www.google.com/maps/place/Doukypick/@44.8031958,-0.5479507,17z/data=!4m8!3m7!1s0xd552762fca7328b:0xfc6badabeae95939!8m2!3d44.803192!4d-0.5453758!9m1!1b1!16s%2Fg%2F11s9_dby1d?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D"
-				class="inline-flex items-center rounded-md border border-transparent bg-black px-6 py-3 text-base font-medium text-white transition-colors duration-200 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
 			>
 				Voir les autres avis
-				<svg class="-mr-1 ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-					<path
-						fill-rule="evenodd"
-						d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-						clip-rule="evenodd"
-					/>
-				</svg>
-			</a>
+				<ArrowRight />
+			</Button>
 		</div>
 	</section>
 {/if}

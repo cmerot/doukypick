@@ -117,49 +117,49 @@
 				</CardHeader>
 				<CardContent class="space-y-4">
 					<div class="space-y-3">
-						<div>
-							<label class="text-sm font-medium text-muted-foreground">Prénom</label>
-							<p class="text-lg font-medium">{data.submission.first_name}</p>
-						</div>
+						<dl>
+							<dt class="text-sm font-medium text-muted-foreground">Prénom</dt>
+							<dd class="text-lg font-medium">{data.submission.first_name}</dd>
+						</dl>
 
 						{#if data.submission.email}
-							<div>
-								<label class="text-sm font-medium text-muted-foreground">Email</label>
-								<div class="flex items-center gap-2">
+							<dl>
+								<dt class="text-sm font-medium text-muted-foreground">Email</dt>
+								<dd class="flex items-center gap-2">
 									<Mail class="h-4 w-4 text-muted-foreground" />
 									<a href="mailto:{data.submission.email}" class="text-primary hover:underline">
 										{data.submission.email}
 									</a>
-								</div>
-							</div>
+								</dd>
+							</dl>
 						{/if}
 
 						{#if data.submission.phone}
-							<div>
-								<label class="text-sm font-medium text-muted-foreground">Téléphone</label>
-								<div class="flex items-center gap-2">
+							<dl>
+								<dt class="text-sm font-medium text-muted-foreground">Téléphone</dt>
+								<dd class="flex items-center gap-2">
 									<Phone class="h-4 w-4 text-muted-foreground" />
 									<a href="tel:{data.submission.phone}" class="text-primary hover:underline">
 										{data.submission.phone}
 									</a>
-								</div>
-							</div>
+								</dd>
+							</dl>
 						{/if}
 
 						{#if data.submission.pseudonym}
-							<div>
-								<label class="text-sm font-medium text-muted-foreground">Pseudonyme</label>
-								<div class="flex items-center gap-2">
+							<dl>
+								<dt class="text-sm font-medium text-muted-foreground">Pseudonyme</dt>
+								<dd class="flex items-center gap-2">
 									<span class="text-muted-foreground">@</span>
 									<span>{data.submission.pseudonym}</span>
-								</div>
-							</div>
+								</dd>
+							</dl>
 						{/if}
 
 						{#if data.submission.is_adult}
-							<div>
-								<label class="text-sm font-medium text-muted-foreground">Majeur</label>
-								<div class="flex items-center gap-2">
+							<dl>
+								<dt class="text-sm font-medium text-muted-foreground">Majeur</dt>
+								<dd class="flex items-center gap-2">
 									{#if data.submission.is_adult === 'yes'}
 										<CircleCheckBig class="h-4 w-4 text-green-600" />
 										<Badge variant="default">Oui</Badge>
@@ -167,8 +167,8 @@
 										<CircleX class="h-4 w-4 text-red-600" />
 										<Badge variant="destructive">Non</Badge>
 									{/if}
-								</div>
-							</div>
+								</dd>
+							</dl>
 						{/if}
 					</div>
 				</CardContent>
@@ -184,56 +184,56 @@
 				</CardHeader>
 				<CardContent class="space-y-4">
 					{#if data.submission.project_type}
-						<div>
-							<label class="text-sm font-medium text-muted-foreground">Type de projet</label>
-							<div class="mt-1 flex flex-wrap gap-2">
+						<dl>
+							<dt class="text-sm font-medium text-muted-foreground">Type de projet</dt>
+							<dd class="mt-1 flex flex-wrap gap-2">
 								{#each data.submission.project_type.split(',') as type}
 									<Badge variant="secondary">
 										{getProjectTypeLabel(type)}
 									</Badge>
 								{/each}
-							</div>
-						</div>
+							</dd>
+						</dl>
 					{/if}
 
 					{#if data.submission.size}
-						<div>
-							<label class="text-sm font-medium text-muted-foreground">Taille</label>
-							<div class="flex items-center gap-2">
+						<dl>
+							<dt class="text-sm font-medium text-muted-foreground">Taille</dt>
+							<dd class="flex items-center gap-2">
 								<Ruler class="h-4 w-4 text-muted-foreground" />
 								<span>{data.submission.size}</span>
-							</div>
-						</div>
+							</dd>
+						</dl>
 					{/if}
 
 					{#if data.submission.placement}
-						<div>
-							<label class="text-sm font-medium text-muted-foreground">Emplacement</label>
-							<div class="flex items-center gap-2">
+						<dl>
+							<dt class="text-sm font-medium text-muted-foreground">Emplacement</dt>
+							<dd class="flex items-center gap-2">
 								<MapPin class="h-4 w-4 text-muted-foreground" />
 								<span>{data.submission.placement}</span>
-							</div>
-						</div>
+							</dd>
+						</dl>
 					{/if}
 
 					{#if data.submission.budget}
-						<div>
-							<label class="text-sm font-medium text-muted-foreground">Budget</label>
-							<div class="flex items-center gap-2">
+						<dl>
+							<dt class="text-sm font-medium text-muted-foreground">Budget</dt>
+							<dd class="flex items-center gap-2">
 								<Euro class="h-4 w-4 text-muted-foreground" />
 								<span>{data.submission.budget}</span>
-							</div>
-						</div>
+							</dd>
+						</dl>
 					{/if}
 
 					{#if data.submission.timeline}
-						<div>
-							<label class="text-sm font-medium text-muted-foreground">Délai</label>
-							<div class="flex items-center gap-2">
+						<dl>
+							<dt class="text-sm font-medium text-muted-foreground">Délai</dt>
+							<dd class="flex items-center gap-2">
 								<Clock class="h-4 w-4 text-muted-foreground" />
 								<span>{data.submission.timeline}</span>
-							</div>
-						</div>
+							</dd>
+						</dl>
 					{/if}
 				</CardContent>
 			</Card>

@@ -1,3 +1,4 @@
+// tina/config.ts
 import { defineConfig } from 'tinacms';
 
 // Your hosting provider likely exposes this as an environment variable
@@ -6,14 +7,12 @@ const branch =
 
 export default defineConfig({
 	branch,
-
 	// Get this from tina.io
-	clientId: process.env.TINA_CLIENT_ID,
+	clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
 	// Get this from tina.io
 	token: process.env.TINA_TOKEN,
-
 	build: {
-		outputFolder: 'tinadmin',
+		outputFolder: 'tina',
 		publicFolder: 'static'
 	},
 	media: {
@@ -22,13 +21,13 @@ export default defineConfig({
 			publicFolder: 'static'
 		}
 	},
-	// See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
 	schema: {
 		collections: [
 			{
 				name: 'page',
 				label: 'Pages',
 				path: 'src/content/pages',
+				format: 'mdx',
 				fields: [
 					{
 						type: 'string',
@@ -51,8 +50,96 @@ export default defineConfig({
 					{
 						type: 'rich-text',
 						name: 'body',
-						label: 'Contenu',
-						isBody: true
+						label: 'Body',
+						isBody: true,
+						templates: [
+							{
+								name: 'Image',
+								label: 'Image',
+								fields: [
+									{
+										type: 'image',
+										name: 'src',
+										label: 'Image',
+										required: true
+									},
+									{
+										type: 'string',
+										name: 'alt',
+										label: 'Texte alternatif',
+										required: true
+									},
+									{
+										type: 'string',
+										name: 'width',
+										label: 'Largeur',
+										options: [
+											{ value: 'sm', label: 'Petite' },
+											{ value: 'md', label: 'Moyenne' },
+											{ value: 'lg', label: 'Grande' },
+											{ value: 'full', label: 'Pleine largeur' }
+										]
+									},
+									{
+										type: 'string',
+										name: 'alignment',
+										label: 'Alignement',
+										options: [
+											{ value: 'left', label: 'Gauche' },
+											{ value: 'right', label: 'Droit' }
+										]
+									},
+									{
+										type: 'boolean',
+										name: 'border',
+										label: 'Bordure'
+									},
+									{
+										type: 'string',
+										name: 'class',
+										label: 'Classes CSS'
+									},
+									{
+										type: 'string',
+										name: 'sizes',
+										label: 'Tailles (attribut sizes)'
+									}
+								],
+								ui: {
+									defaultItem: {
+										alignment: 'center',
+										width: 'large'
+									},
+									itemProps: (item) => ({
+										label: item?.alt || item?.caption || 'Image'
+									})
+								}
+							},
+							{
+								name: 'Gallery',
+								label: 'Galerie',
+								fields: [
+									{
+										type: 'reference',
+										name: 'src',
+										label: 'Galerie',
+										collections: ['gallery'],
+										required: true
+									}
+								]
+							},
+							{
+								name: 'GoogleReviews',
+								label: 'Avis Google',
+								fields: [
+									{
+										type: 'string',
+										name: 'title',
+										label: 'Titre'
+									}
+								]
+							}
+						]
 					}
 				]
 			},

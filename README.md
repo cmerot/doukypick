@@ -17,7 +17,7 @@
 
 ### UI/UX
 
-- **bits-ui** - Composants accessibles
+- **shadcn-svelte** - Composant accessibles (components/ui)
 - **Lucide Svelte** - Icônes
 - **Embla Carousel** - Carrousels fluides
 
@@ -64,6 +64,7 @@ pnpm dev:tina         # Dev avec interface TinaCMS
 
 # Build & déploiement
 pnpm build            # Build de production
+pnpm build:tina       # Build de production avec interface TinaCMS
 pnpm preview          # Prévisualisation du build
 
 # Qualité de code
@@ -75,6 +76,9 @@ pnpm format           # Formatage automatique
 # Tests
 pnpm test             # Tests unitaires
 pnpm test:unit        # Tests unitaires en mode watch
+pnpm test:e2e         # Tests navigateur
+pnpm storybook        # Serveur Storybook
+pnpm build-storybook  # Build de Storybook
 ```
 
 ## 📁 Structure du projet

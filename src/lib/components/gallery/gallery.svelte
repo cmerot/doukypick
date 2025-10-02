@@ -50,7 +50,7 @@
 	}
 </script>
 
-<div class="mx-auto flex w-full flex-col">
+<div class="not-prose mx-auto flex w-full flex-col">
 	<!-- Main Photo Carousel -->
 	<ImageCarousel
 		{images}
