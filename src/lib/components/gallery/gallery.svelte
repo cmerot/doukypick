@@ -23,7 +23,6 @@
 	const images = $derived.by((): ImageData[] => {
 		return gallery.images
 			.filter((img) => img.published)
-			.sort((a, b) => a.order - b.order)
 			.map((image, index) => processImage(image, gallery.slug, index));
 	});
 

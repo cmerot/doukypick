@@ -1,266 +1,234 @@
 {
-	"title": "Portfolio de tatouages",
-	"description": "Galerie des créations artistiques de Doukypick - Tatouages réalisés au salon Le P'tit Cap'",
-	"slug": "tatouages",
-	"initialIndex": 4,
-	"closeUrl": "/",
-	"published": true,
-	"images": [
-		{
-			"src": "/images/galleries/tatouages/IMG_20240405_230428_904.jpg",
-			"title": "Héron en vol - Oiseau majestueux",
-			"description": "Tatouage élégant d'un héron aux ailes déployées, réalisé avec un trait fin et des détails précis des plumes, style réaliste en noir et blanc",
-			"alt": "Tatouage d'un héron aux ailes déployées sur l'épaule",
-			"order": 1,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/IMG_20240326_155654_135.jpg",
-			"title": "Danse macabre - Squelette et femme",
-			"description": "Tatouage artistique en noir et blanc représentant une scène de danse macabre avec un squelette tenant une femme, style détaillé avec des éléments décoratifs et des feuilles",
-			"alt": "Tatouage sur cuisse représentant une danse entre un squelette et une femme",
-			"order": 2,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/IMG_20240410_211419_241.jpg",
-			"title": "T-Rex rugissant",
-			"description": "Tatouage dynamique d'un Tyrannosaurus Rex rugissant, style cartoon avec des traits nets et des détails anatomiques précis sur l'avant-bras",
-			"alt": "Tatouage de dinosaure T-Rex sur avant-bras",
-			"order": 3,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/IMG_20240501_200148_384.jpg",
-			"title": "Walkman et casque vintages",
-			"description": "Tatouage meta représentant un walkman vintage avec un casque",
-			"alt": "Tatouage représentant un walkman rétro avec un casque",
-			"order": 4,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/IMG_20240716_092311_429.jpg",
-			"title": "Pieuvre aux tentacules ornés",
-			"description": "Tatouage impressionnant d'une pieuvre avec des tentacules aux ventouses méticuleusement détaillées, excellent travail de ligne et de texture",
-			"alt": "Tatouage de pieuvre avec tentacules détaillées et ventouses sur la jambe",
-			"order": 5,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/IMG_20240829_174950.jpg",
-			"title": "Serpent et roses entrelacés",
-			"description": "Composition élégante d'un serpent aux écailles détaillées s'enroulant autour de roses épanouies, alliant danger et beauté dans un style réaliste",
-			"alt": "Tatouage d'un serpent s'enroulant autour de roses sur le mollet",
-			"order": 6,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/IMG20240906172450~2.jpg",
-			"title": "Papillon et composition florale",
-			"description": "Composition délicate associant un papillon aux ailes détaillées avec des lis et autres fleurs, style linéaire fin et gracieux",
-			"alt": "Tatouage d'un papillon avec lis et fleurs diverses sur l'avant-bras",
-			"order": 7,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/IMG_20241004_184024.jpg",
-			"title": "Cabane dans l'arbre nuageux",
-			"description": "Tatouage poétique d'une cabane nichée dans un arbre feuillu surmonté de nuages, évoquant un refuge paisible dans la nature",
-			"alt": "Tatouage d'une cabane perchée dans un arbre avec des nuages",
-			"order": 8,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/IMG20241012212533~2.jpg",
-			"title": "Grenouille stylisée",
-			"description": "Représentation stylisée d'une grenouille au trait épuré, avec des détails anatomiques simplifiés dans un style minimaliste",
-			"alt": "Tatouage d'une grouille dans un style épuré",
-			"order": 9,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/IMG20241013145316~3.jpg",
-			"title": "Champignon et tentacules mystiques",
-			"description": "Création fantastique mêlant un champignon à pois et des tentacules ornées, évoquant un univers mystique et surréaliste",
-			"alt": "Tatouage d'un champignon avec tentacules ornementées",
-			"order": 10,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/IMG20241101172102~4.jpg",
-			"title": "Animal stylisé",
-			"description": "Représentation stylisée d'un animal avec un trait épuré et des détails artistiques subtils",
-			"alt": "Tatouage d'animal stylisé en noir",
-			"order": 11,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/IMG20241105181352~2.jpg",
-			"title": "Ornement décoratif",
-			"description": "Tatouage ornemental élégant avec des motifs décoratifs raffinés et un excellent équilibre visuel",
-			"alt": "Tatouage ornemental avec motifs décoratifs",
-			"order": 12,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/IMG_20241122_181443.jpg",
-			"title": "Composition nature",
-			"description": "Composition inspirée de la nature intégrant des éléments végétaux dans un style artistique harmonieux",
-			"alt": "Tatouage inspiré de la nature avec éléments végétaux",
-			"order": 13,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/IMG20241130171654~2.jpg",
-			"title": "Design linéaire",
-			"description": "Tatouage au trait fin démontrant la maîtrise des lignes continues et des compositions minimales",
-			"alt": "Tatouage au trait fin avec design linéaire",
-			"order": 14,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/PXL_20250307_170514937.jpg",
-			"title": "Cœur anatomique fleuri aux ombelles",
-			"description": "Création poétique mêlant un cœur anatomique réaliste à des tiges florales qui s'élèvent en délicates ombelles, symbole de vie et d'amour",
-			"alt": "Tatouage de cœur anatomique avec fleurs en ombelles s'élevant",
-			"order": 15,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/PXL_20250325_144649104.jpg",
-			"title": "Bouquet de pivoines",
-			"description": "Tatouage floral raffiné représentant des pivoines aux pétales délicatement ombrés, style réaliste avec un excellent rendu des textures",
-			"alt": "Tatouage de pivoines détaillées sur avant-bras",
-			"order": 16,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/PXL_20250329_173719626~2.jpg",
-			"title": "Composition botanique",
-			"description": "Composition botanique complexe intégrant différentes espèces végétales dans un ensemble harmonieux et naturel",
-			"alt": "Tatouage botanique avec diverses plantes",
-			"order": 17,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/PXL_20250412_171002562.MP~2.jpg",
-			"title": "Portrait artistique",
-			"description": "Portrait artistique réalisé avec une technique maîtrisée, alliant réalisme et interprétation créative",
-			"alt": "Tatouage portrait avec style artistique",
-			"order": 18,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/PXL_20250413_135835471.MP~2.jpg",
-			"title": "Créature fantastique",
-			"description": "Représentation d'une créature fantastique avec des détails imaginatifs et un style personnel unique",
-			"alt": "Tatouage de créature imaginaire stylisée",
-			"order": 19,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/PXL_20250509_152853985~3.jpg",
-			"title": "Motif ornemental complexe",
-			"description": "Motif ornemental sophistiqué avec des éléments entrelacés, démonstration de précision technique et de sens artistique",
-			"alt": "Tatouage ornemental avec motifs entrelacés",
-			"order": 20,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/PXL_20250511_140654070~2.jpg",
-			"title": "Animal marin stylisé",
-			"description": "Représentation stylisée d'un animal marin avec des détails artistiques et un rendu fluide",
-			"alt": "Tatouage d'animal marin avec style artistique",
-			"order": 21,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/PXL_20250517_173558902~2.jpg",
-			"title": "Vignes et grappes florales",
-			"description": "Composition florale élégante représentant des vignes avec grappes et fleurs diverses, style délicat avec un excellent travail du trait",
-			"alt": "Tatouage de vignes avec grappes et fleurs sur l'épaule",
-			"order": 22,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/PXL_20250517_173618878~2.jpg",
-			"title": "Extension florale",
-			"description": "Extension de la composition florale précédente, montrant la continuité et l'harmonie de l'ensemble artistique",
-			"alt": "Continuation du tatouage floral précédent",
-			"order": 23,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/PXL_20250517_173724300~2.jpg",
-			"title": "Détail floral complet",
-			"description": "Vue d'ensemble de la composition florale complète, illustrant la maîtrise de la composition et de l'équilibre visuel",
-			"alt": "Vue d'ensemble du tatouage floral terminé",
-			"order": 24,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/PXL_20250524_102538956~2.jpg",
-			"title": "Design géométrique moderne",
-			"description": "Design géométrique moderne alliant précision technique et esthétique contemporaine",
-			"alt": "Tatouage géométrique contemporain",
-			"order": 25,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/PXL_20250524_181949906~3.jpg",
-			"title": "Composition abstraite fluide",
-			"description": "Composition abstraite aux formes fluides, expression artistique libre et créative",
-			"alt": "Tatouage abstrait avec formes fluides",
-			"order": 26,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/PXL_20250524_200441332~2.jpg",
-			"title": "Motif naturel stylisé",
-			"description": "Interprétation stylisée d'éléments naturels avec une approche artistique personnelle et originale",
-			"alt": "Tatouage de motif naturel avec style personnel",
-			"order": 27,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/PXL_20250525_130129407~4.jpg",
-			"title": "Création organique",
-			"description": "Création aux formes organiques complexes, démonstration de créativité et de maîtrise technique",
-			"alt": "Tatouage aux formes organiques complexes",
-			"order": 28,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/PXL_20250606_140544818~2.jpg",
-			"title": "Design minimaliste",
-			"description": "Design minimaliste épuré démontrant que la simplicité peut être tout aussi percutante que la complexité",
-			"alt": "Tatouage minimaliste épuré",
-			"order": 29,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/483705000_1467588770624882_6790788702628349040_n.jpg",
-			"title": "Singe assis - Portrait expressif",
-			"description": "Tatouage réaliste d'un singe dans une pose assise pensive, avec un rendu détaillé des traits du visage et des mains, style noir et blanc expressif",
-			"alt": "Tatouage d'un singe assis dans une pose pensive sur le torse",
-			"order": 30,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/cabane.jpg",
-			"title": "Cabane dans l'arbre fantaisiste",
-			"description": "Tatouage imaginatif représentant une cabane perchée dans un arbre touffu, avec un escalier en colimaçon menant à la porte, style conte de fées",
-			"alt": "Tatouage d'une cabane perchée dans un arbre avec escalier en colimaçon",
-			"order": 31,
-			"published": true
-		},
-		{
-			"src": "/images/galleries/tatouages/image5~3.jpeg",
-			"title": "Composition florale délicate",
-			"description": "Composition florale élégante avec différentes variétés de fleurs et feuillages, réalisée au trait fin avec des détails botaniques précis",
-			"alt": "Tatouage de fleurs diverses avec feuillages sur avant-bras",
-			"order": 32,
-			"published": true
-		}
-	]
+  "title": "Portfolio de tatouages",
+  "description": "Galerie des créations artistiques de Doukypick - Tatouages réalisés au salon Le P'tit Cap'",
+  "slug": "tatouages",
+  "initialIndex": 4,
+  "closeUrl": "/",
+  "published": true,
+  "images": [
+    {
+      "src": "/images/galleries/tatouages/IMG_20240405_230428_904.jpg",
+      "title": "Héron en vol - Oiseau majestueux",
+      "description": "Tatouage élégant d'un héron aux ailes déployées, réalisé avec un trait fin et des détails précis des plumes, style réaliste en noir et blanc",
+      "alt": "Tatouage d'un héron aux ailes déployées sur l'épaule",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/IMG_20240326_155654_135.jpg",
+      "title": "Danse macabre - Squelette et femme",
+      "description": "Tatouage artistique en noir et blanc représentant une scène de danse macabre avec un squelette tenant une femme, style détaillé avec des éléments décoratifs et des feuilles",
+      "alt": "Tatouage sur cuisse représentant une danse entre un squelette et une femme",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/IMG_20240410_211419_241.jpg",
+      "title": "T-Rex rugissant",
+      "description": "Tatouage dynamique d'un Tyrannosaurus Rex rugissant, style cartoon avec des traits nets et des détails anatomiques précis sur l'avant-bras",
+      "alt": "Tatouage de dinosaure T-Rex sur avant-bras",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/IMG_20240501_200148_384.jpg",
+      "title": "Walkman et casque vintages",
+      "description": "Tatouage meta représentant un walkman vintage avec un casque",
+      "alt": "Tatouage représentant un walkman rétro avec un casque",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/IMG_20240716_092311_429.jpg",
+      "title": "Pieuvre aux tentacules ornés",
+      "description": "Tatouage impressionnant d'une pieuvre avec des tentacules aux ventouses méticuleusement détaillées, excellent travail de ligne et de texture",
+      "alt": "Tatouage de pieuvre avec tentacules détaillées et ventouses sur la jambe",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/IMG_20240829_174950.jpg",
+      "title": "Serpent et roses entrelacés",
+      "description": "Composition élégante d'un serpent aux écailles détaillées s'enroulant autour de roses épanouies, alliant danger et beauté dans un style réaliste",
+      "alt": "Tatouage d'un serpent s'enroulant autour de roses sur le mollet",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/IMG20240906172450~2.jpg",
+      "title": "Papillon et composition florale",
+      "description": "Composition délicate associant un papillon aux ailes détaillées avec des lis et autres fleurs, style linéaire fin et gracieux",
+      "alt": "Tatouage d'un papillon avec lis et fleurs diverses sur l'avant-bras",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/IMG_20241004_184024.jpg",
+      "title": "Cabane dans l'arbre nuageux",
+      "description": "Tatouage poétique d'une cabane nichée dans un arbre feuillu surmonté de nuages, évoquant un refuge paisible dans la nature",
+      "alt": "Tatouage d'une cabane perchée dans un arbre avec des nuages",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/IMG20241012212533~2.jpg",
+      "title": "Grenouille stylisée",
+      "description": "Représentation stylisée d'une grenouille au trait épuré, avec des détails anatomiques simplifiés dans un style minimaliste",
+      "alt": "Tatouage d'une grouille dans un style épuré",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/IMG20241013145316~3.jpg",
+      "title": "Champignon et tentacules mystiques",
+      "description": "Création fantastique mêlant un champignon à pois et des tentacules ornées, évoquant un univers mystique et surréaliste",
+      "alt": "Tatouage d'un champignon avec tentacules ornementées",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/IMG20241101172102~4.jpg",
+      "title": "Animal stylisé",
+      "description": "Représentation stylisée d'un animal avec un trait épuré et des détails artistiques subtils",
+      "alt": "Tatouage d'animal stylisé en noir",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/IMG20241105181352~2.jpg",
+      "title": "Ornement décoratif",
+      "description": "Tatouage ornemental élégant avec des motifs décoratifs raffinés et un excellent équilibre visuel",
+      "alt": "Tatouage ornemental avec motifs décoratifs",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/IMG_20241122_181443.jpg",
+      "title": "Composition nature",
+      "description": "Composition inspirée de la nature intégrant des éléments végétaux dans un style artistique harmonieux",
+      "alt": "Tatouage inspiré de la nature avec éléments végétaux",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/IMG20241130171654~2.jpg",
+      "title": "Design linéaire",
+      "description": "Tatouage au trait fin démontrant la maîtrise des lignes continues et des compositions minimales",
+      "alt": "Tatouage au trait fin avec design linéaire",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/PXL_20250307_170514937.jpg",
+      "title": "Cœur anatomique fleuri aux ombelles",
+      "description": "Création poétique mêlant un cœur anatomique réaliste à des tiges florales qui s'élèvent en délicates ombelles, symbole de vie et d'amour",
+      "alt": "Tatouage de cœur anatomique avec fleurs en ombelles s'élevant",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/PXL_20250325_144649104.jpg",
+      "title": "Bouquet de pivoines",
+      "description": "Tatouage floral raffiné représentant des pivoines aux pétales délicatement ombrés, style réaliste avec un excellent rendu des textures",
+      "alt": "Tatouage de pivoines détaillées sur avant-bras",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/PXL_20250329_173719626~2.jpg",
+      "title": "Composition botanique",
+      "description": "Composition botanique complexe intégrant différentes espèces végétales dans un ensemble harmonieux et naturel",
+      "alt": "Tatouage botanique avec diverses plantes",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/PXL_20250412_171002562.MP~2.jpg",
+      "title": "Portrait artistique",
+      "description": "Portrait artistique réalisé avec une technique maîtrisée, alliant réalisme et interprétation créative",
+      "alt": "Tatouage portrait avec style artistique",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/PXL_20250413_135835471.MP~2.jpg",
+      "title": "Créature fantastique",
+      "description": "Représentation d'une créature fantastique avec des détails imaginatifs et un style personnel unique",
+      "alt": "Tatouage de créature imaginaire stylisée",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/PXL_20250509_152853985~3.jpg",
+      "title": "Motif ornemental complexe",
+      "description": "Motif ornemental sophistiqué avec des éléments entrelacés, démonstration de précision technique et de sens artistique",
+      "alt": "Tatouage ornemental avec motifs entrelacés",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/PXL_20250511_140654070~2.jpg",
+      "title": "Animal marin stylisé",
+      "description": "Représentation stylisée d'un animal marin avec des détails artistiques et un rendu fluide",
+      "alt": "Tatouage d'animal marin avec style artistique",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/PXL_20250517_173558902~2.jpg",
+      "title": "Vignes et grappes florales",
+      "description": "Composition florale élégante représentant des vignes avec grappes et fleurs diverses, style délicat avec un excellent travail du trait",
+      "alt": "Tatouage de vignes avec grappes et fleurs sur l'épaule",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/PXL_20250517_173618878~2.jpg",
+      "title": "Extension florale",
+      "description": "Extension de la composition florale précédente, montrant la continuité et l'harmonie de l'ensemble artistique",
+      "alt": "Continuation du tatouage floral précédent",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/PXL_20250517_173724300~2.jpg",
+      "title": "Détail floral complet",
+      "description": "Vue d'ensemble de la composition florale complète, illustrant la maîtrise de la composition et de l'équilibre visuel",
+      "alt": "Vue d'ensemble du tatouage floral terminé",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/PXL_20250524_102538956~2.jpg",
+      "title": "Design géométrique moderne",
+      "description": "Design géométrique moderne alliant précision technique et esthétique contemporaine",
+      "alt": "Tatouage géométrique contemporain",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/PXL_20250524_181949906~3.jpg",
+      "title": "Composition abstraite fluide",
+      "description": "Composition abstraite aux formes fluides, expression artistique libre et créative",
+      "alt": "Tatouage abstrait avec formes fluides",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/PXL_20250524_200441332~2.jpg",
+      "title": "Motif naturel stylisé",
+      "description": "Interprétation stylisée d'éléments naturels avec une approche artistique personnelle et originale",
+      "alt": "Tatouage de motif naturel avec style personnel",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/PXL_20250525_130129407~4.jpg",
+      "title": "Création organique",
+      "description": "Création aux formes organiques complexes, démonstration de créativité et de maîtrise technique",
+      "alt": "Tatouage aux formes organiques complexes",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/PXL_20250606_140544818~2.jpg",
+      "title": "Design minimaliste",
+      "description": "Design minimaliste épuré démontrant que la simplicité peut être tout aussi percutante que la complexité",
+      "alt": "Tatouage minimaliste épuré",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/483705000_1467588770624882_6790788702628349040_n.jpg",
+      "title": "Singe assis - Portrait expressif",
+      "description": "Tatouage réaliste d'un singe dans une pose assise pensive, avec un rendu détaillé des traits du visage et des mains, style noir et blanc expressif",
+      "alt": "Tatouage d'un singe assis dans une pose pensive sur le torse",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/cabane.jpg",
+      "title": "Cabane dans l'arbre fantaisiste",
+      "description": "Tatouage imaginatif représentant une cabane perchée dans un arbre touffu, avec un escalier en colimaçon menant à la porte, style conte de fées",
+      "alt": "Tatouage d'une cabane perchée dans un arbre avec escalier en colimaçon",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/tatouages/image5~3.jpeg",
+      "title": "Composition florale délicate",
+      "description": "Composition florale élégante avec différentes variétés de fleurs et feuillages, réalisée au trait fin avec des détails botaniques précis",
+      "alt": "Tatouage de fleurs diverses avec feuillages sur avant-bras",
+      "published": true
+    }
+  ]
 }

@@ -13,7 +13,6 @@ export interface GalleryImage {
 	title: string;
 	description: string;
 	alt: string;
-	order: number;
 	published: boolean;
 }
 

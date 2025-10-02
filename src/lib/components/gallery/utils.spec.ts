@@ -85,11 +85,7 @@ describe('generateImageUUID', () => {
 
 	it('generates deterministic UUIDs for hashing', () => {
 		// Test that the same string always produces the same hash
-		const testCases = [
-			'/images/photo1.jpg',
-			'/images/photo2.jpg',
-			'/images/subfolder/photo3.jpg'
-		];
+		const testCases = ['/images/photo1.jpg', '/images/photo2.jpg', '/images/subfolder/photo3.jpg'];
 
 		testCases.forEach((testCase) => {
 			const uuid1 = generateImageUUID(testCase);
@@ -157,7 +153,6 @@ describe('processImage', () => {
 		title: 'Test Photo',
 		description: 'A test photo description',
 		alt: 'Test photo alt text',
-		order: 1,
 		published: true
 	};
 

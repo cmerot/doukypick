@@ -206,10 +206,9 @@ export default defineConfig({
 						list: true,
 						ui: {
 							itemProps: (item) => ({
-								label: `${item?.order || '?'} - ${item?.title || item?.alt || 'Image sans titre'}`
+								label: `${item?.title || item?.alt || 'Image sans titre'}`
 							}),
 							defaultItem: {
-								order: 1,
 								published: true
 							}
 						},
@@ -237,12 +236,6 @@ export default defineConfig({
 								type: 'string',
 								name: 'alt',
 								label: 'Texte alternatif',
-								required: true
-							},
-							{
-								type: 'number',
-								name: 'order',
-								label: "Ordre d'affichage",
 								required: true
 							},
 							{
