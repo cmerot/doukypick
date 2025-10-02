@@ -1,6 +1,84 @@
-<div class="container mx-auto px-4 py-8">
-	<div class="mx-auto max-w-2xl text-center">
-		<h1 class="text-2xl font-semibold text-gray-900">Authentification administrateur requise</h1>
-		<p class="mt-4 text-gray-600">Veuillez saisir votre mot de passe dans l'en-tête ci-dessus pour accéder au panneau d'administration.</p>
-	</div>
-</div>
+<script lang="ts">
+	import { goto } from '$app/navigation';
+	import { invalidateAll } from '$app/navigation';
+	import { Button } from '$lib/components/ui/button';
+	import * as Card from '$lib/components/ui/card';
+	import Input from '$lib/components/ui/input/input.svelte';
+	import { Label } from '$lib/components/ui/label';
+
+	let password = $state('');
+	let error = $state('');
+	let loading = $state(false);
+	async function handleLogin() {
+		loading = true;
+		error = '';
+
+		try {
+			const response = await fetch('/api/admin/auth', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ password })
+			});
+
+			const result = await response.json();
+
+			if (response.ok) {
+				password = '';
+				error = '';
+				await invalidateAll(); // Refresh all server data including authentication state
+
+				// Check if there's a redirect URL stored
+				const redirectResponse = await fetch('/api/admin/redirect', {
+					method: 'GET'
+				});
+
+				if (redirectResponse.ok) {
+					const redirectData = await redirectResponse.json();
+					if (redirectData.redirectUrl) {
+						goto(redirectData.redirectUrl);
+						return;
+					}
+				}
+
+				goto('/admin');
+			} else {
+				error = result.error || "Échec de l'authentification";
+			}
+		} catch (e) {
+			error = 'Erreur réseau. Veuillez réessayer.';
+		} finally {
+			loading = false;
+		}
+	}
+</script>
+
+<form
+	onsubmit={(e) => {
+		e.preventDefault();
+		handleLogin();
+	}}
+>
+	<Card.Root>
+		<Card.Header>
+			<Card.Title>Authentification requise</Card.Title>
+			<Card.Description>
+				<p>Saisis ton mot de passe pour accéder à l'admin.</p>
+			</Card.Description>
+		</Card.Header>
+		<Card.Content>
+			<div class="flex flex-col gap-6">
+				<div class="grid gap-2">
+					<Label for="password">Mot de passe</Label>
+					<Input type="password" bind:value={password} required disabled={loading} />
+				</div>
+			</div>
+		</Card.Content>
+		<Card.Footer>
+			<Button type="submit" disabled={loading} class="w-full">
+				{loading ? 'Connexion...' : 'Se connecter'}
+			</Button>
+		</Card.Footer>
+	</Card.Root>
+</form>

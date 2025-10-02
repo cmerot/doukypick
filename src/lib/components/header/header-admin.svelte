@@ -3,22 +3,28 @@
 	import { Button } from '$lib/components/ui/button';
 	import { page } from '$app/state';
 	import { createSrcset } from '$lib/utils';
+	import { invalidateAll } from '$app/navigation';
+	import { LogOut } from 'lucide-svelte';
 
 	// Props
 	interface Props {
 		mobileMenuOpen: boolean;
+		isAuthenticated: boolean;
 	}
 
-	let { mobileMenuOpen = $bindable() }: Props = $props();
+	let { mobileMenuOpen = $bindable(), isAuthenticated }: Props = $props();
 
 	// Navigation items
-	const navigationItems = [
-		{ href: '/', label: 'Tatouages' },
-		{ href: '/a-propos', label: 'À propos' },
-		{ href: '/salon-le-ptit-cap', label: 'Le salon' },
-		{ href: '/soins', label: 'Soins' },
-		{ href: '/contact', label: 'Contact' }
+	const allNavigationItems = [
+		{ href: '/admin', label: 'Messages', requiresAuth: true },
+		{ href: '/tina/index.html', label: 'TinaCMS', requiresAuth: true },
+		{ href: '/', label: 'Site', requiresAuth: false }
 	];
+
+	// Filter navigation items based on authentication status
+	const navigationItems = $derived(
+		isAuthenticated ? allNavigationItems : allNavigationItems.filter((item) => !item.requiresAuth)
+	);
 
 	// Toggle mobile menu
 	function toggleMobileMenu() {
@@ -29,6 +35,17 @@
 	function isActivePage(href: string): boolean {
 		return page.url.pathname === href;
 	}
+
+	async function handleLogout() {
+		try {
+			await fetch('/api/admin/logout', {
+				method: 'POST'
+			});
+			await invalidateAll(); // Refresh all server data to clear authentication state
+		} catch (e) {
+			console.error('Logout error:', e);
+		}
+	}
 </script>
 
 <header
@@ -38,13 +55,14 @@
 		class="flex h-20 items-center justify-between px-4 transition-all duration-300 ease-in-out md:h-28"
 	>
 		<!-- Logo -->
-		<a href="/" aria-label="Doukypick">
+		<a href="/admin" aria-label="Doukypick">
 			<img
 				srcset={createSrcset('/images/logo.png', [160, 100])}
 				sizes="(max-width:768px) 100px, 160px"
 				alt="Doukypick"
 				class="inline w-[100px] transition-all duration-300 ease-in-out md:w-[160px] dark:invert"
 			/>
+			<span class="font-logo text-4xl">Admin</span>
 		</a>
 
 		<!-- Desktop Navigation -->
@@ -59,6 +77,12 @@
 					{item.label}
 				</a>
 			{/each}
+			{#if isAuthenticated}
+				<Button onclick={handleLogout} variant="secondary">
+					<LogOut />
+					Se déconnecter
+				</Button>
+			{/if}
 		</div>
 
 		<!-- Mobile Menu Toggle -->
@@ -97,6 +121,12 @@
 							{item.label}
 						</a>
 					{/each}
+					{#if isAuthenticated}
+						<Button onclick={handleLogout} class="justify-normal">
+							<LogOut />
+							Se déconnecter
+						</Button>
+					{/if}
 				</div>
 			</div>
 		</div>

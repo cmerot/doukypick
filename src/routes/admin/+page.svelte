@@ -112,7 +112,7 @@
 				</p>
 			</div>
 		{:else}
-			<div class="rounded-md border bg-white">
+			<div class="rounded-md border bg-card">
 				<div class="overflow-x-auto">
 					<table class="w-full">
 						<thead>

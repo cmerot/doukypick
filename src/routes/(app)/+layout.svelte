@@ -3,10 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import type { LayoutData } from './$types';
 	import type { Snippet } from 'svelte';
-
-	import { toggleMode, resetMode } from 'mode-watcher';
-	import { Button } from '$lib/components/ui/button/index.js';
-	import { SunMoon } from 'lucide-svelte';
+	import ThemeSelector from '$lib/components/theme-selector.svelte';
 
 	let { children, data }: { children: Snippet; data: LayoutData } = $props();
 
@@ -98,33 +95,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="text-center">
-				<hr class="m-8" />
-				<Button onclick={toggleMode} variant="outline">
-					Changer de thème
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="24"
-						height="24"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						class="size-4.5"
-					>
-						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-						<path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"> </path>
-						<path d="M12 3l0 18"></path>
-						<path d="M12 9l4.65 -4.65"></path> <path d="M12 14.3l7.37 -7.37"> </path>
-						<path d="M12 19.6l8.85 -8.85"> </path>
-					</svg>
-				</Button>
-				<Button onclick={resetMode} variant="outline"
-					>Thème par défaut <SunMoon class="size-5" /></Button
-				>
-			</div>
+			<hr class="m-8" />
+			<ThemeSelector />
 		</div>
 	</footer>
 </div>

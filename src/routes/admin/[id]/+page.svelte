@@ -88,21 +88,22 @@
 					<ArrowLeft class="mr-2 h-4 w-4" />
 					Retour à la liste
 				</Button>
-				<Button
-					variant="destructive"
-					onclick={() => (showDeleteConfirm = true)}
-					disabled={isDeleting}
-				>
-					<Trash2 class="mr-2 h-4 w-4" />
-					Supprimer
-				</Button>
 			</div>
 			<div class="flex items-center gap-4">
 				<h1 class="text-3xl font-bold">{data.submission.first_name}</h1>
 				<Badge variant="secondary">
-					<Calendar class="mr-1 h-3 w-3" />
+					<Calendar class="mr-1" />
 					{formatDate(data.submission.created_at)}
 				</Badge>
+				<Button
+					variant="destructive"
+					onclick={() => (showDeleteConfirm = true)}
+					disabled={isDeleting}
+					class="ml-auto"
+				>
+					<Trash2 />
+					<span class="sr-only hidden sm:not-sr-only sm:inline">Supprimer</span>
+				</Button>
 			</div>
 		</div>
 
@@ -161,10 +162,10 @@
 								<dt class="text-sm font-medium text-muted-foreground">Majeur</dt>
 								<dd class="flex items-center gap-2">
 									{#if data.submission.is_adult === 'yes'}
-										<CircleCheckBig class="h-4 w-4 text-green-600" />
+										<CircleCheckBig class="h-4 w-4 text-success" />
 										<Badge variant="default">Oui</Badge>
 									{:else}
-										<CircleX class="h-4 w-4 text-red-600" />
+										<CircleX class="h-4 w-4 text-destructive" />
 										<Badge variant="destructive">Non</Badge>
 									{/if}
 								</dd>
