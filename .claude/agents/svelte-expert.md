@@ -62,6 +62,7 @@ Before implementing ANY Svelte or SvelteKit feature:
 ### Styling
 
 - Use TailwindCSS utility classes exclusively
+- Use Tailwind's semantic colors
 - Follow shadcn-svelte's design system and variants
 - Ensure responsive design (mobile-first approach)
 - Use Tailwind's dark mode utilities when appropriate

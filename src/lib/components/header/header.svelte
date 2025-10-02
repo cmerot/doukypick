@@ -43,7 +43,7 @@
 				srcset={createSrcset('/images/logo.png', [160, 100])}
 				sizes="(max-width:768px) 100px, 160px"
 				alt="Doukypick"
-				class="w-[100px] transition-all duration-300 ease-in-out md:w-[160px]"
+				class="w-[100px] transition-all duration-300 ease-in-out md:w-[160px] dark:invert"
 			/>
 		</a>
 

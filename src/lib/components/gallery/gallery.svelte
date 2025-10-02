@@ -57,10 +57,11 @@
 		{aspectRatio}
 		onSelect={handleSelect}
 		onClick={handleImageClick}
+		class=""
 	/>
 
 	<!-- Thumbnail Carousel -->
-	<ThumbnailCarousel {images} {currentIndex} onSelect={handleSelect} />
+	<ThumbnailCarousel {images} {currentIndex} onSelect={handleSelect} class="" />
 
 	<FullscreenCarousel
 		{images}

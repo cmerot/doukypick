@@ -4,6 +4,10 @@
 	import type { LayoutData } from './$types';
 	import type { Snippet } from 'svelte';
 
+	import { toggleMode, resetMode } from 'mode-watcher';
+	import { Button } from '$lib/components/ui/button/index.js';
+	import { SunMoon } from 'lucide-svelte';
+
 	let { children, data }: { children: Snippet; data: LayoutData } = $props();
 
 	// Store for mobile menu state
@@ -34,26 +38,28 @@
 		{/key}
 	</div>
 
-	<footer class="mt-auto border-t border-gray-200 bg-gray-100 py-8">
+	<footer class="mt-auto border-t bg-muted py-8">
 		<div class="mx-auto max-w-2xl px-4">
 			<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
 				<div>
-					<h3 class="mb-4 font-semibold text-gray-900">Contact</h3>
-					<div class="space-y-2 text-sm text-gray-600">
-						<span class="font-medium">Adresse :</span><br />
-						<address>
-							<a
-								href="https://maps.app.goo.gl/JzNUh39j34VvizLo8"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								12 avenue du Maréchal de Lattre de Tassigny<br />
-								33130 Bègles, France
-							</a>
-						</address>
+					<h3 class="mb-4 font-semibold text-foreground">Contact</h3>
+					<div class="space-y-2 text-sm text-muted-foreground">
+						<div>
+							<span class="font-medium">Adresse :</span><br />
+							<address>
+								<a
+									href="https://maps.app.goo.gl/JzNUh39j34VvizLo8"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									12 avenue du Maréchal de Lattre de Tassigny<br />
+									33130 Bègles, France
+								</a>
+							</address>
+						</div>
 						<p>
 							<span class="font-medium">Email :</span><br />
-							<a href="mailto:doukypick@gmail.com" class="text-blue-600 hover:text-blue-800">
+							<a href="mailto:doukypick@gmail.com" class="text-primary hover:text-primary/80">
 								doukypick@gmail.com
 							</a>
 						</p>
@@ -61,13 +67,13 @@
 				</div>
 
 				<div>
-					<h3 class="mb-4 font-semibold text-gray-900">Suivez-moi</h3>
+					<h3 class="mb-4 font-semibold text-foreground">Suivez-moi</h3>
 					<div class="flex space-x-4">
 						<a
 							href="https://www.instagram.com/doukypick/"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="text-pink-600 transition-colors hover:text-pink-800"
+							class="text-primary transition-colors hover:text-primary/80"
 							aria-label="Instagram"
 						>
 							<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -80,7 +86,7 @@
 							href="https://www.facebook.com/doukypick/"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="text-blue-600 transition-colors hover:text-blue-800"
+							class="text-primary transition-colors hover:text-primary/80"
 							aria-label="Facebook"
 						>
 							<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -91,6 +97,33 @@
 						</a>
 					</div>
 				</div>
+			</div>
+			<div class="text-center">
+				<hr class="m-8" />
+				<Button onclick={toggleMode} variant="outline">
+					Changer de thème
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="size-4.5"
+					>
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+						<path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"> </path>
+						<path d="M12 3l0 18"></path>
+						<path d="M12 9l4.65 -4.65"></path> <path d="M12 14.3l7.37 -7.37"> </path>
+						<path d="M12 19.6l8.85 -8.85"> </path>
+					</svg>
+				</Button>
+				<Button onclick={resetMode} variant="outline"
+					>Thème par défaut <SunMoon class="size-5" /></Button
+				>
 			</div>
 		</div>
 	</footer>

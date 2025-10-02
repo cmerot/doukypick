@@ -35,7 +35,7 @@
 		classNames.push(widths[width]);
 	}
 	if (border) {
-		classNames.push('border-4 border-black');
+		classNames.push('border-4 border-primary');
 	}
 	const sizesNotEmpty = sizes
 		? sizes

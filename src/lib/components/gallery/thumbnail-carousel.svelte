@@ -7,17 +7,20 @@
 		CarouselPrevious
 	} from '$lib/components/ui/carousel';
 	import { type CarouselAPI } from '$lib/components/ui/carousel/context';
+	import { cn } from '$lib/utils';
 	import type { ImageData } from './types';
 
 	// Props
 	let {
 		images,
 		currentIndex = 0,
-		onSelect
+		onSelect,
+		class: className
 	}: {
 		images: ImageData[];
 		currentIndex: number;
 		onSelect?: (index: number) => void;
+		class?: string;
 	} = $props();
 
 	let api = $state<CarouselAPI>();
@@ -38,7 +41,7 @@
 
 {#if images.length > 0}
 	<Carousel
-		class="mt-1 w-full"
+		class={cn('bg-background', className)}
 		setApi={(emblaApi) => (api = emblaApi)}
 		opts={{
 			containScroll: 'keepSnaps',
@@ -47,29 +50,27 @@
 			startIndex: currentIndex
 		}}
 	>
-		<CarouselContent class="m-0">
+		<CarouselContent class="-ml-2">
 			{#each images as image, index (image.uuid)}
-				<CarouselItem class="flex-shrink-0 basis-1/4 p-0">
+				<CarouselItem class="flex-shrink-0 basis-1/4 pl-1.5">
 					<button
 						type="button"
-						class="aspect-square w-full overflow-hidden border-4 transition-colors {index ===
+						class="aspect-square w-full overflow-hidden border-t-6 border-transparent transition-opacity {index ===
 						current
-							? 'border-black'
-							: 'border-transparent'}"
+							? 'opacity-100'
+							: 'opacity-50'}"
 						aria-label="Select image {index + 1}"
 						onclick={() => {
 							handleClick(index);
 						}}
 					>
-						<picture>
-							<img
-								srcset={image.srcset}
-								sizes="(max-width: 550px) 150px, 400px"
-								alt={image.alt}
-								class="h-full w-full object-cover"
-								loading={Math.abs(index - currentIndex) <= 1 ? 'eager' : 'lazy'}
-							/>
-						</picture>
+						<img
+							srcset={image.srcset}
+							sizes="(max-width: 550px) 150px, 400px"
+							alt={image.alt}
+							class="inline h-full w-full object-cover p-0"
+							loading={Math.abs(index - currentIndex) <= 1 ? 'eager' : 'lazy'}
+						/>
 					</button>
 				</CarouselItem>
 			{/each}

@@ -7,6 +7,7 @@
 		CarouselPrevious
 	} from '$lib/components/ui/carousel';
 	import { type CarouselAPI } from '$lib/components/ui/carousel/context';
+	import { cn } from '$lib/utils';
 	import type { ImageData } from './types';
 
 	// Props
@@ -15,13 +16,15 @@
 		currentIndex = 0,
 		aspectRatio = '4/3',
 		onClick,
-		onSelect
+		onSelect,
+		class: className
 	}: {
 		images: ImageData[];
 		currentIndex?: number;
 		aspectRatio?: string;
 		onClick?: (e: MouseEvent, url: string, index: number) => void;
 		onSelect?: (index: number) => void;
+		class?: string;
 	} = $props();
 
 	let api = $state<CarouselAPI>();
@@ -48,13 +51,17 @@
 	const sizes = '(max-width: 400px) 400px, (max-width: 600px) 600px, 900px';
 </script>
 
-<Carousel setApi={(emblaApi) => (api = emblaApi)} opts={{ startIndex: currentIndex }}>
+<Carousel
+	class={cn('bg-primary', className)}
+	setApi={(emblaApi) => (api = emblaApi)}
+	opts={{ startIndex: currentIndex }}
+>
 	<CarouselContent>
 		{#each images as image, index (image.uuid)}
 			<CarouselItem>
 				<a
 					href={image.href}
-					class="flex h-full w-full items-center justify-center border-6 border-black bg-black"
+					class="flex h-full w-full items-center justify-center border-6 border-primary"
 					onclick={(e) => handleClick(e, index)}
 					style="aspect-ratio: {aspectRatio};"
 				>

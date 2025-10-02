@@ -9,7 +9,7 @@
 		<img
 			srcset={createSrcset('/images/crevette.png', [100, 160])}
 			alt=""
-			class="relative left-8 w-[100px] md:w-[160px]"
+			class="relative left-8 w-[100px] md:w-[160px] dark:invert"
 			sizes="(min-width: 768px) 160px, 100px"
 		/>
 	</div>
@@ -20,7 +20,7 @@
 		<img
 			srcset={createSrcset('/images/crevette.png', [100, 160])}
 			alt=""
-			class="relative right-8 w-[100px] scale-x-[-1] md:w-[160px]"
+			class="relative right-8 w-[100px] scale-x-[-1] md:w-[160px] dark:invert"
 			sizes="(min-width: 768px) 160px, 100px"
 		/>
 	</div>
