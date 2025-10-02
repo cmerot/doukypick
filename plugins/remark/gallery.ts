@@ -65,7 +65,7 @@ export function processGalleryTags(tree: ASTNode, file: { data: FileData }): voi
 		const varName = fileName.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
 
 		imports.push(`import ${varName}Data from '${importPath}'`);
-		imports.push(`import Gallery from '$lib/components/gallery/gallery.svelte'`);
+		imports.push(`import Gallery from '$lib/svx-wrappers/gallery.svelte'`);
 
 		child.value = `<Gallery gallery={${varName}Data} />`;
 		newChildren.push(child);

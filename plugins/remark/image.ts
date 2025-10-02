@@ -18,7 +18,7 @@ export function processImageTags(tree: ASTNode, file: { data: FileData }): void 
 
 	// Register script requirements if we found Image tags
 	if (hasImage) {
-		registerScriptRequirements(file, [`import Image from "$lib/components/image.svelte"`]);
+		registerScriptRequirements(file, [`import Image from "$lib/svx-wrappers/image.svelte"`]);
 	}
 }
 

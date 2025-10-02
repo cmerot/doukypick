@@ -11,7 +11,6 @@ vi.mock('fs', () => ({
 import { existsSync, readFileSync } from 'fs';
 
 describe('processGalleryTags', () => {
-
 	it('transforms Gallery tag with src attribute', () => {
 		const tree: ASTNode = {
 			type: 'root',
@@ -36,7 +35,7 @@ describe('processGalleryTags', () => {
 		).toBe(true);
 		expect(
 			file.data.scriptRequirements!.imports.has(
-				"import Gallery from '$lib/components/gallery/gallery.svelte'"
+				"import Gallery from '$lib/svx-wrappers/gallery.svelte'"
 			)
 		).toBe(true);
 	});
