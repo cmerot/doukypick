@@ -1,38 +1,40 @@
 {
-  "title": "Salon de tatouage Le P'tit Cap'",
-  "description": "Le salon de tatouage de Doukypick, à Bègles (limitrophe à Bordeaux)",
-  "slug": "salon",
-  "initialIndex": 0,
-  "closeUrl": "/salon-le-ptit-cap",
-  "published": true,
-  "images": [
-    {
-      "src": "/images/galleries/salon/1.jpg",
-      "title": "Extérieur du salon - Cabane en bois",
-      "description": "Vue extérieure du salon de tatouage aménagé dans une charmante cabane en bois avec bardage traditionnel, entourée de végétation luxuriante",
-      "alt": "Vue extérieure de la cabane en bois du salon de tatouage Le P'tit Cap'",
-      "published": true
-    },
-    {
-      "src": "/images/galleries/salon/2.jpg",
-      "title": "Entrée du salon - Enseigne Le P'tit Cap'",
-      "description": "Entrée principale du salon avec l'enseigne Le P'tit Cap', décorée d'un dessin artistique au mur et une moto custom rouge garée devant",
-      "alt": "Entrée du salon avec l'enseigne Le P'tit Cap' et une moto garée devant",
-      "published": true
-    },
-    {
-      "src": "/images/galleries/salon/3.jpg",
-      "title": "Espace de travail principal",
-      "description": "Espace de travail principal du salon avec fauteuil professionnel de tatouage en cuir noir, étagères organisées, œuvres d'art aux murs et sol en parquet",
-      "alt": "Intérieur du salon avec fauteuil de tatouage et espace de travail équipé",
-      "published": true
-    },
-    {
-      "src": "/images/galleries/salon/4.jpg",
-      "title": "Salon de tatouage - Vue d'ensemble",
-      "description": "Vue d'ensemble de l'intérieur du salon montrant l'aménagement complet avec fauteuil de tatouage, bureau de travail, radiateur et décoration artistique aux murs",
-      "alt": "Vue d'ensemble de l'intérieur du salon avec équipements professionnels",
-      "published": true
-    }
-  ]
+	"title": "Salon de tatouage Le P'tit Cap'",
+	"description": "Le salon de tatouage de Doukypick, à Bègles (limitrophe à Bordeaux)",
+	"orientation": "landscape",
+	"aspectRatio": "4/3",
+	"slug": "salon",
+	"initialIndex": 0,
+	"closeUrl": "/salon-le-ptit-cap",
+	"published": true,
+	"images": [
+		{
+			"src": "/images/galleries/salon/1.jpg",
+			"title": "Extérieur du salon - Cabane en bois",
+			"description": "Vue extérieure du salon de tatouage aménagé dans une charmante cabane en bois avec bardage traditionnel, entourée de végétation luxuriante",
+			"alt": "Vue extérieure de la cabane en bois du salon de tatouage Le P'tit Cap'",
+			"published": true
+		},
+		{
+			"src": "/images/galleries/salon/2.jpg",
+			"title": "Entrée du salon - Enseigne Le P'tit Cap'",
+			"description": "Entrée principale du salon avec l'enseigne Le P'tit Cap', décorée d'un dessin artistique au mur et une moto custom rouge garée devant",
+			"alt": "Entrée du salon avec l'enseigne Le P'tit Cap' et une moto garée devant",
+			"published": true
+		},
+		{
+			"src": "/images/galleries/salon/3.jpg",
+			"title": "Espace de travail principal",
+			"description": "Espace de travail principal du salon avec fauteuil professionnel de tatouage en cuir noir, étagères organisées, œuvres d'art aux murs et sol en parquet",
+			"alt": "Intérieur du salon avec fauteuil de tatouage et espace de travail équipé",
+			"published": true
+		},
+		{
+			"src": "/images/galleries/salon/4.jpg",
+			"title": "Salon de tatouage - Vue d'ensemble",
+			"description": "Vue d'ensemble de l'intérieur du salon montrant l'aménagement complet avec fauteuil de tatouage, bureau de travail, radiateur et décoration artistique aux murs",
+			"alt": "Vue d'ensemble de l'intérieur du salon avec équipements professionnels",
+			"published": true
+		}
+	]
 }

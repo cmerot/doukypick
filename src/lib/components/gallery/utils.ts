@@ -4,7 +4,13 @@
  */
 
 import { createSrcset } from '$lib/utils';
-import type { GalleryImage, ImageSlugParts, ImageData } from './types';
+import type {
+	GalleryImage,
+	ImageSlugParts,
+	ImageData,
+	ImageAspectRatio,
+	ImageOrientation
+} from './types';
 
 // ============================================================================
 // SLUG UTILITIES
@@ -39,7 +45,7 @@ function slugify(text: string): string {
  * @param uuid - Unique identifier
  * @returns URL-safe photo slug
  */
-function generateImageSlug(title: string, uuid: string): string {
+export function generateImageSlug(title: string, uuid: string): string {
 	const titleSlug = slugify(title);
 	// Use last 8 characters of UUID for uniqueness while keeping URLs readable
 	return titleSlug ? `${titleSlug}-${uuid.slice(-8)}` : uuid;
@@ -70,7 +76,7 @@ export function parsePhotoSlug(slug: string): ImageSlugParts {
  * @param str - Input string to hash
  * @returns 16-character hexadecimal UUID
  */
-function generateImageUUID(str: string): string {
+export function generateImageUUID(str: string): string {
 	// DJB2 hash algorithm - fast and well-distributed
 	let hash = 5381;
 	for (let i = 0; i < str.length; i++) {
@@ -119,8 +125,10 @@ export const processImage = (image: GalleryImage, galleryId: string, index: numb
 };
 
 // ============================================================================
-// EXPORTS
+// ASPECT RATIO
 // ============================================================================
 
-// Export commonly used functions
-export { generateImageUUID, generateImageSlug };
+export function getAspectRatio(ratio: ImageAspectRatio, orientation: ImageOrientation) {
+	if (orientation == 'landscape') return ratio;
+	return ratio.split('/').reverse().join('/');
+}

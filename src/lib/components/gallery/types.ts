@@ -7,6 +7,8 @@ export const IMAGE_SIZES = ['optim', 'thumb', 'small', 'medium', 'large', 'xlarg
 // Derived types from constants
 export type ImageFormat = (typeof IMAGE_FORMATS)[number];
 export type ImageSize = (typeof IMAGE_SIZES)[number];
+export type ImageAspectRatio = `${number}/${number}`;
+export type ImageOrientation = 'portrait' | 'landscape';
 
 export interface GalleryImage {
 	src: string;
@@ -23,6 +25,8 @@ export interface Gallery {
 	closeUrl: string;
 	initialIndex?: number;
 	images: GalleryImage[];
+	aspectRatio: ImageAspectRatio;
+	orientation: ImageOrientation;
 }
 
 // Partial gallery for when we only need basic info

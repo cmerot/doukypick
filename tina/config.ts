@@ -177,8 +177,29 @@ export default defineConfig({
 					},
 					{
 						type: 'string',
+						name: 'orientation',
+						label: 'Orientation',
+						options: [
+							{ value: 'portrait', label: 'Portrait' },
+							{ value: 'landscape', label: 'Paysage' }
+						]
+					},
+					{
+						type: 'string',
+						name: 'aspectRatio',
+						label: 'Ratio',
+						options: [
+							{ value: '16/9', label: '16:9 (HDTV)' },
+							{ value: '3/2', label: '3:2 (impression, album)' },
+							{ value: '4/3', label: '4:3 (caméra numérique)' },
+							{ value: '5/4', label: '5:4 (format pro)' },
+							{ value: '1/1', label: '1:1 (carré)' }
+						]
+					},
+					{
+						type: 'string',
 						name: 'slug',
-						label: 'URL (slug)',
+						label: 'Identifiant unique',
 						required: true
 					},
 					{
@@ -189,7 +210,7 @@ export default defineConfig({
 					{
 						type: 'string',
 						name: 'closeUrl',
-						label: 'URL de redirection'
+						label: "URL de redirection (en cas d'accès direct à une photo)"
 					},
 					{
 						type: 'boolean',

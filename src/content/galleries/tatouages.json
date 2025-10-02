@@ -1,8 +1,10 @@
 {
   "title": "Portfolio de tatouages",
   "description": "Galerie des créations artistiques de Doukypick - Tatouages réalisés au salon Le P'tit Cap'",
+  "orientation": "portrait",
+  "aspectRatio": "4/3",
   "slug": "tatouages",
-  "initialIndex": 4,
+  "initialIndex": 7,
   "closeUrl": "/",
   "published": true,
   "images": [
