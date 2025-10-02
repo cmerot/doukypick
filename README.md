@@ -87,25 +87,37 @@ pnpm build-storybook  # Build de Storybook
 src/
 ├── lib/
 │   ├── components/           # Composants réutilisables
-│   │   ├── ui/              # Composants UI de base
-│   │   ├── gallery/         # Composants galerie
-│   │   ├── contact-form/    # Formulaire de contact
-│   │   └── header/          # Navigation
-│   ├── services/            # Services (API Google Places)
+│   │   ├── ui/              # Composants shadcn-svelte (button, card, form, input, etc.)
+│   │   ├── contact-form/    # Formulaire de contact + upload photos
+│   │   ├── gallery/         # Composants galerie avec carousel
+│   │   ├── header/          # Navigation principale
+│   │   ├── overlay/         # Composant overlay/modal
+│   │   ├── page-title/      # Titres de pages
+│   │   └── google-reviews.svelte  # Avis Google
+│   ├── server/
+│   │   └── services/        # Services côté serveur
+│   │       ├── blob-storage.ts      # Gestion Vercel Blob
+│   │       ├── contact-database.ts  # Base de données contacts (Postgres)
+│   │       ├── google-places.ts     # API Google Places
+│   │       └── telegram.ts          # Notifications Telegram
+│   ├── schemas/             # Schémas de validation Zod
+│   ├── svx-wrappers/        # Wrappers pour composants MDSvex
+│   ├── types/               # Types TypeScript
 │   └── utils.ts             # Utilitaires
 ├── routes/
 │   ├── (app)/              # Routes publiques
-│   │   ├── +page.svelte    # Page d'accueil (portfolio tatouages)
-│   │   ├── a-propos/       # Page à propos
-│   │   ├── salon-le-ptit-cap/ # Présentation du salon
-│   │   ├── soins/          # Page soins
+│   │   ├── [[slug]]/       # Pages dynamiques (MDSvex)
 │   │   ├── contact/        # Formulaire de contact
-│   │   └── images/         # Visualisation galeries
+│   │   └── images/[gallery]/[slug]/  # Visualisation images galeries
 │   ├── admin/              # Interface d'administration
+│   │   ├── login/          # Authentification admin
+│   │   └── [id]/           # Gestion des soumissions
 │   └── api/                # API endpoints
+│       └── admin/          # API admin (auth, logout, submissions)
 ├── content/
-│   └── galleries/          # Données des galeries
-└── static/                 # Assets statiques
+│   ├── galleries/          # Données des galeries JSON
+│   └── pages/              # Pages en Markdown (MDSvex)
+└── stories/                # Storybook stories
 ```
 
 ## 🎨 Fonctionnalités
@@ -126,21 +138,44 @@ src/
 
 ### Variables d'environnement
 
+Créer un fichier `.env` à la racine du projet (voir `.env.example` pour référence) :
+
 ```bash
-# TinaCMS
-TINA_CLIENT_ID=
-TINA_TOKEN=
+# Google Places API
+GOOGLE_PLACES_API_KEY=
+GOOGLE_PLACE_ID=
+
+# Vercel Blob Storage
+BLOB_READ_WRITE_TOKEN=
+
+# Postgres (Vercel)
+POSTGRES_URL=
+POSTGRES_USER=
+POSTGRES_HOST=
+POSTGRES_PASSWORD=
+POSTGRES_DATABASE=
+POSTGRES_PRISMA_URL=
+POSTGRES_URL_NON_POOLING=
 
 # Supabase
-PUBLIC_SUPABASE_URL=
-PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_URL=
+SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
+SUPABASE_JWT_SECRET=
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
 
-# Google Places API
-VITE_GOOGLE_PLACES_API_KEY=
+# Telegram Notifications
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_CHAT_ID=
 
 # Admin
-ADMIN_PASSWORD=
+ADMIN_SECRET=
+
+# TinaCMS
+NEXT_PUBLIC_TINA_CLIENT_ID=
+TINA_TOKEN=
+TINA_PUBLIC_IS_LOCAL=
 ```
 
 ## 📱 Responsive Design
