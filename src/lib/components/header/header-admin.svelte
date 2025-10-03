@@ -20,9 +20,9 @@
 
 	// Navigation items
 	const allNavigationItems = [
-		{ href: '/admin/messages', label: 'Messages', requiresAuth: true },
-		{ href: '/tina/index.html', label: 'TinaCMS', requiresAuth: true },
-		{ href: '/', label: 'Site', requiresAuth: false }
+		{ href: '/admin/messages', label: 'Messages', requiresAuth: true, external: false },
+		{ href: '/tina/index.html', label: 'TinaCMS', requiresAuth: true, external: true },
+		{ href: '/', label: 'Site', requiresAuth: false, external: false }
 	];
 
 	// Filter navigation items based on authentication status
@@ -72,6 +72,7 @@
 						<NavigationMenu.Item>
 							<NavigationMenu.Link
 								href={item.href}
+								data-sveltekit-reload={item.external}
 								class="text-lg font-medium transition-colors hover:text-primary {isActivePage(
 									item.href
 								)
@@ -109,8 +110,9 @@
 					<Separator class="my-4" />
 					<div class="flex flex-col space-y-3">
 						{#each navigationItems as item}
-							<a
+							<NavigationMenu.Link
 								href={item.href}
+								data-sveltekit-reload={item.external}
 								class="block rounded-md px-3 py-2 text-base font-medium transition-colors hover:bg-accent hover:text-primary {isActivePage(
 									item.href
 								)
@@ -119,7 +121,7 @@
 								onclick={() => (mobileMenuOpen = false)}
 							>
 								{item.label}
-							</a>
+							</NavigationMenu.Link>
 						{/each}
 						{#if isAuthenticated}
 							<Separator class="my-2" />
