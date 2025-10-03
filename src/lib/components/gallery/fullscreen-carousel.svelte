@@ -103,7 +103,6 @@
 						aria-label="Afficher/cacher les informations"
 						onclick={toggleOverlay}
 						tabindex={index === currentIndex ? 0 : -1}
-						class="cursor-pointer"
 					>
 						<picture>
 							<img

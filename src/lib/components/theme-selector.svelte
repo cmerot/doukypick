@@ -1,12 +1,18 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
-	import { SunMoon } from 'lucide-svelte';
-	import { resetMode, toggleMode } from 'mode-watcher';
+	import { resetMode, mode, toggleMode, systemPrefersMode } from 'mode-watcher';
+
+	function toggle() {
+		if (mode.current === systemPrefersMode.current) {
+			toggleMode();
+		} else {
+			resetMode();
+		}
+	}
 </script>
 
 <div class="space-y-3 space-x-3 md:text-center">
-	<Button onclick={toggleMode} variant="outline">
-		Changer de thème
+	<Button onclick={toggle} variant="outline">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			width="24"
@@ -25,6 +31,6 @@
 			<path d="M12 9l4.65 -4.65"></path> <path d="M12 14.3l7.37 -7.37"> </path>
 			<path d="M12 19.6l8.85 -8.85"> </path>
 		</svg>
+		Apparence
 	</Button>
-	<Button onclick={resetMode} variant="outline">Thème par défaut <SunMoon class="size-5" /></Button>
 </div>

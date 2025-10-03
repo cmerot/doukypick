@@ -13,7 +13,7 @@
 		<Header isAuthenticated={data.isAuthenticated} />
 		{#key data.pathname}
 			<main
-				class="px-4 py-8 sm:px-4 md:px-20"
+				class="px-4 pt-8 pb-16 sm:px-4 md:px-20"
 				in:fade={{ duration: 150, delay: 150 }}
 				out:fade={{ duration: 150 }}
 			>
