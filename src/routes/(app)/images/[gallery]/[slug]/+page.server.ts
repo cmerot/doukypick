@@ -49,7 +49,9 @@ export const load: PageServerLoad = async ({ params }) => {
 			slug: gallery.slug,
 			title: gallery.title,
 			description: gallery.description,
-			closeUrl: gallery.closeUrl
+			closeUrl: gallery.closeUrl,
+			aspectRatio: gallery.aspectRatio,
+			orientation: gallery.orientation
 		} as GalleryData,
 		images,
 		currentPhoto: currentImage,

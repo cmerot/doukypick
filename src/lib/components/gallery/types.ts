@@ -35,6 +35,8 @@ export interface GalleryData {
 	slug: string;
 	description: string;
 	closeUrl: string;
+	aspectRatio: ImageAspectRatio;
+	orientation: ImageOrientation;
 }
 
 // Type for processed image with all optimization data

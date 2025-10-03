@@ -1,11 +1,8 @@
 <script lang="ts">
-	import {
-		Carousel,
-		CarouselContent,
-		CarouselItem,
-		CarouselNext,
-		CarouselPrevious
-	} from '$lib/components/ui/carousel';
+	import { browser } from '$app/environment';
+	import { Carousel, CarouselContent, CarouselItem } from '$lib/components/ui/carousel';
+	import CarouselPrevious from './carousel-previous.svelte';
+	import CarouselNext from './carousel-next.svelte';
 	import { type CarouselAPI } from '$lib/components/ui/carousel/context';
 	import { cn } from '$lib/utils';
 	import type { ImageData } from './types';
@@ -28,10 +25,11 @@
 	} = $props();
 
 	let api = $state<CarouselAPI>();
+	let activeIndex = $derived(browser ? currentIndex : 0);
 
 	$effect(() => {
 		if (!api) return;
-		api.scrollTo(currentIndex);
+		api.scrollTo(activeIndex);
 	});
 
 	$effect(() => {
@@ -49,12 +47,20 @@
 		onClick(e, url, index);
 	}
 	const sizes = '(max-width: 400px) 400px, (max-width: 600px) 600px, 900px';
+
+	function hasNext<T>(array: T[], index: number): boolean {
+		return index + 1 < array.length;
+	}
+
+	function hasPrevious<T>(array: T[], index: number): boolean {
+		return index - 1 >= 0;
+	}
 </script>
 
 <Carousel
 	class={cn('', className)}
 	setApi={(emblaApi) => (api = emblaApi)}
-	opts={{ startIndex: currentIndex }}
+	opts={{ startIndex: activeIndex }}
 	aria-label="Carousel principal"
 >
 	<CarouselContent>
@@ -71,7 +77,7 @@
 							srcset={image.srcset}
 							{sizes}
 							alt={image.alt}
-							loading={Math.abs(index - currentIndex) <= 1 ? 'eager' : 'lazy'}
+							loading={Math.abs(index - activeIndex) <= 1 ? 'eager' : 'lazy'}
 							class="max-h-full max-w-full object-contain"
 						/>
 					</picture>
@@ -81,7 +87,13 @@
 	</CarouselContent>
 
 	{#if images.length > 1}
-		<CarouselPrevious class="hidden md:flex" />
-		<CarouselNext class="hidden md:flex" />
+		<CarouselPrevious
+			class="hidden md:flex"
+			href={hasPrevious(images, activeIndex) ? images[activeIndex - 1].href : undefined}
+		/>
+		<CarouselNext
+			class="hidden md:flex"
+			href={hasNext(images, activeIndex) ? images[activeIndex + 1].href : undefined}
+		/>
 	{/if}
 </Carousel>

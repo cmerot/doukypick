@@ -132,3 +132,10 @@ export function getAspectRatio(ratio: ImageAspectRatio, orientation: ImageOrient
 	if (orientation == 'landscape') return ratio;
 	return ratio.split('/').reverse().join('/');
 }
+
+export function preventDefault(fn: () => void) {
+	return function (event: Event) {
+		event.preventDefault();
+		fn();
+	};
+}
