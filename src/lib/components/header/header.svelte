@@ -8,6 +8,13 @@
 	import { createSrcset } from '$lib/utils';
 	import siteSettings from '$content/settings/settings.json';
 
+	// Props
+	interface Props {
+		isAuthenticated?: boolean;
+	}
+
+	let { isAuthenticated = false }: Props = $props();
+
 	// Local state for mobile menu
 	let mobileMenuOpen = $state(false);
 
@@ -53,6 +60,20 @@
 						</NavigationMenu.Link>
 					</NavigationMenu.Item>
 				{/each}
+				{#if isAuthenticated}
+					<NavigationMenu.Item>
+						<NavigationMenu.Link
+							href="/admin"
+							class="text-lg font-medium transition-colors hover:text-primary {isActivePage(
+								'/admin'
+							)
+								? 'text-primary'
+								: 'text-foreground/60'}"
+						>
+							Admin
+						</NavigationMenu.Link>
+					</NavigationMenu.Item>
+				{/if}
 			</NavigationMenu.List>
 		</NavigationMenu.Root>
 
@@ -84,6 +105,19 @@
 								{item.label}
 							</a>
 						{/each}
+						{#if isAuthenticated}
+							<a
+								href="/admin"
+								class="block rounded-md px-3 py-2 text-base font-medium transition-colors hover:bg-accent hover:text-primary {isActivePage(
+									'/admin'
+								)
+									? 'bg-accent text-primary'
+									: 'text-foreground'}"
+								onclick={() => (mobileMenuOpen = false)}
+							>
+								Admin
+							</a>
+						{/if}
 					</div>
 				</Sheet.Content>
 			</Sheet.Root>

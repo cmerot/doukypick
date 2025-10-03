@@ -22,7 +22,7 @@ export async function fetchGoogleReviews(fetch: typeof globalThis.fetch): Promis
 
 		if (!response.ok) {
 			const errorText = await response.text();
-			console.warn(`Échec de récupération des avis: ${response.status} - ${errorText}`);
+			console.warn(`Échec de récupération des avis: ${response.status}`);
 			return { reviews: [], rating: 0, totalReviews: 0 };
 		}
 

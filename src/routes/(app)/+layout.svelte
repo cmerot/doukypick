@@ -10,7 +10,7 @@
 
 <div class="relative flex min-h-screen flex-col">
 	<div class="container mx-auto max-w-4xl">
-		<Header />
+		<Header isAuthenticated={data.isAuthenticated} />
 		{#key data.pathname}
 			<main
 				class="px-4 py-8 sm:px-4 md:px-20"
