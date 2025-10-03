@@ -3,15 +3,24 @@ import type { PageServerLoad } from './$types';
 import type { Gallery, ImageData, GalleryData } from '$lib/components/gallery/types';
 import { parsePhotoSlug } from '$lib/components/gallery/utils';
 import { processImage } from '$lib/components/gallery/utils';
-import { galleries } from '$content/galleries';
 
 export const load: PageServerLoad = async ({ params }) => {
 	const { gallery: galleryId, slug } = params;
 
-	// Load gallery with error handling
+	// Load specific gallery file with error handling
 	let gallery: Gallery;
 	try {
-		gallery = galleries[galleryId as keyof typeof galleries];
+		const modules = import.meta.glob('$content/galleries/**/*.json', { eager: false });
+		const modulePath = `/src/content/galleries/${galleryId}.json`;
+
+		const matchingModule = Object.keys(modules).find((path) => path === modulePath);
+
+		if (!matchingModule) {
+			throw error(404, `Gallery "${galleryId}" not found`);
+		}
+
+		const galleryModule = (await modules[matchingModule]()) as { default: Gallery };
+		gallery = galleryModule.default;
 	} catch {
 		throw error(404, `Gallery "${galleryId}" not found`);
 	}
