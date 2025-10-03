@@ -49,6 +49,7 @@
 			dragFree: true,
 			startIndex: currentIndex
 		}}
+		aria-label="Carousel des vignettes"
 	>
 		<CarouselContent class="-ml-2">
 			{#each images as image, index (image.uuid)}

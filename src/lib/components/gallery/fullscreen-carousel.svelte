@@ -57,7 +57,11 @@
 </script>
 
 <Overlay {open} onclose={handleClose}>
-	<Carousel setApi={(emblaApi) => (api = emblaApi)} opts={{ startIndex: currentIndex }}>
+	<Carousel
+		setApi={(emblaApi) => (api = emblaApi)}
+		opts={{ startIndex: currentIndex }}
+		aria-label="Carousel plein écran"
+	>
 		<CarouselContent>
 			{#each images as image, index (image.uuid)}
 				<CarouselItem class="relative flex h-dvh w-screen items-center justify-center">

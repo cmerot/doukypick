@@ -55,6 +55,7 @@
 	class={cn('', className)}
 	setApi={(emblaApi) => (api = emblaApi)}
 	opts={{ startIndex: currentIndex }}
+	aria-label="Carousel principal"
 >
 	<CarouselContent>
 		{#each images as image, index (image.uuid)}
