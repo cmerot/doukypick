@@ -3,6 +3,7 @@
 	import ThumbnailCarousel from '$lib/components/gallery/thumbnail-carousel.svelte';
 	import { mockProcessedImages } from './mock-data';
 	import { fn } from 'storybook/test';
+	import WidthDecorator from '../WidthDecorator.svelte';
 
 	const { Story } = defineMeta({
 		title: 'Components/Gallery/ThumbnailCarousel',
@@ -15,7 +16,9 @@
 		},
 		args: {
 			onSelect: fn()
-		}
+		},
+		// @ts-ignore
+		decorators: [() => WidthDecorator]
 	});
 </script>
 

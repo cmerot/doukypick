@@ -4,6 +4,6 @@
 	const { children }: { children: Snippet } = $props();
 </script>
 
-<div class="m-auto max-w-xl border-2 border-dashed border-gray-400 p-4">
+<div class="m-auto max-w-xl bg-background p-20">
 	{@render children()}
 </div>
