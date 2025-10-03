@@ -15,7 +15,6 @@ describe('contactFormSchema', () => {
 		size: 'medium',
 		placement: 'bras',
 		budget: '500-1000',
-		photos: [],
 		timeline: 'dans 3 mois',
 		additionalComments: ''
 	};
@@ -261,45 +260,6 @@ describe('contactFormSchema', () => {
 		});
 	});
 
-	describe('photos field', () => {
-		it('accepts empty photos array', () => {
-			const result = contactFormSchema.safeParse({
-				...validData,
-				photos: []
-			});
-			expect(result.success).toBe(true);
-		});
-
-		it('accepts array of File instances', () => {
-			const mockFile = new File(['content'], 'test.jpg', { type: 'image/jpeg' });
-			const result = contactFormSchema.safeParse({
-				...validData,
-				photos: [mockFile]
-			});
-			expect(result.success).toBe(true);
-		});
-
-		it('accepts multiple files', () => {
-			const mockFiles = [
-				new File(['content1'], 'test1.jpg', { type: 'image/jpeg' }),
-				new File(['content2'], 'test2.png', { type: 'image/png' })
-			];
-			const result = contactFormSchema.safeParse({
-				...validData,
-				photos: mockFiles
-			});
-			expect(result.success).toBe(true);
-		});
-
-		it('rejects non-File items in photos array', () => {
-			const result = contactFormSchema.safeParse({
-				...validData,
-				photos: ['not-a-file']
-			});
-			expect(result.success).toBe(false);
-		});
-	});
-
 	describe('complete form validation', () => {
 		it('validates complete valid form', () => {
 			const completeData = {
@@ -316,7 +276,6 @@ describe('contactFormSchema', () => {
 				size: '20x15 cm',
 				placement: 'Épaule droite',
 				budget: '1000-1500 euros',
-				photos: [new File(['ref1'], 'reference1.jpg', { type: 'image/jpeg' })],
 				timeline: 'Été 2025',
 				additionalComments: 'Disponible les weekends uniquement'
 			};
@@ -339,7 +298,6 @@ describe('contactFormSchema', () => {
 				size: '',
 				placement: '',
 				budget: '',
-				photos: [],
 				timeline: '',
 				additionalComments: ''
 			};
