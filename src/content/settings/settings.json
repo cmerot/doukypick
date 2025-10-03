@@ -1,0 +1,25 @@
+{
+  "title": "Doukypick",
+  "menu": [
+    {
+      "label": "Tatouages",
+      "href": "/"
+    },
+    {
+      "label": "À propos",
+      "href": "/a-propos"
+    },
+    {
+      "label": "Le salon",
+      "href": "/salon-le-ptit-cap"
+    },
+    {
+      "label": "Soins",
+      "href": "/soins"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact"
+    }
+  ]
+}

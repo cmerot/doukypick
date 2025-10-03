@@ -3,6 +3,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import { page } from '$app/state';
 	import { createSrcset } from '$lib/utils';
+	import siteSettings from '$content/settings/settings.json';
 
 	// Props
 	interface Props {
@@ -12,13 +13,7 @@
 	let { mobileMenuOpen = $bindable() }: Props = $props();
 
 	// Navigation items
-	const navigationItems = [
-		{ href: '/', label: 'Tatouages' },
-		{ href: '/a-propos', label: 'À propos' },
-		{ href: '/salon-le-ptit-cap', label: 'Le salon' },
-		{ href: '/soins', label: 'Soins' },
-		{ href: '/contact', label: 'Contact' }
-	];
+	const navigationItems = siteSettings.menu;
 
 	// Toggle mobile menu
 	function toggleMobileMenu() {

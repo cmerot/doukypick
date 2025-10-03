@@ -24,6 +24,54 @@ export default defineConfig({
 	schema: {
 		collections: [
 			{
+				label: 'Paramètres du site',
+				name: 'settings',
+				path: 'src/content/settings',
+				format: 'json',
+				fields: [
+					{
+						type: 'string',
+						label: 'Titre du site',
+						name: 'title'
+					},
+					{
+						type: 'object',
+						name: 'menu',
+						label: 'Menu principal',
+						list: true,
+						ui: {
+							defaultItem: {
+								alignment: 'center',
+								width: 'large'
+							},
+							itemProps: (item) => ({
+								label: item.label
+							})
+						},
+						fields: [
+							{
+								type: 'string',
+								name: 'label',
+								label: 'Label',
+								required: true
+							},
+							{
+								type: 'string',
+								name: 'href',
+								label: 'URL',
+								required: true
+							}
+						]
+					}
+				],
+				ui: {
+					allowedActions: {
+						create: false,
+						delete: false
+					}
+				}
+			},
+			{
 				name: 'page',
 				label: 'Pages',
 				path: 'src/content/pages',
