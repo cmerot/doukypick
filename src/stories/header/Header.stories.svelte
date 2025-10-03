@@ -5,37 +5,14 @@
 	const { Story } = defineMeta({
 		title: 'Components/Header/Header',
 		component: Header,
-		tags: ['autodocs'],
-		argTypes: {
-			mobileMenuOpen: {
-				control: { type: 'boolean' }
-			}
-		}
+		tags: ['autodocs']
 	});
 </script>
 
-<Story
-	name="Desktop View"
-	args={{
-		mobileMenuOpen: false
-	}}
-/>
+<Story name="Desktop View" />
 
 <Story
-	name="Mobile Menu Closed"
-	args={{
-		mobileMenuOpen: false
-	}}
-	globals={{
-		viewport: { value: 'mobile1', isRotated: false }
-	}}
-/>
-
-<Story
-	name="Mobile Menu Open"
-	args={{
-		mobileMenuOpen: true
-	}}
+	name="Mobile View"
 	globals={{
 		viewport: { value: 'mobile1', isRotated: false }
 	}}

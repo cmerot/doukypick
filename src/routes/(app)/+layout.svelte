@@ -6,24 +6,11 @@
 	import ThemeSelector from '$lib/components/theme-selector.svelte';
 
 	let { children, data }: { children: Snippet; data: LayoutData } = $props();
-
-	// Store for mobile menu state
-	let mobileMenuOpen = $state(false);
-
-	// Close mobile menu when clicking outside
-	function handleOutsideClick(event: MouseEvent) {
-		const target = event.target as HTMLElement;
-		if (!target.closest('[data-mobile-menu]') && !target.closest('[data-menu-toggle]')) {
-			mobileMenuOpen = false;
-		}
-	}
 </script>
-
-<svelte:document on:click={handleOutsideClick} />
 
 <div class="relative flex min-h-screen flex-col">
 	<div class="container mx-auto max-w-4xl">
-		<Header bind:mobileMenuOpen />
+		<Header />
 		{#key data.pathname}
 			<main
 				class="px-4 py-8 sm:px-4 md:px-20"
