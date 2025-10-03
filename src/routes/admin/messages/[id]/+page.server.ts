@@ -6,20 +6,6 @@ import { SUPABASE_URL, SUPABASE_ANON_KEY } from '$env/static/private';
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 export const load: PageServerLoad = async ({ params, cookies, url }) => {
-	// Check authentication cookie
-	const authToken = cookies.get('admin_auth');
-	if (authToken !== 'authenticated') {
-		// Store the intended redirect URL in a cookie
-		cookies.set('admin_redirect', url.pathname, {
-			path: '/',
-			maxAge: 60 * 10, // 10 minutes
-			httpOnly: true,
-			secure: true,
-			sameSite: 'strict'
-		});
-		throw redirect(302, '/admin/login');
-	}
-	console.log(params.id);
 	const submissionId = params.id;
 	if (!submissionId) {
 		throw error(404, 'ID de soumission invalide');

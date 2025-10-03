@@ -84,7 +84,7 @@
 		<!-- Header -->
 		<div class="mb-8">
 			<div class="mb-4 flex items-center justify-between">
-				<Button variant="ghost" onclick={() => goto('/admin')}>
+				<Button variant="ghost" href="/admin/messages">
 					<ArrowLeft class="mr-2 h-4 w-4" />
 					Retour à la liste
 				</Button>

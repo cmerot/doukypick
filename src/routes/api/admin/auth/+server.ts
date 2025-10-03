@@ -1,5 +1,6 @@
 import { json } from '@sveltejs/kit';
 import { ADMIN_SECRET } from '$env/static/private';
+import { generateSessionToken } from '$lib/server/auth';
 import type { RequestHandler } from './$types';
 
 export const POST: RequestHandler = async ({ request, cookies }) => {
@@ -8,8 +9,11 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 
 		// Check if password matches the secret
 		if (password === ADMIN_SECRET) {
+			// Generate a cryptographically secure session token
+			const sessionToken = generateSessionToken();
+
 			// Set secure HTTP-only cookie
-			cookies.set('admin_auth', 'authenticated', {
+			cookies.set('admin_auth', sessionToken, {
 				path: '/',
 				httpOnly: true,
 				secure: process.env.NODE_ENV === 'production',
@@ -18,9 +22,9 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
 			});
 			return json({ success: true });
 		} else {
-			return json({ error: 'Invalid password' }, { status: 401 });
+			return json({ error: 'Mauvais mot de passe' }, { status: 401 });
 		}
 	} catch (error) {
-		return json({ error: 'Invalid request' }, { status: 400 });
+		return json({ error: 'Mauvaise requête' }, { status: 400 });
 	}
 };

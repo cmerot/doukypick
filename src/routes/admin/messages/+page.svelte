@@ -124,11 +124,7 @@
 							{#each data.submissions as submission}
 								<tr class="border-b transition-colors hover:bg-muted/50">
 									<td class="px-4 py-3">
-										<Button
-											variant="outline"
-											size="sm"
-											onclick={() => goto(`/admin/messages/${submission.id}`)}
-										>
+										<Button variant="outline" size="sm" href="/admin/messages/{submission.id}">
 											<Eye class="mr-1 h-3 w-3" />
 											Voir
 										</Button>

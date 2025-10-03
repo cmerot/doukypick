@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { invalidateAll } from '$app/navigation';
 	import { Button } from '$lib/components/ui/button';
 	import * as Card from '$lib/components/ui/card';
@@ -27,22 +26,7 @@
 			if (response.ok) {
 				password = '';
 				error = '';
-				await invalidateAll(); // Refresh all server data including authentication state
-
-				// Check if there's a redirect URL stored
-				const redirectResponse = await fetch('/api/admin/redirect', {
-					method: 'GET'
-				});
-
-				if (redirectResponse.ok) {
-					const redirectData = await redirectResponse.json();
-					if (redirectData.redirectUrl) {
-						goto(redirectData.redirectUrl);
-						return;
-					}
-				}
-
-				goto('/admin');
+				await invalidateAll(); // Refresh all server data, triggers +page.server.ts which handles redirect
 			} else {
 				error = result.error || "Échec de l'authentification";
 			}
@@ -71,6 +55,9 @@
 					<Label for="password">Mot de passe</Label>
 					<Input type="password" bind:value={password} required disabled={loading} />
 				</div>
+				{#if error}
+					<p class="text-sm text-destructive">{error}</p>
+				{/if}
 			</div>
 		</Card.Content>
 		<Card.Footer>
