@@ -3,11 +3,8 @@
 	import { createSrcset } from '$lib/utils';
 	import { formatFileSize } from './utils';
 	import { Label } from '$lib/components/ui/label';
-	import * as Form from '$lib/components/ui/form';
-	import type { SuperForm } from 'sveltekit-superforms';
-	import type { ContactFormType } from '$lib/schemas/contact-form';
 
-	let { form, resetPhotos = $bindable() }: { form: SuperForm<ContactFormType>; resetPhotos?: () => void } = $props();
+	let { resetPhotos = $bindable() }: { resetPhotos?: () => void } = $props();
 
 	let fileInput = $state<HTMLInputElement | undefined>();
 	let photos = $state<File[]>([]);
@@ -63,10 +60,10 @@
 	}
 </script>
 
-<Form.Fieldset {form} name="photos">
-	<Form.Legend>Photos du projet</Form.Legend>
+<fieldset name="photos">
+	<legend>Photos du projet</legend>
 	<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-		<Form.Description class="order-1 prose md:order-2">
+		<div class="order-1 prose text-sm text-muted-foreground md:order-2">
 			<p>Tu peux importer ici tes photos.</p>
 			<p>Images qui inspirent ton projet, et/ou zone de ton corps que tu souhaites tatouer.</p>
 			<p class="mb-1.5 font-medium">
@@ -85,7 +82,7 @@
 				aussi à ce que ton appareil soit bien parallèle à la zone à tatouer, pour éviter les
 				"déformations" liées à la perspective/angles de vue.
 			</p>
-		</Form.Description>
+		</div>
 		<div class="order-2 md:order-1">
 			<!-- Upload Area -->
 			{#if photos.length < MAX_FILES}
@@ -153,6 +150,4 @@
 			{/if}
 		</div>
 	</div>
-
-	<Form.FieldErrors />
-</Form.Fieldset>
+</fieldset>

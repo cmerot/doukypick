@@ -59,7 +59,9 @@ export const mockGallery: Gallery = {
 	slug: 'salon',
 	closeUrl: '/salon-le-ptit-cap',
 	initialIndex: 0,
-	images: mockImages
+	images: mockImages,
+	orientation: 'landscape',
+	aspectRatio: '3/2'
 };
 
 // Mock processed images for components that need ImageData[]

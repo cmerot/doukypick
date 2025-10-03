@@ -323,7 +323,7 @@
 	</Form.Field>
 
 	<!-- Photo Upload -->
-	<PhotoUpload {form} bind:resetPhotos />
+	<PhotoUpload bind:resetPhotos />
 
 	<!-- Timeline -->
 	<Form.Fieldset {form} name="timeline">

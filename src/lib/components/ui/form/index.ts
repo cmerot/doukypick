@@ -17,7 +17,7 @@ export {
 	Button,
 	FieldErrors,
 	Description,
-	Fieldset,
+	Fieldset as fieldset,
 	Legend,
 	ElementField,
 	//
