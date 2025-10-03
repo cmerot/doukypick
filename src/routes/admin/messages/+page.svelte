@@ -4,7 +4,7 @@
 	import { Badge } from '$lib/components/ui/badge';
 	import { Search, Mail, Image, ChevronLeft, ChevronRight, Eye } from 'lucide-svelte';
 	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import type { PageData } from './$types';
 
 	// Props from page.server.ts
@@ -26,7 +26,7 @@
 
 	// Handle search
 	function handleSearch() {
-		const url = new URL($page.url);
+		const url = new URL(page.url);
 		if (searchTerm.trim()) {
 			url.searchParams.set('search', searchTerm.trim());
 		} else {
@@ -38,7 +38,7 @@
 
 	// Handle pagination
 	function goToPage(pageNum: number) {
-		const url = new URL($page.url);
+		const url = new URL(page.url);
 		url.searchParams.set('page', pageNum.toString());
 		goto(url.toString());
 	}
@@ -46,16 +46,10 @@
 	// Clear search
 	function clearSearch() {
 		searchTerm = '';
-		const url = new URL($page.url);
+		const url = new URL(page.url);
 		url.searchParams.delete('search');
 		url.searchParams.delete('page');
 		goto(url.toString());
-	}
-
-	// Truncate text
-	function truncateText(text: string, maxLength: number = 100): string {
-		if (text.length <= maxLength) return text;
-		return text.substring(0, maxLength) + '...';
 	}
 </script>
 
@@ -133,7 +127,7 @@
 										<Button
 											variant="outline"
 											size="sm"
-											onclick={() => goto(`/admin/${submission.id}`)}
+											onclick={() => goto(`/admin/messages/${submission.id}`)}
 										>
 											<Eye class="mr-1 h-3 w-3" />
 											Voir

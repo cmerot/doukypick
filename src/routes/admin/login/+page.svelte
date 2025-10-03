@@ -63,9 +63,7 @@
 	<Card.Root>
 		<Card.Header>
 			<Card.Title>Authentification requise</Card.Title>
-			<Card.Description>
-				<p>Saisis ton mot de passe pour accéder à l'admin.</p>
-			</Card.Description>
+			<Card.Description>Saisis ton mot de passe pour accéder à l'admin.</Card.Description>
 		</Card.Header>
 		<Card.Content>
 			<div class="flex flex-col gap-6">

@@ -48,7 +48,7 @@ describe('telegram service', () => {
 			expect(messageBody.text).toContain('Tatouage personnalisé');
 			expect(messageBody.text).toContain('Je souhaite un tatouage de dragon sur le bras');
 			expect(messageBody.text).toContain('#123');
-			expect(messageBody.text).toContain(`${baseUrl}/admin/123`);
+			expect(messageBody.text).toContain(`${baseUrl}/admin/messages/123`);
 		});
 
 		it('formats isAdult as "Oui ✅" when value is "yes"', async () => {

@@ -31,6 +31,6 @@ export const load: PageLoad = async ({ params, parent }) => {
 			component: post.default
 		};
 	} catch (e) {
-		throw error(404, `Post not found: ${slug}`);
+		throw error(404, `Cette page n'a pas été trouvée: ${slug}`);
 	}
 };

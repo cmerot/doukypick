@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
 import { createClient } from '@supabase/supabase-js';
-import { error, redirect } from '@sveltejs/kit';
+import { error, isHttpError, redirect } from '@sveltejs/kit';
 import { SUPABASE_URL, SUPABASE_ANON_KEY } from '$env/static/private';
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -25,8 +25,6 @@ export const load: PageServerLoad = async ({ params, cookies, url }) => {
 		throw error(404, 'ID de soumission invalide');
 	}
 
-	console.log('🔍 Loading submission:', submissionId);
-
 	try {
 		const { data: submission, error: fetchError } = await supabase
 			.from('contact_submissions')
@@ -35,20 +33,23 @@ export const load: PageServerLoad = async ({ params, cookies, url }) => {
 			.single();
 
 		if (fetchError) {
-			console.error('❌ Supabase fetch error:', fetchError);
+			console.error('Supabase fetch error:', fetchError);
 			if (fetchError.code === 'PGRST116') {
 				throw error(404, 'Soumission non trouvée');
 			}
-			throw error(500, 'Erreur lors du chargement de la soumission');
+			throw error(500, fetchError.message);
 		}
 
-		console.log('✅ Loaded submission:', submission.id);
+		console.log('Loaded submission:', submission.id);
 
 		return {
 			submission
 		};
 	} catch (err) {
-		console.error('❌ Error loading submission:', err);
+		console.error('Error loading submission:', err);
+
+		if (isHttpError(err)) throw err;
+
 		throw error(500, 'Erreur lors du chargement de la soumission');
 	}
 };

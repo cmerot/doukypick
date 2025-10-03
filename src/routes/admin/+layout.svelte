@@ -1,22 +1,10 @@
 <script lang="ts">
-	import { invalidateAll } from '$app/navigation';
 	import type { LayoutData } from './$types';
 	import HeaderAdmin from '$lib/components/header/header-admin.svelte';
 	import { fade } from 'svelte/transition';
 	import ThemeSelector from '$lib/components/theme-selector.svelte';
 
 	let { children, data }: { children: any; data: LayoutData } = $props();
-
-	async function handleLogout() {
-		try {
-			await fetch('/api/admin/logout', {
-				method: 'POST'
-			});
-			await invalidateAll(); // Refresh all server data to clear authentication state
-		} catch (e) {
-			console.error('Logout error:', e);
-		}
-	}
 </script>
 
 <div class="relative flex min-h-screen flex-col">

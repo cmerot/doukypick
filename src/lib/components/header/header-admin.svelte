@@ -20,7 +20,7 @@
 
 	// Navigation items
 	const allNavigationItems = [
-		{ href: '/admin', label: 'Messages', requiresAuth: true },
+		{ href: '/admin/messages', label: 'Messages', requiresAuth: true },
 		{ href: '/tina/index.html', label: 'TinaCMS', requiresAuth: true },
 		{ href: '/', label: 'Site', requiresAuth: false }
 	];

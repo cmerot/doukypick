@@ -82,7 +82,7 @@ ${data.photo_urls?.length ? `📸 *Photos:* ${data.photo_urls.length} fichier(s)
 🆔 *ID:* #${data.submissionId}
 ⏰ *Reçu le:* ${new Date().toLocaleString('fr-FR')}
 
-🔗 *Lien direct:* ${baseUrl}/admin/${data.submissionId}`;
+🔗 *Lien direct:* ${baseUrl}/admin/messages/${data.submissionId}`;
 }
 
 export async function sendTelegramNotification(
