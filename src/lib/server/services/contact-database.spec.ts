@@ -126,7 +126,10 @@ describe('contact-database service', () => {
 
 			expect(console.log).toHaveBeenCalledWith('💾 Saving to Supabase...');
 			expect(console.log).toHaveBeenCalledWith('📝 Submission data:', baseSubmissionData);
-			expect(console.log).toHaveBeenCalledWith('✅ Contact form submission saved:', savedSubmission);
+			expect(console.log).toHaveBeenCalledWith(
+				'✅ Contact form submission saved:',
+				savedSubmission
+			);
 		});
 	});
 });

@@ -54,10 +54,7 @@ describe('telegram service', () => {
 		it('formats isAdult as "Oui ✅" when value is "yes"', async () => {
 			mockFetch.mockResolvedValue({ ok: true, text: async () => 'OK' });
 
-			await sendTelegramNotification(
-				{ ...baseSubmissionData, isAdult: 'yes' },
-				baseUrl
-			);
+			await sendTelegramNotification({ ...baseSubmissionData, isAdult: 'yes' }, baseUrl);
 
 			const messageBody = JSON.parse(mockFetch.mock.calls[0][1].body);
 			expect(messageBody.text).toContain('🔞 *Majeur:* Oui ✅');
@@ -66,10 +63,7 @@ describe('telegram service', () => {
 		it('formats isAdult as "Non ❌" when value is "no"', async () => {
 			mockFetch.mockResolvedValue({ ok: true, text: async () => 'OK' });
 
-			await sendTelegramNotification(
-				{ ...baseSubmissionData, isAdult: 'no' },
-				baseUrl
-			);
+			await sendTelegramNotification({ ...baseSubmissionData, isAdult: 'no' }, baseUrl);
 
 			const messageBody = JSON.parse(mockFetch.mock.calls[0][1].body);
 			expect(messageBody.text).toContain('🔞 *Majeur:* Non ❌');
@@ -138,10 +132,7 @@ describe('telegram service', () => {
 		it('sends photos separately after main message', async () => {
 			const dataWithPhotos: TelegramSubmissionData = {
 				...baseSubmissionData,
-				photo_urls: [
-					'https://example.com/photo1.jpg',
-					'https://example.com/photo2.jpg'
-				]
+				photo_urls: ['https://example.com/photo1.jpg', 'https://example.com/photo2.jpg']
 			};
 
 			mockFetch
@@ -193,9 +184,7 @@ describe('telegram service', () => {
 				text: async () => 'Bad Request'
 			});
 
-			await expect(
-				sendTelegramNotification(baseSubmissionData, baseUrl)
-			).resolves.not.toThrow();
+			await expect(sendTelegramNotification(baseSubmissionData, baseUrl)).resolves.not.toThrow();
 		});
 
 		it('logs errors to console when notification fails', async () => {
@@ -204,10 +193,7 @@ describe('telegram service', () => {
 
 			await sendTelegramNotification(baseSubmissionData, baseUrl);
 
-			expect(console.error).toHaveBeenCalledWith(
-				'❌ Error sending Telegram notification:',
-				error
-			);
+			expect(console.error).toHaveBeenCalledWith('❌ Error sending Telegram notification:', error);
 		});
 
 		it('does not throw when sendPhoto fails', async () => {
@@ -220,9 +206,7 @@ describe('telegram service', () => {
 				.mockResolvedValueOnce({ ok: true, text: async () => 'OK' }) // sendMessage succeeds
 				.mockResolvedValueOnce({ ok: false, text: async () => 'Error' }); // sendPhoto fails
 
-			await expect(
-				sendTelegramNotification(dataWithPhotos, baseUrl)
-			).resolves.not.toThrow();
+			await expect(sendTelegramNotification(dataWithPhotos, baseUrl)).resolves.not.toThrow();
 		});
 	});
 });

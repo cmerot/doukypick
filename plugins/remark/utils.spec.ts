@@ -58,10 +58,7 @@ describe('findScriptTagIndex', () => {
 	it('finds script tag at index 0', () => {
 		const tree: ASTNode = {
 			type: 'root',
-			children: [
-				{ type: 'html', value: '<script>const x = 1</script>' },
-				{ type: 'paragraph' }
-			]
+			children: [{ type: 'html', value: '<script>const x = 1</script>' }, { type: 'paragraph' }]
 		};
 		expect(findScriptTagIndex(tree)).toBe(0);
 	});
@@ -132,10 +129,7 @@ describe('registerScriptRequirements', () => {
 
 	it('adds multiple imports', () => {
 		const file: { data: FileData } = { data: {} };
-		registerScriptRequirements(file, [
-			"import { foo } from 'bar'",
-			"import { baz } from 'qux'"
-		]);
+		registerScriptRequirements(file, ["import { foo } from 'bar'", "import { baz } from 'qux'"]);
 
 		expect(file.data.scriptRequirements!.imports.size).toBe(2);
 	});
@@ -150,11 +144,7 @@ describe('registerScriptRequirements', () => {
 
 	it('adds both imports and propsInit', () => {
 		const file: { data: FileData } = { data: {} };
-		registerScriptRequirements(
-			file,
-			["import { foo } from 'bar'"],
-			['let { title } = $props()']
-		);
+		registerScriptRequirements(file, ["import { foo } from 'bar'"], ['let { title } = $props()']);
 
 		expect(file.data.scriptRequirements!.imports.size).toBe(1);
 		expect(file.data.scriptRequirements!.propsInit.size).toBe(1);

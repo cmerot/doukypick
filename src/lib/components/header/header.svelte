@@ -43,7 +43,9 @@
 					<NavigationMenu.Item>
 						<NavigationMenu.Link
 							href={item.href}
-							class="text-lg font-medium transition-colors hover:text-primary {isActivePage(item.href)
+							class="text-lg font-medium transition-colors hover:text-primary {isActivePage(
+								item.href
+							)
 								? 'text-primary'
 								: 'text-foreground/60'}"
 						>

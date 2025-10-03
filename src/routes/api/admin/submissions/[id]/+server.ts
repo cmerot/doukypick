@@ -38,7 +38,11 @@ export const DELETE: RequestHandler = async ({ params, cookies }) => {
 
 		// Delete associated images from Vercel Blob storage if they exist
 		if (submission.photo_urls && submission.photo_urls.length > 0) {
-			console.log('🗑️ Deleting', submission.photo_urls.length, 'associated images from Vercel Blob');
+			console.log(
+				'🗑️ Deleting',
+				submission.photo_urls.length,
+				'associated images from Vercel Blob'
+			);
 
 			// Delete each image from Vercel Blob
 			for (const url of submission.photo_urls) {
@@ -71,7 +75,6 @@ export const DELETE: RequestHandler = async ({ params, cookies }) => {
 			success: true,
 			message: 'Soumission supprimée avec succès'
 		});
-
 	} catch (err) {
 		console.error('❌ Error in DELETE handler:', err);
 

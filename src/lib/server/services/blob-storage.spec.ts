@@ -88,12 +88,8 @@ describe('blob-storage service', () => {
 		});
 
 		it('generates unique filenames for files uploaded at different times', async () => {
-			vi.spyOn(Date, 'now')
-				.mockReturnValueOnce(1000000000)
-				.mockReturnValueOnce(1000000001);
-			vi.spyOn(Math, 'random')
-				.mockReturnValueOnce(0.111111)
-				.mockReturnValueOnce(0.222222);
+			vi.spyOn(Date, 'now').mockReturnValueOnce(1000000000).mockReturnValueOnce(1000000001);
+			vi.spyOn(Math, 'random').mockReturnValueOnce(0.111111).mockReturnValueOnce(0.222222);
 
 			const mockFile1 = createMockFile('photo.jpg', 'image/jpeg', 'content');
 			const mockFile2 = createMockFile('photo.jpg', 'image/jpeg', 'content');
