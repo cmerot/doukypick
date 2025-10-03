@@ -32,9 +32,14 @@ export default defineConfig({
 					{
 						type: 'string',
 						name: 'title',
-						label: 'Titre SEO',
+						label: "Titre (moteurs de recherche et titre de l'onglet du navigateur)",
 						isTitle: true,
 						required: true
+					},
+					{
+						type: 'string',
+						name: 'description',
+						label: 'Description (moteurs de recherche)'
 					},
 					{
 						type: 'string',
@@ -44,8 +49,8 @@ export default defineConfig({
 					},
 					{
 						type: 'string',
-						name: 'description',
-						label: 'Description'
+						name: 'page_subtitle',
+						label: 'Sous-titre de la page'
 					},
 					{
 						type: 'rich-text',
