@@ -107,10 +107,9 @@
 						<Sheet.Title>Menu Admin</Sheet.Title>
 						<Sheet.Description>Navigation administrative</Sheet.Description>
 					</Sheet.Header>
-					<Separator class="my-4" />
-					<div class="flex flex-col space-y-3">
+					<div class="mx-2 flex flex-col space-y-2">
 						{#each navigationItems as item}
-							<NavigationMenu.Link
+							<a
 								href={item.href}
 								data-sveltekit-reload={item.external}
 								class="block rounded-md px-3 py-2 text-base font-medium transition-colors hover:bg-accent hover:text-primary {isActivePage(
@@ -121,11 +120,11 @@
 								onclick={() => (mobileMenuOpen = false)}
 							>
 								{item.label}
-							</NavigationMenu.Link>
+							</a>
 						{/each}
 						{#if isAuthenticated}
-							<Separator class="my-2" />
-							<Button onclick={handleLogout} class="justify-normal">
+							<Separator />
+							<Button variant="ghost" onclick={handleLogout}>
 								<LogOut />
 								Se déconnecter
 							</Button>

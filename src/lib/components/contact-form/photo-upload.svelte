@@ -44,7 +44,7 @@
 				}
 
 				if (!isValidSize) {
-					alert(`${file.name} est trop volumineux (max 10MB)`);
+					alert(`${file.name} est trop volumineux (max 10 Mo)`);
 					return false;
 				}
 
@@ -122,7 +122,7 @@
 </script>
 
 <fieldset name="photos">
-	<legend>Photos du projet</legend>
+	<legend class="mb-2 text-sm font-medium">Photos du projet</legend>
 	<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 		<div class="order-1 prose text-sm text-muted-foreground md:order-2">
 			<p>Tu peux importer ici tes photos.</p>
@@ -170,7 +170,7 @@
 						<span class="font-medium text-primary hover:underline"> cliquez pour parcourir </span>
 					</p>
 					<p class="text-muted-foreground">
-						Max {MAX_FILES} fichiers, 10 MB par fichier ({photos.length}/{MAX_FILES} utilisés)
+						Max {MAX_FILES} fichiers, 10 Mo par fichier ({photos.length}/{MAX_FILES} utilisés)
 					</p>
 				</Label>
 			{/if}

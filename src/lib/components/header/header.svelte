@@ -90,8 +90,7 @@
 					<Sheet.Header>
 						<Sheet.Title>Menu</Sheet.Title>
 					</Sheet.Header>
-					<Separator class="my-4" />
-					<div class="flex flex-col space-y-3">
+					<div class="mx-2 flex flex-col space-y-2">
 						{#each navigationItems as item}
 							<a
 								href={item.href}
@@ -108,11 +107,7 @@
 						{#if isAuthenticated}
 							<a
 								href="/admin"
-								class="block rounded-md px-3 py-2 text-base font-medium transition-colors hover:bg-accent hover:text-primary {isActivePage(
-									'/admin'
-								)
-									? 'bg-accent text-primary'
-									: 'text-foreground'}"
+								class="block rounded-md px-3 py-2 text-base font-medium text-foreground transition-colors hover:bg-accent hover:text-primary"
 								onclick={() => (mobileMenuOpen = false)}
 							>
 								Admin

@@ -9,7 +9,6 @@
 	import { CircleCheck, CircleAlert, Loader, Send } from 'lucide-svelte';
 	import PhotoUpload from './photo-upload.svelte';
 	import type { SuperValidated } from 'sveltekit-superforms';
-	import { toast } from 'svelte-sonner';
 	let { data }: { data: SuperValidated<ContactFormType> } = $props();
 
 	const form = superForm(data, {
@@ -19,7 +18,6 @@
 			if (result.type === 'success' && result.data?.success) {
 				successMessage = result.data.message;
 				generalError = undefined;
-				toast.success(successMessage || 'OK');
 				window.scrollTo({ top: 0, behavior: 'smooth' });
 				// Reset photos when form submission is successful
 				if (resetPhotos) {
@@ -28,7 +26,6 @@
 			} else if (result.type === 'failure') {
 				generalError = result.data?.generalError || result.data?.photoError;
 				successMessage = undefined;
-				toast.error(generalError || 'Unknown error');
 				window.scrollTo({ top: 0, behavior: 'smooth' });
 			}
 		}
@@ -41,48 +38,38 @@
 	let resetPhotos: (() => void) | undefined = $state();
 </script>
 
-<!-- {#if successMessage}
-	<div class="mb-6 flex items-center space-x-3 rounded-lg border border-green-200 bg-green-50 p-4">
-		<CircleCheck class="h-5 w-5 text-green-600" />
-		<p class="text-green-800">{successMessage}</p>
+{#if successMessage}
+	<div class="mb-6 flex items-center space-x-3 rounded-lg bg-success p-4 text-success-foreground">
+		<CircleCheck class="h-5 w-5" />
+		<p>{successMessage}</p>
 	</div>
 {/if}
--->
+
 {#if generalError}
-	<div class="mb-6 flex items-center space-x-3 rounded-lg border border-red-200 bg-red-50 p-4">
-		<CircleAlert class="h-5 w-5 text-red-600" />
-		<p class="text-red-800">{generalError}</p>
+	<div
+		class="mb-6 flex items-center space-x-3 rounded-lg bg-destructive p-4 text-destructive-foreground"
+	>
+		<CircleAlert class="h-5 w-5" />
+		<p>{generalError}</p>
 	</div>
 {/if}
 
 <form method="POST" enctype="multipart/form-data" use:enhance class="space-y-8" novalidate>
 	<!-- Age verification -->
 	<Form.Fieldset {form} name="isAdult" role="radiogroup">
-		<Form.Legend>Es-tu majeur·e ?</Form.Legend>
+		<Form.Legend class="mb-3">Es-tu majeur·e ?</Form.Legend>
 		<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-			<Form.Description class="order-1 md:order-2">
+			<Form.Description class="order-1 prose md:order-2">
 				<p>Je ne tatoue pas les mineur·e·s même avec l'accord des parents</p>
 			</Form.Description>
 
 			<div class="order-2 space-y-2 md:order-1">
-				<Label class="flex items-center space-x-2">
-					<input
-						type="radio"
-						name="isAdult"
-						value="true"
-						bind:group={$formData.isAdult}
-						class="h-4 w-4"
-					/>
+				<Label class="flex items-center space-x-2 font-normal">
+					<input type="radio" name="isAdult" value="true" bind:group={$formData.isAdult} />
 					<span>Absolument, go, go, go!</span>
 				</Label>
-				<Label class="flex items-center space-x-2">
-					<input
-						type="radio"
-						name="isAdult"
-						value="false"
-						bind:group={$formData.isAdult}
-						class="h-4 w-4"
-					/>
+				<Label class="flex items-center space-x-2 font-normal">
+					<input type="radio" name="isAdult" value="false" bind:group={$formData.isAdult} />
 					<span>Zut je vais devoir patienter !</span>
 				</Label>
 			</div>
@@ -176,13 +163,13 @@
 
 	<!-- Project type -->
 	<Form.Fieldset {form} name="projectTypeFlash">
-		<Form.Legend>Ton/tes envie/s</Form.Legend>
-		<div class="space-y-2 pt-1">
-			<Label class="flex items-center space-x-2">
+		<Form.Legend class="mb-3">Ton/tes envie/s</Form.Legend>
+		<div class="space-y-2">
+			<Label class="flex items-center space-x-2 font-normal">
 				<input type="checkbox" name="projectTypeFlash" bind:checked={$formData.projectTypeFlash} />
 				<span>Un flash/dessin disponible</span>
 			</Label>
-			<Label class="flex items-center space-x-2">
+			<Label class="flex items-center space-x-2 font-normal">
 				<input
 					type="checkbox"
 					name="projectTypeCustom"
@@ -190,7 +177,7 @@
 				/>
 				<span>Un projet personnalisé</span>
 			</Label>
-			<Label class="flex items-start space-x-2">
+			<Label class="flex items-start space-x-2 font-normal">
 				<input
 					type="checkbox"
 					name="projectTypeCoverup"
@@ -327,7 +314,7 @@
 
 	<!-- Timeline -->
 	<Form.Fieldset {form} name="timeline">
-		<Form.Legend>Délais</Form.Legend>
+		<Form.Legend class="mb-3">Délais</Form.Legend>
 		<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 			<Form.Description class="order-1 prose md:order-2">
 				<p>
@@ -335,15 +322,14 @@
 					mois à l'avance)
 				</p>
 			</Form.Description>
-			<div class="order-2 prose grid grid-cols-1 gap-1.5 sm:grid-cols-2 md:order-1">
+			<div class="order-2 grid grid-cols-2 space-y-2 gap-x-2 md:order-1">
 				{#each [{ value: 'asap', label: 'Dès que possible' }, { value: 'thisWeek', label: 'Cette semaine' }, { value: 'thisMonth', label: 'Ce mois en cours' }, { value: 'sepOct', label: 'Septembre/Octobre' }, { value: 'novDec', label: 'Novembre/Décembre' }, { value: 'janFeb', label: 'Janvier/Février' }, { value: 'marApr', label: 'Mars/Avril' }, { value: 'mayJun', label: 'Mai/Juin' }, { value: 'julAug', label: 'Juillet/Août' }] as option}
-					<Label class="flex cursor-pointer items-center space-x-2">
+					<Label class="flex space-x-1 font-normal">
 						<input
 							type="radio"
 							name="timeline"
 							value={option.value}
 							bind:group={$formData.timeline}
-							class="h-3.5 w-3.5 text-primary"
 						/>
 						<span>{option.label}</span>
 					</Label>
