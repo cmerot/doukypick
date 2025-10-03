@@ -52,7 +52,7 @@
 </script>
 
 <Carousel
-	class={cn('bg-primary', className)}
+	class={cn('', className)}
 	setApi={(emblaApi) => (api = emblaApi)}
 	opts={{ startIndex: currentIndex }}
 >
@@ -61,7 +61,7 @@
 			<CarouselItem>
 				<a
 					href={image.href}
-					class="flex h-full w-full items-center justify-center border-6 border-primary"
+					class="flex h-full w-full items-center justify-center border-6 border-primary bg-primary"
 					onclick={(e) => handleClick(e, index)}
 					style="aspect-ratio: {aspectRatio};"
 				>
