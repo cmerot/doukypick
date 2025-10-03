@@ -8,6 +8,7 @@
 
 	let fileInput = $state<HTMLInputElement | undefined>();
 	let photos = $state<File[]>([]);
+	let isDragging = $state(false);
 
 	const MAX_FILES = 5;
 	const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
@@ -15,6 +16,9 @@
 	// Expose reset function to parent
 	resetPhotos = () => {
 		photos = [];
+		if (fileInput) {
+			fileInput.value = '';
+		}
 	};
 
 	function handleFileSelect(event: Event) {
@@ -48,15 +52,72 @@
 			});
 
 			photos = [...photos, ...validFiles];
+			updateInputFiles();
 		}
+	}
 
+	function updateInputFiles() {
 		if (fileInput) {
-			fileInput.value = '';
+			if (photos.length > 0) {
+				const dataTransfer = new DataTransfer();
+				photos.forEach((photo) => dataTransfer.items.add(photo));
+				fileInput.files = dataTransfer.files;
+			} else {
+				fileInput.value = '';
+			}
 		}
 	}
 
 	function removePhoto(index: number) {
 		photos = photos.filter((_: File, i: number) => i !== index);
+		updateInputFiles();
+	}
+
+	function handleDragOver(event: DragEvent) {
+		event.preventDefault();
+		isDragging = true;
+	}
+
+	function handleDragLeave(event: DragEvent) {
+		event.preventDefault();
+		isDragging = false;
+	}
+
+	function handleDrop(event: DragEvent) {
+		event.preventDefault();
+		isDragging = false;
+
+		const files = event.dataTransfer?.files;
+
+		if (files) {
+			const newFiles = Array.from(files);
+			const availableSlots = MAX_FILES - photos.length;
+
+			if (newFiles.length > availableSlots) {
+				alert(`Vous ne pouvez ajouter que ${availableSlots} photo(s) supplémentaire(s)`);
+				return;
+			}
+
+			const validFiles = newFiles.filter((file) => {
+				const isValidType = file.type.startsWith('image/');
+				const isValidSize = file.size <= MAX_FILE_SIZE;
+
+				if (!isValidType) {
+					alert(`${file.name} n'est pas un fichier image valide`);
+					return false;
+				}
+
+				if (!isValidSize) {
+					alert(`${file.name} est trop volumineux (max 10MB)`);
+					return false;
+				}
+
+				return true;
+			});
+
+			photos = [...photos, ...validFiles];
+			updateInputFiles();
+		}
 	}
 </script>
 
@@ -87,7 +148,12 @@
 			<!-- Upload Area -->
 			{#if photos.length < MAX_FILES}
 				<Label
-					class="block cursor-pointer rounded-md border-2 border-dashed border-muted-foreground/20 p-4 text-center transition-colors hover:border-muted-foreground/40"
+					class="block cursor-pointer rounded-md border-2 border-dashed p-4 text-center transition-colors {isDragging
+						? 'border-primary bg-primary/5'
+						: 'border-muted-foreground/20 hover:border-muted-foreground/40'}"
+					ondragover={handleDragOver}
+					ondragleave={handleDragLeave}
+					ondrop={handleDrop}
 				>
 					<input
 						bind:this={fileInput}
@@ -109,23 +175,9 @@
 				</Label>
 			{/if}
 
-			<!-- Hidden inputs for photos (for form submission) -->
-			{#each photos as photo}
-				<input
-					type="file"
-					name="photos"
-					files={(() => {
-						const dataTransfer = new DataTransfer();
-						dataTransfer.items.add(photo);
-						return dataTransfer.files;
-					})()}
-					class="sr-only"
-				/>
-			{/each}
-
 			<!-- Photo Preview -->
 			{#if photos.length > 0}
-				<div class="grid grid-cols-2 gap-3 md:grid-cols-3">
+				<div class="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3">
 					{#each photos as photo, index}
 						<div class="group relative">
 							<img
