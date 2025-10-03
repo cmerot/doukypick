@@ -23,6 +23,7 @@
 	} from 'lucide-svelte';
 	import { goto } from '$app/navigation';
 	import type { PageData } from './$types';
+	import { toast } from 'svelte-sonner';
 
 	let { data }: { data: PageData } = $props();
 
@@ -37,13 +38,13 @@
 			});
 
 			if (response.ok) {
-				goto('/admin');
+				goto('/admin/messages');
 			} else {
 				const result = await response.json();
-				alert(`Erreur lors de la suppression: ${result.error || 'Erreur inconnue'}`);
+				toast.error(`Erreur lors de la suppression: ${result.error || 'Erreur inconnue'}`);
 			}
 		} catch (e) {
-			alert('Erreur réseau lors de la suppression');
+			toast.error('Erreur réseau lors de la suppression');
 		} finally {
 			isDeleting = false;
 			showDeleteConfirm = false;

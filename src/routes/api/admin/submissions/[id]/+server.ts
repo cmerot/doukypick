@@ -3,15 +3,15 @@ import { createClient } from '@supabase/supabase-js';
 import { del } from '@vercel/blob';
 import { json, error } from '@sveltejs/kit';
 import { SUPABASE_URL, SUPABASE_ANON_KEY, BLOB_READ_WRITE_TOKEN } from '$env/static/private';
+import { verifySessionToken } from '$lib/server/auth';
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 export const DELETE: RequestHandler = async ({ params, cookies }) => {
 	// Check authentication
+	// Check authentication cookie
 	const authToken = cookies.get('admin_auth');
-	if (authToken !== 'authenticated') {
-		throw error(401, 'Non autorisé');
-	}
+	const isAuthenticated = authToken ? verifySessionToken(authToken) : false;
 
 	const submissionId = params.id;
 	if (!submissionId) {
