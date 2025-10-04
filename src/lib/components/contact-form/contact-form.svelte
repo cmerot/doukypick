@@ -3,6 +3,7 @@
 	import { zod4Client } from 'sveltekit-superforms/adapters';
 	import { contactFormSchema, type ContactFormType } from '$lib/schemas/contact-form';
 	import * as Form from '$lib/components/ui/form';
+	import * as Card from '$lib/components/ui/card';
 	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
 	import { Textarea } from '$lib/components/ui/textarea';
@@ -38,26 +39,28 @@
 	let resetPhotos: (() => void) | undefined = $state();
 </script>
 
-{#if successMessage}
-	<div class="mb-6 flex items-center space-x-3 rounded-lg bg-success p-4 text-success-foreground">
-		<CircleCheck class="h-5 w-5" />
-		<p>{successMessage}</p>
-	</div>
-{/if}
+<Card.Root>
+	<Card.Content class="pt-6">
+		{#if successMessage}
+			<div class="mb-6 flex items-center space-x-3 rounded-lg bg-success p-4 text-success-foreground">
+				<CircleCheck class="h-5 w-5" />
+				<p>{successMessage}</p>
+			</div>
+		{/if}
 
-{#if generalError}
-	<div
-		class="mb-6 flex items-center space-x-3 rounded-lg bg-destructive p-4 text-destructive-foreground"
-	>
-		<CircleAlert class="h-5 w-5" />
-		<p>{generalError}</p>
-	</div>
-{/if}
+		{#if generalError}
+			<div
+				class="mb-6 flex items-center space-x-3 rounded-lg bg-destructive p-4 text-destructive-foreground"
+			>
+				<CircleAlert class="h-5 w-5" />
+				<p>{generalError}</p>
+			</div>
+		{/if}
 
-<form method="POST" enctype="multipart/form-data" use:enhance class="space-y-8" novalidate>
+		<form method="POST" enctype="multipart/form-data" use:enhance class="space-y-8" novalidate>
 	<!-- Age verification -->
 	<Form.Fieldset {form} name="isAdult" role="radiogroup">
-		<Form.Legend class="mb-3">Es-tu majeur·e ?</Form.Legend>
+		<Form.Legend class="mb-3">Es-tu majeur·e ? *</Form.Legend>
 		<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 			<Form.Description class="order-1 prose md:order-2">
 				<p>Je ne tatoue pas les mineur·e·s même avec l'accord des parents</p>
@@ -82,7 +85,7 @@
 	<Form.Field {form} name="firstName">
 		<Form.Control>
 			{#snippet children({ props })}
-				<Form.Label>Ton prénom</Form.Label>
+				<Form.Label>Ton prénom *</Form.Label>
 				<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 					<Form.Description class="order-1 prose md:order-2">
 						<p>
@@ -106,7 +109,7 @@
 	<Form.Field {form} name="email">
 		<Form.Control>
 			{#snippet children({ props })}
-				<Form.Label>Ton email</Form.Label>
+				<Form.Label>Ton email *</Form.Label>
 				<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 					<Input {...props} type="email" bind:value={$formData.email} placeholder="ton@email.com" />
 				</div>
@@ -119,7 +122,7 @@
 	<Form.Field {form} name="phone">
 		<Form.Control>
 			{#snippet children({ props })}
-				<Form.Label>Ton numéro de téléphone</Form.Label>
+				<Form.Label>Ton numéro de téléphone *</Form.Label>
 				<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 					<Form.Description class="order-1 prose md:order-2">
 						<p>C'est plus facile pour te contacter en cas de besoin, pas de phoning promis!</p>
@@ -163,7 +166,7 @@
 
 	<!-- Project type -->
 	<Form.Fieldset {form} name="projectTypeFlash">
-		<Form.Legend class="mb-3">Ton/tes envie/s</Form.Legend>
+		<Form.Legend class="mb-3">Ton/tes envie/s *</Form.Legend>
 		<div class="space-y-2">
 			<Label class="flex items-center space-x-2 font-normal">
 				<input type="checkbox" name="projectTypeFlash" bind:checked={$formData.projectTypeFlash} />
@@ -193,7 +196,7 @@
 	<Form.Field {form} name="projectDescription">
 		<Form.Control>
 			{#snippet children({ props })}
-				<Form.Label>Ton projet en quelques mots</Form.Label>
+				<Form.Label>Ton projet en quelques mots *</Form.Label>
 				<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 					<Form.Description class="order-1 prose md:order-2">
 						<p>Décris-moi ici en quelques mots le motif que tu souhaites réaliser en tatouage!</p>
@@ -373,4 +376,6 @@
 			C'est parti !
 		</Form.Button>
 	</div>
-</form>
+		</form>
+	</Card.Content>
+</Card.Root>
