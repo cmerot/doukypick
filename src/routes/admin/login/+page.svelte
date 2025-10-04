@@ -1,47 +1,23 @@
 <script lang="ts">
-	import { invalidateAll } from '$app/navigation';
+	import { enhance } from '$app/forms';
 	import { Button } from '$lib/components/ui/button';
 	import * as Card from '$lib/components/ui/card';
 	import Input from '$lib/components/ui/input/input.svelte';
 	import { Label } from '$lib/components/ui/label';
+	import type { ActionData } from './$types';
 
-	let password = $state('');
-	let error = $state('');
+	let { form }: { form: ActionData } = $props();
 	let loading = $state(false);
-	async function handleLogin() {
-		loading = true;
-		error = '';
-
-		try {
-			const response = await fetch('/api/admin/auth', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({ password })
-			});
-
-			const result = await response.json();
-
-			if (response.ok) {
-				password = '';
-				error = '';
-				await invalidateAll(); // Refresh all server data, triggers +page.server.ts which handles redirect
-			} else {
-				error = result.error || "Échec de l'authentification";
-			}
-		} catch (e) {
-			error = 'Erreur réseau. Veuillez réessayer.';
-		} finally {
-			loading = false;
-		}
-	}
 </script>
 
 <form
-	onsubmit={(e) => {
-		e.preventDefault();
-		handleLogin();
+	method="POST"
+	use:enhance={() => {
+		loading = true;
+		return async ({ update }) => {
+			loading = false;
+			await update();
+		};
 	}}
 >
 	<Card.Root>
@@ -53,10 +29,10 @@
 			<div class="flex flex-col gap-6">
 				<div class="grid gap-2">
 					<Label for="password">Mot de passe</Label>
-					<Input type="password" bind:value={password} required disabled={loading} />
+					<Input type="password" name="password" id="password" required disabled={loading} />
 				</div>
-				{#if error}
-					<p class="text-sm text-destructive">{error}</p>
+				{#if form?.error}
+					<p class="text-sm text-destructive">{form.error}</p>
 				{/if}
 			</div>
 		</Card.Content>

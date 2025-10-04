@@ -13,7 +13,7 @@
 		{page.error?.message || "Désolé, quelque chose s'est mal passé."}
 	</p>
 	<a
-		href="/"
+		href="/admin"
 		class="rounded-md bg-primary px-6 py-3 text-primary-foreground transition-colors hover:bg-primary/90"
 	>
 		Retour à l'accueil

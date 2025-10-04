@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { Menu, LogOut } from 'lucide-svelte';
+	import { enhance } from '$app/forms';
 	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import * as Sheet from '$lib/components/ui/sheet';
 	import * as NavigationMenu from '$lib/components/ui/navigation-menu';
 	import { Separator } from '$lib/components/ui/separator';
 	import { page } from '$app/state';
 	import { createSrcset } from '$lib/utils';
-	import { invalidateAll } from '$app/navigation';
 
 	// Props
 	interface Props {
@@ -15,8 +15,9 @@
 
 	let { isAuthenticated }: Props = $props();
 
-	// Local state for mobile menu
+	// Local state for mobile menu and logout
 	let mobileMenuOpen = $state(false);
+	let loggingOut = $state(false);
 
 	// Navigation items
 	const allNavigationItems = [
@@ -33,17 +34,6 @@
 	// Check if current page is active
 	function isActivePage(href: string): boolean {
 		return page.url.pathname === href;
-	}
-
-	async function handleLogout() {
-		try {
-			await fetch('/api/admin/logout', {
-				method: 'POST'
-			});
-			await invalidateAll(); // Refresh all server data to clear authentication state
-		} catch (e) {
-			console.error('Logout error:', e);
-		}
 	}
 </script>
 
@@ -86,10 +76,22 @@
 				</NavigationMenu.List>
 			</NavigationMenu.Root>
 			{#if isAuthenticated}
-				<Button onclick={handleLogout} variant="secondary">
-					<LogOut />
-					Se déconnecter
-				</Button>
+				<form
+					method="POST"
+					action="/admin/logout"
+					use:enhance={() => {
+						loggingOut = true;
+						return async ({ update }) => {
+							await update();
+							loggingOut = false;
+						};
+					}}
+				>
+					<Button type="submit" variant="secondary" disabled={loggingOut}>
+						<LogOut />
+						{loggingOut ? 'Déconnexion...' : 'Se déconnecter'}
+					</Button>
+				</form>
 			{/if}
 		</div>
 
@@ -124,10 +126,23 @@
 						{/each}
 						{#if isAuthenticated}
 							<Separator />
-							<Button variant="ghost" onclick={handleLogout}>
-								<LogOut />
-								Se déconnecter
-							</Button>
+							<form
+								method="POST"
+								action="/admin/logout"
+								use:enhance={() => {
+									loggingOut = true;
+									mobileMenuOpen = false;
+									return async ({ update }) => {
+										await update();
+										loggingOut = false;
+									};
+								}}
+							>
+								<Button type="submit" variant="ghost" class="w-full" disabled={loggingOut}>
+									<LogOut />
+									{loggingOut ? 'Déconnexion...' : 'Se déconnecter'}
+								</Button>
+							</form>
 						{/if}
 					</div>
 				</Sheet.Content>

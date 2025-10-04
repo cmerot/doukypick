@@ -21,35 +21,20 @@
 		Tag,
 		Trash2
 	} from 'lucide-svelte';
-	import { goto } from '$app/navigation';
 	import type { PageData } from './$types';
 	import { toast } from 'svelte-sonner';
+	import { enhance } from '$app/forms';
 
 	let { data }: { data: PageData } = $props();
 
 	let showDeleteConfirm = $state(false);
 	let isDeleting = $state(false);
+	let hasJavaScript = $state(false);
 
-	async function handleDelete() {
-		isDeleting = true;
-		try {
-			const response = await fetch(`/api/admin/submissions/${data.submission.id}`, {
-				method: 'DELETE'
-			});
-
-			if (response.ok) {
-				goto('/admin/messages');
-			} else {
-				const result = await response.json();
-				toast.error(`Erreur lors de la suppression: ${result.error || 'Erreur inconnue'}`);
-			}
-		} catch (e) {
-			toast.error('Erreur réseau lors de la suppression');
-		} finally {
-			isDeleting = false;
-			showDeleteConfirm = false;
-		}
-	}
+	// Detect JavaScript availability for progressive enhancement
+	$effect(() => {
+		hasJavaScript = true;
+	});
 
 	function formatDate(dateString: string): string {
 		return new Date(dateString).toLocaleDateString('fr-FR', {
@@ -96,17 +81,34 @@
 					<Calendar class="mr-1" />
 					{formatDate(data.submission.created_at)}
 				</Badge>
-				<Button
-					variant="destructive"
-					onclick={() => (showDeleteConfirm = true)}
-					disabled={isDeleting}
+
+				<!-- Delete form with progressive enhancement -->
+				<form
+					method="POST"
+					action="?/delete"
 					class="ml-auto"
+					onsubmit={(e) => {
+						e.preventDefault();
+						showDeleteConfirm = true;
+					}}
 				>
-					<Trash2 />
-					<span class="sr-only hidden sm:not-sr-only sm:inline">Supprimer</span>
-				</Button>
+					<Button type="submit" variant="destructive" disabled={isDeleting}>
+						<Trash2 />
+						<span class="sr-only hidden sm:not-sr-only sm:inline">Supprimer</span>
+					</Button>
+				</form>
 			</div>
 		</div>
+
+		<!-- Warning message for no-JS users (hidden when JS is available) -->
+		{#if !hasJavaScript}
+			<div class="mb-6 rounded-md border border-destructive/50 bg-destructive/10 p-4">
+				<p class="text-sm font-medium text-destructive">
+					⚠️ Attention : Le bouton "Supprimer" supprimera définitivement cette soumission sans
+					confirmation supplémentaire.
+				</p>
+			</div>
+		{/if}
 
 		<div class="grid gap-6 lg:grid-cols-2">
 			<!-- Contact Information -->
@@ -326,28 +328,46 @@
 							Cette action ne peut pas être annulée. Toutes les données et images associées seront
 							supprimées.
 						</p>
-						<div class="flex gap-2 pt-4">
-							<Button
-								variant="outline"
-								onclick={() => (showDeleteConfirm = false)}
-								disabled={isDeleting}
-								class="flex-1"
-							>
-								Annuler
-							</Button>
-							<Button
-								variant="destructive"
-								onclick={handleDelete}
-								disabled={isDeleting}
-								class="flex-1"
-							>
-								{#if isDeleting}
-									Suppression...
-								{:else}
-									Supprimer définitivement
-								{/if}
-							</Button>
-						</div>
+						<form
+							method="POST"
+							action="?/delete"
+							use:enhance={() => {
+								isDeleting = true;
+								return async ({ result, update }) => {
+									isDeleting = false;
+									if (result.type === 'failure') {
+										const errorMessage =
+											(result.data as { error?: string })?.error || 'Erreur lors de la suppression';
+										toast.error(errorMessage);
+										showDeleteConfirm = false;
+									} else if (result.type === 'error') {
+										toast.error('Erreur lors de la suppression');
+										showDeleteConfirm = false;
+									}
+									// Call update() to handle redirects
+									await update();
+								};
+							}}
+						>
+							<div class="flex gap-2 pt-4">
+								<Button
+									type="button"
+									variant="outline"
+									onclick={() => (showDeleteConfirm = false)}
+									disabled={isDeleting}
+									class="flex-1"
+								>
+									Annuler
+								</Button>
+								<Button type="submit" variant="destructive" disabled={isDeleting} class="flex-1">
+									{#if isDeleting}
+										Suppression...
+									{:else}
+										Supprimer définitivement
+									{/if}
+								</Button>
+							</div>
+						</form>
 					</CardContent>
 				</Card>
 			</div>
