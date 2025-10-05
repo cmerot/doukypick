@@ -80,25 +80,19 @@ export default defineConfig({
 					{
 						type: 'string',
 						name: 'title',
-						label: "Titre (moteurs de recherche et titre de l'onglet du navigateur)",
+						label: 'Titre',
 						isTitle: true,
 						required: true
 					},
 					{
 						type: 'string',
+						name: 'subtitle',
+						label: 'Sous-titre'
+					},
+					{
+						type: 'string',
 						name: 'description',
 						label: 'Description (moteurs de recherche)'
-					},
-					{
-						type: 'string',
-						name: 'page_title',
-						label: 'Titre de la page',
-						required: true
-					},
-					{
-						type: 'string',
-						name: 'page_subtitle',
-						label: 'Sous-titre de la page'
 					},
 					{
 						type: 'rich-text',

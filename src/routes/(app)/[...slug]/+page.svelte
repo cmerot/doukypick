@@ -7,7 +7,7 @@
 
 	const { metadata, component: Component, ...otherData } = data;
 
-	const { title, description, page_title, page_subtitle } = metadata;
+	const { title, subtitle, description } = metadata;
 </script>
 
 <svelte:head>
@@ -17,13 +17,15 @@
 	{/if}
 </svelte:head>
 
-<header>
-	<PageTitle>{page_title || title}</PageTitle>
-	{#if page_subtitle}
-		<PageSubtitle>{page_subtitle}</PageSubtitle>
-	{/if}
-</header>
+<article class="contents">
+	<header>
+		<PageTitle>{title}</PageTitle>
+		{#if subtitle}
+			<PageSubtitle>{subtitle}</PageSubtitle>
+		{/if}
+	</header>
 
-<main class="prose max-w-full">
-	<Component data={otherData} />
-</main>
+	<main class="prose max-w-full">
+		<Component data={otherData} />
+	</main>
+</article>

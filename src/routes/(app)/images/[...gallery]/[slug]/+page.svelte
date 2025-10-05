@@ -92,7 +92,7 @@ ${JSON.stringify(
 	</div>
 
 	<section class="mt-8">
-		<h2 class="text-xl font-semibold">{data.gallery.title}</h2>
+		<h3 class="text-xl font-semibold">{data.gallery.title}</h3>
 		<p class="mt-2 text-muted-foreground">{data.gallery.description}</p>
 
 		<nav class="mt-4 flex gap-4">
