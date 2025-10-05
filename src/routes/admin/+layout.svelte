@@ -1,29 +1,30 @@
 <script lang="ts">
-	import type { LayoutData } from './$types';
-	import HeaderAdmin from '$lib/components/header/header-admin.svelte';
+	import Header from '$lib/components/header/header.svelte';
 	import { fade } from 'svelte/transition';
-	import ThemeSelector from '$lib/components/theme-selector.svelte';
+	import type { LayoutData } from './$types';
+	import type { Snippet } from 'svelte';
+	import Footer from '$lib/components/footer.svelte';
+	import AdminHeader from '$lib/components/header/admin.svelte';
 
-	let { children, data }: { children: any; data: LayoutData } = $props();
+	let { children, data }: { children: Snippet; data: LayoutData } = $props();
 </script>
 
-<div class="relative flex min-h-screen flex-col">
-	<div class="container mx-auto max-w-4xl">
-		<HeaderAdmin isAuthenticated={data.isAuthenticated} />
-		{#key data.pathname}
-			<main
-				class="px-4 py-8 sm:px-4 md:px-20"
-				in:fade={{ duration: 150, delay: 150 }}
-				out:fade={{ duration: 150 }}
-			>
-				{@render children()}
-			</main>
-		{/key}
-	</div>
+<div class="flex min-h-screen flex-col">
+	<Header class="mx-auto w-full max-w-4xl [padding-inline:clamp(.5rem,4vw,1rem)] pt-3 md:pt-6">
+		<AdminHeader isAuthenticated={data.isAuthenticated} />
+	</Header>
 
-	<footer class="mt-auto border-t bg-muted py-8">
-		<div class="mx-auto px-4 sm:max-w-2xl">
-			<ThemeSelector />
-		</div>
-	</footer>
+	{#key data.pathname}
+		<main
+			class="mx-auto my-6 w-full max-w-4xl flex-grow [padding-inline:clamp(.5rem,4vw,5rem)] md:my-12"
+			in:fade={{ duration: 150, delay: 150 }}
+			out:fade={{ duration: 150 }}
+		>
+			{@render children()}
+		</main>
+	{/key}
+
+	<div class="bg-muted">
+		<Footer class="mx-auto max-w-4xl [padding-inline:clamp(.5rem,4vw,5rem)] py-4" />
+	</div>
 </div>

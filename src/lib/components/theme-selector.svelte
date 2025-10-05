@@ -1,6 +1,14 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
+	import { cn } from '$lib/utils';
 	import { resetMode, mode, toggleMode, systemPrefersMode } from 'mode-watcher';
+
+	// Props
+	interface Props {
+		class?: string;
+	}
+
+	const { class: className }: Props = $props();
 
 	function toggle() {
 		if (mode.current === systemPrefersMode.current) {
@@ -11,8 +19,8 @@
 	}
 </script>
 
-<div class="space-y-3 space-x-3 md:text-center">
-	<Button onclick={toggle} variant="outline">
+<div class={cn('', className)}>
+	<Button onclick={toggle} variant="outline" size="sm">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			width="24"
