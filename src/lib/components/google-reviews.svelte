@@ -89,7 +89,7 @@
 			{/if}
 		</div>
 
-		<div class="mx-auto grid max-w-7xl gap-6 md:grid-cols-2 lg:grid-cols-3">
+		<div class="mx-auto grid max-w-7xl gap-6 sm:grid-cols-2 md:grid-cols-3">
 			{#each displayedReviews as review, index}
 				<article
 					class="rounded-lg border border-border bg-card p-6 shadow-md transition-shadow duration-200 hover:shadow-lg"

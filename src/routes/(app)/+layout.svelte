@@ -16,7 +16,7 @@
 
 	{#key data.pathname}
 		<main
-			class="mx-auto my-6 w-full max-w-4xl flex-grow [padding-inline:clamp(.5rem,4vw,5rem)] md:my-12"
+			class="mx-auto my-6 w-full max-w-4xl flex-grow [padding-inline:clamp(.5rem,calc((100vw/2)-(var(--container-4xl)/2)+5rem),5rem)] md:my-12"
 			in:fade={{ duration: 150, delay: 150 }}
 			out:fade={{ duration: 150 }}
 		>
@@ -27,7 +27,7 @@
 	<div class="bg-muted">
 		<Footer class="mx-auto max-w-4xl [padding-inline:clamp(.5rem,4vw,5rem)] py-4">
 			<h2 class="mb-4 text-2xl font-semibold text-foreground italic">Keep in touch</h2>
-			<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+			<div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
 				<!-- Contact -->
 				<div>
 					<div class="space-y-3">
@@ -62,7 +62,7 @@
 
 				<!-- Socials -->
 				<div>
-					<h3 class="mb-1 text-lg font-semibold text-orange-400">@doukypick</h3>
+					<h3 class="mb-1 text-lg font-semibold text-orange-500">@doukypick</h3>
 					<p class="mb-4 text-sm text-muted-foreground">
 						Découvre mes dernières créations et actualités
 					</p>

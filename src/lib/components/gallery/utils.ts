@@ -3,7 +3,7 @@
  * Handles image processing, slug generation, and optimized path creation
  */
 
-import { createSrcset } from '$lib/utils';
+import { createSrc, createSrcset } from '$lib/utils';
 import type {
 	GalleryImage,
 	ImageSlugParts,
@@ -120,7 +120,7 @@ export const processImage = (image: GalleryImage, galleryId: string, index: numb
 
 		// Responsive images
 		srcset: createSrcset(image.src),
-		src: createSrcset(image.src, [1200])
+		src: createSrc(image.src, 1200)
 	} as ImageData;
 };
 

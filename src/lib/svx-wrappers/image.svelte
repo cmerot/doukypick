@@ -23,10 +23,16 @@
 		border?: boolean;
 	} = $props();
 
-	const alignments = { left: 'sm:float-left sm:mr-4', right: 'sm:float-right sm:ml-4' };
-	const widths = { sm: 'sm:w-1/4', md: 'sm:w-1/3', lg: 'sm:w-1/2', full: 'sm:w-full' };
+	const alignments = { left: 'xs:float-left xs:mr-4', right: 'xs:float-right xs:ml-4' };
 
-	const classNames = ['mb-2'];
+	const widths = {
+		sm: 'xs:w-1/4',
+		md: 'xs:w-1/3',
+		lg: 'xs:w-1/2',
+		full: ''
+	};
+
+	const classNames = ['mb-2 mx-auto'];
 	if (alignment) {
 		classNames.push(alignments[alignment]);
 	}

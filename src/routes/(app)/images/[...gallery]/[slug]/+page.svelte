@@ -3,13 +3,11 @@
 	import { page } from '$app/state';
 	import PageTitle from '$lib/components/page-title/page-title.svelte';
 	import PageSubtitle from '$lib/components/page-title/page-subtitle.svelte';
-	import FullscreenCarousel from '$lib/components/gallery/fullscreen-carousel.svelte';
 	import { goto, replaceState } from '$app/navigation';
 	import { getAspectRatio } from '$lib/components/gallery/utils';
 	import { Button } from '$lib/components/ui/button';
-	import ChevronLeftIcon from '@lucide/svelte/icons/chevron-left';
-	import ChevronRightIcon from '@lucide/svelte/icons/chevron-right';
 	import GridIcon from '@lucide/svelte/icons/grid-2x2';
+	import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-svelte';
 
 	let { data }: { data: PageData } = $props();
 
@@ -92,26 +90,35 @@ ${JSON.stringify(
 	</div>
 
 	<section class="mt-8">
-		<h3 class="text-xl font-semibold">{data.gallery.title}</h3>
+		<div class="flex items-center">
+			<h3 class="text-xl font-semibold">{data.gallery.title}</h3>
+			<nav class="ml-auto flex gap-2">
+				{#if data.currentIndex > 0}
+					<Button
+						href={data.images[data.currentIndex - 1].href}
+						variant="outline"
+						class="ml-auto size-8 rounded-full"
+					>
+						<span class="sr-only">Précédent</span>
+						<ArrowLeftIcon class="size-4" />
+					</Button>
+				{/if}
+				{#if data.currentIndex < data.images.length - 1}
+					<Button
+						href={data.images[data.currentIndex + 1].href}
+						variant="outline"
+						class="size-8 rounded-full"
+					>
+						<span class="sr-only">Suivant</span>
+						<ArrowRightIcon class="size-4 " />
+					</Button>
+				{/if}
+			</nav>
+		</div>
 		<p class="mt-2 text-muted-foreground">{data.gallery.description}</p>
-
-		<nav class="mt-4 flex gap-4">
-			{#if data.currentIndex > 0}
-				<Button href={data.images[data.currentIndex - 1].href} variant="outline">
-					<ChevronLeftIcon class="size-4" />
-					Précédent
-				</Button>
-			{/if}
-			{#if data.currentIndex < data.images.length - 1}
-				<Button href={data.images[data.currentIndex + 1].href} variant="outline">
-					Suivant
-					<ChevronRightIcon class="size-4" />
-				</Button>
-			{/if}
-			<Button href={data.gallery.closeUrl} variant="outline">
-				<GridIcon class="size-4" />
-				Retour à la galerie
-			</Button>
-		</nav>
+		<Button href={data.gallery.closeUrl} variant="outline" class="mt-4">
+			<GridIcon class="size-4" />
+			Voir la galerie
+		</Button>
 	</section>
 </main>

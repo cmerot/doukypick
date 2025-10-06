@@ -2,14 +2,9 @@ import { describe, it, expect, vi } from 'vitest';
 import { parsePhotoSlug, generateImageUUID, generateImageSlug, processImage } from './utils';
 import type { GalleryImage } from './types';
 
-// Mock the createSrcset utility
-vi.mock('$lib/utils', () => ({
-	createSrcset: vi.fn((src: string, widths?: number[]) => {
-		if (widths) {
-			return widths.map((w) => `${src}?w=${w} ${w}w`).join(', ');
-		}
-		return `${src}?w=150 150w, ${src}?w=400 400w`;
-	})
+// Mock environment variables
+vi.mock('$env/static/public', () => ({
+	PUBLIC_USE_VERCEL_IMAGE_OPTIMIZATION: 'false'
 }));
 
 describe('parsePhotoSlug', () => {

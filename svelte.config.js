@@ -5,6 +5,7 @@ import remarkGallery from './plugins/remark/gallery.ts';
 import remarkGoogleReviews from './plugins/remark/google-reviews.ts';
 import remarkImage from './plugins/remark/image.ts';
 import remarkScriptAggregator from './plugins/remark/script-aggregator.ts';
+import { getAllImageWidths } from './src/lib/image-sizes.ts';
 
 const config = {
 	// Consult https://svelte.dev/docs/kit/integrations
@@ -19,7 +20,7 @@ const config = {
 	kit: {
 		adapter: adapter({
 			images: {
-				sizes: [100, 150, 160, 224, 400, 520, 600, 900, 1200],
+				sizes: getAllImageWidths(),
 				formats: ['image/avif', 'image/webp'],
 				minimumCacheTTL: 300,
 				domains: ['www.doukypick.fr']
