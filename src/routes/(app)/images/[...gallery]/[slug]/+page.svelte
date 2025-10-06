@@ -98,6 +98,7 @@ ${JSON.stringify(
 						href={data.images[data.currentIndex - 1].href}
 						variant="outline"
 						class="ml-auto size-8 rounded-full"
+						data-sveltekit-noscroll
 					>
 						<span class="sr-only">Précédent</span>
 						<ArrowLeftIcon class="size-4" />
@@ -108,6 +109,7 @@ ${JSON.stringify(
 						href={data.images[data.currentIndex + 1].href}
 						variant="outline"
 						class="size-8 rounded-full"
+						data-sveltekit-noscroll
 					>
 						<span class="sr-only">Suivant</span>
 						<ArrowRightIcon class="size-4 " />

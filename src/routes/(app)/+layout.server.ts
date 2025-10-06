@@ -10,9 +10,13 @@ export const load: LayoutServerLoad = async ({ fetch, url, cookies }) => {
 	const authToken = cookies.get('admin_auth');
 	const isAuthenticated = authToken ? verifySessionToken(authToken) : false;
 
+	// Create a transition key that doesn't change when navigating between images in the same gallery
+	// This prevents page transitions when browsing through images
+	const transitionKey = pathname.replace(/\/images\/[^/]+\/[^/]+$/, '/images/gallery');
+
 	return {
 		googleReviews,
-		pathname,
+		transitionKey,
 		isAuthenticated
 	};
 };

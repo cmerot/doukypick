@@ -14,7 +14,7 @@
 		<MainHeader isAuthenticated={data.isAuthenticated} />
 	</Header>
 
-	{#key data.pathname}
+	{#key data.transitionKey}
 		<main
 			class="mx-auto my-6 w-full max-w-4xl flex-grow [padding-inline:clamp(.5rem,calc((100vw/2)-(var(--container-4xl)/2)+5rem),5rem)] md:my-12"
 			in:fade={{ duration: 150, delay: 150 }}
