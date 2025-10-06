@@ -81,45 +81,6 @@ pnpm storybook        # Serveur Storybook
 pnpm build-storybook  # Build de Storybook
 ```
 
-## 📁 Structure du projet
-
-```
-src/
-├── lib/
-│   ├── components/           # Composants réutilisables
-│   │   ├── ui/              # Composants shadcn-svelte (button, card, form, input, etc.)
-│   │   ├── contact-form/    # Formulaire de contact + upload photos
-│   │   ├── gallery/         # Composants galerie avec carousel
-│   │   ├── header/          # Navigation principale
-│   │   ├── overlay/         # Composant overlay/modal
-│   │   ├── page-title/      # Titres de pages
-│   │   └── google-reviews.svelte  # Avis Google
-│   ├── server/
-│   │   └── services/        # Services côté serveur
-│   │       ├── blob-storage.ts      # Gestion Vercel Blob
-│   │       ├── contact-database.ts  # Base de données contacts (Postgres)
-│   │       ├── google-places.ts     # API Google Places
-│   │       └── telegram.ts          # Notifications Telegram
-│   ├── schemas/             # Schémas de validation Zod
-│   ├── svx-wrappers/        # Wrappers pour composants MDSvex
-│   ├── types/               # Types TypeScript
-│   └── utils.ts             # Utilitaires
-├── routes/
-│   ├── (app)/              # Routes publiques
-│   │   ├── [[slug]]/       # Pages dynamiques (MDSvex)
-│   │   ├── contact/        # Formulaire de contact
-│   │   └── images/[gallery]/[slug]/  # Visualisation images galeries
-│   ├── admin/              # Interface d'administration
-│   │   ├── login/          # Authentification admin
-│   │   └── [id]/           # Gestion des soumissions
-│   └── api/                # API endpoints
-│       └── admin/          # API admin (auth, logout, submissions)
-├── content/
-│   ├── galleries/          # Données des galeries JSON
-│   └── pages/              # Pages en Markdown (MDSvex)
-└── stories/                # Storybook stories
-```
-
 ## 🎨 Fonctionnalités
 
 ### Gestion de contenu
@@ -148,22 +109,9 @@ GOOGLE_PLACE_ID=
 # Vercel Blob Storage
 BLOB_READ_WRITE_TOKEN=
 
-# Postgres (Vercel)
-POSTGRES_URL=
-POSTGRES_USER=
-POSTGRES_HOST=
-POSTGRES_PASSWORD=
-POSTGRES_DATABASE=
-POSTGRES_PRISMA_URL=
-POSTGRES_URL_NON_POOLING=
-
 # Supabase
 SUPABASE_URL=
 SUPABASE_ANON_KEY=
-SUPABASE_SERVICE_ROLE_KEY=
-SUPABASE_JWT_SECRET=
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
 
 # Telegram Notifications
 TELEGRAM_BOT_TOKEN=
@@ -172,19 +120,31 @@ TELEGRAM_CHAT_ID=
 # Admin
 ADMIN_SECRET=
 
+# Session secret for signing auth tokens (generate with: openssl rand -base64 32)
+SESSION_SECRET=
+
 # TinaCMS
 NEXT_PUBLIC_TINA_CLIENT_ID=
 TINA_TOKEN=
-TINA_PUBLIC_IS_LOCAL=
+
+# Vercel image optimiser (_vercel/image?path=)
+PUBLIC_USE_VERCEL_IMAGE_OPTIMIZATION=
 ```
 
 ## 📱 Responsive Design
 
-Le site est entièrement responsive avec des breakpoints optimisés :
+Le site est entièrement responsive avec des breakpoints Tailwind CSS :
 
-- Mobile : < 640px
-- Tablet : 640px - 1024px
-- Desktop : > 1024px
+- **default** (xxs) : < 384px
+- **xs** : ≥ 384px (24rem)
+- **sm** : ≥ 640px
+- **md** : ≥ 768px
+
+Les autres breakpoints ne sont pas utilisés :
+
+- **lg** : ≥ 1024px
+- **xl** : ≥ 1280px
+- **2xl** : ≥ 1536px
 
 ## 📄 Licence
 
