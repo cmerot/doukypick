@@ -1,8 +1,11 @@
 {
   "title": "motif linogravure",
   "description": "Voici les motifs actuellement disponible pour la réalisation d'impression sur papiers ou textiles. \n",
+  "orientation": "portrait",
+  "aspectRatio": "1/1",
   "slug": "motifs linogravures",
   "initialIndex": 1,
+  "published": true,
   "images": [
     {
       "src": "/images/galleries/image%20pour%20cr%C3%A9a/PXL_20251006_163354007~2.jpg",
