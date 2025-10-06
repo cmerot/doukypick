@@ -8,7 +8,28 @@
       "src": "/images/galleries/image%20pour%20cr%C3%A9a/PXL_20251006_163354007~2.jpg",
       "title": "Alfredo 8 el pulpo",
       "description": "Plus de 30 heures de travail de gravures auront été necessaire pour créer la plaque de lino, avec laquelle j'imprime ce motif d'octopus .",
-      "alt": "Motif Octopus",
+      "alt": "motif octopus",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/image%20pour%20cr%C3%A9a/PXL_20251006_163551438~2.jpg",
+      "title": "Lucine la Méduse",
+      "description": "Environ 10 heures de travail de gravures auront été necessaire pour créer la plaque de lino, avec laquelle j'imprime cette gracieuse méduse!",
+      "alt": "motif méduse",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/image%20pour%20cr%C3%A9a/PXL_20251006_170839955~2.jpg",
+      "title": "Cabane perchée ",
+      "description": "Plus de 20 heures de travail de gravures auront été necessaire pour créer la plaque de lino, avec laquelle j'imprime ce motif de cabane perchée dans un pin parasol.",
+      "alt": "Motif cabane",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/image%20pour%20cr%C3%A9a/PXL_20251006_170607139~3.jpg",
+      "title": "Gaston le héron",
+      "description": "environ 7 heures de travail de gravures auront été necessaire pour créer la plaque de lino, avec laquelle j'imprime ce motif ce portait de héron .",
+      "alt": "motif Héron",
       "published": true
     }
   ]
