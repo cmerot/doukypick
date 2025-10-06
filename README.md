@@ -127,8 +127,13 @@ SESSION_SECRET=
 NEXT_PUBLIC_TINA_CLIENT_ID=
 TINA_TOKEN=
 
+# Public Environment Variables
+
 # Vercel image optimiser (_vercel/image?path=)
 PUBLIC_USE_VERCEL_IMAGE_OPTIMIZATION=
+
+# Plausible analytics (set to "true" to enable)
+PUBLIC_ENABLE_PLAUSIBLE=
 ```
 
 ## 📱 Responsive Design
