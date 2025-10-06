@@ -1,12 +1,5 @@
 // Gallery types and interfaces
 
-// Image format constants for better type safety and reusability
-export const IMAGE_FORMATS = ['avif', 'webp', 'jpg'] as const;
-export const IMAGE_SIZES = ['optim', 'thumb', 'small', 'medium', 'large', 'xlarge'] as const;
-
-// Derived types from constants
-export type ImageFormat = (typeof IMAGE_FORMATS)[number];
-export type ImageSize = (typeof IMAGE_SIZES)[number];
 export type ImageAspectRatio = `${number}/${number}`;
 export type ImageOrientation = 'portrait' | 'landscape';
 
