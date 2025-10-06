@@ -1,0 +1,15 @@
+{
+  "title": "motif linogravure",
+  "description": "Voici les motifs actuellement disponible pour la réalisation d'impression sur papiers ou textiles. \n",
+  "slug": "motifs linogravures",
+  "initialIndex": 1,
+  "images": [
+    {
+      "src": "/images/galleries/image%20pour%20cr%C3%A9a/PXL_20251006_163354007~2.jpg",
+      "title": "Alfredo 8 el pulpo",
+      "description": "Plus de 30 heures de travail de gravures auront été necessaire pour créer la plaque de lino, avec laquelle j'imprime ce motif d'octopus .",
+      "alt": "motif octopus",
+      "published": true
+    }
+  ]
+}
