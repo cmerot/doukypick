@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { createSrc } from '$lib/utils';
+
 	interface Image {
 		src: string;
 		alt?: string;
@@ -13,14 +15,16 @@
 
 	// Use $derived for reactive grid class calculation
 	const gridColsClass = $derived(
-		({
-			1: 'grid-cols-1',
-			2: 'grid-cols-2',
-			3: 'grid-cols-3',
-			4: 'grid-cols-4',
-			5: 'grid-cols-5',
-			6: 'grid-cols-6'
-		} as Record<number, string>)[images.length] || 'grid-cols-4'
+		(
+			{
+				1: 'grid-cols-1',
+				2: 'grid-cols-2',
+				3: 'grid-cols-3',
+				4: 'grid-cols-4',
+				5: 'grid-cols-5',
+				6: 'grid-cols-6'
+			} as Record<number, string>
+		)[images.length] || 'grid-cols-4'
 	);
 
 	// Use $derived for container classes with object syntax (Svelte 5.16+)
@@ -35,10 +39,10 @@
 	});
 </script>
 
-<div class={[gridColsClass, containerClasses]}>
+<div class={[gridColsClass, containerClasses, 'not-prose']}>
 	{#each images as image, i (i)}
 		<div class="h-full w-full overflow-hidden">
-			<img src={image.src} alt={image.alt || ''} class="h-full w-full object-cover" />
+			<img src={createSrc(image.src)} alt={image.alt || ''} class="h-full w-full object-cover" />
 		</div>
 	{/each}
 </div>
