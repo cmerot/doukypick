@@ -12,6 +12,13 @@
       "description": "T-shirt héron sur mannequin \"feminin\"",
       "alt": "T-shirt héron feminin",
       "published": true
+    },
+    {
+      "src": "/images/galleries/t-shirts/heron/heron2.jpg",
+      "title": "T-shirt noir héron sur mannequin \"masculin\"",
+      "description": "T-shirt noir héron sur mannequin \"masculin\"",
+      "alt": "T-shirt noir héron masculin",
+      "published": true
     }
   ]
 }
