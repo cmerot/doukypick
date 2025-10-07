@@ -1,6 +1,6 @@
 {
   "title": "T-shirts octopus",
-  "description": "Voici quelques exemples de T-shirts réalisés au moyen de la linogravure.\nChaque impression est unique, car en fonction du support, du niveau d'encrage et de la pression exercée, le résultat est très variable.\n",
+  "description": "Voici quelques exemples de T-shirts réalisés au moyen de la plaque linogravure octopus.\nChaque impression est unique, car en fonction du support, du niveau d'encrage et de la pression exercée, le résultat est très variable.\n",
   "orientation": "portrait",
   "aspectRatio": "5/4",
   "slug": "t-shirts octopus",
@@ -18,6 +18,13 @@
       "title": "T-shirt octopus sur mannequin \"Masculin\"",
       "description": "T-shirt octopus sur mannequin \"Masculin\"",
       "alt": "T-shirt octopus Masculin",
+      "published": true
+    },
+    {
+      "src": "/images/galleries/t-shirts/octopus/octo3.jpg",
+      "title": "Débardeur octopus sur mannequin \"féminin\"",
+      "description": "Débardeur octopus sur mannequin \"féminin\"",
+      "alt": "Débardeur octopus ",
       "published": true
     }
   ]
