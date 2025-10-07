@@ -9,7 +9,8 @@
 		Clock,
 		CircleCheck,
 		LoaderCircle,
-		CircleX
+		CircleX,
+		GitMerge
 	} from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
 	import { untrack } from 'svelte';
@@ -34,6 +35,7 @@
 
 	// Local state
 	let triggeringBuild = $state(false);
+	let mergingBranches = $state(false);
 	let lastBuildTime = $state<Date | null>(null);
 	let latestProductionDeployment = $state<Deployment | null>(null);
 	let latestPreviewDeployment = $state<Deployment | null>(null);
@@ -132,6 +134,33 @@
 			});
 		} finally {
 			triggeringBuild = false;
+		}
+	}
+
+	// Merge branches
+	async function mergeBranches(): Promise<void> {
+		mergingBranches = true;
+		try {
+			const response = await fetch('/admin/build/merge', {
+				method: 'POST'
+			});
+
+			const data = await response.json();
+
+			if (!response.ok) {
+				throw new Error(data.error || 'Failed to merge branches');
+			}
+
+			toast.success('Branches fusionnées avec succès !', {
+				description: 'Preview a été fusionné dans main, puis main dans preview.'
+			});
+		} catch (error) {
+			console.error('Error merging branches:', error);
+			toast.error('Erreur lors de la fusion des branches', {
+				description: error instanceof Error ? error.message : 'Une erreur est survenue'
+			});
+		} finally {
+			mergingBranches = false;
 		}
 	}
 
@@ -243,15 +272,28 @@
 				</Card.Description>
 			</Card.Header>
 			<Card.Content class="space-y-4">
-				<Button
-					size="lg"
-					onclick={triggerBuild}
-					disabled={triggeringBuild}
-					class="w-full sm:w-auto"
-				>
-					<Hammer class="mr-2" />
-					{triggeringBuild ? 'Build en cours...' : 'Déclencher un Build'}
-				</Button>
+				<div class="flex flex-col gap-3 sm:flex-row">
+					<Button
+						size="lg"
+						onclick={triggerBuild}
+						disabled={triggeringBuild}
+						class="w-full sm:w-auto"
+					>
+						<Hammer class="mr-2" />
+						{triggeringBuild ? 'Build en cours...' : 'Déclencher un Build'}
+					</Button>
+
+					<Button
+						size="lg"
+						variant="outline"
+						onclick={mergeBranches}
+						disabled={mergingBranches}
+						class="w-full sm:w-auto"
+					>
+						<GitMerge class="mr-2" />
+						{mergingBranches ? 'Fusion en cours...' : 'Fusionner les Branches'}
+					</Button>
+				</div>
 
 				{#if formattedLastBuildTime}
 					<p class="text-sm text-muted-foreground">
