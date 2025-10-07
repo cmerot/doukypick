@@ -12,6 +12,13 @@
       "description": "T-shirt cabane sur mannequin \"feminin\"",
       "alt": "T-shirt cabane feminin",
       "published": true
+    },
+    {
+      "src": "/images/galleries/t-shirts/cabane/cabane2.jpg",
+      "title": "T-shirt cabane sur mannequin \"masculin\"",
+      "description": "T-shirt cabane sur mannequin \"masculin\"",
+      "alt": "T-shirt cabane masculin",
+      "published": true
     }
   ]
 }
