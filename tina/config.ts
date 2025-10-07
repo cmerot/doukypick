@@ -175,6 +175,42 @@ export default defineConfig({
 								]
 							},
 							{
+								name: 'MiniGallery',
+								label: 'Mini Galerie',
+								fields: [
+									{
+										type: 'object',
+										name: 'images',
+										label: 'Images',
+										list: true,
+										ui: {
+											itemProps: (item) => ({
+												label: item?.alt || 'Image'
+											})
+										},
+										fields: [
+											{
+												type: 'image',
+												name: 'src',
+												label: 'Image',
+												required: true
+											},
+											{
+												type: 'string',
+												name: 'alt',
+												label: 'Texte alternatif',
+												required: true
+											}
+										]
+									},
+									{
+										type: 'boolean',
+										name: 'border',
+										label: 'Bordure'
+									}
+								]
+							},
+							{
 								name: 'GoogleReviews',
 								label: 'Avis Google',
 								fields: [
