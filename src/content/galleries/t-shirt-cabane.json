@@ -1,0 +1,17 @@
+{
+  "title": "T-shirt cabane",
+  "description": "Voici quelques exemples de T-shirts réalisés au moyen de la plaque linogravure \"Cabane\".\nChaque impression est unique, car en fonction du support, du niveau d'encrage et de la pression exercée, le résultat est très variable.",
+  "orientation": "portrait",
+  "aspectRatio": "5/4",
+  "slug": "t-shirts cabane",
+  "initialIndex": 2,
+  "images": [
+    {
+      "src": "/images/galleries/t-shirts/cabane/cabane1.jpg",
+      "title": "T-shirt cabane sur mannequin \"feminin\"",
+      "description": "T-shirt cabane sur mannequin \"feminin\"",
+      "alt": "T-shirt cabane feminin",
+      "published": true
+    }
+  ]
+}
