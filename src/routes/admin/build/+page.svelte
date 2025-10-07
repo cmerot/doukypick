@@ -44,9 +44,7 @@
 
 	// Derived state for active deployments
 	const activeDeployments = $derived(
-		[latestProductionDeployment, latestPreviewDeployment].filter(
-			(d): d is Deployment => d !== null
-		)
+		[latestProductionDeployment, latestPreviewDeployment].filter((d): d is Deployment => d !== null)
 	);
 
 	const hasActiveDeployment = $derived(
@@ -249,123 +247,115 @@
 		<!-- Header -->
 		<div class="mb-8">
 			<h1 class="text-3xl font-bold">Build & Déploiement</h1>
-			<p class="mt-2 text-muted-foreground">
-				Déclenche manuellement un build de preview sur Vercel, visible sur <a
-					href="https://preview.doukypick.fr"
-					target="_blank"
-					class="text-primary hover:underline"
-				>
-					https://preview.doukypick.fr
-				</a>
-			</p>
+			<p class="mt-2 text-muted-foreground">Gère le preview, la prod. Hack Internet !</p>
 		</div>
 
-		<!-- Main Build Card -->
-		<Card.Root class="mb-6">
-			<Card.Header>
-				<Card.Title class="flex items-center gap-2">
-					<Rocket class="h-5 w-5" />
-					Déploiement Preview
-				</Card.Title>
-				<Card.Description>
-					Utilise ce bouton pour déclencher un nouveau build de preview sur Vercel
-				</Card.Description>
-			</Card.Header>
-			<Card.Content class="space-y-4">
-				<div class="flex flex-col gap-3 sm:flex-row">
-					<Button
-						size="lg"
-						onclick={triggerBuild}
-						disabled={triggeringBuild}
-						class="w-full sm:w-auto"
-					>
+		{#if isConfigured === false}
+			<div class="mb-6 rounded-md border border-yellow-500 bg-yellow-50 p-4 dark:bg-yellow-950/20">
+				<p class="text-sm font-medium text-yellow-800 dark:text-yellow-200">
+					⚠️ Suivi des déploiements non configuré
+				</p>
+				<p class="mt-1 text-sm text-yellow-700 dark:text-yellow-300">
+					Ajoute VERCEL_API_TOKEN et VERCEL_PROJECT_ID dans tes variables d'environnement pour voir
+					le statut en temps réel.
+				</p>
+			</div>
+		{/if}
+
+		<div class="grid gap-6 md:grid-cols-2">
+			<!-- Preview Deployment Card -->
+			<Card.Root>
+				<Card.Header>
+					<Card.Title class="flex items-center gap-2">
+						<Rocket class="h-5 w-5" />
+						Déploiement Preview
+					</Card.Title>
+					<Card.Description>
+						Build de preview sur <a
+							href="https://preview.doukypick.fr"
+							target="_blank"
+							class="text-primary hover:underline"
+						>
+							preview.doukypick.fr
+						</a>
+					</Card.Description>
+				</Card.Header>
+				<Card.Content class="space-y-4">
+					<Button size="lg" onclick={triggerBuild} disabled={triggeringBuild} class="w-full">
 						<Hammer class="mr-2" />
 						{triggeringBuild ? 'Build en cours...' : 'Déclencher un Build'}
 					</Button>
 
-					<Button
-						size="lg"
-						variant="outline"
-						onclick={mergeBranches}
-						disabled={mergingBranches}
-						class="w-full sm:w-auto"
-					>
-						<GitMerge class="mr-2" />
-						{mergingBranches ? 'Fusion en cours...' : 'Fusionner les Branches'}
-					</Button>
-				</div>
-
-				{#if formattedLastBuildTime}
-					<p class="text-sm text-muted-foreground">
-						Dernier build déclenché : {formattedLastBuildTime}
-					</p>
-				{/if}
-
-				{#if isConfigured === false}
-					<div class="rounded-md border border-yellow-500 bg-yellow-50 p-4 dark:bg-yellow-950/20">
-						<p class="text-sm font-medium text-yellow-800 dark:text-yellow-200">
-							⚠️ Suivi des déploiements non configuré
+					{#if formattedLastBuildTime}
+						<p class="text-sm text-muted-foreground">
+							Dernier build : {formattedLastBuildTime}
 						</p>
-						<p class="mt-1 text-sm text-yellow-700 dark:text-yellow-300">
-							Ajoute VERCEL_API_TOKEN et VERCEL_PROJECT_ID dans tes variables d'environnement pour
-							voir le statut en temps réel.
-						</p>
-					</div>
-				{/if}
-			</Card.Content>
-		</Card.Root>
-
-		<!-- Deployment Status Card (if configured) -->
-		{#if isConfigured && (latestProductionDeployment || latestPreviewDeployment)}
-			<Card.Root class="mb-6">
-				<Card.Header>
-					<Card.Title class="flex items-center gap-2">
-						<Rocket class="h-5 w-5" />
-						Statut du Déploiement
-					</Card.Title>
-				</Card.Header>
-				<Card.Content class="space-y-3">
-					<!-- Production Deployment -->
-					{#if latestProductionDeployment}
-						{@const stateInfo = getDeploymentStateInfo(latestProductionDeployment.state)}
-						{@const StateIcon = stateInfo.icon}
-						<div class="flex items-center justify-between rounded-lg border p-4">
-							<div class="flex items-center gap-3">
-								<Badge variant="default" class="bg-purple-600">Production</Badge>
-								<div class="flex items-center gap-2">
-									<StateIcon
-										class="h-4 w-4 {latestProductionDeployment.state === 'BUILDING' ? 'animate-spin' : ''}"
-									/>
-									<span class="text-sm font-medium">{stateInfo.label}</span>
-								</div>
-							</div>
-							<span class="text-sm text-muted-foreground">
-								{formatDate(latestProductionDeployment.created)}
-							</span>
-						</div>
 					{/if}
 
-					<!-- Preview Deployment -->
-					{#if latestPreviewDeployment}
+					<!-- Preview Deployment Status -->
+					{#if isConfigured && latestPreviewDeployment}
 						{@const stateInfo = getDeploymentStateInfo(latestPreviewDeployment.state)}
 						{@const StateIcon = stateInfo.icon}
-						<div class="flex items-center justify-between rounded-lg border p-4">
-							<div class="flex items-center gap-3">
-								<Badge variant="secondary">Preview</Badge>
-								<div class="flex items-center gap-2">
-									<StateIcon
-										class="h-4 w-4 {latestPreviewDeployment.state === 'BUILDING' ? 'animate-spin' : ''}"
-									/>
-									<span class="text-sm font-medium">{stateInfo.label}</span>
-								</div>
+						<div class="rounded-lg border p-3">
+							<div class="mb-2 flex items-center gap-2">
+								<StateIcon
+									class="h-4 w-4 {latestPreviewDeployment.state === 'BUILDING'
+										? 'animate-spin'
+										: ''}"
+								/>
+								<span class="text-sm font-medium">{stateInfo.label}</span>
 							</div>
-							<span class="text-sm text-muted-foreground">
+							<span class="text-xs text-muted-foreground">
 								{formatDate(latestPreviewDeployment.created)}
 							</span>
 						</div>
 					{/if}
 				</Card.Content>
 			</Card.Root>
-		{/if}
+
+			<!-- Production Deployment Card -->
+			<Card.Root>
+				<Card.Header>
+					<Card.Title class="flex items-center gap-2">
+						<Rocket class="h-5 w-5" />
+						Déploiement Production
+					</Card.Title>
+					<Card.Description>
+						Build de production sur <a
+							href="https://doukypick.fr"
+							target="_blank"
+							class="text-primary hover:underline"
+						>
+							doukypick.fr
+						</a>
+					</Card.Description>
+				</Card.Header>
+				<Card.Content class="space-y-4">
+					<Button size="lg" onclick={mergeBranches} disabled={mergingBranches} class="w-full">
+						<GitMerge class="mr-2" />
+						{mergingBranches ? 'Build en cours...' : 'Déclencher un Build'}
+					</Button>
+
+					<!-- Production Deployment Status -->
+					{#if isConfigured && latestProductionDeployment}
+						{@const stateInfo = getDeploymentStateInfo(latestProductionDeployment.state)}
+						{@const StateIcon = stateInfo.icon}
+						<div class="rounded-lg border p-3">
+							<div class="mb-2 flex items-center gap-2">
+								<StateIcon
+									class="h-4 w-4 {latestProductionDeployment.state === 'BUILDING'
+										? 'animate-spin'
+										: ''}"
+								/>
+								<span class="text-sm font-medium">{stateInfo.label}</span>
+							</div>
+							<span class="text-xs text-muted-foreground">
+								{formatDate(latestProductionDeployment.created)}
+							</span>
+						</div>
+					{/if}
+				</Card.Content>
+			</Card.Root>
+		</div>
 	</div>
 </div>
