@@ -21,34 +21,16 @@ export const POST: RequestHandler = async ({ cookies, url }) => {
 	const branch = url.searchParams.get('branch') || 'preview';
 
 	try {
-		// First, get the latest deployment for the branch to trigger a redeploy
-		const getApiUrl = `https://api.vercel.com/v6/deployments?projectId=${VERCEL_PROJECT_ID}&limit=1&gitBranch=${branch}`;
-
-		const getResponse = await fetch(getApiUrl, {
-			headers: {
-				Authorization: `Bearer ${VERCEL_API_TOKEN}`,
-				'Content-Type': 'application/json'
-			}
-		});
-
-		if (!getResponse.ok) {
-			throw new Error(`Failed to fetch deployment: ${getResponse.status}`);
-		}
-
-		const getData = await getResponse.json();
-		const latestDeployment = getData.deployments?.[0];
-
-		if (!latestDeployment) {
-			throw new Error(`No previous deployment found for branch: ${branch}. Please deploy via git push first.`);
-		}
-
-		// Trigger a redeploy using the latest deployment
+		// Trigger a new deployment from the latest commit on the branch
 		const deploymentBody = {
-			deploymentId: latestDeployment.uid,
-			name: latestDeployment.name
+			name: VERCEL_PROJECT_ID,
+			gitSource: {
+				type: 'github',
+				ref: branch
+			}
 		};
 
-		const response = await fetch('https://api.vercel.com/v13/deployments?forceNew=1', {
+		const response = await fetch('https://api.vercel.com/v13/deployments', {
 			method: 'POST',
 			headers: {
 				Authorization: `Bearer ${VERCEL_API_TOKEN}`,
