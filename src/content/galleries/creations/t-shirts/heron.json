@@ -3,25 +3,25 @@
   "description": "Voici quelques exemples de T-shirts réalisés au moyen de la plaque linogravure \"héron\".\nChaque impression est unique, car en fonction du support, du niveau d'encrage et de la pression exercée, le résultat est très variable.",
   "orientation": "portrait",
   "aspectRatio": "5/4",
-  "slug": "t-shirts heron",
+  "slug": "creations/t-shirts/heron",
   "initialIndex": 2,
   "images": [
     {
-      "src": "/images/galleries/t-shirts/heron/heron1.jpg",
+      "src": "/images/creations/t-shirts/heron/heron1.jpg",
       "title": "T-shirt héron sur mannequin \"feminin\"",
       "description": "T-shirt héron sur mannequin \"feminin\"",
       "alt": "T-shirt héron feminin",
       "published": true
     },
     {
-      "src": "/images/galleries/t-shirts/heron/heron2.jpg",
+      "src": "/images/creations/t-shirts/heron/heron2.jpg",
       "title": "T-shirt noir héron sur mannequin \"masculin\"",
       "description": "T-shirt noir héron sur mannequin \"masculin\"",
       "alt": "T-shirt noir héron masculin",
       "published": true
     },
     {
-      "src": "/images/galleries/t-shirts/heron/heron3.jpg",
+      "src": "/images/creations/t-shirts/heron/heron3.jpg",
       "title": "T-shirt héron sur mannequin \"masculin\"",
       "description": "T-shirt héron sur mannequin \"masculin\"",
       "alt": "T-shirt noir héron masculin",

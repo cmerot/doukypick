@@ -116,7 +116,7 @@ export const processImage = (image: GalleryImage, galleryId: string, index: numb
 		title: image.title,
 		description: image.description,
 		alt: image.alt,
-		href: `/images/${galleryId}/${slug}`,
+		href: `/galeries/${galleryId}/${slug}`,
 
 		// Responsive images
 		srcset: createSrcset(image.src),

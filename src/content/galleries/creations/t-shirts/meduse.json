@@ -3,25 +3,25 @@
   "description": "Voici quelques exemples de T-shirts réalisés au moyen de la plaque linogravure \"méduse\".\nChaque impression est unique, car en fonction du support, du niveau d'encrage et de la pression exercée, le résultat est très variable.",
   "orientation": "portrait",
   "aspectRatio": "5/4",
-  "slug": "t-shirts méduse",
+  "slug": "creations/t-shirts/meduse",
   "initialIndex": 2,
   "images": [
     {
-      "src": "/images/galleries/t-shirts/meduse/meduse%201.jpg",
+      "src": "/images/creations/t-shirts/meduse/meduse%201.jpg",
       "title": "T-shirt méduse sur mannequin \"feminin\"",
       "description": "T-shirt méduse sur mannequin \"feminin\"",
       "alt": "T-shirt méduse feminin",
       "published": true
     },
     {
-      "src": "/images/galleries/t-shirts/meduse/meduse2.jpg",
+      "src": "/images/creations/t-shirts/meduse/meduse2.jpg",
       "title": "T-shirt noir méduse sur mannequin \"masculin\"",
       "description": "T-shirt noir méduse sur mannequin \"masculin\"",
       "alt": "T-shirt noir méduse masculin",
       "published": true
     },
     {
-      "src": "/images/galleries/t-shirts/meduse/meduse%204.jpg",
+      "src": "/images/creations/t-shirts/meduse/meduse%204.jpg",
       "title": "T-shirt méduse sur mannequin \"masculin\"",
       "description": "T-shirt méduse sur mannequin \"masculin\"",
       "alt": "T-shirt méduse masculin",
