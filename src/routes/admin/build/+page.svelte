@@ -63,7 +63,7 @@
 	// Fetch deployment status
 	async function fetchDeploymentStatus(): Promise<void> {
 		try {
-			const response = await fetch('/admin/build/status');
+			const response = await fetch('/api/build/status');
 			const data = await response.json();
 
 			if (response.ok) {
@@ -110,7 +110,7 @@
 	async function triggerBuild(): Promise<void> {
 		triggeringBuild = true;
 		try {
-			const response = await fetch('/admin/build', {
+			const response = await fetch('/api/build/deploy', {
 				method: 'POST'
 			});
 
@@ -141,7 +141,7 @@
 	async function mergeBranches(): Promise<void> {
 		mergingBranches = true;
 		try {
-			const response = await fetch('/admin/build/merge', {
+			const response = await fetch('/api/build/merge', {
 				method: 'POST'
 			});
 
