@@ -1,12 +1,8 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { verifySessionToken } from '$lib/server/auth';
+import { VERCEL_API_TOKEN, VERCEL_PROJECT_ID } from '$env/static/private';
 import { env } from '$env/dynamic/private';
-
-// Environment variables - make optional for graceful degradation
-const VERCEL_TOKEN = env.VERCEL_API_TOKEN || '';
-const VERCEL_PROJECT_ID = env.VERCEL_PROJECT_ID || '';
-const VERCEL_TEAM_ID = env.VERCEL_TEAM_ID || '';
 
 interface VercelDeployment {
 	uid: string;
@@ -32,7 +28,7 @@ export const GET: RequestHandler = async ({ cookies, url }) => {
 	}
 
 	// Check if Vercel API is configured
-	if (!VERCEL_TOKEN || !VERCEL_PROJECT_ID) {
+	if (!VERCEL_API_TOKEN || !VERCEL_PROJECT_ID) {
 		return json(
 			{
 				error: 'Vercel API not configured',
@@ -44,6 +40,7 @@ export const GET: RequestHandler = async ({ cookies, url }) => {
 
 	try {
 		// Build API URL
+		const VERCEL_TEAM_ID = env.VERCEL_TEAM_ID || '';
 		const limit = url.searchParams.get('limit') || '1';
 		let apiUrl = `https://api.vercel.com/v6/deployments?projectId=${VERCEL_PROJECT_ID}&limit=${limit}`;
 
@@ -56,7 +53,7 @@ export const GET: RequestHandler = async ({ cookies, url }) => {
 		// Fetch deployments from Vercel API
 		const response = await fetch(apiUrl, {
 			headers: {
-				Authorization: `Bearer ${VERCEL_TOKEN}`,
+				Authorization: `Bearer ${VERCEL_API_TOKEN}`,
 				'Content-Type': 'application/json'
 			}
 		});
