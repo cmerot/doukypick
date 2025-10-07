@@ -12,6 +12,13 @@
       "description": "T-shirt méduse sur mannequin \"feminin\"",
       "alt": "T-shirt méduse feminin",
       "published": true
+    },
+    {
+      "src": "/images/galleries/t-shirts/meduse/meduse2.jpg",
+      "title": "T-shirt noir méduse sur mannequin \"masculin\"",
+      "description": "T-shirt noir méduse sur mannequin \"masculin\"",
+      "alt": "T-shirt noir méduse masculin",
+      "published": true
     }
   ]
 }
