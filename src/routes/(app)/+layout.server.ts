@@ -12,7 +12,7 @@ export const load: LayoutServerLoad = async ({ fetch, url, cookies }) => {
 
 	// Create a transition key that doesn't change when navigating between images in the same gallery
 	// This prevents page transitions when browsing through images
-	const transitionKey = pathname.replace(/\/images\/[^/]+\/[^/]+$/, '/images/gallery');
+	const transitionKey = pathname.replace(/\/galeries\/.+$/, '/galeries');
 
 	return {
 		googleReviews,
