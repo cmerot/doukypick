@@ -9,7 +9,7 @@
 	let { children, data }: { children: Snippet; data: LayoutData } = $props();
 </script>
 
-<div class="flex min-h-screen flex-col">
+<div class="flex min-h-screen flex-col" data-sveltekit-preload-data="off">
 	<Header class="mx-auto w-full max-w-4xl [padding-inline:clamp(.5rem,4vw,1rem)] pt-3 md:pt-6">
 		<AdminHeader isAuthenticated={data.isAuthenticated} />
 	</Header>

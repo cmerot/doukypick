@@ -168,7 +168,13 @@
 		<div class="mb-8">
 			<h1 class="text-3xl font-bold">Build & Déploiement</h1>
 			<p class="mt-2 text-muted-foreground">
-				Déclenchez manuellement un build et un déploiement sur Vercel
+				Déclenche manuellement un build de preview sur Vercel, visible sur <a
+					href="https://preview.doukypick.fr"
+					target="_blank"
+					class="text-primary hover:underline"
+				>
+					https://preview.doukypick.fr
+				</a>
 			</p>
 		</div>
 
@@ -177,10 +183,10 @@
 			<Card.Header>
 				<Card.Title class="flex items-center gap-2">
 					<Rocket class="h-5 w-5" />
-					Déploiement Manuel
+					Déploiement Preview
 				</Card.Title>
 				<Card.Description>
-					Utilisez ce bouton pour déclencher un nouveau build et déploiement sur Vercel
+					Utilise ce bouton pour déclencher un nouveau build de preview sur Vercel
 				</Card.Description>
 			</Card.Header>
 			<Card.Content class="space-y-4">
@@ -212,7 +218,7 @@
 							⚠️ Suivi des déploiements non configuré
 						</p>
 						<p class="mt-1 text-sm text-yellow-700 dark:text-yellow-300">
-							Ajoutez VERCEL_API_TOKEN et VERCEL_PROJECT_ID dans vos variables d'environnement pour
+							Ajoute VERCEL_API_TOKEN et VERCEL_PROJECT_ID dans tes variables d'environnement pour
 							voir le statut en temps réel.
 						</p>
 					</div>
@@ -242,10 +248,20 @@
 					>
 						<svelte:component
 							this={stateInfo.icon}
-							class="mb-4 h-16 w-16 {latestDeployment.state === 'BUILDING' ? 'animate-spin' : ''} {latestDeployment.state === 'READY' ? 'text-green-600 dark:text-green-400' : latestDeployment.state === 'BUILDING' ? 'text-blue-600 dark:text-blue-400' : 'text-gray-600 dark:text-gray-400'}"
+							class="mb-4 h-16 w-16 {latestDeployment.state === 'BUILDING'
+								? 'animate-spin'
+								: ''} {latestDeployment.state === 'READY'
+								? 'text-green-600 dark:text-green-400'
+								: latestDeployment.state === 'BUILDING'
+									? 'text-blue-600 dark:text-blue-400'
+									: 'text-gray-600 dark:text-gray-400'}"
 						/>
 						<h3
-							class="mb-2 text-2xl font-bold {latestDeployment.state === 'READY' ? 'text-green-700 dark:text-green-300' : latestDeployment.state === 'BUILDING' ? 'text-blue-700 dark:text-blue-300' : 'text-gray-700 dark:text-gray-300'}"
+							class="mb-2 text-2xl font-bold {latestDeployment.state === 'READY'
+								? 'text-green-700 dark:text-green-300'
+								: latestDeployment.state === 'BUILDING'
+									? 'text-blue-700 dark:text-blue-300'
+									: 'text-gray-700 dark:text-gray-300'}"
 						>
 							{stateInfo.label}
 						</h3>
@@ -294,47 +310,5 @@
 				</Card.Content>
 			</Card.Root>
 		{/if}
-
-		<!-- Information Card -->
-		<Card.Root>
-			<Card.Header>
-				<Card.Title class="flex items-center gap-2">
-					<Info class="h-5 w-5" />
-					À propos des builds manuels
-				</Card.Title>
-			</Card.Header>
-			<Card.Content class="space-y-4">
-				<div class="space-y-2 text-sm">
-					<p>
-						Les builds manuels sont utiles lorsque vous avez désactivé les déploiements automatiques
-						sur Vercel. Cela vous permet de :
-					</p>
-					<ul class="ml-6 list-disc space-y-1 text-muted-foreground">
-						<li>Contrôler exactement quand votre site est déployé</li>
-						<li>Éviter les builds inutiles après chaque commit</li>
-						<li>Tester les changements localement avant de déployer</li>
-						<li>Économiser les minutes de build de votre plan Vercel</li>
-					</ul>
-				</div>
-
-				<div class="rounded-md border border-border bg-muted/50 p-4">
-					<p class="mb-2 text-sm font-medium">Configuration Vercel</p>
-					<p class="text-sm text-muted-foreground">
-						Pour désactiver les builds automatiques, allez dans les paramètres de votre projet
-						Vercel → Git → Ignored Build Step et configurez :
-					</p>
-					<code class="mt-2 block rounded bg-background p-2 text-xs">
-						exit 1
-					</code>
-				</div>
-
-				<div class="flex items-center gap-2 pt-2">
-					<Button variant="outline" size="sm" href="https://vercel.com/dashboard" target="_blank">
-						<ExternalLink class="mr-2 h-4 w-4" />
-						Ouvrir Vercel Dashboard
-					</Button>
-				</div>
-			</Card.Content>
-		</Card.Root>
 	</div>
 </div>
