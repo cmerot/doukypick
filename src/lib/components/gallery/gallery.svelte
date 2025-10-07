@@ -37,11 +37,11 @@
 	// Navigation functions
 	function handleFullscreenSelect(url: string, index: number) {
 		currentIndex = index;
-		replaceState(url, { isFullscreen: true });
+		replaceState(url, { isFullscreen: true, galleryId: gallery.slug });
 	}
 
 	function handleImageClick(e: MouseEvent, url: string, index: number): void {
-		pushState(url, { isFullscreen: true });
+		pushState(url, { isFullscreen: true, galleryId: gallery.slug });
 	}
 
 	function handleFullscreenClose() {
@@ -62,12 +62,12 @@
 
 	<!-- Thumbnail Carousel -->
 	<ThumbnailCarousel {images} {currentIndex} onSelect={handleSelect} class="" />
-
+	{images[currentIndex].title}
 	<FullscreenCarousel
 		{images}
 		{currentIndex}
 		onClose={handleFullscreenClose}
 		onSelect={handleFullscreenSelect}
-		open={page.state.isFullscreen || false}
+		open={(page.state.isFullscreen && page.state.galleryId === gallery.slug) || false}
 	/>
 </div>
