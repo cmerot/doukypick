@@ -12,6 +12,13 @@
       "description": "T-shirt octopus sur mannequin \"feminin\" ",
       "alt": "T-shirt octopus feminin",
       "published": true
+    },
+    {
+      "src": "/images/galleries/t-shirts/octopus/octo%201.jpg",
+      "title": "T-shirt octopus sur mannequin \"Masculin\"",
+      "description": "T-shirt octopus sur mannequin \"Masculin\"",
+      "alt": "T-shirt octopus Masculin",
+      "published": true
     }
   ]
 }
