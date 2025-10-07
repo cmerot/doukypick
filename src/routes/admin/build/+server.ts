@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { VERCEL_API_TOKEN, VERCEL_PROJECT_ID } from '$env/static/private';
+import { VERCEL_API_TOKEN, VERCEL_PROJECT_ID, VERCEL_REPO_ID } from '$env/static/private';
 import { verifySessionToken } from '$lib/server/auth';
 
 export const POST: RequestHandler = async ({ cookies, url }) => {
@@ -13,7 +13,7 @@ export const POST: RequestHandler = async ({ cookies, url }) => {
 	}
 
 	// Check if Vercel credentials are configured
-	if (!VERCEL_API_TOKEN || !VERCEL_PROJECT_ID) {
+	if (!VERCEL_API_TOKEN || !VERCEL_PROJECT_ID || !VERCEL_REPO_ID) {
 		return json({ error: 'Vercel API credentials not configured' }, { status: 500 });
 	}
 
@@ -26,7 +26,8 @@ export const POST: RequestHandler = async ({ cookies, url }) => {
 			name: VERCEL_PROJECT_ID,
 			gitSource: {
 				type: 'github',
-				ref: branch
+				ref: branch,
+				repoId: VERCEL_REPO_ID
 			}
 		};
 
