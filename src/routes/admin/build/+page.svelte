@@ -6,14 +6,13 @@
 		Hammer,
 		Rocket,
 		Info,
-		ExternalLink,
-		CheckCircle2,
-		Loader2,
-		XCircle,
-		Clock
+		Clock,
+		CircleCheck,
+		LoaderCircle,
+		CircleX
 	} from 'lucide-svelte';
 	import { toast } from 'svelte-sonner';
-	import { onMount, onDestroy } from 'svelte';
+	import { untrack } from 'svelte';
 
 	type DeploymentState = 'BUILDING' | 'ERROR' | 'INITIALIZING' | 'QUEUED' | 'READY' | 'CANCELED';
 
@@ -27,15 +26,40 @@
 		creator: string;
 	}
 
+	interface DeploymentStateInfo {
+		label: string;
+		color: string;
+		icon: typeof CircleCheck;
+	}
+
 	// Local state
 	let triggeringBuild = $state(false);
 	let lastBuildTime = $state<Date | null>(null);
-	let latestDeployment = $state<Deployment | null>(null);
+	let latestProductionDeployment = $state<Deployment | null>(null);
+	let latestPreviewDeployment = $state<Deployment | null>(null);
 	let isConfigured = $state<boolean | null>(null);
-	let pollingInterval: NodeJS.Timeout | null = null;
+	let pollingInterval = $state<number | null>(null);
+
+	// Derived state for active deployments
+	const activeDeployments = $derived(
+		[latestProductionDeployment, latestPreviewDeployment].filter(
+			(d): d is Deployment => d !== null
+		)
+	);
+
+	const hasActiveDeployment = $derived(
+		activeDeployments.some((d) => ['BUILDING', 'QUEUED', 'INITIALIZING'].includes(d.state))
+	);
+
+	const allDeploymentsFinished = $derived(
+		activeDeployments.length > 0 &&
+			activeDeployments.every((d) => ['READY', 'ERROR', 'CANCELED'].includes(d.state))
+	);
+
+	const isPolling = $derived(pollingInterval !== null);
 
 	// Fetch deployment status
-	async function fetchDeploymentStatus() {
+	async function fetchDeploymentStatus(): Promise<void> {
 		try {
 			const response = await fetch('/admin/build/status');
 			const data = await response.json();
@@ -43,7 +67,17 @@
 			if (response.ok) {
 				isConfigured = data.configured;
 				if (data.deployments && data.deployments.length > 0) {
-					latestDeployment = data.deployments[0];
+					// Separate deployments by type
+					const productionDeployments = data.deployments.filter(
+						(d: Deployment) => d.target === 'production'
+					);
+					const previewDeployments = data.deployments.filter(
+						(d: Deployment) => d.target === null || d.target === 'preview'
+					);
+
+					latestProductionDeployment =
+						productionDeployments.length > 0 ? productionDeployments[0] : null;
+					latestPreviewDeployment = previewDeployments.length > 0 ? previewDeployments[0] : null;
 				}
 			}
 		} catch (error) {
@@ -52,24 +86,26 @@
 	}
 
 	// Start polling for status updates
-	function startPolling() {
+	function startPolling(): void {
+		if (pollingInterval !== null) return;
+
 		// Fetch immediately
 		fetchDeploymentStatus();
 
 		// Then poll every 10 seconds
-		pollingInterval = setInterval(fetchDeploymentStatus, 10000);
+		pollingInterval = setInterval(fetchDeploymentStatus, 10000) as unknown as number;
 	}
 
 	// Stop polling
-	function stopPolling() {
-		if (pollingInterval) {
+	function stopPolling(): void {
+		if (pollingInterval !== null) {
 			clearInterval(pollingInterval);
 			pollingInterval = null;
 		}
 	}
 
 	// Trigger Vercel build
-	async function triggerBuild() {
+	async function triggerBuild(): Promise<void> {
 		triggeringBuild = true;
 		try {
 			const response = await fetch('/admin/build', {
@@ -100,26 +136,26 @@
 	}
 
 	// Get deployment state info
-	function getDeploymentStateInfo(state: DeploymentState) {
+	function getDeploymentStateInfo(state: DeploymentState): DeploymentStateInfo {
 		switch (state) {
 			case 'READY':
-				return { label: 'Déployé', color: 'bg-green-500', icon: CheckCircle2 };
+				return { label: 'Déployé', color: 'bg-green-500', icon: CircleCheck };
 			case 'BUILDING':
-				return { label: 'En cours', color: 'bg-blue-500', icon: Loader2 };
+				return { label: 'En cours', color: 'bg-blue-500', icon: LoaderCircle };
 			case 'QUEUED':
 			case 'INITIALIZING':
 				return { label: 'En attente', color: 'bg-yellow-500', icon: Clock };
 			case 'ERROR':
-				return { label: 'Erreur', color: 'bg-red-500', icon: XCircle };
+				return { label: 'Erreur', color: 'bg-red-500', icon: CircleX };
 			case 'CANCELED':
-				return { label: 'Annulé', color: 'bg-gray-500', icon: XCircle };
+				return { label: 'Annulé', color: 'bg-gray-500', icon: CircleX };
 			default:
 				return { label: state, color: 'bg-gray-500', icon: Info };
 		}
 	}
 
 	// Format date
-	function formatDate(timestamp: number) {
+	function formatDate(timestamp: number): string {
 		return new Date(timestamp).toLocaleString('fr-FR', {
 			day: '2-digit',
 			month: '2-digit',
@@ -129,30 +165,47 @@
 		});
 	}
 
-	onMount(() => {
-		// Fetch status on mount
+	// Format last build time
+	const formattedLastBuildTime = $derived(
+		lastBuildTime
+			? lastBuildTime.toLocaleString('fr-FR', {
+					day: '2-digit',
+					month: '2-digit',
+					year: 'numeric',
+					hour: '2-digit',
+					minute: '2-digit'
+				})
+			: null
+	);
+
+	// Initial fetch on mount
+	$effect(() => {
 		fetchDeploymentStatus();
 	});
 
-	onDestroy(() => {
-		stopPolling();
+	// Cleanup polling on unmount
+	$effect(() => {
+		return () => {
+			stopPolling();
+		};
 	});
 
 	// Auto-start/stop polling based on deployment state
 	$effect(() => {
-		if (!latestDeployment) return;
+		if (activeDeployments.length === 0) return;
 
-		const isActive = ['BUILDING', 'QUEUED', 'INITIALIZING'].includes(latestDeployment.state);
-		const isFinished = ['READY', 'ERROR', 'CANCELED'].includes(latestDeployment.state);
-
-		if (isActive && !pollingInterval) {
-			// Start polling if deployment is active and not already polling
-			console.log('Starting polling - deployment is active');
-			startPolling();
-		} else if (isFinished && pollingInterval) {
-			// Stop polling if deployment is finished
-			console.log('Stopping polling - deployment is finished');
-			stopPolling();
+		if (hasActiveDeployment && !isPolling) {
+			// Start polling if any deployment is active and not already polling
+			untrack(() => {
+				console.log('Starting polling - deployment is active');
+				startPolling();
+			});
+		} else if (allDeploymentsFinished && isPolling) {
+			// Stop polling if all deployments are finished
+			untrack(() => {
+				console.log('Stopping polling - all deployments are finished');
+				stopPolling();
+			});
 		}
 	});
 </script>
@@ -200,15 +253,9 @@
 					{triggeringBuild ? 'Build en cours...' : 'Déclencher un Build'}
 				</Button>
 
-				{#if lastBuildTime}
+				{#if formattedLastBuildTime}
 					<p class="text-sm text-muted-foreground">
-						Dernier build déclenché : {lastBuildTime.toLocaleString('fr-FR', {
-							day: '2-digit',
-							month: '2-digit',
-							year: 'numeric',
-							hour: '2-digit',
-							minute: '2-digit'
-						})}
+						Dernier build déclenché : {formattedLastBuildTime}
 					</p>
 				{/if}
 
@@ -227,85 +274,53 @@
 		</Card.Root>
 
 		<!-- Deployment Status Card (if configured) -->
-		{#if isConfigured && latestDeployment}
-			{@const stateInfo = getDeploymentStateInfo(latestDeployment.state)}
-			<Card.Root class="mb-6 {latestDeployment.state === 'READY' ? 'border-green-500' : ''}">
+		{#if isConfigured && (latestProductionDeployment || latestPreviewDeployment)}
+			<Card.Root class="mb-6">
 				<Card.Header>
 					<Card.Title class="flex items-center gap-2">
-						<svelte:component this={stateInfo.icon} class="h-5 w-5" />
+						<Rocket class="h-5 w-5" />
 						Statut du Déploiement
 					</Card.Title>
 				</Card.Header>
-				<Card.Content class="space-y-4">
-					<!-- Big Status Button -->
-					<div
-						class="flex flex-col items-center justify-center rounded-lg border-2 {latestDeployment.state ===
-						'READY'
-							? 'border-green-500 bg-green-50 dark:bg-green-950/20'
-							: latestDeployment.state === 'BUILDING'
-								? 'border-blue-500 bg-blue-50 dark:bg-blue-950/20'
-								: 'border-gray-300 bg-gray-50 dark:bg-gray-950/20'} p-8"
-					>
-						<svelte:component
-							this={stateInfo.icon}
-							class="mb-4 h-16 w-16 {latestDeployment.state === 'BUILDING'
-								? 'animate-spin'
-								: ''} {latestDeployment.state === 'READY'
-								? 'text-green-600 dark:text-green-400'
-								: latestDeployment.state === 'BUILDING'
-									? 'text-blue-600 dark:text-blue-400'
-									: 'text-gray-600 dark:text-gray-400'}"
-						/>
-						<h3
-							class="mb-2 text-2xl font-bold {latestDeployment.state === 'READY'
-								? 'text-green-700 dark:text-green-300'
-								: latestDeployment.state === 'BUILDING'
-									? 'text-blue-700 dark:text-blue-300'
-									: 'text-gray-700 dark:text-gray-300'}"
-						>
-							{stateInfo.label}
-						</h3>
-						<p class="text-sm text-muted-foreground">
-							Créé {formatDate(latestDeployment.created)}
-						</p>
-					</div>
-
-					<!-- Deployment Details -->
-					<div class="grid gap-2 text-sm">
-						<div class="flex items-center justify-between">
-							<span class="text-muted-foreground">URL:</span>
-							<a
-								href="https://{latestDeployment.url}"
-								target="_blank"
-								class="flex items-center gap-1 text-primary hover:underline"
-							>
-								{latestDeployment.url}
-								<ExternalLink class="h-3 w-3" />
-							</a>
-						</div>
-						<div class="flex items-center justify-between">
-							<span class="text-muted-foreground">Environnement:</span>
-							<Badge variant="secondary">{latestDeployment.target}</Badge>
-						</div>
-						{#if latestDeployment.creator}
-							<div class="flex items-center justify-between">
-								<span class="text-muted-foreground">Créé par:</span>
-								<span>{latestDeployment.creator}</span>
+				<Card.Content class="space-y-3">
+					<!-- Production Deployment -->
+					{#if latestProductionDeployment}
+						{@const stateInfo = getDeploymentStateInfo(latestProductionDeployment.state)}
+						{@const StateIcon = stateInfo.icon}
+						<div class="flex items-center justify-between rounded-lg border p-4">
+							<div class="flex items-center gap-3">
+								<Badge variant="default" class="bg-purple-600">Production</Badge>
+								<div class="flex items-center gap-2">
+									<StateIcon
+										class="h-4 w-4 {latestProductionDeployment.state === 'BUILDING' ? 'animate-spin' : ''}"
+									/>
+									<span class="text-sm font-medium">{stateInfo.label}</span>
+								</div>
 							</div>
-						{/if}
-					</div>
+							<span class="text-sm text-muted-foreground">
+								{formatDate(latestProductionDeployment.created)}
+							</span>
+						</div>
+					{/if}
 
-					{#if latestDeployment.state === 'READY'}
-						<Button
-							size="lg"
-							class="w-full bg-green-600 hover:bg-green-700"
-							href="https://{latestDeployment.url}"
-							target="_blank"
-						>
-							<CheckCircle2 class="mr-2" />
-							Voir le Site Déployé
-							<ExternalLink class="ml-2 h-4 w-4" />
-						</Button>
+					<!-- Preview Deployment -->
+					{#if latestPreviewDeployment}
+						{@const stateInfo = getDeploymentStateInfo(latestPreviewDeployment.state)}
+						{@const StateIcon = stateInfo.icon}
+						<div class="flex items-center justify-between rounded-lg border p-4">
+							<div class="flex items-center gap-3">
+								<Badge variant="secondary">Preview</Badge>
+								<div class="flex items-center gap-2">
+									<StateIcon
+										class="h-4 w-4 {latestPreviewDeployment.state === 'BUILDING' ? 'animate-spin' : ''}"
+									/>
+									<span class="text-sm font-medium">{stateInfo.label}</span>
+								</div>
+							</div>
+							<span class="text-sm text-muted-foreground">
+								{formatDate(latestPreviewDeployment.created)}
+							</span>
+						</div>
 					{/if}
 				</Card.Content>
 			</Card.Root>
