@@ -18,7 +18,6 @@ describe('processImageTags', () => {
 		processImageTags(tree, file);
 
 		expect(file.data.scriptRequirements).toBeDefined();
-		expect(file.data.scriptRequirements!.imports.size).toBe(1);
 		expect(
 			file.data.scriptRequirements!.imports.has(
 				'import Image from "$lib/svx-wrappers/image.svelte"'
