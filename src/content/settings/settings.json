@@ -14,16 +14,16 @@
       "href": "/salon-le-ptit-cap"
     },
     {
-      "label": "Contact",
-      "href": "/contact"
-    },
-    {
       "label": "Soins",
       "href": "/soins"
     },
     {
       "label": "Lino",
       "href": "/linogravure"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact"
     }
   ]
 }
