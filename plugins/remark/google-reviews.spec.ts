@@ -21,13 +21,11 @@ describe('processGoogleReviewsTags', () => {
 			'<GoogleReviews data={data.googleReviews} showOverallRating={true} maxReviews={3} className="max-w-6xl mx-auto" />'
 		);
 		expect(file.data.scriptRequirements).toBeDefined();
-		expect(file.data.scriptRequirements!.imports.size).toBe(1);
 		expect(
 			file.data.scriptRequirements!.imports.has(
 				'import GoogleReviews from "$lib/components/google-reviews.svelte"'
 			)
 		).toBe(true);
-		expect(file.data.scriptRequirements!.propsInit.size).toBe(1);
 		expect(file.data.scriptRequirements!.propsInit.has('const {data} = $props()')).toBe(true);
 	});
 

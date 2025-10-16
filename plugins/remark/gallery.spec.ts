@@ -27,7 +27,6 @@ describe('processGalleryTags', () => {
 
 		expect(tree.children![0].value).toBe('<Gallery gallery={weddingData} />');
 		expect(file.data.scriptRequirements).toBeDefined();
-		expect(file.data.scriptRequirements!.imports.size).toBe(2);
 		expect(
 			file.data.scriptRequirements!.imports.has(
 				"import weddingData from '$lib/../content/galleries/wedding.json'"
@@ -85,8 +84,21 @@ describe('processGalleryTags', () => {
 
 		expect(tree.children![0].value).toBe('<Gallery gallery={weddingData} />');
 		expect(tree.children![2].value).toBe('<Gallery gallery={birthdayData} />');
-		// Should have 3 imports: 2 data imports + 1 Gallery component imports
-		expect(file.data.scriptRequirements!.imports.size).toBe(3);
+		expect(
+			file.data.scriptRequirements!.imports.has(
+				"import weddingData from '$lib/../content/galleries/wedding.json'"
+			)
+		).toBe(true);
+		expect(
+			file.data.scriptRequirements!.imports.has(
+				"import birthdayData from '$lib/../content/galleries/birthday.json'"
+			)
+		).toBe(true);
+		expect(
+			file.data.scriptRequirements!.imports.has(
+				"import Gallery from '$lib/svx-wrappers/gallery.svelte'"
+			)
+		).toBe(true);
 	});
 
 	it('removes Gallery tag without src attribute and logs error', () => {

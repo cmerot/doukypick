@@ -4,6 +4,7 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import remarkGallery from './plugins/remark/gallery.ts';
 import remarkGoogleReviews from './plugins/remark/google-reviews.ts';
 import remarkImage from './plugins/remark/image.ts';
+import remarkMiniGallery from './plugins/remark/mini-gallery.ts';
 import remarkScriptAggregator from './plugins/remark/script-aggregator.ts';
 import { getAllImageWidths } from './src/lib/image-sizes.ts';
 
@@ -13,7 +14,13 @@ const config = {
 	preprocess: [
 		vitePreprocess(),
 		mdsvex({
-			remarkPlugins: [remarkGallery, remarkGoogleReviews, remarkImage, remarkScriptAggregator],
+			remarkPlugins: [
+				remarkGallery,
+				remarkGoogleReviews,
+				remarkImage,
+				remarkMiniGallery,
+				remarkScriptAggregator
+			],
 			extensions: ['.mdx']
 		})
 	],

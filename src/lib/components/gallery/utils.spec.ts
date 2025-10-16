@@ -207,7 +207,7 @@ describe('processImage', () => {
 	it('creates correct href path', () => {
 		const result = processImage(mockImage, 'test-gallery', 0);
 
-		expect(result.href).toMatch(/^\/images\/test-gallery\/test-photo-[0-9a-f]{8}$/);
+		expect(result.href).toMatch(/^\/galeries\/test-gallery\/test-photo-[0-9a-f]{8}$/);
 	});
 
 	it('creates srcset for responsive images', () => {
@@ -262,8 +262,8 @@ describe('processImage', () => {
 		const result1 = processImage(mockImage, 'gallery-1', 0);
 		const result2 = processImage(mockImage, 'gallery-2', 0);
 
-		expect(result1.href).toContain('/images/gallery-1/');
-		expect(result2.href).toContain('/images/gallery-2/');
+		expect(result1.href).toContain('/galeries/gallery-1/');
+		expect(result2.href).toContain('/galeries/gallery-2/');
 	});
 
 	it('processes multiple images with consistent UUIDs', () => {
