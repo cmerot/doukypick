@@ -3,27 +3,18 @@
 	import { page } from '$app/state';
 	import PageTitle from '$lib/components/page-title/page-title.svelte';
 	import PageSubtitle from '$lib/components/page-title/page-subtitle.svelte';
-	import { goto, replaceState } from '$app/navigation';
 	import { getAspectRatio } from '$lib/components/gallery/utils';
 	import { Button } from '$lib/components/ui/button';
 	import GridIcon from '@lucide/svelte/icons/grid-2x2';
 	import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-svelte';
+	import siteSettings from '$content/settings/settings.json';
 
 	let { data }: { data: PageData } = $props();
-
-	// Navigation functions
-	function handleFullscreenSelect(url: string, index: number) {
-		replaceState(url, {});
-	}
-
-	function handleFullscreenClose() {
-		goto(data.gallery.closeUrl);
-	}
 </script>
 
 <svelte:head>
-	<title>{data.meta.title}</title>
-	<meta name="description" content={data.meta.description} />
+	<title>{data.meta.title} - {siteSettings.title}</title>
+	<meta name="description" content="{data.meta.description} - {siteSettings.description}" />
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="image" />
@@ -103,6 +94,16 @@ ${JSON.stringify(
 						<span class="sr-only">Précédent</span>
 						<ArrowLeftIcon class="size-4" />
 					</Button>
+				{:else}
+					<Button
+						variant="outline"
+						class="ml-auto size-8 rounded-full"
+						data-sveltekit-noscroll
+						disabled
+					>
+						<span class="sr-only">Précédent</span>
+						<ArrowLeftIcon class="size-4" />
+					</Button>
 				{/if}
 				{#if data.currentIndex < data.images.length - 1}
 					<Button
@@ -114,13 +115,20 @@ ${JSON.stringify(
 						<span class="sr-only">Suivant</span>
 						<ArrowRightIcon class="size-4 " />
 					</Button>
+				{:else}
+					<Button variant="outline" class="size-8 rounded-full" data-sveltekit-noscroll disabled>
+						<span class="sr-only">Suivant</span>
+						<ArrowRightIcon class="size-4 " />
+					</Button>
 				{/if}
 			</nav>
 		</div>
 		<p class="mt-2 text-muted-foreground">{data.gallery.description}</p>
-		<Button href={data.gallery.closeUrl} variant="outline" class="mt-4">
-			<GridIcon class="size-4" />
-			Voir la galerie
-		</Button>
+		{#if data.gallery.closeUrl}
+			<Button href={data.gallery.closeUrl} variant="outline" class="mt-4">
+				<GridIcon class="size-4" />
+				Voir la galerie
+			</Button>
+		{/if}
 	</section>
 </main>
