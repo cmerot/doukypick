@@ -1,4 +1,4 @@
-import type { PageServerLoad } from '../$types';
+import type { PageServerLoad } from './$types';
 import { createClient } from '@supabase/supabase-js';
 import { error, isHttpError } from '@sveltejs/kit';
 import { SUPABASE_URL, SUPABASE_ANON_KEY } from '$env/static/private';
@@ -6,7 +6,7 @@ import { SUPABASE_URL, SUPABASE_ANON_KEY } from '$env/static/private';
 // Initialize Supabase client
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-export const load: PageServerLoad = async ({ url, cookies }) => {
+export const load: PageServerLoad = async ({ url }) => {
 	console.log('Loading contact submissions...');
 
 	// Get query parameters for pagination and filtering
