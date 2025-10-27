@@ -7,6 +7,7 @@ import remarkImage from './plugins/remark/image.ts';
 import remarkMiniGallery from './plugins/remark/mini-gallery.ts';
 import remarkScriptAggregator from './plugins/remark/script-aggregator.ts';
 import { getAllImageWidths } from './src/lib/image-sizes.ts';
+import remarkYoutube from './plugins/remark/youtube.ts';
 
 const config = {
 	// Consult https://svelte.dev/docs/kit/integrations
@@ -19,6 +20,7 @@ const config = {
 				remarkGoogleReviews,
 				remarkImage,
 				remarkMiniGallery,
+				remarkYoutube,
 				remarkScriptAggregator
 			],
 			extensions: ['.mdx']

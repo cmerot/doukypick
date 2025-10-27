@@ -216,6 +216,81 @@ export default defineConfig({
 								]
 							},
 							{
+								name: 'Youtube',
+								label: 'Vidéo YouTube',
+								fields: [
+									{
+										type: 'string',
+										name: 'id',
+										label: 'Identifiant de la vidéo',
+										required: true
+									},
+									{
+										type: 'string',
+										name: 'orientation',
+										label: 'Orientation',
+										required: true,
+										options: [
+											{ value: 'portrait', label: 'Portrait' },
+											{ value: 'landscape', label: 'Paysage' }
+										]
+									},
+									{
+										type: 'string',
+										name: 'aspectRatio',
+										required: true,
+										label: 'Ratio',
+										options: [
+											{ value: '16/9', label: '16:9 (HDTV)' },
+											{ value: '3/2', label: '3:2 (impression, album)' },
+											{ value: '4/3', label: '4:3 (caméra numérique)' },
+											{ value: '5/4', label: '5:4 (format pro)' },
+											{ value: '1/1', label: '1:1 (carré)' }
+										]
+									},
+									{
+										type: 'string',
+										name: 'width',
+										label: 'Largeur',
+										options: [
+											{ value: 'sm', label: 'Petite' },
+											{ value: 'md', label: 'Moyenne' },
+											{ value: 'lg', label: 'Grande' },
+											{ value: 'full', label: 'Pleine largeur' }
+										]
+									},
+									{
+										type: 'string',
+										name: 'alignment',
+										label: 'Alignement',
+										options: [
+											{ value: 'left', label: 'Gauche' },
+											{ value: 'right', label: 'Droit' }
+										]
+									},
+									{
+										type: 'boolean',
+										name: 'border',
+										label: 'Bordure'
+									},
+									{
+										type: 'string',
+										name: 'class',
+										label: 'Classes CSS'
+									}
+								],
+								ui: {
+									defaultItem: {
+										alignment: 'center',
+										width: 'large'
+									},
+									itemProps: (item) => ({
+										label: item?.alt || item?.caption || 'Image'
+									})
+								}
+							},
+
+							{
 								name: 'GoogleReviews',
 								label: 'Avis Google',
 								fields: [
