@@ -3,13 +3,17 @@
 	import PageSubtitle from '$lib/components/page-title/page-subtitle.svelte';
 	import PageTitle from '$lib/components/page-title/page-title.svelte';
 	import type { PageData } from './$types';
+	import siteSettings from '$content/settings/settings.json';
 
 	let { data } = $props<{ data: PageData }>();
 </script>
 
 <svelte:head>
-	<title>Contact - Doukypick, tatoueuse et dessinatrice</title>
-	<meta name="description" content="Formulaire de demande d'information pour un tatouage" />
+	<title>Contact - {siteSettings.title}</title>
+	<meta
+		name="description"
+		content="Formulaire de demande d'information pour un tatouage. {siteSettings.description}"
+	/>
 </svelte:head>
 
 <header>

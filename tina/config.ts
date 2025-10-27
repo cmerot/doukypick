@@ -34,6 +34,11 @@ export default defineConfig({
 						name: 'title'
 					},
 					{
+						type: 'string',
+						label: 'Description du site',
+						name: 'description'
+					},
+					{
 						type: 'object',
 						name: 'menu',
 						label: 'Menu principal',

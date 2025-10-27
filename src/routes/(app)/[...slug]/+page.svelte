@@ -2,6 +2,7 @@
 	import PageSubtitle from '$lib/components/page-title/page-subtitle.svelte';
 	import PageTitle from '$lib/components/page-title/page-title.svelte';
 	import type { PageData } from './$types';
+	import siteSettings from '$content/settings/settings.json';
 
 	let { data }: { data: PageData } = $props();
 
@@ -11,9 +12,11 @@
 </script>
 
 <svelte:head>
-	<title>{title}</title>
+	<title>{title} - {siteSettings.title}</title>
 	{#if description}
-		<meta name="description" content={description} />
+		<meta name="description" content="{description} - {siteSettings.description}" />
+	{:else}
+		<meta name="description" content="{title} - {siteSettings.description}" />
 	{/if}
 </svelte:head>
 
