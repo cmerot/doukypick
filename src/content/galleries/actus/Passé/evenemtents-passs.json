@@ -1,0 +1,23 @@
+{
+  "title": "Evenemtents passés",
+  "description": "retrouvez ici les affiches de quelques évènements auxquels j'ai participé. ",
+  "orientation": "portrait",
+  "slug": "past",
+  "published": false,
+  "images": [
+    {
+      "src": "/images/actus/evenements%20pass%C3%A9s/agen23.jpg",
+      "title": "Convention Agen tattoo",
+      "description": "Cet événement à eu lieu les 4/5 mars  2023 ",
+      "alt": "agenttt",
+      "published": true
+    },
+    {
+      "src": "/images/actus/evenements%20pass%C3%A9s/brive23.jpg",
+      "title": "Convention de Brive 2023 ",
+      "description": "J'ai été heureuse de participer à la première convention de tatouage de Brive du 7 au 9 avril 2023! \nDe belles rencontres et d'aventures humaines, une organisation top et beaucoup de visiteurs!!!\n",
+      "alt": "brivettt",
+      "published": true
+    }
+  ]
+}

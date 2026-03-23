@@ -1,0 +1,23 @@
+{
+  "title": "Évènement à venir",
+  "description": "Retrouvez ici les affiches et informations des prochains évènements auxquels je vais participer !",
+  "orientation": "portrait",
+  "aspectRatio": "5/4",
+  "slug": "soon",
+  "images": [
+    {
+      "src": "/images/actus/evenement%20%C3%A0%20venir/angoul%C3%A8me%2026.jpg",
+      "title": "Angoulème tattoo show 2026",
+      "description": "Je serai présente pour la 4e année consécutive sur Angoulême Tattoo show 2026.\n Contacte moi pour une réservation de Flash ou de projets personnalisés!\n À bientôt!",
+      "alt": "angoulemettt26",
+      "published": true
+    },
+    {
+      "src": "/images/actus/evenement%20%C3%A0%20venir/etampes26.jpg",
+      "title": "Pussay Tattoo Expo",
+      "description": "Je participerai les 30 et 31 mai 2026 à \"La Super Tattoo EXPO\" organisée pour la première fois à Pussay. \nCette année L'équipe de Rémy tattoo a décidé de s'expatrier à quelques kilomètres d'étampes!\nContacte moi Pour réserver un Flash, ou une étude personnalisée!\nHâte de vous y retrouvez!\nÀ bientôt dans le 91!\n",
+      "alt": "pussayttt",
+      "published": true
+    }
+  ]
+}
