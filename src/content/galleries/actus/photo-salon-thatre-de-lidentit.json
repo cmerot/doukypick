@@ -9,6 +9,12 @@
       "description": "Facade du théâtre de l'identité",
       "alt": "Facade1",
       "published": true
+    },
+    {
+      "src": "/images/actus/th%C3%A9atre/inter.jpg",
+      "title": "Poste de travail",
+      "alt": "poste de travail",
+      "published": true
     }
   ]
 }
