@@ -1,5 +1,14 @@
 {
   "title": "Photo Salon théatre de l'identité",
   "description": "Photo Salon théatre de l'identité",
-  "slug": "theatre-identite"
+  "slug": "theatre-identite",
+  "images": [
+    {
+      "src": "/images/actus/th%C3%A9atre/facadej.jpg",
+      "title": "Facade1",
+      "description": "Facade du théâtre de l'identité",
+      "alt": "Facade1",
+      "published": true
+    }
+  ]
 }
