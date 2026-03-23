@@ -1,0 +1,16 @@
+{
+  "title": "Évènements à venir",
+  "description": "Retrouvez ici les affiches et informations des prochains évènements auxquels je vais participer !",
+  "orientation": "portrait",
+  "aspectRatio": "5/4",
+  "slug": "soon",
+  "images": [
+    {
+      "src": "/images/actus/evenement%20%C3%A0%20venir/angoul%C3%A8me%2026.jpg",
+      "title": "Angoulème tattoo show 2026",
+      "description": "Je serai présente pour la 4e année consécutive sur Angoulême Tattoo show 2026.\n Contacte moi pour une réservation de Flash ou de projets personnalisés!\n À bientôt!",
+      "alt": "angoulemettt26",
+      "published": true
+    }
+  ]
+}
