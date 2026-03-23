@@ -112,38 +112,47 @@ export const actions: Actions = {
 			const { data, error } = await saveContactSubmission(submissionData);
 
 			if (error || !data) {
-				return fail(500, {
-					form,
-					generalError: 'Erreur lors de la sauvegarde. Veuillez réessayer.'
-				});
-			}
+				// Send Telegram notification
+				await sendTelegramNotification(
+					{
+						...formData,
+						error: 'Attention, formulaire non enregistré, la base doit être en hibernation'
+					},
+					url.origin
+				);
 
-			// Send Telegram notification
-			await sendTelegramNotification(
-				{
-					firstName: formData.firstName,
-					email: formData.email,
-					phone: formData.phone,
-					pseudonym: formData.pseudonym || '',
-					isAdult: formData.isAdult === 'true' ? 'yes' : 'no',
-					projectType: projectType,
-					projectDescription: formData.projectDescription,
-					size: formData.size || '',
-					placement: formData.placement || '',
-					budget: formData.budget || '',
-					timeline: formData.timeline || '',
-					additionalComments: formData.additionalComments || '',
-					photo_urls: uploadResult.urls,
-					submissionId: data.id
-				},
-				url.origin
-			);
+				// return fail(500, {
+				// 	form,
+				// 	generalError: 'Erreur lors de la sauvegarde. Veuillez réessayer.'
+				// });
+			} else {
+				// Send Telegram notification
+				await sendTelegramNotification(
+					{
+						firstName: formData.firstName,
+						email: formData.email,
+						phone: formData.phone,
+						pseudonym: formData.pseudonym || '',
+						isAdult: formData.isAdult === 'true' ? 'yes' : 'no',
+						projectType: projectType,
+						projectDescription: formData.projectDescription,
+						size: formData.size || '',
+						placement: formData.placement || '',
+						budget: formData.budget || '',
+						timeline: formData.timeline || '',
+						additionalComments: formData.additionalComments || '',
+						photo_urls: uploadResult.urls,
+						submissionId: data.id
+					},
+					url.origin
+				);
+			}
 
 			return {
 				form,
 				success: true,
-				message: 'Ton message a été envoyé avec succès ! Je te répondrai bientôt.',
-				submissionId: String(data.id)
+				message: 'Ton message a été envoyé avec succès ! Je te répondrai bientôt.'
+				// submissionId: String(data.id)
 			};
 		} catch (error) {
 			console.error('❌ Error processing contact form:', error);

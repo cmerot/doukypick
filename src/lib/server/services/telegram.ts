@@ -1,20 +1,21 @@
 import { TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID } from '$env/static/private';
 
 export interface TelegramSubmissionData {
-	firstName: string;
-	email: string;
+	error?: string;
+	firstName?: string;
+	email?: string;
 	phone?: string;
 	pseudonym?: string;
-	isAdult: string;
-	projectType: string;
-	projectDescription: string;
+	isAdult?: string;
+	projectType?: string;
+	projectDescription?: string;
 	size?: string;
 	placement?: string;
 	budget?: string;
 	timeline?: string;
 	additionalComments?: string;
 	photo_urls?: string[];
-	submissionId: number;
+	submissionId?: number;
 }
 
 async function sendMessage(message: string): Promise<void> {
@@ -56,7 +57,7 @@ async function sendPhoto(photoUrl: string, caption: string): Promise<void> {
 }
 
 function formatSubmissionMessage(data: TelegramSubmissionData, baseUrl: string): string {
-	return `🔔 *Nouvelle demande de tatouage*
+	return `${data.error ? data.error + '\n' : ''}🔔 *Nouvelle demande de tatouage*
 
 👤 *Prénom:* ${data.firstName}
 📧 *Email:* ${data.email}
