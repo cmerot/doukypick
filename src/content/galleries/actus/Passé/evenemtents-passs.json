@@ -40,6 +40,13 @@
       "published": true
     },
     {
+      "src": "/images/actus/evenements%20pass%C3%A9s/gaujac%2023.jpg",
+      "title": "Convention Gaujac2023",
+      "description": "Une petite convention sympathique, qui m'a permis d'étendre ma clientele dans le 47!\ncontacte moi tu souhaite m'y revoir! ",
+      "alt": "Convention Tattoo 47",
+      "published": true
+    },
+    {
       "src": "/images/actus/evenements%20pass%C3%A9s/etampes23.jpg",
       "title": "Etampes tattoo expo 2023",
       "description": "Première participation à cette événement en 2023. \nInscrite un peu par erreur, j'ai adoré cet événement, organisé et géré dans un univers familial par Remi tattoo, j'y retourne depuis chaque année! ",
@@ -61,10 +68,10 @@
       "published": true
     },
     {
-      "src": "/images/actus/evenements%20pass%C3%A9s/gaujac%2023.jpg",
-      "title": "Convention Gaujac2023",
-      "description": "Une petite convention sympathique, qui m'a permis d'étendre ma clientele dans le 47!\ncontacte moi tu souhaite m'y revoir! ",
-      "alt": "Convention Tattoo 47",
+      "src": "/images/actus/evenements%20pass%C3%A9s/larochesuryon23.jpg",
+      "title": "Tattoo Expo La Roche/Yon 2023",
+      "description": "Un belle évènement, et une clientèle très sympathique, pour ma première participation à cet événement je me suis beaucoup amusé ! \nÉcrit moi si tu veux m'y retrouver !",
+      "alt": "tattoo 85",
       "published": true
     }
   ]
