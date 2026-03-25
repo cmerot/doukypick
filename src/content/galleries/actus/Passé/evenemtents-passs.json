@@ -26,6 +26,13 @@
       "published": true
     },
     {
+      "src": "/images/actus/evenements%20pass%C3%A9s/etampes23.jpg",
+      "title": "Etampes tattoo expo",
+      "description": "Première participation à cette événement en 2023. \nInscrite un peu par erreur, j'ai adoré cet événement, organisé et géré dans un univers familial par Remi tattoo, j'y retourne depuis chaque année! ",
+      "alt": "etampes ttt",
+      "published": true
+    },
+    {
       "src": "/images/actus/evenements%20pass%C3%A9s/brive23.jpg",
       "title": "Convention de Brive 2023 ",
       "description": "J'ai été heureuse de participer à la première convention de tatouage de Brive du 7 au 9 avril 2023! \nDe belles rencontres et d'aventures humaines, une organisation top et beaucoup de visiteurs!!!\n",
@@ -40,10 +47,10 @@
       "published": true
     },
     {
-      "src": "/images/actus/evenements%20pass%C3%A9s/etampes23.jpg",
-      "title": "Etampes tattoo expo",
-      "description": "Première participation à cette événement en 2023. \nInscrite un peu par erreur, j'ai adoré cet événement, organisé et géré dans un univers familial par Remi tattoo, j'y retourne depuis chaque année! ",
-      "alt": "etampes ttt",
+      "src": "/images/actus/evenements%20pass%C3%A9s/etampes24.jpg",
+      "title": "Etampes Tattoo Expo",
+      "description": "Ma 2eme participation à cet évènement, fût encore un succès! j'y ai retrouvé d’anciens clients, ainsi que la joyeuse bande de Rémi! joie, éclats de rire une ambiance comme nul part ailleurs!",
+      "alt": "Etampesttt24",
       "published": true
     }
   ]
