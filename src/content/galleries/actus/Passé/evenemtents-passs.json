@@ -34,9 +34,10 @@
       "published": true
     },
     {
-      "src": "/images/actus/evenements%20pass%C3%A9s/angoul%C3%A0me24.jpg",
-      "title": "Angoulème tattoo show 2024",
-      "alt": "angoulemettt",
+      "src": "/images/actus/evenements%20pass%C3%A9s/larochesuryon24.jpg",
+      "title": "La Roche/Yon Tattoo Expo 2024",
+      "description": "Pour cette 2eme édition j'ai réalisé quelques flashs ainsi qu'une grosse pièce qui m'aura pris 7h ! \nLe publique y est très agréable, et tu souhaite me voir y re-participer contacte moi!\n ",
+      "alt": "Tattoo expo 85 ",
       "published": true
     },
     {
@@ -44,6 +45,19 @@
       "title": "Etampes Tattoo Expo 2024",
       "description": "Ma 2eme participation à cet évènement, fût encore un succès! j'y ai retrouvé d’anciens clients, ainsi que la joyeuse bande de Rémi! joie, éclats de rire une ambiance comme nul part ailleurs!",
       "alt": "Etampesttt24",
+      "published": true
+    },
+    {
+      "src": "/images/actus/evenements%20pass%C3%A9s/angoul%C3%A0me24.jpg",
+      "title": "Angoulème tattoo show 2024",
+      "alt": "angoulemettt",
+      "published": true
+    },
+    {
+      "src": "/images/actus/evenements%20pass%C3%A9s/larochesuryon23.jpg",
+      "title": "Tattoo Expo La Roche/Yon 2023",
+      "description": "Un belle évènement, et une clientèle très sympathique, pour ma première participation à cet événement je me suis beaucoup amusé ! \nÉcrit moi si tu veux m'y retrouver !",
+      "alt": "tattoo 85",
       "published": true
     },
     {
@@ -72,20 +86,6 @@
       "title": "Convention Agen tattoo 2023",
       "description": "Cet événement à eu lieu les 4/5 mars  2023 ",
       "alt": "agenttt",
-      "published": true
-    },
-    {
-      "src": "/images/actus/evenements%20pass%C3%A9s/larochesuryon23.jpg",
-      "title": "Tattoo Expo La Roche/Yon 2023",
-      "description": "Un belle évènement, et une clientèle très sympathique, pour ma première participation à cet événement je me suis beaucoup amusé ! \nÉcrit moi si tu veux m'y retrouver !",
-      "alt": "tattoo 85",
-      "published": true
-    },
-    {
-      "src": "/images/actus/evenements%20pass%C3%A9s/larochesuryon24.jpg",
-      "title": "La Roche/Yon Tattoo Expo 2024",
-      "description": "Pour cette 2eme édition j'ai réalisé quelques flashs ainsi qu'une grosse pièce qui m'aura pris 7h ! \nLe publique y est très agréable, et tu souhaite me voir y re-participer contacte moi!\n ",
-      "alt": "Tattoo expo 85 ",
       "published": true
     }
   ]
