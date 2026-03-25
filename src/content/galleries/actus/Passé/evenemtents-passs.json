@@ -6,23 +6,10 @@
   "published": false,
   "images": [
     {
-      "src": "/images/actus/evenements%20pass%C3%A9s/agen23.jpg",
-      "title": "Convention Agen tattoo 2023",
-      "description": "Cet événement à eu lieu les 4/5 mars  2023 ",
-      "alt": "agenttt",
-      "published": true
-    },
-    {
-      "src": "/images/actus/evenements%20pass%C3%A9s/brive23.jpg",
-      "title": "Convention de Brive 2023 ",
-      "description": "J'ai été heureuse de participer à la première convention de tatouage de Brive du 7 au 9 avril 2023! \nDe belles rencontres et d'aventures humaines, une organisation top et beaucoup de visiteurs!!!\n",
-      "alt": "brivettt",
-      "published": true
-    },
-    {
-      "src": "/images/actus/evenements%20pass%C3%A9s/angoul%C3%A0me24.jpg",
-      "title": "Angoulème tattoo show 2024",
-      "alt": "angoulemettt",
+      "src": "/images/actus/evenements%20pass%C3%A9s/angoul%C3%A8me%2025.jpg",
+      "title": "Angoulème tattoo show 2025",
+      "description": "J'ai bien été présente sur cette 3éme édition! \nIl semblerait bien le publique Angoumoisin  soit sensible à mon style illustratif!\n",
+      "alt": "angoulème tattoo",
       "published": true
     },
     {
@@ -33,10 +20,30 @@
       "published": true
     },
     {
-      "src": "/images/actus/evenements%20pass%C3%A9s/angoul%C3%A8me%2025.jpg",
-      "title": "Angoulème tattoo show 2025",
-      "description": "J'ai bien été présente sur cette 3éme édition! \nIl semblerait bien le publique Angoumoisin  soit sensible à mon style illustratif!\n",
-      "alt": "angoulème tattoo",
+      "src": "/images/actus/evenements%20pass%C3%A9s/angoul%C3%A0me24.jpg",
+      "title": "Angoulème tattoo show 2024",
+      "alt": "angoulemettt",
+      "published": true
+    },
+    {
+      "src": "/images/actus/evenements%20pass%C3%A9s/brive23.jpg",
+      "title": "Convention de Brive 2023 ",
+      "description": "J'ai été heureuse de participer à la première convention de tatouage de Brive du 7 au 9 avril 2023! \nDe belles rencontres et d'aventures humaines, une organisation top et beaucoup de visiteurs!!!\n",
+      "alt": "brivettt",
+      "published": true
+    },
+    {
+      "src": "/images/actus/evenements%20pass%C3%A9s/agen23.jpg",
+      "title": "Convention Agen tattoo 2023",
+      "description": "Cet événement à eu lieu les 4/5 mars  2023 ",
+      "alt": "agenttt",
+      "published": true
+    },
+    {
+      "src": "/images/actus/evenements%20pass%C3%A9s/etampes23.jpg",
+      "title": "Etampes tattoo expo",
+      "description": "Première participation à cette événement en 2023. \nInscrite un peu par erreur, j'ai adoré cet événement, organisé et géré dans un univers familial par Remi tattoo, j'y retourne depuis chaque année! ",
+      "alt": "etampes ttt",
       "published": true
     }
   ]
