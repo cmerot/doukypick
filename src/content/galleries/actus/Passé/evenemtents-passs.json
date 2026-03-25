@@ -54,6 +54,13 @@
       "published": true
     },
     {
+      "src": "/images/actus/evenements%20pass%C3%A9s/lorient%202024.jpg",
+      "title": "Salon du tatouage Lorient 2024",
+      "description": "J'ai adoré venir à la rencontre du publique breton! \nSi tu souhaites me voir venir en Breizh contacte moi !!!!",
+      "alt": "Lorient tattoo  2025",
+      "published": true
+    },
+    {
       "src": "/images/actus/evenements%20pass%C3%A9s/larochesuryon23.jpg",
       "title": "Tattoo Expo La Roche/Yon 2023",
       "description": "Un belle évènement, et une clientèle très sympathique, pour ma première participation à cet événement je me suis beaucoup amusé ! \nÉcrit moi si tu veux m'y retrouver !",
@@ -93,13 +100,6 @@
       "title": "Love Tattoo Caritatif",
       "description": "1er participation à la convention de La Teste de Buch (33).\nContacte moi si tu souhaites m'y revoir!",
       "alt": "La Teste 2023",
-      "published": true
-    },
-    {
-      "src": "/images/actus/evenements%20pass%C3%A9s/lorient%202024.jpg",
-      "title": "Salon du tatouage Lorient 2024",
-      "description": "J'ai adoré venir à la rencontre du publique breton! \nSi tu souhaites me voir venir en Breizh contacte moi !!!!",
-      "alt": "Lorient tattoo  2025",
       "published": true
     }
   ]
