@@ -252,6 +252,13 @@
       "description": "Tatouage créé sur commande pour se courageux client venu de Brive.\nIl m'aura fallut plus de 6h pour réaliser ce tatouage.",
       "alt": "Zeus tattoo",
       "published": true
+    },
+    {
+      "src": "/images/tatouages/couplemeles.jpg",
+      "title": "Matching tattoo",
+      "description": "Création et réalisation d'un tatouage en commun pour ces amoureux de la nature!\nVives les mariés et les coulemelles! ",
+      "alt": "mushroom tattoo",
+      "published": true
     }
   ]
 }
