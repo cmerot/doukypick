@@ -6,6 +6,13 @@
   "published": false,
   "images": [
     {
+      "src": "/images/actus/evenements%20pass%C3%A9s/p%C3%A9rigeux2025.jpg",
+      "title": "Périgeux Tattoo Expo 2025",
+      "description": "Ce fut encore un belle événement sous le signe du rire et de la bonne humeur !\nde belle rencontre et quelques tattoos réalisé sur une clientèle sympathique!\nÉcris moisi tu veux m'y revoir!\n",
+      "alt": "Périgeux expo 25",
+      "published": true
+    },
+    {
       "src": "/images/actus/evenements%20pass%C3%A9s/angoul%C3%A8me%2025.jpg",
       "title": "Angoulème tattoo show 2025",
       "description": "J'ai bien été présente sur cette 3éme édition! \nIl semblerait bien le publique Angoumoisin  soit sensible à mon style illustratif!\n",
@@ -75,10 +82,10 @@
       "published": true
     },
     {
-      "src": "/images/actus/evenements%20pass%C3%A9s/p%C3%A9rigeux2025.jpg",
-      "title": "Périgeux Tattoo Expo 2025",
-      "description": "Ce fut encore un belle événement sous le signe du rire et de la bonne humeur !\nde belle rencontre et quelques tattoos réalisé sur une clientèle sympathique!\nÉcris moisi tu veux m'y revoir!\n",
-      "alt": "Périgeux expo 25",
+      "src": "/images/actus/evenements%20pass%C3%A9s/larochesuryon24.jpg",
+      "title": "La Roche/Yon Tattoo Expo 2024",
+      "description": "Pour cette 2eme édition j'ai réalisé quelques flashs ainsi qu'une grosse pièce qui m'aura pris 7h ! \nLe publique y est très agréable, et tu souhaite me voir y re-participer contacte moi!\n ",
+      "alt": "Tattoo expo 85 ",
       "published": true
     }
   ]
