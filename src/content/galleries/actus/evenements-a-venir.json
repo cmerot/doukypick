@@ -3,7 +3,7 @@
   "description": "Retrouvez ici les affiches et informations des prochains évènements auxquels je vais participer !",
   "orientation": "portrait",
   "aspectRatio": "5/4",
-  "slug": "soon",
+  "slug": "actus/evenements-a-venir",
   "images": [
     {
       "src": "/images/actus/2026/angouleme.jpg",
