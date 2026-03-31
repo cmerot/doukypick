@@ -1,0 +1,30 @@
+{
+  "title": "Photo Salon théatre de l'identité",
+  "description": "Photo Salon théatre de l'identité",
+  "orientation": "landscape",
+  "aspectRatio": "4/3",
+  "slug": "theatre-identite",
+  "images": [
+    {
+      "src": "/images/actus/2026/theatre/facade2.jpg",
+      "title": "Facade jaune",
+      "description": "Facade ronde avec un éclairage jaune",
+      "alt": "Photo de la facade avec un éclairage jaune",
+      "published": true
+    },
+    {
+      "src": "/images/actus/2026/theatre/inter.jpg",
+      "title": "Vue de l'intérieur du salon",
+      "description": "Voute et carrelage",
+      "alt": "Photo de l'intérieur, de la voute et du carrelage",
+      "published": true
+    },
+    {
+      "src": "/images/actus/2026/theatre/facadej.jpg",
+      "title": "Facade de jour",
+      "description": "Facade de jour, lumière naturelle",
+      "alt": "Photo de la facade de jour",
+      "published": true
+    }
+  ]
+}
