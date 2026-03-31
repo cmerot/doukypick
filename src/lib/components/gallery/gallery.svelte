@@ -27,7 +27,11 @@
 	});
 
 	// Gallery state
-	let currentIndex = $state(initialIndex);
+	let currentIndex = $state(0);
+
+	$effect(() => {
+		currentIndex = initialIndex;
+	});
 
 	// Navigation functions
 	function handleSelect(index: number) {
@@ -40,7 +44,7 @@
 		replaceState(url, { isFullscreen: true, galleryId: gallery.slug });
 	}
 
-	function handleImageClick(e: MouseEvent, url: string, index: number): void {
+	function handleImageClick(_e: MouseEvent, url: string, _index: number): void {
 		pushState(url, { isFullscreen: true, galleryId: gallery.slug });
 	}
 

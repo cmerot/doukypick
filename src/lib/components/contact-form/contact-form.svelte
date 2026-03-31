@@ -12,6 +12,10 @@
 	import type { SuperValidated } from 'sveltekit-superforms';
 	let { data }: { data: SuperValidated<ContactFormType> } = $props();
 
+	let generalError = $state<string | undefined>(undefined);
+	let successMessage = $state<string | undefined>(undefined);
+	let resetPhotos: (() => void) | undefined = $state();
+
 	const form = superForm(data, {
 		validators: zod4Client(contactFormSchema as any),
 		errorSelector: '[aria-invalid="true"],[data-invalid],[data-fs-error]',
@@ -33,10 +37,6 @@
 	});
 
 	const { form: formData, enhance, submitting } = form;
-
-	let generalError = $state<string | undefined>(undefined);
-	let successMessage = $state<string | undefined>(undefined);
-	let resetPhotos: (() => void) | undefined = $state();
 </script>
 
 <Card.Root>

@@ -9,7 +9,7 @@
 
 	const { gallery }: Props = $props();
 
-	const aspectRatio = getAspectRatio(gallery.aspectRatio, gallery.orientation);
+	const aspectRatio = $derived(getAspectRatio(gallery.aspectRatio, gallery.orientation));
 </script>
 
 <Gallery {gallery} {aspectRatio} initialIndex={gallery.initialIndex} />
