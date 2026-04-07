@@ -6,9 +6,16 @@
 
 	let { data }: { data: PageData } = $props();
 
-	const { metadata, component: Component, ...otherData } = data;
+	const metadata = $derived(data.metadata);
+	const Component = $derived(data.component);
+	const otherData = $derived.by(() => {
+		const { metadata, component, ...rest } = data;
+		return rest;
+	});
 
-	const { title, subtitle, description } = metadata;
+	const title = $derived(metadata.title);
+	const subtitle = $derived(metadata.subtitle);
+	const description = $derived(metadata.description);
 </script>
 
 <svelte:head>

@@ -4,7 +4,6 @@ import { superValidate } from 'sveltekit-superforms';
 import { zod4 } from 'sveltekit-superforms/adapters';
 import { contactFormSchema, type ContactFormType } from '$lib/schemas/contact-form';
 import { uploadPhotos } from '$lib/server/services/blob-storage';
-import { saveContactSubmission } from '$lib/server/services/contact-database';
 import { sendTelegramNotification } from '$lib/server/services/telegram';
 
 export const prerender = false;
@@ -89,64 +88,25 @@ export const actions: Actions = {
 				});
 			}
 
-			// Prepare database submission
-			const submissionData = {
-				email: formData.email,
-				is_adult: formData.isAdult === 'true' ? 'yes' : 'no',
-				first_name: formData.firstName,
-				pseudonym: formData.pseudonym || null,
-				phone: formData.phone,
-				project_type: projectType,
-				project_description: formData.projectDescription,
-				size: formData.size || null,
-				placement: formData.placement || null,
-				budget: formData.budget || null,
-				timeline: formData.timeline || null,
-				additional_comments: formData.additionalComments || null,
-				send_copy: false,
-				photo_urls: uploadResult.urls,
-				created_at: new Date().toISOString()
-			};
-
-			// Save to database
-			const { data, error } = await saveContactSubmission(submissionData);
-
-			if (error || !data) {
-				// Send Telegram notification
-				await sendTelegramNotification(
-					{
-						...formData,
-						error: 'Attention, formulaire non enregistré, la base doit être en hibernation'
-					},
-					url.origin
-				);
-
-				// return fail(500, {
-				// 	form,
-				// 	generalError: 'Erreur lors de la sauvegarde. Veuillez réessayer.'
-				// });
-			} else {
-				// Send Telegram notification
-				await sendTelegramNotification(
-					{
-						firstName: formData.firstName,
-						email: formData.email,
-						phone: formData.phone,
-						pseudonym: formData.pseudonym || '',
-						isAdult: formData.isAdult === 'true' ? 'yes' : 'no',
-						projectType: projectType,
-						projectDescription: formData.projectDescription,
-						size: formData.size || '',
-						placement: formData.placement || '',
-						budget: formData.budget || '',
-						timeline: formData.timeline || '',
-						additionalComments: formData.additionalComments || '',
-						photo_urls: uploadResult.urls,
-						submissionId: data.id
-					},
-					url.origin
-				);
-			}
+			// Send Telegram notification
+			await sendTelegramNotification(
+				{
+					firstName: formData.firstName,
+					email: formData.email,
+					phone: formData.phone,
+					pseudonym: formData.pseudonym || '',
+					isAdult: formData.isAdult === 'true' ? 'yes' : 'no',
+					projectType: projectType,
+					projectDescription: formData.projectDescription,
+					size: formData.size || '',
+					placement: formData.placement || '',
+					budget: formData.budget || '',
+					timeline: formData.timeline || '',
+					additionalComments: formData.additionalComments || '',
+					photo_urls: uploadResult.urls
+				},
+				url.origin
+			);
 
 			return {
 				form,

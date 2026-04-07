@@ -1,0 +1,107 @@
+{
+  "title": "Événements passés",
+  "description": "Retrouvez ici les affiches de quelques évènements auxquels j'ai participé. ",
+  "orientation": "portrait",
+  "aspectRatio": "4/3",
+  "slug": "actus/evenements-passes",
+  "published": false,
+  "images": [
+    {
+      "src": "/images/actus/2025/perigeux.jpg",
+      "title": "Périgeux Tattoo Expo 2025",
+      "description": "Ce fut encore un belle événement sous le signe du rire et de la bonne humeur !\nde belle rencontre et quelques tattoos réalisé sur une clientèle sympathique!\nÉcris moisi tu veux m'y revoir!\n",
+      "alt": "Périgeux expo 25",
+      "published": true
+    },
+    {
+      "src": "/images/actus/2025/angouleme.jpg",
+      "title": "Angoulème tattoo show 2025",
+      "description": "J'ai bien été présente sur cette 3éme édition! \nIl semblerait bien le publique Angoumoisin  soit sensible à mon style illustratif!\n",
+      "alt": "angoulème tattoo",
+      "published": true
+    },
+    {
+      "src": "/images/actus/2025/limoges.png",
+      "title": "Guest chez Infernis  2025",
+      "description": "J'ai eu le plaisir de travailler quelques jours en \"guest\" chez Infernis, salon de tatouage situé dans limoges centre, du 25 Février au 1 mars 2025.\nN'hésite pas à me contacter si tu souhaites m'y revoir!",
+      "alt": "Guest Infernis Limoges",
+      "published": true
+    },
+    {
+      "src": "/images/actus/2025/etampes.jpg",
+      "title": "Etampes Tattoo Expo 2025",
+      "description": "Lors de cette convention que j'adore (grace tant à l'équipe de l'organisation qu'au publique toujours aussi enthousiaste) j'ai reçu 2 prix décernés par un jury d'enfant! Génial!\n\n",
+      "alt": "Etampesttt25",
+      "published": true
+    },
+    {
+      "src": "/images/actus/2024/larochesuryon.jpg",
+      "title": "La Roche/Yon Tattoo Expo 2024",
+      "description": "Pour cette 2eme édition j'ai réalisé quelques flashs ainsi qu'une grosse pièce qui m'aura pris 7h ! \nLe publique y est très agréable, et tu souhaite me voir y re-participer contacte moi!\n ",
+      "alt": "Tattoo expo 85 ",
+      "published": true
+    },
+    {
+      "src": "/images/actus/2024/etampes.jpg",
+      "title": "Etampes Tattoo Expo 2024",
+      "description": "Ma 2eme participation à cet évènement, fût encore un succès! j'y ai retrouvé d’anciens clients, ainsi que la joyeuse bande de Rémi! joie, éclats de rire une ambiance comme nul part ailleurs!",
+      "alt": "Etampesttt24",
+      "published": true
+    },
+    {
+      "src": "/images/actus/2024/angouleme.jpg",
+      "title": "Angoulème tattoo show 2024",
+      "alt": "angoulemettt",
+      "published": true
+    },
+    {
+      "src": "/images/actus/2024/lorient.jpg",
+      "title": "Salon du tatouage Lorient 2024",
+      "description": "J'ai adoré venir à la rencontre du publique breton! \nSi tu souhaites me voir venir en Breizh contacte moi !!!!",
+      "alt": "Lorient tattoo  2024",
+      "published": true
+    },
+    {
+      "src": "/images/actus/2023/larochesuryon.jpg",
+      "title": "Tattoo Expo La Roche/Yon 2023",
+      "description": "Un belle évènement, et une clientèle très sympathique, pour ma première participation à cet événement je me suis beaucoup amusé ! \nÉcrit moi si tu veux m'y retrouver !",
+      "alt": "tattoo 85",
+      "published": true
+    },
+    {
+      "src": "/images/actus/2023/gaujac.jpg",
+      "title": "Convention Gaujac2023",
+      "description": "Une petite convention sympathique, qui m'a permis d'étendre ma clientele dans le 47!\ncontacte moi tu souhaite m'y revoir! ",
+      "alt": "Convention Tattoo 47",
+      "published": true
+    },
+    {
+      "src": "/images/actus/2023/etampes.jpg",
+      "title": "Etampes tattoo expo 2023",
+      "description": "Première participation à cette événement en 2023. \nInscrite un peu par erreur, j'ai adoré cet événement, organisé et géré dans un univers familial par Remi tattoo, j'y retourne depuis chaque année! ",
+      "alt": "etampes ttt",
+      "published": true
+    },
+    {
+      "src": "/images/actus/2023/brive.jpg",
+      "title": "Convention de Brive 2023 ",
+      "description": "J'ai été heureuse de participer à la première convention de tatouage de Brive du 7 au 9 avril 2023! \nDe belles rencontres et d'aventures humaines, une organisation top et beaucoup de visiteurs!!!\n",
+      "alt": "brivettt",
+      "published": true
+    },
+    {
+      "src": "/images/actus/2023/agen.jpg",
+      "title": "Convention Agen tattoo 2023",
+      "description": "Cet événement à eu lieu les 4/5 mars  2023 ",
+      "alt": "agenttt",
+      "published": true
+    },
+    {
+      "src": "/images/actus/2023/lateste.jpg",
+      "title": "Love Tattoo Caritatif",
+      "description": "1er participation à la convention de La Teste de Buch (33).\nContacte moi si tu souhaites m'y revoir!",
+      "alt": "La Teste 2023",
+      "published": true
+    }
+  ]
+}

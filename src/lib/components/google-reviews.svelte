@@ -15,7 +15,7 @@
 	let { data, showOverallRating = true, maxReviews, className = '', title }: Props = $props();
 
 	// Destructure data
-	const { reviews, rating, totalReviews } = data;
+	const { reviews, rating, totalReviews } = $derived(data);
 
 	// Reactive computation for displayed reviews
 	let displayedReviews = $derived(maxReviews ? reviews.slice(0, maxReviews) : reviews);

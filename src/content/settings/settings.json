@@ -11,6 +11,10 @@
       "href": "/a-propos"
     },
     {
+      "label": "Actus",
+      "href": "/actus"
+    },
+    {
       "label": "Le salon",
       "href": "/salon-le-ptit-cap"
     },

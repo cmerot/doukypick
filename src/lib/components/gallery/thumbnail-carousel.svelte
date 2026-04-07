@@ -24,7 +24,7 @@
 	} = $props();
 
 	let api = $state<CarouselAPI>();
-	let current = $state<number>(currentIndex);
+	let current = $state<number>(0);
 
 	function handleClick(index: number) {
 		current = index;

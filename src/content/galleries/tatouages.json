@@ -231,6 +231,34 @@
       "description": "Composition florale avec différentes variétés de fleurs et feuillages, créé et réalisé sur commande en salon",
       "alt": "Tatouage de fleurs diverses avec feuillages sur avant-bras",
       "published": true
+    },
+    {
+      "src": "/images/tatouages/Corbeaux-emily1.jpg",
+      "title": "Corbeaux en vol ",
+      "description": "Tatouage réalisé sur la cuisse de cette cliente fidèle, 3 séances ont été nécessaires, pour réaliser ce tatouage entièrement créé pour Emily.\nLes mouvements de sa jambes donnent vie au vol de ses oiseaux créés sur mesures! \n",
+      "alt": " Tatouage Corbeaux sur cuisse",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/corbeaux-emily.jpg",
+      "title": "Corbeaux en vol",
+      "description": "Les Corbeaux d'Emily suite",
+      "alt": "Tatouage Corbeaux",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/zeus.jpg",
+      "title": "Tatouage Zeus",
+      "description": "Tatouage créé sur commande pour se courageux client venu de Brive.\nIl m'aura fallut plus de 6h pour réaliser ce tatouage.",
+      "alt": "Zeus tattoo",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/couplemeles.jpg",
+      "title": "Matching tattoo",
+      "description": "Création et réalisation d'un tatouage en commun pour ces amoureux de la nature, et du Médoc!\nVives les mariés et les coulemelles! ",
+      "alt": "mushroom tattoo",
+      "published": true
     }
   ]
 }

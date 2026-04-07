@@ -32,19 +32,23 @@
 		full: ''
 	};
 
-	const classNames = ['mb-2 mx-auto'];
-	if (alignment) {
-		classNames.push(alignments[alignment]);
-	}
-	if (width) {
-		classNames.push(widths[width]);
-	}
-	if (border) {
-		classNames.push('border-4 border-primary');
-	}
-	const sizesNotEmpty = sizes
-		? sizes
-		: '(max-width: 150px) 150px, (max-width: 400px) 400px, (max-width: 600px) 600px, 900px';
+	const classNames = $derived.by(() => {
+		const classes = ['mb-2 mx-auto'];
+		if (alignment) {
+			classes.push(alignments[alignment]);
+		}
+		if (width) {
+			classes.push(widths[width]);
+		}
+		if (border) {
+			classes.push('border-4 border-primary');
+		}
+		return classes;
+	});
+
+	const sizesNotEmpty = $derived(
+		sizes || '(max-width: 150px) 150px, (max-width: 400px) 400px, (max-width: 600px) 600px, 900px'
+	);
 </script>
 
 <img
