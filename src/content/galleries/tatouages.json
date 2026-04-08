@@ -9,31 +9,24 @@
   "published": true,
   "images": [
     {
-      "src": "/images/tatouages/IMG_20240405_230428_904.jpg",
-      "title": "Grue en vol - Oiseau majestueux",
-      "description": "Tatouage d'une grue aux ailes déployées, réalisé sur l'épaule de Vincent, lors de la convention de tatouage de Lorient en Bretagne.",
-      "alt": "Tatouage d'une grue aux ailes déployées sur l'épaule",
+      "src": "/images/tatouages/IMG_20241004_184024.jpg",
+      "title": "Cabane dans l'arbre nuageux",
+      "description": "Tatouage poétique d'une cabane nichée dans un arbre feuillu nuageux, évoquant un refuge paisible dans la nature.",
+      "alt": "Tatouage d'une cabane perchée dans un arbre avec nuageux",
       "published": true
     },
     {
-      "src": "/images/tatouages/IMG_20240326_155654_135.jpg",
-      "title": "Danse macabre - Squelette et femme",
-      "description": "Tatouage représentant une scène de danse macabre Entre un squelette et une femme sortant d'un livre, dont certaines pages se sont détachées. Ce tatouage à été créé et réalisé à la demande d'une cliente pationnée d'anthrepologie, de danse et d'écriture.",
-      "alt": "Tatouage sur cuisse représentant une danse entre un squelette et une femme",
+      "src": "/images/tatouages/corbeaux-emily.jpg",
+      "title": "Corbeaux en vol",
+      "description": "Les Corbeaux d'Emily suite",
+      "alt": "Tatouage Corbeaux",
       "published": true
     },
     {
-      "src": "/images/tatouages/IMG_20240410_211419_241.jpg",
-      "title": "T-Rex rugissant ",
-      "description": " Tyrannosaurus Rex rugissant de l'amour! un avant bras. Ce tatouage sortit de mon catalogue de flash a été adopté sur la convention de Lorient.",
-      "alt": "Tatouage de dinosaure T-Rex sur avant-bras",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/IMG_20240501_200148_384.jpg",
-      "title": "Walkman et casque vintages",
-      "description": "Tatouage représentant un walkman vintage avec un casque vintage, icone de mes jeunes années. flash adopté sur le convention d'angoulème!",
-      "alt": "Tatouage représentant un walkman rétro avec un casque",
+      "src": "/images/tatouages/Corbeaux-emily1.jpg",
+      "title": "Corbeaux en vol ",
+      "description": "Tatouage réalisé sur la cuisse de cette cliente fidèle, 3 séances ont été nécessaires, pour réaliser ce tatouage entièrement créé pour Emily.\nLes mouvements de sa jambes donnent vie au vol de ses oiseaux créés sur mesures! \n",
+      "alt": " Tatouage Corbeaux sur cuisse",
       "published": true
     },
     {
@@ -44,31 +37,17 @@
       "published": true
     },
     {
+      "src": "/images/tatouages/zeus.jpg",
+      "title": "Tatouage Zeus",
+      "description": "Tatouage créé sur commande pour se courageux client venu de Brive.\nIl m'aura fallut plus de 6h pour réaliser ce tatouage.",
+      "alt": "Zeus tattoo",
+      "published": true
+    },
+    {
       "src": "/images/tatouages/IMG_20240829_174950.jpg",
       "title": "Serpent et roses entrelacés",
       "description": "Composition élégante d'un serpent aux écailles détaillées s'enroulant autour de roses épanouies, alliant danger et beauté dans un style illustratif et réaliste.",
       "alt": "Tatouage d'un serpent s'enroulant autour de roses sur le mollet",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/IMG20240906172450~2.jpg",
-      "title": "Papillon et composition florale",
-      "description": "Composition délicate associant un papillon aux ailes détaillées avec des lys et autres fleurs, style linéaire fin et gracieux",
-      "alt": "Tatouage d'un papillon avec lys et fleurs diverses sur l'avant-bras",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/IMG_20241004_184024.jpg",
-      "title": "Cabane dans l'arbre nuageux",
-      "description": "Tatouage poétique d'une cabane nichée dans un arbre feuillu nuageux, évoquant un refuge paisible dans la nature.",
-      "alt": "Tatouage d'une cabane perchée dans un arbre avec nuageux",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/IMG20241012212533~2.jpg",
-      "title": "Grenouille stylisée",
-      "description": "Représentation stylisée d'une grenouille au trait épuré, le placement de ce tatouage a été choisi,afin de mettre en mouvement le motif lorsque le coude est en action, ce qui donne l'impression que cette petite grenouille nage vers la surface.",
-      "alt": "Tatouage d'une grenouille ",
       "published": true
     },
     {
@@ -79,80 +58,31 @@
       "published": true
     },
     {
-      "src": "/images/tatouages/IMG20241101172102~4.jpg",
-      "title": "Phéonix et Dragon  ",
-      "description": "Ce tatouage réalisé sur commande sur le dos de ce client représente 2 chimères issues de mythes et mythologie, Le phénix  et le dragon asiatique.",
-      "alt": "Tatouage d'animal stylisé en noir",
+      "src": "/images/tatouages/PXL_20250525_130129407~4.jpg",
+      "title": "Cabane rustique foret de bambou",
+      "description": "Cette cabane rustique à la terrasse périlleuse a été adoptée et réalisée sur la convention d'Etampes (91) .",
+      "alt": "Cabane rustique foret de bambou",
       "published": true
     },
     {
-      "src": "/images/tatouages/IMG20241105181352~2.jpg",
-      "title": "Cabane rustique",
-      "description": " tatouage réaliste dans un style illustratif d'une cabane rustique dans un arbre en bord de dune. ",
-      "alt": "Tatouage ornemental avec motifs décoratifs",
+      "src": "/images/tatouages/couplemeles.jpg",
+      "title": "Matching tattoo",
+      "description": "Création et réalisation d'un tatouage en commun pour ces amoureux de la nature, et du Médoc!\nVives les mariés et les coulemelles! ",
+      "alt": "mushroom tattoo",
       "published": true
     },
     {
-      "src": "/images/tatouages/IMG_20241122_181443.jpg",
-      "title": "Colombe minimaliste",
-      "description": "Cette colombe réalisée sur l'épaule entre en mouvement lorsque l’épaule est en action. Réalisée dans un style crayonné et minimaliste  emporte avec elle une pousse d'olivier elle répand paix l'amour sur son passage ",
-      "alt": "Colombe minimaliste",
+      "src": "/images/tatouages/IMG20240906172450~2.jpg",
+      "title": "Papillon et composition florale",
+      "description": "Composition délicate associant un papillon aux ailes détaillées avec des lys et autres fleurs, style linéaire fin et gracieux",
+      "alt": "Tatouage d'un papillon avec lys et fleurs diverses sur l'avant-bras",
       "published": true
     },
     {
-      "src": "/images/tatouages/IMG20241130171654~2.jpg",
-      "title": "Composition floral pivoines",
-      "description": "Tatouage au trait fin démontrant la maîtrise des lignes continues et des compositions florales, ici des pivoines et des branches de bougainvillier orne l'épaule de cette cliente.",
-      "alt": "Composition floral",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/PXL_20250307_170514937.jpg",
-      "title": "Livre et papyrus",
-      "description": "Création poétique mêlant un livre ouvert depuis lequel s'élèvent en délicates ombelles des fleurs de papyrus, créé sur commande ce motif orne l'avant bras.",
-      "alt": "Livre et papyrus",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/PXL_20250325_144649104.jpg",
-      "title": "Composition anémones triple",
-      "description": "Tatouage floral raffiné représentant des anémones aux pétales délicatement ombrés, style réaliste illustratif sur avant bras.",
-      "alt": "Composition anémones triple",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/PXL_20250329_173719626~2.jpg",
-      "title": "Cabane dans un arbre",
-      "description": "Dessinée sur commande cette cabane nichée dans un arbre a été réalisée le mollet.",
-      "alt": "Cabane dans un arbre",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/PXL_20250412_171002562.MP~2.jpg",
-      "title": "Composition fleurs sauvages",
-      "description": "Lavande, fleurs de carotte et violette  epouse le mollet de cette cliente qui a adopté cette composition florale lors de la convention d'angoulème",
-      "alt": "Composition fleurs sauvages",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/PXL_20250413_135835471.MP~2.jpg",
-      "title": "Serpent et pivoines",
-      "description": "Gentil serpent ondulant dans un bouquet de pivoine, réalisé en convention sur avant bras",
-      "alt": "Serpent pivoines",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/PXL_20250509_152853985~3.jpg",
-      "title": "Fleur leucospermum et blé",
-      "description": "Composition florale de leucospermum et épis de blé créée et réalisée sur convention.",
-      "alt": "Fleur leucospermum et blé",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/PXL_20250511_140654070~2.jpg",
-      "title": "Serpent à plumes",
-      "description": "Ce serpent à plume ornée de quelques fleurs de lys sur avant bras fût réalisé en convention, dans un style illustratif.",
-      "alt": "Serpent à plume",
+      "src": "/images/tatouages/IMG20241012212533~2.jpg",
+      "title": "Grenouille stylisée",
+      "description": "Représentation stylisée d'une grenouille au trait épuré, le placement de ce tatouage a été choisi,afin de mettre en mouvement le motif lorsque le coude est en action, ce qui donne l'impression que cette petite grenouille nage vers la surface.",
+      "alt": "Tatouage d'une grenouille ",
       "published": true
     },
     {
@@ -177,6 +107,27 @@
       "published": true
     },
     {
+      "src": "/images/tatouages/IMG20241101172102~4.jpg",
+      "title": "Phéonix et Dragon  ",
+      "description": "Ce tatouage réalisé sur commande sur le dos de ce client représente 2 chimères issues de mythes et mythologie, Le phénix  et le dragon asiatique.",
+      "alt": "Tatouage d'animal stylisé en noir",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/PXL_20250413_135835471.MP~2.jpg",
+      "title": "Serpent et pivoines",
+      "description": "Gentil serpent ondulant dans un bouquet de pivoine, réalisé en convention sur avant bras",
+      "alt": "Serpent pivoines",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/IMG_20240501_200148_384.jpg",
+      "title": "Walkman et casque vintages",
+      "description": "Tatouage représentant un walkman vintage avec un casque vintage, icone de mes jeunes années. flash adopté sur le convention d'angoulème!",
+      "alt": "Tatouage représentant un walkman rétro avec un casque",
+      "published": true
+    },
+    {
       "src": "/images/tatouages/PXL_20250524_102538956~2.jpg",
       "title": "Combatant",
       "description": "Réalisé juste au dessus du genoux, ce combatant a été adopté lors de la convention d'Etampes (91) .",
@@ -191,17 +142,87 @@
       "published": true
     },
     {
+      "src": "/images/tatouages/IMG20241105181352~2.jpg",
+      "title": "Cabane rustique",
+      "description": " tatouage réaliste dans un style illustratif d'une cabane rustique dans un arbre en bord de dune. ",
+      "alt": "Tatouage ornemental avec motifs décoratifs",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/IMG_20240410_211419_241.jpg",
+      "title": "T-Rex rugissant ",
+      "description": " Tyrannosaurus Rex rugissant de l'amour! un avant bras. Ce tatouage sortit de mon catalogue de flash a été adopté sur la convention de Lorient.",
+      "alt": "Tatouage de dinosaure T-Rex sur avant-bras",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/IMG20241130171654~2.jpg",
+      "title": "Composition floral pivoines",
+      "description": "Tatouage au trait fin démontrant la maîtrise des lignes continues et des compositions florales, ici des pivoines et des branches de bougainvillier orne l'épaule de cette cliente.",
+      "alt": "Composition floral",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/PXL_20250307_170514937.jpg",
+      "title": "Livre et papyrus",
+      "description": "Création poétique mêlant un livre ouvert depuis lequel s'élèvent en délicates ombelles des fleurs de papyrus, créé sur commande ce motif orne l'avant bras.",
+      "alt": "Livre et papyrus",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/IMG_20240326_155654_135.jpg",
+      "title": "Danse macabre - Squelette et femme",
+      "description": "Tatouage représentant une scène de danse macabre Entre un squelette et une femme sortant d'un livre, dont certaines pages se sont détachées. Ce tatouage à été créé et réalisé à la demande d'une cliente pationnée d'anthrepologie, de danse et d'écriture.",
+      "alt": "Tatouage sur cuisse représentant une danse entre un squelette et une femme",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/PXL_20250325_144649104.jpg",
+      "title": "Composition anémones triple",
+      "description": "Tatouage floral raffiné représentant des anémones aux pétales délicatement ombrés, style réaliste illustratif sur avant bras.",
+      "alt": "Composition anémones triple",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/PXL_20250329_173719626~2.jpg",
+      "title": "Cabane dans un arbre",
+      "description": "Dessinée sur commande cette cabane nichée dans un arbre a été réalisée le mollet.",
+      "alt": "Cabane dans un arbre",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/PXL_20250412_171002562.MP~2.jpg",
+      "title": "Composition fleurs sauvages",
+      "description": "Lavande, fleurs de carotte et violette  epouse le mollet de cette cliente qui a adopté cette composition florale lors de la convention d'angoulème",
+      "alt": "Composition fleurs sauvages",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/PXL_20250509_152853985~3.jpg",
+      "title": "Fleur leucospermum et blé",
+      "description": "Composition florale de leucospermum et épis de blé créée et réalisée sur convention.",
+      "alt": "Fleur leucospermum et blé",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/PXL_20250511_140654070~2.jpg",
+      "title": "Serpent à plumes",
+      "description": "Ce serpent à plume ornée de quelques fleurs de lys sur avant bras fût réalisé en convention, dans un style illustratif.",
+      "alt": "Serpent à plume",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/IMG_20241122_181443.jpg",
+      "title": "Colombe minimaliste",
+      "description": "Cette colombe réalisée sur l'épaule entre en mouvement lorsque l’épaule est en action. Réalisée dans un style crayonné et minimaliste  emporte avec elle une pousse d'olivier elle répand paix l'amour sur son passage ",
+      "alt": "Colombe minimaliste",
+      "published": true
+    },
+    {
       "src": "/images/tatouages/PXL_20250524_200441332~2.jpg",
       "title": "Combatant",
       "description": "Ce combatant adopté sur catalogue en convention entre en mouvement lorsque le poignet est en action.",
       "alt": "combatant",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/PXL_20250525_130129407~4.jpg",
-      "title": "Cabane rustique foret de bambou",
-      "description": "Cette cabane rustique à la terrasse périlleuse a été adoptée et réalisée sur la convention d'Etampes (91) .",
-      "alt": "Cabane rustique foret de bambou",
       "published": true
     },
     {
@@ -219,6 +240,13 @@
       "published": true
     },
     {
+      "src": "/images/tatouages/IMG_20240405_230428_904.jpg",
+      "title": "Grue en vol - Oiseau majestueux",
+      "description": "Tatouage d'une grue aux ailes déployées, réalisé sur l'épaule de Vincent, lors de la convention de tatouage de Lorient en Bretagne.",
+      "alt": "Tatouage d'une grue aux ailes déployées sur l'épaule",
+      "published": true
+    },
+    {
       "src": "/images/tatouages/cabane.jpg",
       "title": "Cabane dans l'arbre fantaisiste",
       "description": "Tatouage imaginatif représentant une cabane perchée dans un arbre touffu, avec un escalier en colimaçon menant à la porte, style conte de fées",
@@ -230,34 +258,6 @@
       "title": "Composition florale délicate",
       "description": "Composition florale avec différentes variétés de fleurs et feuillages, créé et réalisé sur commande en salon",
       "alt": "Tatouage de fleurs diverses avec feuillages sur avant-bras",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/Corbeaux-emily1.jpg",
-      "title": "Corbeaux en vol ",
-      "description": "Tatouage réalisé sur la cuisse de cette cliente fidèle, 3 séances ont été nécessaires, pour réaliser ce tatouage entièrement créé pour Emily.\nLes mouvements de sa jambes donnent vie au vol de ses oiseaux créés sur mesures! \n",
-      "alt": " Tatouage Corbeaux sur cuisse",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/corbeaux-emily.jpg",
-      "title": "Corbeaux en vol",
-      "description": "Les Corbeaux d'Emily suite",
-      "alt": "Tatouage Corbeaux",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/zeus.jpg",
-      "title": "Tatouage Zeus",
-      "description": "Tatouage créé sur commande pour se courageux client venu de Brive.\nIl m'aura fallut plus de 6h pour réaliser ce tatouage.",
-      "alt": "Zeus tattoo",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/couplemeles.jpg",
-      "title": "Matching tattoo",
-      "description": "Création et réalisation d'un tatouage en commun pour ces amoureux de la nature, et du Médoc!\nVives les mariés et les coulemelles! ",
-      "alt": "mushroom tattoo",
       "published": true
     }
   ]
