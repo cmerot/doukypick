@@ -100,6 +100,13 @@
       "published": true
     },
     {
+      "src": "/images/tatouages/octo%20vincent.jpg",
+      "title": "Pieuvre joueuse",
+      "description": "Ce tatouage a été réalisé sur commande. Ce client souhaitait, une pieuvre sur l'avant bras Jouant avec les doudous de son chien. \nCe tatouage a été réalisé en une dizaine d'heures.",
+      "alt": "Octopus tattoo",
+      "published": true
+    },
+    {
       "src": "/images/tatouages/IMG20241012212533~2.jpg",
       "title": "Grenouille stylisée",
       "description": "Représentation stylisée d'une grenouille au trait épuré, le placement de ce tatouage a été choisi,afin de mettre en mouvement le motif lorsque le coude est en action, ce qui donne l'impression que cette petite grenouille nage vers la surface.",
@@ -295,13 +302,6 @@
       "published": true
     },
     {
-      "src": "/images/tatouages/octo%20vincent.jpg",
-      "title": "Pieuvre joueuse",
-      "description": "Ce tatouage a été réalisé sur commande. Ce client souhaitait, une pieuvre sur l'avant bras Jouant avec les doudous de son chien. \nCe tatouage a été réalisé en une dizaine d'heures.",
-      "alt": "Octopus tattoo",
-      "published": true
-    },
-    {
       "src": "/images/tatouages/ivoire.jpg",
       "title": "Dog tattoo",
       "description": "Ce tatouage a été créé et réalisé sur commande pour une cliente qui souhaitait rendre hommage à son chien qu'elle aime tant.\nCette cliente souhaitait que ce tatouage soit réalisé sur sa cheville , C'est pourquoi j'ai choisi de donner cette \"attitude\" au chien (qui semblent s'étirer) afin que celui ci s'adapte à la cheville de sa maîtresse. (Il m'avait été fourni des photos de l'animal afin de le représenter au plus juste)",
@@ -309,6 +309,9 @@
       "published": true
     },
     {
+      "src": "/images/tatouages/heron.jpg",
+      "title": "héron épaule",
+      "alt": "heron shoulder",
       "published": true
     }
   ]
