@@ -233,9 +233,15 @@
     },
     {
       "src": "/images/tatouages/frog%20marie.jpg",
-      "title": "La grenoille de Marie",
+      "title": "La Grenouille de Marie",
       "description": "Cette adorable créature a été adoptée et réalisée sur convention de tatouage, La cliente a souhaité un placement audacieux. cette grenouille semble lui grimper le long de la cheville en prenant appui sur sa malléole point.",
       "alt": "Cut frog",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/crevette%20ben.jpg",
+      "title": "Crevette",
+      "alt": "Cut shrimp",
       "published": true
     },
     {
@@ -367,12 +373,6 @@
       "title": "Composition florale délicate",
       "description": "Composition florale avec différentes variétés de fleurs et feuillages, créé et réalisé sur commande en salon",
       "alt": "Tatouage de fleurs diverses avec feuillages sur avant-bras",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/crevette%20ben.jpg",
-      "title": "Crevette",
-      "alt": "Cut shrimp",
       "published": true
     }
   ]
