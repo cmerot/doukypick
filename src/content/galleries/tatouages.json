@@ -9,6 +9,13 @@
   "published": true,
   "images": [
     {
+      "src": "/images/tatouages/renard%20emily.jpg",
+      "title": "Renard malicieux",
+      "description": "Ce tatouage réalisé en 3 séances, vient compléter la jambe de cette fidèle cliente. ",
+      "alt": "fox tattoo",
+      "published": true
+    },
+    {
       "src": "/images/tatouages/IMG_20241004_184024.jpg",
       "title": "Cabane dans l'arbre nuageux",
       "description": "Tatouage poétique d'une cabane nichée dans un arbre feuillu nuageux, évoquant un refuge paisible dans la nature.",
@@ -261,13 +268,10 @@
       "published": true
     },
     {
-      "src": "/images/tatouages/renard%20emily.jpg",
-      "title": "Renard malicieux",
-      "description": "Ce tatouage réalisé en 3 séances, vient compléter la jambe de cette fidèle cliente. ",
-      "alt": "fox tattoo",
-      "published": true
-    },
-    {
+      "src": "/images/tatouages/ecuratant.combeuil.jpg",
+      "title": "Matching Tattoo Ecureuil et Combatant",
+      "description": "Ces créatures originales , sortent tout droit de mon album \"bestiaire\". Elles sont le mélange D'écureuils et de combattants que ses clientes ont choisi De partager. L'une possède donc un Combeuil  Et l'autre un Écuratants!  Cet album peut être consulté au salon ou sur conventions de tatouage où je serai présente .  Plus de 225 combinaison possible pour satisfaire une clientèle toujours plus audacieuse ! Je peux aussi réaliser des projets personnalisés! Pour cela vous n'aurez qu'à me donner les animaux ou végétaux (etc...) que vous souhaitez combiner!",
+      "alt": "Tatouge partagé ",
       "published": true
     },
     {
