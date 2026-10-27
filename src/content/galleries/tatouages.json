@@ -79,6 +79,13 @@
       "published": true
     },
     {
+      "src": "/images/tatouages/ivoire.jpg",
+      "title": "Dog tattoo",
+      "description": "Ce tatouage a été créé et réalisé sur commande pour une cliente qui souhaitait rendre hommage à son chien qu'elle aime tant.\nCette cliente souhaitait que ce tatouage soit réalisé sur sa cheville , C'est pourquoi j'ai choisi de donner cette \"attitude\" au chien (qui semblent s'étirer) afin que celui ci s'adapte à la cheville de sa maîtresse. (Il m'avait été fourni des photos de l'animal afin de le représenter au plus juste)",
+      "alt": "Lévrier tattoo",
+      "published": true
+    },
+    {
       "src": "/images/tatouages/PXL_20250525_130129407~4.jpg",
       "title": "Cabane rustique foret de bambou",
       "description": "Cette cabane rustique à la terrasse périlleuse a été adoptée et réalisée sur la convention d'Etampes (91) .",
@@ -145,6 +152,13 @@
       "src": "/images/tatouages/meduses%20christophe2.jpg",
       "title": "Méduses suite",
       "alt": " jellyfish lovers",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/heron.jpg",
+      "title": "héron épaule",
+      "description": "Ce tatouage a été Adoptée dans mon catalogue de Flash et réalisé sur Convention. (La petite créature appelée \"Sylvain\" sous son bec n'est pas de moi, Mais je me suis permise de le restaurer avec l'accord de cette cliente, car celui ci Semblait être passé au lave linge...)",
+      "alt": "heron shoulder",
       "published": true
     },
     {
@@ -302,17 +316,19 @@
       "published": true
     },
     {
-      "src": "/images/tatouages/ivoire.jpg",
-      "title": "Dog tattoo",
-      "description": "Ce tatouage a été créé et réalisé sur commande pour une cliente qui souhaitait rendre hommage à son chien qu'elle aime tant.\nCette cliente souhaitait que ce tatouage soit réalisé sur sa cheville , C'est pourquoi j'ai choisi de donner cette \"attitude\" au chien (qui semblent s'étirer) afin que celui ci s'adapte à la cheville de sa maîtresse. (Il m'avait été fourni des photos de l'animal afin de le représenter au plus juste)",
-      "alt": "Lévrier tattoo",
+      "src": "/images/tatouages/MONTAGE%20A4%204.jpg",
+      "title": "Phare et Pieuvre",
+      "description": "Dessin et tatouage réalisé sur commande, environs 6h de tatouage sur la même journée pour cette fidèle cliente!",
+      "alt": "lightouse octopus",
       "published": true
     },
     {
-      "src": "/images/tatouages/heron.jpg",
-      "title": "héron épaule",
-      "description": "Ce tatouage a été Adoptée dans mon catalogue de Flash et réalisé sur Convention. (La petite créature appelée \"Sylvain\" sous son bec n'est pas de moi, Mais je me suis permise de le restaurer avec l'accord de cette cliente, car celui ci Semblait être passé au lave linge...)",
-      "alt": "heron shoulder",
+      "published": true
+    },
+    {
+      "published": true
+    },
+    {
       "published": true
     }
   ]
