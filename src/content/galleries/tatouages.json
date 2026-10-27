@@ -37,6 +37,13 @@
       "published": true
     },
     {
+      "src": "/images/tatouages/ecuratant.combeuil.jpg",
+      "title": "Matching Tattoo Ecureuil et Combatant",
+      "description": "Ces créatures originales , sortent tout droit de mon album \"bestiaire\". Elles sont le mélange D'écureuils et de combattants que ses clientes ont choisi De partager. L'une possède donc un Combeuil  Et l'autre un Écuratants!  Cet album peut être consulté au salon ou sur conventions de tatouage où je serai présente .  Plus de 225 combinaison possible pour satisfaire une clientèle toujours plus audacieuse ! Je peux aussi réaliser des projets personnalisés! Pour cela vous n'aurez qu'à me donner les animaux ou végétaux (etc...) que vous souhaitez combiner!",
+      "alt": "Tatouge partagé ",
+      "published": true
+    },
+    {
       "src": "/images/tatouages/IMG_20240716_092311_429.jpg",
       "title": "Pieuvre aux tentacules mouvement",
       "description": "Tatouage d'une pieuvre avec des tentacules aux ventouses méticuleusement détaillées, autour d'un genoux. \nLe placement du motif sur le corp a été travaillé afin que le tatouage prenne vie lorsque le genoux est en mouvement !\n réalisé lors d'un guest chez L'Aiguille du Marquiste  (à Plobannalec).",
@@ -111,6 +118,19 @@
       "title": "eucalyptus fougères anemones livre",
       "description": "Composition florale élégante représentant des vignes avec grappes et fleurs diverses ainsi que quelques symboles liés au roman le seigneur des anneaux, dans un style illustratif.",
       "alt": "Vue d'ensemble du tatouage floral terminé",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/meduses%20christophe.jpg",
+      "title": "Méduses ",
+      "description": "2 séances de 07h00 auront été nécessaires pour venir à bout de ce gros projet, réalisé sur 2 journées consécutives. Chacune de ces méduses ont été dessinées et positionnées pour donner un mouvements d'ensemble adapt à la morphologie de mon client. Lorsque celui ci bouge les méduses semblent nager à tour de son bras de son poignet jusqu'à son épaule! \n",
+      "alt": "Jellyfish  tattoo",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/meduses%20christophe2.jpg",
+      "title": "Méduses suite",
+      "alt": " jellyfish lovers",
       "published": true
     },
     {
@@ -268,23 +288,19 @@
       "published": true
     },
     {
-      "src": "/images/tatouages/ecuratant.combeuil.jpg",
-      "title": "Matching Tattoo Ecureuil et Combatant",
-      "description": "Ces créatures originales , sortent tout droit de mon album \"bestiaire\". Elles sont le mélange D'écureuils et de combattants que ses clientes ont choisi De partager. L'une possède donc un Combeuil  Et l'autre un Écuratants!  Cet album peut être consulté au salon ou sur conventions de tatouage où je serai présente .  Plus de 225 combinaison possible pour satisfaire une clientèle toujours plus audacieuse ! Je peux aussi réaliser des projets personnalisés! Pour cela vous n'aurez qu'à me donner les animaux ou végétaux (etc...) que vous souhaitez combiner!",
-      "alt": "Tatouge partagé ",
+      "src": "/images/tatouages/lady%20pulpa.jpg",
+      "title": "Lady pulpa",
+      "description": "Cette pièce a été adoptée et réalisée sur convention de tatouage (Bergerac 2026) et a remporte le 1 prix du concourt dans la catégorie Noir et gris. Réalisé en 5h30, cette pièce et son placement audacieux crée un mouvement naturel sur le bras de cette cliente. lorsque celle-ci est en movement la pieuvre semble nager sur son épaule! ",
+      "alt": "octopus shoulder",
       "published": true
     },
     {
-      "src": "/images/tatouages/meduses%20christophe.jpg",
-      "title": "Méduses ",
-      "description": "2 séances de 07h00 auront été nécessaires pour venir à bout de ce gros projet, réalisé sur 2 journées consécutives. Chacune de ces méduses ont été dessinées et positionnées pour donner un mouvements d'ensemble adapt à la morphologie de mon client. Lorsque celui ci bouge les méduses semblent nager à tour de son bras de son poignet jusqu'à son épaule! \n",
-      "alt": "Jellyfish  tattoo",
       "published": true
     },
     {
-      "src": "/images/tatouages/meduses%20christophe2.jpg",
-      "title": "Méduses suite",
-      "alt": " jellyfish lovers",
+      "published": true
+    },
+    {
       "published": true
     }
   ]
