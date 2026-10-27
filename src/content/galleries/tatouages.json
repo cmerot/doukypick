@@ -114,13 +114,6 @@
       "published": true
     },
     {
-      "src": "/images/tatouages/IMG20241012212533~2.jpg",
-      "title": "Grenouille stylisée",
-      "description": "Représentation stylisée d'une grenouille au trait épuré, le placement de ce tatouage a été choisi,afin de mettre en mouvement le motif lorsque le coude est en action, ce qui donne l'impression que cette petite grenouille nage vers la surface.",
-      "alt": "Tatouage d'une grenouille ",
-      "published": true
-    },
-    {
       "src": "/images/tatouages/PXL_20250517_173558902~2.jpg",
       "title": "Vignes et grappes florales",
       "description": "Composition florale élégante représentant des vignes avec grappes et fleurs diverses ainsi que quelques symboles liés au roman le seigneur des anneaux, dans un style illustratif.",
@@ -166,6 +159,13 @@
       "title": "Phare et Pieuvre",
       "description": "Dessin et tatouage réalisé sur commande au salon le théâtre de l'identité à bordeaux, environs 6h de tatouage sur la même journée pour cette fidèle cliente!",
       "alt": "lightouse octopus",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/compo%20%C3%A9toiles1chouette.jpg",
+      "title": "Le chouette chevêche d'Athéna.",
+      "description": "Ce tatouage a été conçu sur mesure à la demande d'une cliente puis réalisée sur la convention d’Angoulême 2026, Et m'a permis de gagner le premier prix au concours dans la catégorie \"illustration\".  Lorsque la cliente se met en mouvement L'aile située sur l'omoplate semble S'ouvrir pour permettre à cette chouette de gagner en amplitude ! ",
+      "alt": "Owl of Athena ",
       "published": true
     },
     {
@@ -274,6 +274,13 @@
       "published": true
     },
     {
+      "src": "/images/tatouages/IMG20241012212533~2.jpg",
+      "title": "Grenouille stylisée",
+      "description": "Représentation stylisée d'une grenouille au trait épuré, le placement de ce tatouage a été choisi,afin de mettre en mouvement le motif lorsque le coude est en action, ce qui donne l'impression que cette petite grenouille nage vers la surface.",
+      "alt": "Tatouage d'une grenouille ",
+      "published": true
+    },
+    {
       "src": "/images/tatouages/IMG_20240501_200148_384.jpg",
       "title": "Walkman et casque vintages",
       "description": "Tatouage représentant un walkman vintage avec un casque vintage, icone de mes jeunes années. flash adopté sur le convention d'angoulème!",
@@ -323,6 +330,12 @@
       "published": true
     },
     {
+      "src": "/images/tatouages/compo%20%C3%A9toiles.jpg",
+      "title": "Étoiles de mer ",
+      "alt": "Starfish",
+      "published": true
+    },
+    {
       "src": "/images/tatouages/IMG_20240405_230428_904.jpg",
       "title": "Grue en vol - Oiseau majestueux",
       "description": "Tatouage d'une grue aux ailes déployées, réalisé sur l'épaule de Vincent, lors de la convention de tatouage de Lorient en Bretagne.",
@@ -344,22 +357,16 @@
       "published": true
     },
     {
-      "src": "/images/tatouages/compo%20%C3%A9toiles.jpg",
-      "title": "Étoiles de mer ",
-      "alt": "Starfish",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/compo%20%C3%A9toiles1chouette.jpg",
-      "title": "Le chouette chevêche d'Athéna.",
-      "description": "Ce tatouage a été conçu sur mesure à la demande d'une cliente puis réalisée sur la convention d’Angoulême 2026, Et m'a permis de gagner le premier prix au concours dans la catégorie \"illustration\".  Lorsque la cliente se met en mouvement L'aile située sur l'omoplate semble S'ouvrir pour permettre à cette chouette de gagner en amplitude ! ",
-      "alt": "Owl of Athena ",
-      "published": true
-    },
-    {
       "src": "/images/tatouages/corbeau.jpg",
       "title": "Corbeau ",
       "alt": "Crow",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/frog%20marie.jpg",
+      "title": "La grenoille de Marie",
+      "description": "Cette adorable créature a été adoptée et réalisée sur convention de tatouage, La cliente a souhaité un placement audacieux. cette grenouille semble lui grimper le long de la cheville en prenant appui sur sa malléole point.",
+      "alt": "Cut frog",
       "published": true
     }
   ]
