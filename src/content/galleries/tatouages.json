@@ -232,6 +232,13 @@
       "published": true
     },
     {
+      "src": "/images/tatouages/frog%20marie.jpg",
+      "title": "La grenoille de Marie",
+      "description": "Cette adorable créature a été adoptée et réalisée sur convention de tatouage, La cliente a souhaité un placement audacieux. cette grenouille semble lui grimper le long de la cheville en prenant appui sur sa malléole point.",
+      "alt": "Cut frog",
+      "published": true
+    },
+    {
       "src": "/images/tatouages/IMG_20240326_155654_135.jpg",
       "title": "Danse macabre - Squelette et femme",
       "description": "Tatouage représentant une scène de danse macabre Entre un squelette et une femme sortant d'un livre, dont certaines pages se sont détachées. Ce tatouage à été créé et réalisé à la demande d'une cliente pationnée d'anthrepologie, de danse et d'écriture.",
@@ -292,6 +299,12 @@
       "title": "Serpent à plumes",
       "description": "Ce serpent à plume ornée de quelques fleurs de lys sur avant bras fût réalisé en convention, dans un style illustratif.",
       "alt": "Serpent à plume",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/corbeau.jpg",
+      "title": "Corbeau ",
+      "alt": "Crow",
       "published": true
     },
     {
@@ -357,16 +370,9 @@
       "published": true
     },
     {
-      "src": "/images/tatouages/corbeau.jpg",
-      "title": "Corbeau ",
-      "alt": "Crow",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/frog%20marie.jpg",
-      "title": "La grenoille de Marie",
-      "description": "Cette adorable créature a été adoptée et réalisée sur convention de tatouage, La cliente a souhaité un placement audacieux. cette grenouille semble lui grimper le long de la cheville en prenant appui sur sa malléole point.",
-      "alt": "Cut frog",
+      "src": "/images/tatouages/crevette%20ben.jpg",
+      "title": "Crevette",
+      "alt": "Cut shrimp",
       "published": true
     }
   ]
