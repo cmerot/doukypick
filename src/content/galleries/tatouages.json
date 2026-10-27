@@ -162,6 +162,13 @@
       "published": true
     },
     {
+      "src": "/images/tatouages/MONTAGE%20A4%204.jpg",
+      "title": "Phare et Pieuvre",
+      "description": "Dessin et tatouage réalisé sur commande au salon le théâtre de l'identité à bordeaux, environs 6h de tatouage sur la même journée pour cette fidèle cliente!",
+      "alt": "lightouse octopus",
+      "published": true
+    },
+    {
       "src": "/images/tatouages/IMG20241101172102~4.jpg",
       "title": "Phéonix et Dragon  ",
       "description": "Ce tatouage réalisé sur commande sur le dos de ce client représente 2 chimères issues de mythes et mythologie, Le phénix  et le dragon asiatique.",
@@ -173,13 +180,6 @@
       "title": "Serpent et pivoines",
       "description": "Gentil serpent ondulant dans un bouquet de pivoine, réalisé en convention sur avant bras",
       "alt": "Serpent pivoines",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/IMG_20240501_200148_384.jpg",
-      "title": "Walkman et casque vintages",
-      "description": "Tatouage représentant un walkman vintage avec un casque vintage, icone de mes jeunes années. flash adopté sur le convention d'angoulème!",
-      "alt": "Tatouage représentant un walkman rétro avec un casque",
       "published": true
     },
     {
@@ -204,13 +204,6 @@
       "published": true
     },
     {
-      "src": "/images/tatouages/IMG_20240410_211419_241.jpg",
-      "title": "T-Rex rugissant ",
-      "description": " Tyrannosaurus Rex rugissant de l'amour! un avant bras. Ce tatouage sortit de mon catalogue de flash a été adopté sur la convention de Lorient.",
-      "alt": "Tatouage de dinosaure T-Rex sur avant-bras",
-      "published": true
-    },
-    {
       "src": "/images/tatouages/IMG20241130171654~2.jpg",
       "title": "Composition floral pivoines",
       "description": "Tatouage au trait fin démontrant la maîtrise des lignes continues et des compositions florales, ici des pivoines et des branches de bougainvillier orne l'épaule de cette cliente.",
@@ -218,10 +211,24 @@
       "published": true
     },
     {
-      "src": "/images/tatouages/PXL_20250307_170514937.jpg",
-      "title": "Livre et papyrus",
-      "description": "Création poétique mêlant un livre ouvert depuis lequel s'élèvent en délicates ombelles des fleurs de papyrus, créé sur commande ce motif orne l'avant bras.",
-      "alt": "Livre et papyrus",
+      "src": "/images/tatouages/cabane%20%C3%A9lise1.jpg",
+      "title": "Cabane perchée d'Élise ",
+      "description": "Réalisez sur commande cette cabane perchée dans un chêne est peuplée d'une ours d'un corbeau et d'un renard. \n2 séances de 07h00 auront été nécessaires pour venir à bout de cette pièce unique et très personnalisée, Créé sur mesure pour cette cliente qui rêvait de se faire tatouer depuis plus de 20 ans!  Pour son premier tatouage cette cliente avait envie de voir en grand!",
+      "alt": "Treehouse tattoo",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/compo%20monnaiepape.jpg",
+      "title": "Composition florale",
+      "description": "Ce tatouage se compose de 3 \"dessins Flashs\" proposés en catalogue qui ont été fusionnés, monnaie du pape, nénuphar et bourdon.",
+      "alt": "Floral arrangement",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/cabane%20m%C3%A9duse.jpg",
+      "title": "Cabane sur méduse",
+      "description": "Ce tatouage a été Adopter et réaliser au salon le théâtre de l'identité à Bordeaux, Ce motif Fait partie d'un catalogue bien rempli de cabanes ! N'hésitez pas à me contacter si vous souhaitez Le consulter. Celui ci n'est pour l'heure consultable uniquement au salon où lors de mes déplacements en convention et  autres \"guest\".",
+      "alt": "Hut and Jellyfish",
       "published": true
     },
     {
@@ -253,10 +260,24 @@
       "published": true
     },
     {
+      "src": "/images/tatouages/PXL_20250307_170514937.jpg",
+      "title": "Livre et papyrus",
+      "description": "Création poétique mêlant un livre ouvert depuis lequel s'élèvent en délicates ombelles des fleurs de papyrus, créé sur commande ce motif orne l'avant bras.",
+      "alt": "Livre et papyrus",
+      "published": true
+    },
+    {
       "src": "/images/tatouages/PXL_20250509_152853985~3.jpg",
       "title": "Fleur leucospermum et blé",
       "description": "Composition florale de leucospermum et épis de blé créée et réalisée sur convention.",
       "alt": "Fleur leucospermum et blé",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/IMG_20240501_200148_384.jpg",
+      "title": "Walkman et casque vintages",
+      "description": "Tatouage représentant un walkman vintage avec un casque vintage, icone de mes jeunes années. flash adopté sur le convention d'angoulème!",
+      "alt": "Tatouage représentant un walkman rétro avec un casque",
       "published": true
     },
     {
@@ -271,6 +292,13 @@
       "title": "Colombe minimaliste",
       "description": "Cette colombe réalisée sur l'épaule entre en mouvement lorsque l’épaule est en action. Réalisée dans un style crayonné et minimaliste  emporte avec elle une pousse d'olivier elle répand paix l'amour sur son passage ",
       "alt": "Colombe minimaliste",
+      "published": true
+    },
+    {
+      "src": "/images/tatouages/IMG_20240410_211419_241.jpg",
+      "title": "T-Rex rugissant ",
+      "description": " Tyrannosaurus Rex rugissant de l'amour! un avant bras. Ce tatouage sortit de mon catalogue de flash a été adopté sur la convention de Lorient.",
+      "alt": "Tatouage de dinosaure T-Rex sur avant-bras",
       "published": true
     },
     {
@@ -316,31 +344,15 @@
       "published": true
     },
     {
-      "src": "/images/tatouages/MONTAGE%20A4%204.jpg",
-      "title": "Phare et Pieuvre",
-      "description": "Dessin et tatouage réalisé sur commande au salon le théâtre de l'identité à bordeaux, environs 6h de tatouage sur la même journée pour cette fidèle cliente!",
-      "alt": "lightouse octopus",
+      "src": "/images/tatouages/compo%20%C3%A9toiles.jpg",
+      "title": "Étoiles de mer ",
+      "alt": "Starfish",
       "published": true
     },
     {
-      "src": "/images/tatouages/cabane%20m%C3%A9duse.jpg",
-      "title": "Cabane sur méduse",
-      "description": "Ce tatouage a été Adopter et réaliser au salon le théâtre de l'identité à Bordeaux, Ce motif Fait partie d'un catalogue bien rempli de cabanes ! N'hésitez pas à me contacter si vous souhaitez Le consulter. Celui ci n'est pour l'heure consultable uniquement au salon où lors de mes déplacements en convention et  autres \"guest\".",
-      "alt": "Hut and Jellyfish",
       "published": true
     },
     {
-      "src": "/images/tatouages/cabane%20%C3%A9lise1.jpg",
-      "title": "Cabane perchée d'Élise ",
-      "description": "Réalisez sur commande cette cabane perchée dans un chêne est peuplée d'une ours d'un corbeau et d'un renard. \n2 séances de 07h00 auront été nécessaires pour venir à bout de cette pièce unique et très personnalisée, Créé sur mesure pour cette cliente qui rêvait de se faire tatouer depuis plus de 20 ans!  Pour son premier tatouage cette cliente avait envie de voir en grand!",
-      "alt": "Treehouse tattoo",
-      "published": true
-    },
-    {
-      "src": "/images/tatouages/compo%20monnaiepape.jpg",
-      "title": "Composition florale",
-      "description": "Ce tatouage se compose de 3 \"dessins Flashs\" proposés en catalogue qui ont été fusionnés, monnaie du pape, nénuphar et bourdon.",
-      "alt": "Floral arrangement",
       "published": true
     }
   ]
